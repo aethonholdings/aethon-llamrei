@@ -2,8 +2,10 @@
 <div class="header">
     <div class="logo" ></div>
 
-<div class="spanClass"> Welcome User | Logout</div>
-    %{--<div class="spanClass1"> Account </div>--}%
+<div class="spanClass"> Welcome ADMIN |<g:link controller="user" action="create">Manage Users</g:link>| <g:link controller="logout" action="index">Logout</g:link>
+    </div>
+
+
 
 </div>
 
@@ -20,7 +22,7 @@
                 <ul class="sf-menu" id="nav">
 
                     <li style="width: 20px">&nbsp;</li>
-                    <li><a href="#">Dashboard</a>
+                    <li><a href="#">DashBoard</a>
                         <ul>
                             <li><a href="#" id="summary">Summary</a></li>
                             <li><a href="#">Fuel</a></li>

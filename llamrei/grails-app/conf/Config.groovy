@@ -64,7 +64,18 @@ environments {
     }
 
 }
-
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "sonaligupta847@gmail.com"
+        password = "Angry shonali"
+        props = ["mail.smtp.auth":"true",
+                "mail.smtp.socketFactory.port":"465",
+                "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                "mail.smtp.socketFactory.fallback":"false"]
+    }
+}
 // log4j configuration
 log4j = {
     // Example of changing the log pattern for the default console
@@ -88,3 +99,8 @@ log4j = {
 
     warn   'org.mortbay.log'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'llamreiproject.SecUser'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'llamreiproject.SecUserSecRole'
+grails.plugins.springsecurity.authority.className = 'llamreiproject.SecRole'

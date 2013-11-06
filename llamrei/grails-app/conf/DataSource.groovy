@@ -17,7 +17,7 @@ environments {
             driverClassName = "com.mysql.jdbc.Driver"
             url = "jdbc:mysql://localhost/testDB?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&autoReconnect=true"
             username = "root"
-            password = "root"
+            password = "root123"
 
 
         }

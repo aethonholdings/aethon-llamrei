@@ -27,10 +27,12 @@
         </script>
     </head>
     <body>
+
     <div class="header1">
         <g:render template="/layouts/header"/>
+
     </div>
-    <div style="min-height: 490px;">
+    <div style="min-height: 400px;">
         <g:layoutBody/>
     </div>
     <div class="footer1">

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/llamrei.iml" filepath="$PROJECT_DIR$/llamrei.iml" />
-      <module fileurl="file://$PROJECT_DIR$/llamrei-grailsPlugins.iml" filepath="$PROJECT_DIR$/llamrei-grailsPlugins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LlamreiProject.iml" filepath="$PROJECT_DIR$/LlamreiProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LlamreiProject-grailsPlugins.iml" filepath="$PROJECT_DIR$/LlamreiProject-grailsPlugins.iml" />
     </modules>
   </component>
 </project>
