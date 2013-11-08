@@ -16,7 +16,7 @@ class SeriesDetails {
         Date modificationDate
         User createdBy
         User modifiedBy
-         static  belongsTo = [asset:Asset]
+        static  belongsTo = [asset:Asset]
 
     /**
      * Putting constraints with properties
@@ -33,7 +33,7 @@ class SeriesDetails {
     }
 
      /**
-     * Mapping to define column names for domain objects in the database
+     * Mapping to define column names for domain objects in the database with MYSQL
      */
     static  mapping = {
        nameId column: 'nameId'
