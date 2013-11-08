@@ -1,6 +1,7 @@
 package llamreiAssets
 
 import llamreiproject.User
+import llamreiproject.SecUser
 
 class Asset {
 
@@ -13,13 +14,13 @@ class Asset {
     String description
     Date creationDate
     Date modificationDate
-    User createdBy
-    User modifiedBy
+    SecUser createdBy
+    SecUser modifiedBy
 
     /**
      * Relationship mapping
      */
-    static hasMany = [seriesdetails:SeriesDetails]
+//    static hasMany = [seriesdetails:SeriesDetails]
 
     /**
      * Putting constraints with properties
@@ -37,7 +38,7 @@ class Asset {
      * Mapping to define column names for domain objects in the database
      */
     static mapping = {
-       deviceId column: "deviceId"
+        deviceId column: "deviceId"
         description column: "description"
         creationDate column: "creationDate"
         modificationDate column: "modificationDate"
