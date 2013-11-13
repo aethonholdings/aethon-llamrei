@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><g:layoutTitle default="Grails" /></title>
+        <jq:resources/>
+        <jqui:resources/>
+        <g:urlMappings/>
+        <g:javascript library="jquery"/>
+        <g:javascript library="application"/>
+        <g:javascript library="jquery" plugin="jquery"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style1.css')}"/>
+        <script type="text/javascript" src="${resource(dir: 'js/DataTables-1.8.2', file: 'media/js/jquery.dataTables.js')}"></script>
+        <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script>
+        %{--<script type="text/javascript"--}%
+                %{--src="${resource(dir: 'TableTools-2.0.1', file: 'media/js/ZeroClipboard.js')}"></script>--}%
+        %{--<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'default1.css')}"/>--}%
+        %{--<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'styleTab.css')}"/>--}%
+        %{--<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'animate.min.css')}"/>--}%
+
+        %{--<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'subTab1.css')}"/>--}%
+        <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.ui.js')}"></script>
+        %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.easing-sooper.js')}"></script>--}%
+        %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.kwicks-1.5.1.js')}"></script>--}%
+        %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.sooperfish.js')}"></script>--}%
+        %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'modernizr-1.5.min.js')}"></script>--}%
+        %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.jss')}"></script>--}%
+        <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
+        <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
+
+        <g:layoutHead />
+        <g:javascript library="application" />
+        <script>
+//            $(function() {
+//                $( "#tabs" ).tabs();
+//            });
+
+            $(function() {
+                $( "#tabs1" ).tabs();
+            });
+
+        </script>
+    </head>
+    <body>
+
+    <div class="header1">
+        <g:render template="/layouts/header"/>
+
+    </div>
+    <div style="min-height: 490px">
+        <g:layoutBody/>
+    </div>
+    <div class="footer1">
+        <g:render template="/layouts/footer"/>
+    </div>
+        %{--<div id="spinner" class="spinner" style="display:none;">--}%
+            %{--<img src="${resource(dir:'images',file:'spinner.gif')}" alt="${message(code:'spinner.alt',default:'Loading...')}" />--}%
+        %{--</div>--}%
+        %{--<div id="grailsLogo"><a href="http://grails.org"><img src="${resource(dir:'images',file:'grails_logo.png')}" alt="Grails" border="0" /></a></div>--}%
+        %{--<g:layoutBody />--}%
+    </body>
+</html>
