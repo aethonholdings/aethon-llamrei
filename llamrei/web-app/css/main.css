@@ -354,6 +354,7 @@ th.desc a {
     background-size:1365px 80px;
     height: 50px;
     width: 1360px;
+    margin-top: 90px;
 }
 
 .logo{
@@ -370,6 +371,7 @@ th.desc a {
 
 .buttonClass{
     width:80px;
+     cursor: pointer;
     border: 1px solid #3079ed;
     color: #fff;
     text-shadow: 0 1px rgba(0,0,0,0.1);

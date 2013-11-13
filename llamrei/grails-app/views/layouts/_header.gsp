@@ -13,16 +13,6 @@
     </sec:ifAnyGranted>
 </div>
 
-    <div class="header">
-        <div class="logo" ></div>
-
-        <div class="spanClass"> Welcome ADMIN |<g:link controller="user" action="create">Manage Users</g:link>| <g:link controller="logout" action="index">Logout</g:link>
-        </div>
-
-
-
-    </div>
-
     <div>
         <header>
 

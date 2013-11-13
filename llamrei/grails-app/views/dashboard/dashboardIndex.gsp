@@ -21,13 +21,15 @@
           showContents();
       }, 3000000);
 
-      $('#assertName').click(function(){
+  $(document).ready(function(){
+    $('#assertName').click(function(){
 
         $('#main1').hide();
         $('#main2').hide();
         $('#chartDiv').show();
 
        })
+    });
 
       $(function () {
           $(document).ready(function() {

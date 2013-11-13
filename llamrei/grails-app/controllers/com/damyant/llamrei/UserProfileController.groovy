@@ -113,6 +113,7 @@ class UserProfileController  extends grails.plugins.springsecurity.ui.UserContro
     }
 
     def remove = {
+        println "entering"
         def UserInstance = SecUser.get(params.id)
         def UserInstance1 = SecUserSecRole.findBySecUser(UserInstance)
         if (UserInstance) {
