@@ -1,8 +1,8 @@
 dataSource {
     pooled = true
-     driverClassName = "com.mysql.jdbc.Driver"
-    username = "kuldeep"
-    password = "sharma"
+    driverClassName = "org.hsqldb.jdbcDriver"
+    username = "sa"
+    password = ""
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -14,7 +14,10 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop','update'
+            driverClassName = "com.mysql.jdbc.Driver"
             url = "jdbc:mysql://localhost:3306/llamrei?autoreconnect=true"
+            username = ""
+            password = ""
         }
     }
     test {

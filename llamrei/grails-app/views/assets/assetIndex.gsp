@@ -37,22 +37,22 @@
     %{--<h2> Assets home page</h2>--}%
     <div class="rightDiv">
 
-        <div>
-            %{--<div class="heading"><label>Asset Name </label>:&nbsp;&nbsp;&nbsp; <label>test </label></div>--}%
-            %{--<div class="heading"><label>Client Name</label>:&nbsp;&nbsp;&nbsp;<label>test </label></div>--}%
-            %{--<div class="heading"><label>Location</label>:&nbsp;&nbsp;&nbsp; <label>test </label></div>--}%
-            <table style="margin-top: 5px;border: none">
-                <tr>
-                    <td><b>Asset Name</b></td><td>:</td><td>test</td>    </tr>
-                <tr>  <td><b>Client Name</b></td><td>:</td><td>test</td>  </tr>
-                <tr> <td><b>Location</b></td><td>:</td><td>test</td>
-                </tr>
-            </table>
-        </div>
-        <div class="imgDiv">
-            Image
-        </div>
-        <div style="margin-top: 80px">
+    <div>
+        %{--<div class="heading"><label>Asset Name </label>:&nbsp;&nbsp;&nbsp; <label>test </label></div>--}%
+        %{--<div class="heading"><label>Client Name</label>:&nbsp;&nbsp;&nbsp;<label>test </label></div>--}%
+        %{--<div class="heading"><label>Location</label>:&nbsp;&nbsp;&nbsp; <label>test </label></div>--}%
+        <table style="margin-top: 5px;border: none">
+            <tr>
+                <td><b>Asset Name</b></td><td>:</td><td>test</td>    </tr>
+            <tr>  <td><b>Client Name</b></td><td>:</td><td>test</td>  </tr>
+            <tr> <td><b>Location</b></td><td>:</td><td>test</td>
+            </tr>
+        </table>
+    </div>
+    <div class="imgDiv">
+        Image
+    </div>
+    <div style="margin-top: 80px">
 
             <div style="margin-top: 10px;margin-left: 10px">
                 <input type="button" value="Lock" class="buttonClass">
@@ -78,67 +78,50 @@
             </ul>
             <div id="tabs-1">
                 <input type="button" value="Add" class="buttonClass">  <input type="button" value="Remove" class="buttonClass">
-                <div style="margin-top: 10px" class='list'>
-                    <table>
-                        <thead class="thclass">
-                        <tr>
-                            <th >&nbsp;</th>
-                            <th >Value</th>
-                            <th >Max</th>
-                            <th >Min</th></tr>
-                        </thead>
-                        <tr class='odd'>
-                            <td > <input type="checkbox" /> </td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                        </tr>
-                        <tr class="even">
-                            <td > <input type="checkbox" /> </td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                        </tr>
-                    </tbody>
-                    </table>
-                </div>
-            </div>
-            <div id="tabs-2">
-                <input type="SUBMIT" value="Add" class="buttonClass">  <input type="button" value="Remove" class="buttonClass" >
-                <div style="margin-top: 10px" class='list'>
-                    %{--<label>&nbsp;</label><label> Start&nbsp;&nbsp;&nbsp;</label><label>End&nbsp;&nbsp;&nbsp;</label><label> Description</label>--}%
-                    <table>
-                         <thead class='thclass'>
-                        <tr>
-                            <th >&nbsp;</th>
-                            <th >Start</th>
-                            <th >End</th>
-                            <th >Description</th></tr>
-                        %{--<tr><th>&nbsp;</th><th>Start</th>--}%
-                        %{--<th>End</th>--}%
-                        %{--<th>Description</th></tr>--}%
-                         </thead>
-                    <tbody class='tdclass'>
-                        <tr class="odd">
-                            <td > <input type="checkbox" /></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                        </tr>
-                    <tr class="even">
-                        <td > <input type="checkbox" /></td>
-                        <td ></td>
-                        <td ></td>
-                        <td ></td>
+            <div style="margin-top: 10px">
+                <table>
+
+                    <tr>
+                        <th class="thclass">&nbsp;</th>
+                        <th class="thclass">Value</th>
+                        <th class="thclass">Max</th>
+                        <th class="thclass">Min</th></tr>
+                    <tr>
+                        <td class="tdclass"> <input type="checkbox" /> </td>
+                        <td class="tdclass"></td>
+                        <td class="tdclass"></td>
+                        <td class="tdclass"></td>
                     </tr>
-                    </tbody>
-                    </table>
-                </div>
-            </div>
-            <div id="tabs-3">
-                Work in progress....
+                </table>
             </div>
         </div>
+        <div id="tabs-2">
+            <input type="SUBMIT" value="Add" class="buttonClass">  <input type="button" value="Remove" class="buttonClass" >
+            <div style="margin-top: 10px">
+                %{--<label>&nbsp;</label><label> Start&nbsp;&nbsp;&nbsp;</label><label>End&nbsp;&nbsp;&nbsp;</label><label> Description</label>--}%
+                <table>
+
+                    <tr>
+                        <th class="thclass">&nbsp;</th>
+                        <th class="thclass">Start</th>
+                        <th class="thclass">End</th>
+                        <th class="thclass">Description</th></tr>
+                    %{--<tr><th>&nbsp;</th><th>Start</th>--}%
+                    %{--<th>End</th>--}%
+                    %{--<th>Description</th></tr>--}%
+                    <tr>
+                        <td class="tdclass"> <input type="checkbox" /></td>
+                        <td class="tdclass"></td>
+                        <td class="tdclass"></td>
+                        <td class="tdclass"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="tabs-3">
+            Work in progress....
+        </div>
+    </div>
 
 
         %{--<ul class="tabs">--}%

@@ -4,7 +4,5 @@ class AssetsController {
 
     def assetIndex = {
         println("hereeeeeeeeeeeeeeeeeeeeeeeeeee")
-
-
     }
 }

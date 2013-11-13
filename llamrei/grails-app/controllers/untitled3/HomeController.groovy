@@ -12,7 +12,9 @@ class HomeController {
             redirect(controller: "admin", action: "index")
         }
         else if((SpringSecurityUtils.ifAllGranted("ROLE_OPERATOR"))){
-             redirect(controller: 'dashboard', action: 'dashboardIndex')
+            redirect(controller: "show2", action: "index")
+        } else {
+            redirect(controller: "dashboard", action: "dashboardIndex")
         }
     }
 }

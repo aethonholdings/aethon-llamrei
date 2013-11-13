@@ -13,6 +13,16 @@
     </sec:ifAnyGranted>
 </div>
 
+    <div class="header">
+        <div class="logo" ></div>
+
+        <div class="spanClass"> Welcome ADMIN |<g:link controller="user" action="create">Manage Users</g:link>| <g:link controller="logout" action="index">Logout</g:link>
+        </div>
+
+
+
+    </div>
+
     <div>
         <header>
 
@@ -56,6 +66,17 @@
             %{--<sec:ifAllGranted roles="ROLE_ADMIN">--}%
             %{--<sec:ifAnyGranted roles="ROLE_ADMIN">--}%
             %{--<div class="subMenuDiv" id="admin"><div style="margin-left: 60px">Credit</div> <div>Debit</div> </div>--}%
+                %{--<div class="subMenuDiv" id="dash"><div style="margin-left: 60px"><g:link controller="dashboard" action="dashboardIndex"> DashBoard</g:link></div> <div><g:link controller="assets" action="assetIndex" class="linkClass">Asset Monitor</g:link></div><div><g:link controller="fuelMonitor" action="fuelMonitorIndex">Fuel Monitor</g:link></div> </div>--}%
+            %{--</sec:ifAnyGranted>--}%
+            %{--<sec:ifAnyGranted roles="ROLE_FINANCE">--}%
+                %{--<div class="subMenuDiv"><div style="margin-left: 60px">Credit</div> <div>Debit</div> </div>--}%
+            %{--</sec:ifAnyGranted>--}%
+            %{--<sec:ifAllGranted roles="ROLE_ENGINEER">--}%
+                %{--<div class="subMenuDiv"><div style="margin-left: 60px">Credit</div> <div>Debit</div> </div>--}%
+            %{--</sec:ifAllGranted>--}%
+        %{--<sec:ifAllGranted roles="ROLE_ADMIN">--}%
+            %{--<sec:ifAnyGranted roles="ROLE_ADMIN">--}%
+                %{--<div class="subMenuDiv" id="admin"><div style="margin-left: 60px">Credit</div> <div>Debit</div> </div>--}%
             %{--</sec:ifAnyGranted>--}%
         </header>
     </div>

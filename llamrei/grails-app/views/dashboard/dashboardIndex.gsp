@@ -11,16 +11,23 @@
 <head>
     <meta name="layout" content="main" />
   <title>DashBoard</title>
+    <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
   <script type="text/javascript">
 
   $(document).ready(function(){
-    $('#assertName').click(function(){
+      showContents();
+//      setTimeout(showContents, 100);
+      setInterval(function () {
+          showContents();
+      }, 3000000);
+
+      $('#assertName').click(function(){
 
         $('#main1').hide();
         $('#main2').hide();
         $('#chartDiv').show();
 
-    })
+       })
 
       $(function () {
           $(document).ready(function() {
@@ -105,64 +112,44 @@
   </script>
 </head>
 <body>
-<div class="subMenuDiv" id="dash"><div style="margin-left: 29px;"><g:link controller="dashboard" action="dashboardIndex"> DashBoard</g:link></div> <div><g:link controller="assets" action="assetIndex" class="linkClass">Asset Monitor</g:link></div><div><g:link controller="#" action="#">Fuel Monitor</g:link></div> </div>
+<div class="subMenuDiv" id="dash"><div style="margin-left: 29px"><g:link controller="dashboard" action="dashboardIndex"> DashBoard</g:link></div> <div><g:link controller="assets" action="assetIndex" class="linkClass">Asset Monitor</g:link></div><div><g:link controller="fuelMonitor" action="fuelMonitorIndex">Fuel Monitor</g:link></div> </div>
 
 
 <div class="dboardDiv">
     <g:render template="chartPage" />
     %{--<div class="subMenuDiv" id="dash"><div style="margin-left: 50px"><g:link controller="dashboard" action="dashboardIndex"> DashBoard</g:link></div> <div><g:link controller="assets" action="assetIndex" class="linkClass">Asset Monitor</g:link></div><div><g:link controller="fuelMonitor" action="fuelMonitorIndex">Fuel Monitor</g:link></div> </div>--}%
-    <div  style="width:1200px; margin-left: 30px" class='list'>
-   <table>
-       <thead class='thclass'>
+    <div style="float: left">
+   <table id="main1">
        <tr>
-           <th >Asset Name</th>
-           <th >Connection</th>
-           <th >State</th>
-           <th >Humidity</th>
-           <th >Temperature</th>
-           <th></th>
-           <th></th>
-           <th></th>
+           <th class="thclass">Asset Name</th>
+           <th class="thclass">Connection</th>
+           <th class="thclass">State</th>
+           <th class="thclass">Humidity</th>
+           <th class="thclass">Temperature</th>
        </tr>
-       </thead>
-       <tbody class='tdclass'>
-       <tr class='odd'>
-           <td  ><a href="#">AssetName</a> </td>
-           <td >asset 1</td>
-           <td>Running</td>
-           <td > 23'c</td>
-           <td >45'c </td>
-           <td><input type="button" class="buttonClass" value="Lock"></td>
-           <td><input type="button" class="buttonClass" value="Start"></td>
-           <td><input type="button" class="buttonClass" value="Stop"></td>
-       </tr>
-       <tr class='even'>
-           <td  ><a href="#">AssetName</a> </td>
-           <td >asset 1</td>
-           <td>Running</td>
-           <td > 23'c</td>
-           <td >45'c </td>
-           <td><input type="button" class="buttonClass" value="Lock"></td>
-           <td><input type="button" class="buttonClass" value="Start"></td>
-           <td><input type="button" class="buttonClass" value="Stop"></td>
-       </tr>
-       </tbody>
+       %{--<tr>--}%
+           %{--<td class="tdclass" id="assertName"><a href="#">AssetName</a> </td>--}%
+           %{--<td class="tdclass"></td>--}%
+           %{--<td class="tdclass">Running</td>--}%
+           %{--<td class="tdclass"> 23'c</td>--}%
+           %{--<td class="tdclass">45'c </td>--}%
+       %{--</tr>--}%
    </table>
     </div>
     <div style="float: right">
-    %{--<table style="border: none" id="main2">--}%
-        %{--<tr>--}%
-        %{--<td></td> <td></td><td></td>--}%
-    %{--</tr>--}%
-        %{--<tr>--}%
-            %{--<td></td> <td></td><td></td>--}%
-        %{--</tr>--}%
-        %{--<tr>--}%
-            %{--<td><input type="button" class="buttonClass" value="Lock"></td>--}%
-            %{--<td><input type="button" class="buttonClass" value="Start"></td>--}%
-            %{--<td><input type="button" class="buttonClass" value="Stop"></td>--}%
-        %{--</tr>--}%
-    %{--</table>--}%
+    <table style="border: none" id="main2">
+        <tr>
+        <td></td> <td></td><td></td>
+    </tr>
+        <tr>
+            <td></td> <td></td><td></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="buttonClass" value="Lock"></td>
+            <td><input type="button" class="buttonClass" value="Start"></td>
+            <td><input type="button" class="buttonClass" value="Stop"></td>
+        </tr>
+    </table>
 
     </div>
 </div>
