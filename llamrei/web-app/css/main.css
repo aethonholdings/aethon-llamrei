@@ -21,6 +21,31 @@ body {
 }
 
 
+.subMenuDiv{
+    background: url(../images/gerySubheader.jpg) no-repeat;
+    background-size:1355px 23px;
+    height: 30px;
+    width: 100%;
+    color: white;
+    /*margin-right: 400px;*/
+    /*float: left;*/
+    font: 11px verdana, arial, helvetica, sans-serif;
+    margin-left: 0px;
+    color:black;
+    /*display: none;*/
+}
+
+
+
+
+.subMenuDiv div  {
+    width: 100px;
+    float: left;
+    padding-top: 5px;
+    /*color: white;*/
+    /*font: 11px verdana, arial, helvetica, sans-serif;*/
+
+}
 a:link, a:visited, a:hover {
     color: #666;
     font-weight: bold;
@@ -46,7 +71,7 @@ ul {
 input, select, textarea {
     background-color: #fcfcfc;
     border: 1px solid #ccc;
-    font: 11px verdana, arial, helvetica, sans-serif;
+    /*font: 11px verdana, arial, helvetica, sans-serif;*/
     margin: 2px 0;
     padding: 2px 4px;
 }
@@ -64,7 +89,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .body {
-    float: left;
+
     margin: 0 15px 10px 15px;
 }
 
@@ -203,13 +228,14 @@ th.desc a {
 /* PAGINATION */
 
 .paginateButtons {
+    /*background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;*/
     border: 0px solid #ccc;
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border-top: 0;
     color: #666;
     font-size: 10px;
     overflow: hidden;
     padding: 10px 3px;
+
 }
 .paginateButtons a {
     background: #fff;
@@ -281,51 +307,10 @@ th.desc a {
 .header{
     /*background-color: grey;*/
     background: url(../images/header.jpg) no-repeat;
-    background-size:1355px 80px;
+    background-size:1365px 80px;
     height: 80px;
-    width: 1355px;
+    width: 100%;
 }
-
-
-.subMenuDiv{
-     background: url(../images/gerySubheader.jpg) no-repeat;
-     background-size:1355px 23px;
-     height: 30px;
-     width: 1355px;
-     color: white;
-     /*margin-right: 400px;*/
-     float: left;
-     font: 11px verdana, arial, helvetica, sans-serif;
-     /*display: none;*/
- }
-
-.subMenuDiv div  {
-    width: 100px;
-    float: left;
-    padding-top: 5px;
-    /*color: white;*/
-    /*font: 11px verdana, arial, helvetica, sans-serif;*/
-
-}
-
-.linkClass:hover{
-    color: green;
-    font: 11px verdana, arial, helvetica, sans-serif;
-}
-
-/*.linkClass:visited{*/
-    /*color: white;*/
-    /*font: 11px verdana, arial, helvetica, sans-serif;*/
-/*}*/
-.linkClass:active{
-    color: darkred;
-    font: 11px verdana, arial, helvetica, sans-serif;
-}
-
-/*.linkClass:link{*/
-    /*color: white;*/
-    /*font: 11px verdana, arial, helvetica, sans-serif;*/
-/*}*/
 
 .spanClass{
     float: right;
@@ -353,8 +338,8 @@ th.desc a {
     background: url(../images/header.jpg) no-repeat;
     background-size:1365px 80px;
     height: 50px;
-    width: 1360px;
-    margin-top: 90px;
+    width: 100%;
+    margin-top: 100px;
 }
 
 .logo{
@@ -364,8 +349,8 @@ th.desc a {
     background: url(../images/logo.png) no-repeat;
     /*background-color: red;*/
     background-size:180px 60px;
-    height: 70px;
-    width: 200px;
+    height: 60px;
+    width: 180px;
 }
 
 
@@ -398,11 +383,4 @@ th.desc a {
     background-image: -ms-linear-gradient(top,#4d90fe,#4787ed);
     background-image: -o-linear-gradient(top,#4d90fe,#4787ed);
     /*background-image: linear-gradient(to*/
-}
-.dboardDiv{
-    padding-top: 20px;
-    width:900px;
-    /*background-color: red;*/
-    margin-left: 300px;
-    float: left;
 }

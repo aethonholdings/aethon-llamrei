@@ -181,5 +181,9 @@ class UserProfileController  extends grails.plugins.springsecurity.ui.UserContro
 //         }
    }
 
+    def data={
+        render "hello"
+    }
+
 
 }
