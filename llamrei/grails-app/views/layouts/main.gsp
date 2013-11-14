@@ -2,18 +2,18 @@
 <html>
     <head>
         <title><g:layoutTitle default="Grails" /></title>
+        <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style1.css')}"/>
         <jq:resources/>
         <jqui:resources/>
         <g:javascript library="jquery"/>
         <g:javascript library="application"/>
         <g:javascript library="jquery" plugin="jquery"/>
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style1.css')}"/>
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.easing-sooper.js')}"></script>--}%
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.kwicks-1.5.1.js')}"></script>--}%
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.sooperfish.js')}"></script>--}%
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'modernizr-1.5.min.js')}"></script>--}%
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.jss')}"></script>--}%
-        <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
 
         <g:layoutHead />
@@ -21,7 +21,7 @@
         <script type="text/javascript">
             $(document).ready(function(){
 
-                $('ul.sf-menu').sooperfish();
+//                $('ul.sf-menu').sooperfish();
 
             });
         </script>

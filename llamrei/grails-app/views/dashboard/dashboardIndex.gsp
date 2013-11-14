@@ -110,8 +110,9 @@
 
 <div class="dboardDiv">
     <g:render template="chartPage" />
+    </div>
     %{--<div class="subMenuDiv" id="dash"><div style="margin-left: 50px"><g:link controller="dashboard" action="dashboardIndex"> DashBoard</g:link></div> <div><g:link controller="assets" action="assetIndex" class="linkClass">Asset Monitor</g:link></div><div><g:link controller="fuelMonitor" action="fuelMonitorIndex">Fuel Monitor</g:link></div> </div>--}%
-    <div  style="width:1200px; margin-left: 30px" class='list'>
+    <div  style="width:90%; margin-left:30px" class='list'>
    <table>
        <thead class='thclass'>
        <tr>

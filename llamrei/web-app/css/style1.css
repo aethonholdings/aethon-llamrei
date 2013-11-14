@@ -134,7 +134,7 @@ ol li {
 
 header {
     background: transparent;
-    height: 37px;
+    height: 50px;
 }
 
 #logo {
@@ -175,9 +175,9 @@ header {
 
 nav {
     height: 34px;
-    width:1364px;
+    width:100%;
     float: right;
-    margin: -20px auto 0 auto;
+    /*margin: -20px auto 0 auto;*/
     color: #222;
     background: #ddd; /* Show a solid color for older browsers */
     background: -moz-linear-gradient(#fff, #ddd);
@@ -376,11 +376,7 @@ footer a:hover {
 }
 
 table {
-<<<<<<< HEAD
    text-align: center; margin: 0 auto;
-=======
-    margin: 10px 0 30px 0;
->>>>>>> origin/Ajay
 }
 
 
@@ -465,9 +461,9 @@ ul.sf-menu li {
     position: relative;
 }
 
-/*ul.sf-menu li:hover {*/
-    /*visibility: inherit; *//* fixes IE7 'sticky bug' */
-/*}*/
+ul.sf-menu li:hover {
+    visibility: inherit; /* fixes IE7 'sticky bug' */
+}
 
 ul.sf-menu a {
     display: block;
@@ -496,19 +492,19 @@ ul.sf-menu ul ul {
     margin: 0 0 0 150px;
 }
 
-/*ul.sf-menu li:hover ul,ul.sf-menu li:focus ul,ul.sf-menu li.sf-hover ul,*/
-/*ul.sf-menu ul li:hover ul,ul.sf-menu ul li:focus ul,ul.sf-menu ul li.sf-hover ul,*/
-/*ul.sf-menu ul ul li:hover ul,ul.sf-menu ul ul li:focus ul,ul.sf-menu ul ul li.sf-hover ul,*/
-/*ul.sf-menu ul ul ul li:hover ul,ul.sf-menu ul ul ul li:focus ul,ul.sf-menu ul ul ul li.sf-hover ul {*/
-    /*left: auto;*/
-/*}*/
+ul.sf-menu li:hover ul,ul.sf-menu li:focus ul,ul.sf-menu li.sf-hover ul,
+ul.sf-menu ul li:hover ul,ul.sf-menu ul li:focus ul,ul.sf-menu ul li.sf-hover ul,
+ul.sf-menu ul ul li:hover ul,ul.sf-menu ul ul li:focus ul,ul.sf-menu ul ul li.sf-hover ul,
+ul.sf-menu ul ul ul li:hover ul,ul.sf-menu ul ul ul li:focus ul,ul.sf-menu ul ul ul li.sf-hover ul {
+    left: auto;
+}
 
-/*ul.sf-menu li:hover ul ul,ul.sf-menu li:focus ul ul,ul.sf-menu li.sf-hover ul ul,*/
-/*ul.sf-menu ul li:hover ul ul,ul.sf-menu ul li:focus ul ul,ul.sf-menu ul li.sf-hover ul ul,*/
-/*ul.sf-menu ul ul li:hover ul ul,ul.sf-menu ul ul li:focus ul ul,ul.sf-menu ul ul li.sf-hover ul ul,*/
-/*ul.sf-menu ul ul ul li:hover ul ul,ul.sf-menu ul ul ul li:focus ul ul,ul.sf-menu ul ul ul li.sf-hover ul ul {*/
-    /*left: -999999px;*/
-/*}*/
+ul.sf-menu li:hover ul ul,ul.sf-menu li:focus ul ul,ul.sf-menu li.sf-hover ul ul,
+ul.sf-menu ul li:hover ul ul,ul.sf-menu ul li:focus ul ul,ul.sf-menu ul li.sf-hover ul ul,
+ul.sf-menu ul ul li:hover ul ul,ul.sf-menu ul ul li:focus ul ul,ul.sf-menu ul ul li.sf-hover ul ul,
+ul.sf-menu ul ul ul li:hover ul ul,ul.sf-menu ul ul ul li:focus ul ul,ul.sf-menu ul ul ul li.sf-hover ul ul {
+    left: -999999px;
+}
 
 /* autoArrows CSS */
 span.sf-arrow {
@@ -549,10 +545,10 @@ ul#nav li a {
     margin-right: 2px;
 }
 
-/*ul#nav li a:hover, ul#nav li a:focus, ul#nav li.selected a, ul#nav li.selected a:hover, ul#nav li.selected a:focus {*/
-    /*color: #B30303;*/
-    /*text-shadow: none;*/
-/*}*/
+ul#nav li a:hover, ul#nav li a:focus, ul#nav li.selected a, ul#nav li.selected a:hover, ul#nav li.selected a:focus {
+    color: #B30303;
+    text-shadow: none;
+}
 
 ul#nav ul li a {
     color: #222;

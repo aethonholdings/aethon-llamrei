@@ -32,10 +32,10 @@
 </head>
 <body>
 <div class="subMenuDiv" id="dash"><div style="margin-left: 50px"><g:link controller="dashboard" action="dashboardIndex"> DashBoard</g:link></div> <div><g:link controller="assets" action="assetIndex" class="linkClass">Asset Monitor</g:link></div><div><g:link controller="fuelMonitor" action="fuelMonitorIndex">Fuel Monitor</g:link></div> </div>
-<div style="float: right">
+<div style="margin-left:10px; width:100%">
 
     %{--<h2> Assets home page</h2>--}%
-    <div class="rightDiv">
+    <div class="rightDiv" style='width: 3f0%'>
 
         <div>
             %{--<div class="heading"><label>Asset Name </label>:&nbsp;&nbsp;&nbsp; <label>test </label></div>--}%
@@ -69,7 +69,7 @@
 
 
 
-    <div class="leftDiv" >
+    <div class="leftDiv" style='width:60%;' >
         <div id="tabs">
             <ul>
                 <li><a href="#tabs-1">Operating Data</a></li>
