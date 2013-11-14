@@ -1,7 +1,7 @@
 dataSource {
     pooled = true
     driverClassName = "org.hsqldb.jdbcDriver"
-    username = "sa"
+    username = ""
     password = ""
 }
 hibernate {
@@ -16,8 +16,8 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop','update'
             driverClassName = "com.mysql.jdbc.Driver"
             url = "jdbc:mysql://localhost:3306/llamrei?autoreconnect=true"
-            username = ""
-            password = ""
+            username = "llamrei"
+            password = "llamrei"
         }
     }
     test {
