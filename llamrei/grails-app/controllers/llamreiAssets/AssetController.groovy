@@ -1,9 +1,11 @@
 package llamreiAssets
 
+import llamreiproject.UtilityService
+
 class AssetController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+      UtilityService utilityService
     def index = {
         println("hello world")
         redirect(action: "list", params: params)
@@ -22,12 +24,20 @@ class AssetController {
 
     def save = {
         def assetInstance = new Asset(params)
-        if (assetInstance.save(flush: true)) {
+        def assetUniqueId = utilityService.uniqueIdFormat()
+        if(!Asset.findByAssetUniqueID(assetUniqueId)){
+            assetInstance.assetUniqueID = assetUniqueId
+            assetInstance.creationDate = new Date()
+            assetInstance.modificationDate = new Date()
+            if (assetInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
             redirect(action: "list", id: assetInstance.id)
         }
         else {
             render(view: "create", model: [assetInstance: assetInstance])
+        }
+       }else{
+
         }
     }
 
@@ -44,6 +54,7 @@ class AssetController {
 
     def edit = {
         def assetInstance = Asset.get(params.id)
+
         if (!assetInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
             redirect(action: "list")
