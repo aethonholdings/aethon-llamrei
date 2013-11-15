@@ -1,6 +1,7 @@
-package llamreiAssets
+package com.damyant.llamrei
 
 import llamreiproject.UtilityService
+import llamreiAssets.Asset
 
 class AssetController {
 

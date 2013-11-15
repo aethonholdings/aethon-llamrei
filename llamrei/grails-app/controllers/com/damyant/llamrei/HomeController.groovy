@@ -1,4 +1,4 @@
-package untitled3
+package com.damyant.llamrei
 
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 

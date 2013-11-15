@@ -1,4 +1,6 @@
-package llamreiAssets
+package com.damyant.llamrei
+
+import llamreiAssets.TimeSeries
 
 class TimeSeriesController {
 

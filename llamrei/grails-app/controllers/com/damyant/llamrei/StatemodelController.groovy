@@ -1,4 +1,4 @@
-package llamreiAssets
+package com.damyant.llamrei
 
 class StatemodelController {
 
