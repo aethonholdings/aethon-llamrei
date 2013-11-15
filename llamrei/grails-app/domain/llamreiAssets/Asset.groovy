@@ -22,6 +22,8 @@ class Asset {
      */
 //
 
+
+
     /**
      * Putting constraints with properties
      */
