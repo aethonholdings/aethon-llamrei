@@ -2,6 +2,7 @@ package com.damyant.llamrei
 
 import llamreiproject.UtilityService
 import llamreiAssets.Asset
+import llamreiAssets.TimeSeries
 
 class AssetController {
 
@@ -114,4 +115,41 @@ class AssetController {
     def editStateModel ={
 
     }
+
+    /**
+     * action to associate asset with TimeSeries
+     */
+    def goToAssociateTimeSeries ={
+        def assetInstance = Asset.get(params.id)
+        println("&&&&&&&&&&&&&&&&&&&&&&&"+params.id)
+        def timeSeries = TimeSeries.findAll()
+
+
+        println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+timeSeries)
+        if (!assetInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
+            redirect(action: "list")
+        }
+        else {
+            return [assetInstance: assetInstance,timeSeries:timeSeries ]
+        }
+
+    }
+
+    def  associateTimeSeries={
+        def assetInstance = Asset.get(params.id)
+
+           println("=================="+params.id)
+          //println("=================="+params.timeSeries)
+
+           println("=================="+params.list("box"))
+
+        if (!assetInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
+            redirect(action: "list")
+        }
+        else {
+           redirect(action: "list")
+        }
+        }
 }
