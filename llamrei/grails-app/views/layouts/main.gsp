@@ -6,14 +6,19 @@
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'style1.css')}"/>
         <jq:resources/>
         <jqui:resources/>
+        <g:urlMappings/>
         <g:javascript library="jquery"/>
         <g:javascript library="application"/>
         <g:javascript library="jquery" plugin="jquery"/>
+        <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.ui.js')}"></script>
+        <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
+        <script type="text/javascript" src="${resource(dir: 'js/DataTables-1.8.2', file: 'media/js/jquery.dataTables.js')}"></script>
+        <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.easing-sooper.js')}"></script>--}%
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.kwicks-1.5.1.js')}"></script>--}%
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.sooperfish.js')}"></script>--}%
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'modernizr-1.5.min.js')}"></script>--}%
-        %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.jss')}"></script>--}%
+
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
 
         <g:layoutHead />
