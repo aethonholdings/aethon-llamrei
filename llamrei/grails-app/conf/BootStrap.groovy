@@ -20,10 +20,10 @@ class BootStrap {
 
         if (!adminUser.authorities.contains(adminRole)) {
             SecUserSecRole.create adminUser, adminRole
-    }
-//        if(!adminUser.authorities.contains(operatorRole)){
-//            SecUserSecRole.create adminUser, operatorRole
-//        }
+        }
+        if(!adminUser.authorities.contains(operatorRole)){
+            SecUserSecRole.create adminUser, operatorRole
+        }
 
         def operatorUser = SecUser.findByUsername('operator') ?: new SecUser(
                 username: 'operator',

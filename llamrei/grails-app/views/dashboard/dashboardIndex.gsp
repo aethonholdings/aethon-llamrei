@@ -128,22 +128,20 @@
     </script>
 </head>
 <body>
-%{--<div class="subMenuDiv" id="dash"><div style="margin-left: 29px;"><g:link controller="dashboard" action="dashboardIndex"> DashBoard</g:link></div> <div><g:link controller="assets" action="assetIndex" class="linkClass">Asset Monitor</g:link></div><div><g:link controller="#" action="#">Fuel Monitor</g:link></div> </div>--}%
-<g:render template="/layouts/operatorSubMenu" />
 
 <div class="dboardDiv">
     <g:render template="chartPage" />
 </div>
-%{--<div class="subMenuDiv" id="dash"><div style="margin-left: 50px"><g:link controller="dashboard" action="dashboardIndex"> DashBoard</g:link></div> <div><g:link controller="assets" action="assetIndex" class="linkClass">Asset Monitor</g:link></div><div><g:link controller="fuelMonitor" action="fuelMonitorIndex">Fuel Monitor</g:link></div> </div>--}%
-<div  style="width:90%; margin-left:20px;margin-top:50px" class='list'>
+
+<div style="width:90%; margin-left:20px;margin-top:50px" class='list'>
     <table >
         <thead class='thclass'>
         <tr>
-            <th >Asset Name</th>
-            <th >Connection</th>
-            <th >State</th>
-            <th >Humidity</th>
-            <th >Temperature</th>
+            <th>Asset Name</th>
+            <th>Connection</th>
+            <th>State</th>
+            <th>Humidity</th>
+            <th>Temperature</th>
             <th></th>
             <th></th>
             <th></th>
@@ -156,19 +154,6 @@
     </table>
 </div>
 <div style="float: right">
-    %{--<table style="border: none" id="main2">--}%
-    %{--<tr>--}%
-    %{--<td></td> <td></td><td></td>--}%
-    %{--</tr>--}%
-    %{--<tr>--}%
-    %{--<td></td> <td></td><td></td>--}%
-    %{--</tr>--}%
-    %{--<tr>--}%
-    %{--<td><input type="button" class="buttonClass" value="Lock"></td>--}%
-    %{--<td><input type="button" class="buttonClass" value="Start"></td>--}%
-    %{--<td><input type="button" class="buttonClass" value="Stop"></td>--}%
-    %{--</tr>--}%
-    %{--</table>--}%
 
 </div>
 </div>
