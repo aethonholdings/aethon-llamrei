@@ -1,8 +1,8 @@
-package com.damyant.llamrei
+package com.llamrei.controllers
 
-import llamreiproject.UtilityService
-import llamreiAssets.Asset
-import llamreiAssets.TimeSeries
+import com.llamrei.services.UtilityService
+import com.llamrei.domain.Asset
+import com.llamrei.domain.TimeSeries
 
 class AssetController {
 

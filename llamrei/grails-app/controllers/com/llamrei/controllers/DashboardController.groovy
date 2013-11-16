@@ -1,9 +1,9 @@
 
-package com.damyant.llamrei
+package com.llamrei.controllers
 import grails.converters.JSON
-import llamreiAssets.Asset
-import llamreiAssets.DataSeries
-import llamreiAssets.TimeSeries
+import com.llamrei.domain.Asset
+import com.llamrei.domain.DataSeries
+import com.llamrei.domain.TimeSeries
 
 
 class DashboardController {

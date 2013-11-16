@@ -1,4 +1,4 @@
-package com.damyant.llamrei
+package com.llamrei.controllers
 
 import grails.plugins.springsecurity.ui.AbstractS2UiController
 

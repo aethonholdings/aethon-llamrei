@@ -1,4 +1,4 @@
-package com.damyant.llamrei
+package com.llamrei.controllers
 
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.dao.DataIntegrityViolationException

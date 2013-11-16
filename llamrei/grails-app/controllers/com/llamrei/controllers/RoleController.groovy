@@ -1,4 +1,4 @@
-package com.damyant.llamrei
+package com.llamrei.controllers
 
 import grails.util.GrailsNameUtils
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
