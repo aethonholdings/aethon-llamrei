@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page import="llamreiproject.SecUser; llamreiproject.SecUserSecRole;llamreiproject.SecRole" contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.llamrei.domain.SecUser; com.llamrei.domain.SecUserSecRole; com.llamrei.domain.SecRole" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>

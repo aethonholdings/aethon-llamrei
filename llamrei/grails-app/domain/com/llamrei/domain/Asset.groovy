@@ -1,4 +1,4 @@
-package llamreiAssets
+package com.llamrei.domain
 
 class Asset {
 

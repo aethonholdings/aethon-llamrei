@@ -1,4 +1,5 @@
-package llamreiAssets
+package com.llamrei.domain
+
 class DataSeries {
 
     /**

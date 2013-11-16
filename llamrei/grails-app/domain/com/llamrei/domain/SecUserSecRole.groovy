@@ -1,4 +1,4 @@
-package llamreiproject
+package com.llamrei.domain
 
 import org.apache.commons.lang.builder.HashCodeBuilder
 

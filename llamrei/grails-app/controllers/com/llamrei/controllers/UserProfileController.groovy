@@ -1,7 +1,8 @@
 package com.damyant.llamrei
 
 import grails.plugins.springsecurity.Secured
- import llamreiproject.*
+import com.llamrei.domain.*
+
 @Secured(['ROLE_ADMIN'])
 class UserProfileController  extends grails.plugins.springsecurity.ui.UserController {
 

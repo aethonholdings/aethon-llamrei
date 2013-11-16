@@ -1,6 +1,6 @@
 
 
-<%@ page import="llamreiAssets.TimeSeries" %>
+<%@ page import="com.llamrei.domain.TimeSeries" %>
 <html>
 <head>
     <meta name="layout" content="main"/>

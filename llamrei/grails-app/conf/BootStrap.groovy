@@ -1,6 +1,6 @@
-import llamreiproject.SecRole
-import llamreiproject.SecUser
-import llamreiproject.SecUserSecRole
+import com.llamrei.domain.SecRole
+import com.llamrei.domain.SecUser
+import com.llamrei.domain.SecUserSecRole
 
 class BootStrap {
 

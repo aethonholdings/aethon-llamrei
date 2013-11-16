@@ -1,4 +1,4 @@
-package untitled3
+package com.llamrei.tests
 
 import grails.test.*
 
