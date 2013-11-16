@@ -7,6 +7,7 @@
 --%>
 
 <%@ page import="com.llamrei.domain.*" contentType="text/html;charset=UTF-8" %>
+
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -19,9 +20,9 @@
 %{-- <div align="center">
     <h2 style="text-transform: uppercase;">Administration</h2>
 </div>--}%
-<div >
+<div class='menuItem'>
     <div style="width: 100%;background-color: #666666;">
-        <h2 style="padding:10px;margin-left:10px;color: #ffffff;font-weight: bold;text-transform: uppercase;">User's List</h2>
+        <h2 style="padding:10px;margin-left:10px;color: #ffffff;font-weight: bold;text-transform: uppercase;">User List</h2>
     </div>
     <div style="font-size: 15px;">
         <div class="body">
@@ -48,9 +49,7 @@
                     <tbody class='tdclass'>
                     <g:each in="${SecUserInstanceList}" status="i" var="userInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-
-
-                            <td>${fieldValue(bean: userInstance, field: "username")}</td>
+                            <td> ${fieldValue(bean: userInstance, field: "username")}</td>
 
                             <td>${fieldValue(bean: userInstance, field: "email")}</td>
                             <g:if test="${SecUserSecRole.findBySecUser(userInstance)!=null}" >
@@ -62,7 +61,7 @@
 
                             <td><g:formatBoolean boolean="${userInstance.accountLocked}"/></td>
 
-                            <td>
+                            <td style="text-align:center;">
                                 <g:link action="editUser" params="[id:userInstance.id]"><button value='Edit' class="buttonClass1">Edit</button></g:link>
                             </td>
 
@@ -78,7 +77,7 @@
                 <g:paginate total="${UserInstanceTotal}"/>
             </div>
 
-    </div>
+        </div>
 
     </div>
 </div>

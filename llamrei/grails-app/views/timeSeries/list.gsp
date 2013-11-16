@@ -7,9 +7,9 @@
 %{--<div class="subMenuDiv" id="admin"><div id='subMenuDivItem'><g:link controller="userProfile" action="list">Manage Users</g:link></div><div style="margin-left: 10px;width:150px"><g:link>Data service management</g:link></div> <div><g:link controller="asset" action="list" style="margin-left: 10px;width: 200px">Asset manager</g:link></div>  <div style="margin-left: 10px;width: 200px"><g:link controller="timeSeries">TimeSeries Management</g:link></div> </div>--}%
 <g:render template="/layouts/adminSubMenu" />
 
-<div >
+<div class='menuItem'>
     <div style="width: 100%;background-color: #666666;">
-        <h2 style="padding:10px;margin-left:10px;color: #ffffff;font-weight: bold;text-transform: uppercase;">TimeSeries List</h2>
+        <h2 style="padding:10px;margin-left:10px;color: #ffffff;font-weight: bold;text-transform: uppercase;">Time Series List</h2>
     </div>
     <div style="font-size: 15px;">
         <div class="body">
@@ -34,23 +34,25 @@
                     </tr>
                     </thead>
                     <tbody class='tdclass'>
+
                     <g:each in="${timeSeriesInstanceList}" status="i" var="timeSeriesInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                            <g:link action="edit" params="[id:timeSeriesInstance.id]">
 
 
+                                <td>${fieldValue(bean: timeSeriesInstance, field: "timeSeriesUniqueID")}</td>
 
-                            <td>${fieldValue(bean: timeSeriesInstance, field: "timeSeriesUniqueID")}</td>
+                                <td>${fieldValue(bean: timeSeriesInstance, field: "name")}</td>
 
-                            <td>${fieldValue(bean: timeSeriesInstance, field: "name")}</td>
+                                <td>${fieldValue(bean: timeSeriesInstance, field: "units")}</td>
 
-                            <td>${fieldValue(bean: timeSeriesInstance, field: "units")}</td>
+                                <td>${fieldValue(bean: timeSeriesInstance, field: "dataType")}</td>
 
-                            <td>${fieldValue(bean: timeSeriesInstance, field: "dataType")}</td>
-
-                            <td>${fieldValue(bean: timeSeriesInstance, field: "description")}</td>
-                            <td>
-                                <g:link action="edit" params="[id:timeSeriesInstance.id]"><button value='Edit' class="buttonClass1">Edit</button></g:link>
-                            </td>
+                                <td>${fieldValue(bean: timeSeriesInstance, field: "description")}</td>
+                                <td style="text-align: center">
+                                    <g:link action="edit" params="[id:timeSeriesInstance.id]"><button value='Edit' class="buttonClass1">Edit</button></g:link>
+                                </td>
+                            </g:link>
                         </tr>
                     </g:each>
                     </tbody>
@@ -59,7 +61,7 @@
             <g:link controller="timeSeries" action="create"><button value='Create New' class="buttonClass1" style='float:left; margin-top:5px'>Add +</button></g:link>
 
 
-            </div>
+        </div>
 
     </div>
 </div>

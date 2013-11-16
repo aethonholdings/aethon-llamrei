@@ -35,14 +35,13 @@
 
     <div class="header1" >
         <g:render template="/layouts/header"/>
-
     </div>
-    <div style="min-height: 400px;margin-top:auto">
+    %{--<div style="min-height: 400px;margin-top:10px">--}%
         <g:layoutBody/>
-    </div>
-    <div class="footer1">
+    %{--</div>--}%
+    %{--<div class="footer1">--}%
         <g:render template="/layouts/footer"/>
-    </div>
+    %{--</div>--}%
         %{--<div id="spinner" class="spinner" style="display:none;">--}%
             %{--<img src="${resource(dir:'images',file:'spinner.gif')}" alt="${message(code:'spinner.alt',default:'Loading...')}" />--}%
         %{--</div>--}%

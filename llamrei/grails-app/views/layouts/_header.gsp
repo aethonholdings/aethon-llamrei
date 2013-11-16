@@ -1,25 +1,27 @@
-<div>
+%{--<div>--}%
 <div class="header">
-    <div class="logo" ></div>
-<sec:ifAnyGranted roles="ROLE_ADMIN">
-<div class="spanClass"> Welcome ADMIN | <g:link controller="logout" action="index">Logout</g:link>
-    </div>
+    <div class="logo" >
 
-</sec:ifAnyGranted>
+    </div>
+  <sec:ifAnyGranted roles="ROLE_ADMIN">
+  <div class="spanClass"> Welcome ADMIN | <g:link controller="logout" action="index">Logout</g:link>
+    %{--</div>--}%
+  </div>
+
+  </sec:ifAnyGranted>
     <sec:ifAnyGranted roles="ROLE_OPERATOR">
         <div class="spanClass"> Welcome OPERATOR | <g:link controller="logout" action="index">Logout</g:link>
         </div>
-
     </sec:ifAnyGranted>
 </div>
 
-    <div>
+    <div  class='role'>
         <header>
 
-            <nav>
+            <nav style=" background-color: black">
                 <sec:ifAnyGranted roles="ROLE_OPERATOR">
                     <ul class="sf-menu" id="nav">
-                        <li style="width: 20px">&nbsp;</li>
+                        %{--<li style="width: 20px">&nbsp;</li>--}%
                         <li><g:link controller="dashboard" action="dashboardIndex">Operations</g:link>
                         </li>
 
@@ -27,19 +29,19 @@
                 </sec:ifAnyGranted>
                 <sec:ifAnyGranted roles="ROLE_FINANCE">
                     <ul class="sf-menu" id="nav">
-                        <li style="width: 20px">&nbsp;</li>
+                        %{--<li style="width: 20px">&nbsp;</li>--}%
                         <li><a href="#">Finance</a> </li>
                     </ul>
                 </sec:ifAnyGranted>
                 <sec:ifAnyGranted roles="ROLE_ENGINEER">
                     <ul class="sf-menu" id="nav">
-                        <li style="width: 20px">&nbsp;</li>
+                        %{--<li style="width: 20px">&nbsp;</li>--}%
                         <li><a href="#">Engineering</a> </li>
                     </ul>
                 </sec:ifAnyGranted>
                 <sec:ifAnyGranted roles="ROLE_ADMIN">
                     <ul class="sf-menu" id="nav">
-                        <li style="width: 20px">&nbsp;</li>
+                        %{--<li style="width: 20px">&nbsp;</li>--}%
                         <li><g:link controller="admin" action="index">Admin</g:link> </li>
                     </ul>
                 </sec:ifAnyGranted>
@@ -59,4 +61,3 @@
             %{--</sec:ifAnyGranted>--}%
         </header>
     </div>
-</div>

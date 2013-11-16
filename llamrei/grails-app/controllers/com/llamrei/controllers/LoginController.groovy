@@ -1,3 +1,4 @@
+package com.llamrei.controllers
 import grails.converters.JSON
 
 import javax.servlet.http.HttpServletResponse

@@ -5,6 +5,7 @@ import com.llamrei.domain.Asset
 import com.llamrei.domain.TimeSeries
 
 class AssetController {
+    def assetIndex= {}
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
       UtilityService utilityService
