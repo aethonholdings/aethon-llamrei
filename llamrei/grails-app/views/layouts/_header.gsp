@@ -13,6 +13,11 @@
         <div class="spanClass"> Welcome OPERATOR | <g:link controller="logout" action="index">Logout</g:link>
         </div>
     </sec:ifAnyGranted>
+
+    <sec:ifAnyGranted roles="ROLE_FINANCE">
+        <div class="spanClass"> Welcome FINANCE | <g:link controller="logout" action="index">Logout</g:link>
+        </div>
+    </sec:ifAnyGranted>
 </div>
 
     <div  class='role'>
