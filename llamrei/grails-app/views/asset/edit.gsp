@@ -105,7 +105,7 @@
                 <input type="button" class='buttonClass1' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
             </g:link>
             <g:form controller="statemodel" style= 'display: inline'  action="list" ><button value='editstatemodel' class="buttonClass1">Edit State Model</button></g:form>
-            <g:form controller="asset" style= 'display: inline'   action=" associateTimeSeries" params="[id:assetInstance.id]"><button value='editstatemodel' class="buttonClass1" style="width:auto">Associate Time Series</button></g:form>
+            <g:form controller="asset" style= 'display: inline'   action=" goToAssociateTimeSeries" params="[id:assetInstance.id]"><button value='editstatemodel' class="buttonClass1" style="width:auto">Associate Time Series</button></g:form>
 
         </div>
         </div>

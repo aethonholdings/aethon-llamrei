@@ -51,6 +51,27 @@ function showContents(){
 
 }
 
+function getCheckedTimeSeries(){
+
+       var arrayOfId = getSelectedCheckBoxes('series');
+       var dataToSend = JSON.stringify(arrayOfId);
+           if(arrayOfId.length!=0){
+            $("#hiddenField").val(dataToSend);
+        }else{
+
+        }
+
+
+     }
+      function getSelectedCheckBoxes(s){
+       var ids=[];
+       $.each($('input[name='+s+']'),
+       function () {
+       if($(this).is(':checked')){
+       ids.push($(this).val()); } });
+       return ids;
+}
+
 function showHumidity(data){
 //    alert("???=="+data)
     $('#main1').hide();

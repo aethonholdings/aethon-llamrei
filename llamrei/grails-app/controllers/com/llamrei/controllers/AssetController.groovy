@@ -3,6 +3,8 @@ package com.llamrei.controllers
 import com.llamrei.services.UtilityService
 import com.llamrei.domain.Asset
 import com.llamrei.domain.TimeSeries
+import com.llamrei.domain.AssociateTimeSeries
+import grails.converters.JSON
 
 class AssetController {
     def assetIndex= {}
@@ -122,35 +124,48 @@ class AssetController {
      */
     def goToAssociateTimeSeries ={
         def assetInstance = Asset.get(params.id)
-        println("&&&&&&&&&&&&&&&&&&&&&&&"+params.id)
+      /*  println("&&&&&&&&&&&&&&&&&&&&&&&"+params.id)*/
         def timeSeries = TimeSeries.findAll()
+        def associatedTimeSeries = AssociateTimeSeries.findByAsset(assetInstance)
 
 
-        println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+timeSeries)
+      /*  println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+timeSeries)*/
         if (!assetInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
             redirect(action: "list")
         }
         else {
-            return [assetInstance: assetInstance,timeSeries:timeSeries ]
+            return [assetInstance: assetInstance,timeSeries:timeSeries,associatedTimeSeries:associatedTimeSeries ]
         }
 
     }
 
     def  associateTimeSeries={
-        def assetInstance = Asset.get(params.id)
 
-           println("=================="+params.id)
-          //println("=================="+params.timeSeries)
+            def id = params.id
+            def associateTimeSeries
+            def arrayOfId
+        try{
+             arrayOfId=JSON.parse(params.hiddenField)
+        }catch(Exception ex){
+            log.info(""+ex)
+          redirect(action: "list")
+        }
+         arrayOfId.each{
+            if(it){
+            associateTimeSeries = new AssociateTimeSeries()
+            associateTimeSeries.asset = Asset.findById(id)
+            associateTimeSeries.timeSeries = TimeSeries.findById(it)
+            associateTimeSeries.save(flush: true)
+           }
+         }
 
-           println("=================="+params.list("box"))
-
-        if (!assetInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
+        if (!associateTimeSeries) {
+            flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset'), associateTimeSeries.id])}"
+            redirect(action: "list")
+           }
+        else {
             redirect(action: "list")
         }
-        else {
-           redirect(action: "list")
-        }
-        }
+    }
 }

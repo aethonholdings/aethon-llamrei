@@ -10,6 +10,8 @@
         <g:javascript library="jquery"/>
         <g:javascript library="application"/>
         <g:javascript library="jquery" plugin="jquery"/>
+
+
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.ui.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js/DataTables-1.8.2', file: 'media/js/jquery.dataTables.js')}"></script>

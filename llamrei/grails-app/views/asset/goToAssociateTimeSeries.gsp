@@ -1,9 +1,10 @@
 
 
-<%@ page import="com.llamrei.domain.Asset" %>
+<%@ page import="llamreiAssets.Asset" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
+
 </head>
 <body>
 %{--<div class="subMenuDiv" id="admin"><div id='subMenuDivItem'><g:link controller="userProfile" action="list">Manage Users</g:link></div><div style="margin-left: 10px;width:150px"><g:link>Data service management</g:link></div> <div><g:link controller="asset" action="list" style="margin-left: 10px;width: 200px">Asset manager</g:link></div>  <div style="margin-left: 10px;width: 200px"><g:link controller="timeSeries">TimeSeries Management</g:link></div> </div>--}%
@@ -21,6 +22,12 @@
             <g:hasErrors bean="${timeSeries}">
                 <div class="errors">
                     <g:renderErrors bean="${timeSeries}" as="list" />
+
+                </div>
+            </g:hasErrors>
+            <g:hasErrors bean="${associatedTimeSeries}">
+                <div class="errors">
+                    <g:renderErrors bean="${associatedTimeSeries}" as="list" />
 
                 </div>
             </g:hasErrors>
@@ -51,21 +58,24 @@
 
                         <tr class="prop">
                             <td valign="top" class="name">
-                                <label for="clientName"><g:message code="asset.clientName.label" default="Time Series" /></label>
+                                <label for="timeSeries"><g:message code="asset.clientName.label" default="Time Series" /></label>
                             </td>
-                            %{--<td valign="top" class="value ${hasErrors(bean: assetInstance, field: 'clientName', 'errors')}">--}%
-                                %{--<g:textField name="clientName" value="${assetInstance?.clientName}" />--}%
-                            %{--</td>--}%
-                            <td>
-                            <div id='timeSeries' style="width: 20% ;height: 100px; border: 0px solid gainsboro; ">
 
-                                 <g:each var="series" in="${timeSeries}">
-                                <div>
-                                   <label for="Humidity" style="width: 50%"><g:message code="${series?.name}"  value="${timeSeries?.name}" /></label>
-                                   <g:checkBox  chkId="${timeSeries?.id}" name="box" value="${timeSeries?.name}" checked="unchecked" style="margin-left: 25px" >${timeSeries?.name}</g:checkBox>
-                                </div>
-                                 </g:each>
+                            <td>
+                            <div id='timeSeries' style="width: 25% ; border: 0px solid gainsboro; ">
+
+                                <g:each var="series"   in="${timeSeries}">
+                                <div  style="width: 50%; float:left; margin-top:7px" >
+                                   <label for="timeSeries" ><g:message code="${series?.name}"  value="${series?.name}" /></label>
                                  </div>
+                                  <div style="width: 50%; float: right;margin-top:3px">
+                                  %{-- <g:checkBox  chkId="${timeSeries?.id}" name="box" value="${timeSeries?.name}" checked="unchecked" style="margin-left: 25px" >${timeSeries?.name}</g:checkBox>--}%
+                                  <g:checkBox id="series${series?.id}" name="series" value="${series?.id}" style="margin-left: 5px ;float:right" checked="unchecked"></g:checkBox>
+                                  </div>
+
+                                 </g:each>
+                                  <g:hiddenField name="hiddenField"  id="hiddenField" />
+                             </div>
                         </td>
                         </tr>
 
@@ -78,7 +88,7 @@
                     <span>
                         %{--        <g:submitButton name="Create" class="save"
                      value="${message(code: 'default.button.create.label', default: 'Create')}"/>--}%
-                        <input type="SUBMIT" class="buttonClass" value="Associate" id="createAsset" />
+                        <input type="SUBMIT" class="buttonClass" value="Associate" id="createAsset" onclick="getCheckedTimeSeries()" />
                     </span>
                     <span class="button">
                         <g:link action="list">
