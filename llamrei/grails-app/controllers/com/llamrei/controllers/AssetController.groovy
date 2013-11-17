@@ -5,6 +5,8 @@ import com.llamrei.domain.Asset
 import com.llamrei.domain.TimeSeries
 import com.llamrei.domain.AssociateTimeSeries
 import grails.converters.JSON
+import com.llamrei.domain.StateModel
+import com.llamrei.utils.Constants
 
 class AssetController {
     def assetIndex= {}
@@ -12,7 +14,6 @@ class AssetController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
       UtilityService utilityService
     def index = {
-        println("hello world")
         redirect(action: "list", params: params)
     }
 
@@ -29,20 +30,30 @@ class AssetController {
 
     def save = {
         def assetInstance = new Asset(params)
+
         def assetUniqueId = utilityService.uniqueIdFormat()
         if(!Asset.findByAssetUniqueID(assetUniqueId)){
             assetInstance.assetUniqueID = assetUniqueId
             assetInstance.creationDate = new Date()
             assetInstance.modificationDate = new Date()
             if (assetInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
-            redirect(action: "list", id: assetInstance.id)
-        }
-        else {
-            render(view: "create", model: [assetInstance: assetInstance])
-        }
-       }else{
+                //Save statemodel for this asset
 
+                //find this saved instance
+                Asset asset = Asset.findByAssetUniqueID(assetUniqueId);
+                println "The saved asset is : "+asset
+
+                //Pass this saved asset instance to be referenced in stateModel
+                saveSateModel(asset)
+
+                flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
+                redirect(action: "list", id: assetInstance.id)
+            } else {
+                render(view: "create", model: [assetInstance: assetInstance])
+            }
+        }else{
+            flash.message = "${message(code: 'default.assetunique.id.error', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
+            render(view: "create", model: [assetInstance: assetInstance])
         }
     }
 
@@ -55,6 +66,8 @@ class AssetController {
         else {
             [assetInstance: assetInstance]
         }
+
+
     }
 
     def edit = {
@@ -67,6 +80,8 @@ class AssetController {
         else {
             return [assetInstance: assetInstance]
         }
+
+
     }
 
     def update = {
@@ -83,7 +98,7 @@ class AssetController {
             }
             assetInstance.properties = params
             if (!assetInstance.hasErrors() && assetInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.asset.updated.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
                 redirect(action: "list", id: assetInstance.id)
             }
             else {
@@ -101,7 +116,7 @@ class AssetController {
         if (assetInstance) {
             try {
                 assetInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.asset.deleted.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
+                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
                 redirect(action: "list")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
@@ -113,10 +128,6 @@ class AssetController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
             redirect(action: "list")
         }
-    }
-
-    def editStateModel ={
-
     }
 
     /**
@@ -167,5 +178,37 @@ class AssetController {
         else {
             redirect(action: "list")
         }
+    }
+
+    def editStateModel ={
+        def stateModelInstance = new StateModel(params)
+       stateModelInstance= Asset.get(params.id)
+
+       if (!stateModelInstance) {
+           flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
+           redirect(controller: StateModel, action: "edit")
+       }
+       else {
+           render(controllerName: StateModel, view: "edit", model: [stateModelInstance: stateModelInstance])
+
+       }
+
+
+   }
+
+   void saveSateModel(assetInstance){
+       def stateModelInstance =new StateModel()
+       stateModelInstance.setAsset(assetInstance)
+       stateModelInstance.setName(Constants.STATE_MODEL_DEFAULT_NAME)
+       stateModelInstance.setDescription(Constants.STATE_MODEL_DEFAULT_DESCRIPTION)
+       stateModelInstance.setStateModelId(Constants.STATE_MODEL_DEFAULT_STATE_MODEL_ID)
+
+       println "Going to save statemodel : "+stateModelInstance
+       println "validate :"+stateModelInstance.validate()
+       if (stateModelInstance.save(flush: true)){
+           println "Saved stateModel"
+       } else{
+           println "Statemodel not saved"
+       }
     }
 }

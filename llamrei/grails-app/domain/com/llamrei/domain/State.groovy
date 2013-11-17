@@ -1,32 +1,33 @@
 package com.llamrei.domain
 
-class StateModel {
-    Asset asset
+class State {
+
+    String stateId
     String name
     String description
-    String stateModelId
+
+     static hasMany = [staterules: com.llamrei.domain.StateRule]
+    static belongsTo = [statemodel : StateModel]
 
     static constraints = {
-//        stateModelId(unique: true)
-    }
-    static hasMany = [states:State]
 
+    }
     static mapping = {
-        stateModelId column: "stateModelId"
+        stateId column: "stateId"
         name column: "name"
         description column: "description"
     }
 
     @Override
     public String toString() {
-        return "StateModel{" +
+        return "State{" +
                 "id=" + id +
-                ", asset=" + asset +
+                ", stateId='" + stateId + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", stateModelId='" + stateModelId + '\'' +
                 ", version=" + version +
-                ", states=" + states +
+                ", staterules=" + staterules +
+                ", statemodel=" + statemodel +
                 '}';
     }
 }
