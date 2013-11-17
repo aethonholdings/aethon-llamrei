@@ -11,8 +11,8 @@ class UtilityService {
             String symbols = "0123456789abcdef";
             String s="abcdefghijklmnopqrstuvwxyz"
             Random random = new SecureRandom();
-            public  char[] buf;
-	        buf = new char[16];
+            char[] buf;
+            buf = new char[16];
             def bufLength = buf.length
             for (int idx = 0; idx < bufLength;idx++)
             buf[idx] = symbols.charAt(random.nextInt(symbols.length()));

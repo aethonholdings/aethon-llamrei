@@ -129,6 +129,7 @@
 </head>
 <body>
 
+<h2>Dashboard</h2>
 <div class="dboardDiv">
     <g:render template="chartPage" />
 </div>

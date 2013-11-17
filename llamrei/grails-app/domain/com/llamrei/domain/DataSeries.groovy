@@ -9,7 +9,7 @@ class DataSeries {
       String value
       Asset asset
       TimeSeries timeSeries
-    // TimeSeries timeSeries
+      // TimeSeries timeSeries
       Date  nodeTimestamp
       Date timestamp    //server
 
