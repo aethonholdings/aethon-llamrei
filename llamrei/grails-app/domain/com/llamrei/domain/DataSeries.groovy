@@ -1,31 +1,27 @@
 package com.llamrei.domain
 
 class DataSeries {
-
+    
     /**
-     * properties of Assets
-     * instance Variables
-     */
-      String value
-      Asset asset
-      TimeSeries timeSeries
-      // TimeSeries timeSeries
-      Date  nodeTimestamp
-      Date timestamp    //server
-
-
-   /**
+     * Relationship mapping
+     */    
+    Asset asset
+    TimeSeries timeSeries
+    static hasMany = [dataPoints: DataPoint]
+    
+    /**
      * Putting constraints with properties
      */
     static constraints = {
-
+        asset(nullable:false)
+        timeSeries(nullable:false)
     }
 
      /**
      * Mapping to define column names for domain objects in the database with MYSQL
      */
-    static  mapping = {
-
+    static mapping = {
+    
 
     }
 }

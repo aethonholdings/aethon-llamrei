@@ -28,7 +28,6 @@ class DataContentsService {
             }
 
 //            println("======="+dataSeriesInstance.last())
-
 //            assetObject = assetInstance.collect {
 //                [
 //                        id: it.id,

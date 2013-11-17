@@ -1,14 +1,9 @@
 package com.llamrei.domain
 
 class StateModel {
-
-        Asset asset
-
-
-
-
-
-
+    Asset asset
+    static hasMany = [states: State]
+    
     static constraints = {
     }
 }

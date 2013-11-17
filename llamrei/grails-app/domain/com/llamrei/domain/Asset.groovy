@@ -20,10 +20,9 @@ class Asset {
     /**
      * Relationship mapping
      */
-//
-
-
-
+    StateModel stateModel
+    static hasMany= [timeSeries: TimeSeries, dataSeries: DataSeries]
+    
     /**
      * Putting constraints with properties
      */
@@ -38,7 +37,9 @@ class Asset {
         imagethumburl (nullable: false,blank: false)
         creationDate (nullable: true)
         modificationDate(nullable: true)
+        stateModel(nullable:false)
     }
+    
     /**
      * Mapping to define column names for domain objects in the database
      */
@@ -50,6 +51,5 @@ class Asset {
         imagethumburl column:"imagethumburl"
         creationDate column: "creationDate"
         modificationDate column:"modificationDate"
-
     }
 }

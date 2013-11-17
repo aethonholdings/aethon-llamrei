@@ -12,6 +12,12 @@ class TimeSeries {
      String units
      String dataType
 
+    /**
+     * Relationship mapping
+     */
+    
+    
+    
      /**
      * Putting constraints with properties
      */
@@ -19,6 +25,7 @@ class TimeSeries {
         timeSeriesUniqueID(nullable: false,unique: true, blank:false)
         name(nullable: false,unique: true, blank:false)
         units(nullable: false, unique: true, blank:false)
+        // data type needs to be constrained to specific values (FLOAT, BOOLEAN, INT, LONG INT, UNSIGNED INT, UNSIGNED LONG INT, STRING)
 
     }
 
