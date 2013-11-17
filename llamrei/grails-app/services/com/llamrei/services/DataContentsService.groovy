@@ -1,7 +1,5 @@
 package com.llamrei.services
 
-
-
 class DataContentsService {
 
     static transactional = true

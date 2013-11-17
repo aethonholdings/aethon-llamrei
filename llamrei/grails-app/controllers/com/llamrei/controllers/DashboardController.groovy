@@ -1,11 +1,13 @@
 
 package com.llamrei.controllers
+
+import grails.plugins.springsecurity.Secured
 import grails.converters.JSON
 import com.llamrei.domain.Asset
 import com.llamrei.domain.DataSeries
 import com.llamrei.domain.TimeSeries
 
-
+@Secured(['ROLE_OPERATOR'])
 class DashboardController {
 
     def dataContentsService
@@ -13,8 +15,8 @@ class DashboardController {
 
     }
 
-    def showContents1={
-//
+        def showContents1= {
+        
         def contentMap=[:]
         def dataInstanceList
         def assetInstance = Asset.list()
@@ -34,7 +36,6 @@ class DashboardController {
             }
 
         }
-
         println("================="+contentMap)
         render contentMap as JSON
     }
