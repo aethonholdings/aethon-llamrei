@@ -6,7 +6,7 @@
 <body>
 
 <div class='menuItem'>
-    <h2>Time Series List</h2>
+    <h2>Time series management</h2>
     <div style="font-size: 15px;">
         <div class="body">
 

@@ -19,7 +19,7 @@
     <h2 style="text-transform: uppercase;">Administration</h2>
 </div>--}%
 <div class='menuItem'>
-    <h2>User List</h2>
+    <h2>User management</h2>
     <div style="font-size: 15px;">
         <div class="body">
 

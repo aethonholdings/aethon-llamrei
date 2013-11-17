@@ -10,7 +10,6 @@ $(document).ready(function(){
 
 })
 
-
 function showContents(){
 //    alert("hi");
 //    var testab=0;
@@ -60,8 +59,6 @@ function getCheckedTimeSeries(){
         }else{
 
         }
-
-
      }
       function getSelectedCheckBoxes(s){
        var ids=[];

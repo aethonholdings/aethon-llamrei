@@ -9,7 +9,7 @@ class SessionController {
         //Only admin users can create, edit, list the downloads
         //Regular users can randomise the downloads.
         if (SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")){
-            redirect(controller: "assetManagement", action: "index")
+            redirect(controller: "userManagement", action: "index")
         }
         else if((SpringSecurityUtils.ifAllGranted("ROLE_OPERATOR"))){
             redirect(controller: 'dashboard', action: 'dashboardIndex')

@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>DashBoard</title>
+    <title>Dashboard</title>
     <script type="text/javascript">
         $(document).ready(function(){
             showContents();
@@ -130,11 +130,6 @@
 <body>
 
 <h2>Dashboard</h2>
-<div class="dboardDiv">
-    <g:render template="chartPage" />
-</div>
-
-<div style="width:90%; margin-left:20px;margin-top:50px" class='list'>
     <table >
         <thead class='thclass'>
         <tr>
@@ -154,9 +149,6 @@
         </tbody>
     </table>
 </div>
-<div style="float: right">
 
-</div>
-</div>
 </body>
 </html>
