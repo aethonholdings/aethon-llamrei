@@ -137,11 +137,11 @@
                     <span>
                         %{--        <g:submitButton name="Create" class="save"
                      value="${message(code: 'default.button.create.label', default: 'Create')}"/>--}%
-                        <input type="SUBMIT" class="buttonClass" value="Associate" id="createAsset"/>
+                        <input type="SUBMIT" class="actionButton" value="Associate" id="createAsset"/>
                     </span>
                     <span class="button">
                         <g:link action="list">
-                            <input type="button" class='buttonClass' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
+                            <input type="button" class='actionButton' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
                         </g:link>
                     </span>
                 </div>

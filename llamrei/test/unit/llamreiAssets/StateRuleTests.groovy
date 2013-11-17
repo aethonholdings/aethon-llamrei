@@ -1,8 +1,8 @@
-package com.llamrei.tests
+package llamreiAssets
 
 import grails.test.*
 
-class StateModelControllerTests extends ControllerUnitTestCase {
+class StateRuleTests extends GrailsUnitTestCase {
     protected void setUp() {
         super.setUp()
     }
