@@ -54,7 +54,7 @@ class BootStrap {
             SecUserSecRole.create engineerUser, engineerRole
         }
 
-    def destroy = {
-    }
+        def destroy = {
+        }
 }
 }
