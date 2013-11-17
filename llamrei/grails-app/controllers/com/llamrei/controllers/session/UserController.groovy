@@ -1,4 +1,4 @@
-package com.llamrei.controllers
+package com.llamrei.controllers.session
 
 import org.codehaus.groovy.grails.plugins.springsecurity.NullSaltSource
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils

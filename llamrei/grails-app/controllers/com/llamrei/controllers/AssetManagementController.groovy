@@ -140,7 +140,7 @@ class AssetManagementController {
 
     }
 
-    def  associateTimeSeries = {
+    def associateTimeSeries = {
 
             def id = params.id
             def associateTimeSeries

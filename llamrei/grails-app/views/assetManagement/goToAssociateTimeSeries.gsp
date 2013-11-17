@@ -1,6 +1,6 @@
 
 
-<%@ page import="llamreiAssets.Asset" %>
+<%@ page import="com.llamrei.domain.Asset" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -8,7 +8,7 @@
 </head>
 <body>
 <div>
-    <h2>Associate TimeSeries With Assets</h2>
+    <h2>Associate asset with time series</h2>
     <div style="margin-left: 20px;font-size: 20px;">
         <div class="body">
 
@@ -84,11 +84,11 @@
                     <span>
                         %{--        <g:submitButton name="Create" class="save"
                      value="${message(code: 'default.button.create.label', default: 'Create')}"/>--}%
-                        <input type="SUBMIT" class="buttonClass" value="Associate" id="createAsset" onclick="getCheckedTimeSeries()" />
+                        <input type="SUBMIT" class="actionButton" value="Associate" id="createAsset" onclick="getCheckedTimeSeries()" />
                     </span>
                     <span class="button">
                         <g:link action="list">
-                            <input type="button" class='buttonClass' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
+                            <input type="button" class='actionButton' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
                         </g:link>
                     </span>
                 </div>

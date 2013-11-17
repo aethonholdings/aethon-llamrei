@@ -1,4 +1,4 @@
-package com.llamrei.controllers.session
+package com.llamrei.controllers
 
 import grails.plugins.springsecurity.Secured
 import com.llamrei.domain.*
@@ -13,22 +13,8 @@ class UserManagementController extends grails.plugins.springsecurity.ui.UserCont
     def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-//
-//    def index = {
-//
-//        if (!UserInstance) {
-//            UserInstance = new SecUser()
-//            UserInstance.profileName = userInstance.username
-//            UserInstance.lastUpdated = new Date()
-//            UserInstance
-//            UserInstance.save()
-//            userInstance.User = UserInstance
-//            userInstance.save()
-//            println(UserInstance.errors)
-//            println(userInstance.errors)
-//        }
-//        redirect(action: 'show', params: [id: UserInstance.id])
-//    }
+
+    def index = { redirect(action: 'list') }
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
