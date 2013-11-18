@@ -7,12 +7,8 @@
  */
 
 var dataLen=0;
-<<<<<<< HEAD
 var assetID,timeSeriesID,pointValue;
 var statusFlag=false;
-=======
-
->>>>>>> 0b0e14727ec41012d7b5471300587b1ddb48690d
 $(document).ready(function(){
 
     Highcharts.setOptions({
@@ -21,12 +17,7 @@ $(document).ready(function(){
         }
     });
 
-<<<<<<< HEAD
 })
-=======
-});
->>>>>>> 0b0e14727ec41012d7b5471300587b1ddb48690d
-
 
 function showContents(){
 
@@ -40,10 +31,6 @@ function showContents(){
         success:function(data)
         {
             var jsonLengthCount=0;
-<<<<<<< HEAD
-
-=======
->>>>>>> 0b0e14727ec41012d7b5471300587b1ddb48690d
             $.each(data, function() {
                 jsonLengthCount++
 
@@ -71,7 +58,6 @@ function showContents(){
 
 }
 
-<<<<<<< HEAD
 function openChart(data,timeSeriesId,assetName){
 
     $('#main1').hide();
@@ -193,21 +179,8 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
             })()
         }]
     });
-=======
-
-function openChart(data,timeSeriesId,assetName){
-    $('#main1').hide();
-    $('#main2').hide();
-    $('#chartDiv').show();
-//    $("#headingTab").append('<tr><td><b>'+"Asset Name :"+'</b></td><td>'+"ll"+'</td></tr>');
-
-    getDataForChart(data,timeSeriesId);
->>>>>>> 0b0e14727ec41012d7b5471300587b1ddb48690d
-
 }
 
-
-<<<<<<< HEAD
 
 function getDataForChart(data,timeSeriesId){
 
@@ -225,11 +198,6 @@ function getDataForChart(data,timeSeriesId){
             $.each(data, function() {
                 jsonLengthCount++
             });
-
-=======
-function getCheckedTimeSeries(){
->>>>>>> 0b0e14727ec41012d7b5471300587b1ddb48690d
-
             showChart(data,jsonLengthCount,timeSeriesId)
 
         }
@@ -241,7 +209,6 @@ function getCheckedTimeSeries(){
 
 }
 
-<<<<<<< HEAD
 function getNextPoint(assetID,timeSeriesID){
 
 
@@ -252,125 +219,6 @@ function getNextPoint(assetID,timeSeriesID){
         url:g.createLink({controller: 'dashboard', action: 'nextContent'}),
 
         data: "assetId="+assetID+"&timeSeriesId="+ timeSeriesID,
-=======
-
-function showChart(data11,jsonLengthCount,timeSeriesId){
-
-
-    dataLen=jsonLengthCount;
-
-//    var chart;
-
-    var label;
-    if(timeSeriesId==1){
-        label="Humidity"
-    }
-    else{
-        label="Temperature"
-    }
-
-    $('#chartDiv1').highcharts({
-        chart: {
-            type: 'line',
-            animation: Highcharts.svg, // don't animate in old IE
-            marginRight: 10,
-            events: {
-                load: function() {
-
-                    // set up the updating of the chart each second
-                    var series = this.series[0];
-                    setInterval(function() {
-                        var x = (new Date()).getTime(); // current time
-                        var result=    nextData();
-                        series.addPoint([x, y], true, true);
-                    }, 1000);
-                }
-            }
-        },
-        rangeSelector: {
-            buttons: [{
-                count: 1,
-                type: 'minute',
-                text: '1M'
-            }, {
-                count: 5,
-                type: 'minute',
-                text: '5M'
-            }, {
-                type: 'all',
-                text: 'All'
-            }],
-            inputEnabled: false,
-            selected: 0
-        },
-        title: {
-            text: ''
-        },
-        xAxis: {
-            type: 'datetime',
-            tickPixelInterval: 150
-        },
-        yAxis: {
-            title: {
-                text: label
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-        },
-        tooltip: {
-            formatter: function() {
-                return '<b>'+ this.series.name +'</b><br/>'+this.y;
-//                            + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
-//                            Highcharts.numberFormat(this.y, 2);
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        exporting: {
-            enabled: false
-        },
-        series: [{
-            name: label,
-            data: (function() {
-
-                // generate an array of random data
-                var data = [],
-                    time = (new Date()).getTime(),
-                    i,j;
-
-                for (j=0,i = -19; j < dataLen; i++,j++) {
-
-                    data.push({
-                        x: time + i * 1000,
-                        y:parseFloat(data11[j])
-                    });
-                }
-
-                return data;
-            })()
-        }]
-    });
-
-}
-
-
-function nextData(){
-
-}
-
-function getDataForChart(data,timeSeriesId){
-
-    jQuery.ajax
-    ({
-        type:'POST',
-        url:g.createLink({controller: 'dashboard', action: 'chartContents'}),
-
-        data: "assetId=" + data+"&timeSeriesId="+ timeSeriesId,
->>>>>>> 0b0e14727ec41012d7b5471300587b1ddb48690d
         dataType: "json",
         success:function(data)
         {
@@ -379,7 +227,6 @@ function getDataForChart(data,timeSeriesId){
             $.each(data, function() {
                 jsonLengthCount++
             });
-<<<<<<< HEAD
 //                     alert("????"+data)
                   newData=data;
 //             alert("????????return va;==="+data)
@@ -396,8 +243,6 @@ function getDataForChart(data,timeSeriesId){
     return newData;
 }
 
-
-
 function getCheckedTimeSeries(){
 
     var arrayOfId = getSelectedCheckBoxes('series');
@@ -410,6 +255,7 @@ function getCheckedTimeSeries(){
 
     }
 }
+
 function getSelectedCheckBoxes(s){
     var ids=[];
     $.each($('input[name='+s+']'),
@@ -417,20 +263,4 @@ function getSelectedCheckBoxes(s){
             if($(this).is(':checked')){
                 ids.push($(this).val()); } });
     return ids;
-=======
-
-
-            showChart(data,jsonLengthCount,timeSeriesId)
-
-        }
-        ,error:function(XMLHttpRequest, textStatus, errorThrown) {
-            alert("Error in fetching Data")
-        }
-    });
-
-
-
-//     showChart()
-
->>>>>>> 0b0e14727ec41012d7b5471300587b1ddb48690d
 }
