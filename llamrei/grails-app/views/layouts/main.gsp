@@ -3,7 +3,7 @@
     <head>
         <title><g:layoutTitle default="Llamrei" /></title>
         <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
-        <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'text.css')}"/>
+        %{--<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'old.css')}"/>--}%
         <jq:resources/>
         <jqui:resources/>
         <g:urlMappings/>
@@ -12,14 +12,16 @@
         <g:javascript library="jquery" plugin="jquery"/>
 
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.ui.js')}"></script>
+        <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js/DataTables-1.8.2', file: 'media/js/jquery.dataTables.js')}"></script>
-        <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script>
+        <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
         <script type="text/javascript" src="${resource(dir: 'js', file: 'menu.js')}"></script>
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />        
-        <g:javascript library="application" />
+
 
         <g:layoutHead />
+
 
     </head>
     
