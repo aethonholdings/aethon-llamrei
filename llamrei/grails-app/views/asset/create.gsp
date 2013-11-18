@@ -29,16 +29,7 @@
                     <table>
                         <tbody>
 
-                        <tr class="prop">
-                            <td valign="top" class="name">
-                                <label for="assetUniqueID"><g:message code="asset.assetUniqueID.label"
-                                                                      default="Asset Unique ID"/></label>
-                            </td>
-                            <td valign="top"
-                                class="value ${hasErrors(bean: assetInstance, field: 'assetUniqueID', 'errors')}">
-                                <g:textField name="assetUniqueID" value="${assetInstance?.assetUniqueID}"/>
-                            </td>
-                        </tr>
+
 
                         <tr class="prop">
                             <td valign="top" class="name">

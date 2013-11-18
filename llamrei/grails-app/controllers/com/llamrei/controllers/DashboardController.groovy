@@ -49,12 +49,11 @@ class DashboardController {
             }
 
 
+
         render contentMap as JSON
     }
 
     def chartContents={
-       println("??????"+params)
-
         params.sort  ="id"
         params.order   ="desc"
         params.max=30
@@ -68,13 +67,15 @@ class DashboardController {
 
 
     def nextContent={
+
         params.sort  ="id"
         params.order   ="desc"
-        params.max=1
+        params.max=8
         def assetIns=Asset.findByAssetUniqueID(params.assetId)
         def timeIns=TimeSeries.findById(params.timeSeriesId)
-       def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+        def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
 
         render dataList.value
+
     }
 }

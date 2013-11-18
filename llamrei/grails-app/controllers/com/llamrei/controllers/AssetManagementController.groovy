@@ -47,9 +47,9 @@ class AssetManagementController {
                 flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
                 redirect(action: "listAssets", id: assetInstance.id)
             } else {
-                render(view: "createAssets", model: [assetInstance: assetInstance])
+                flash.message = "${message(code: 'default.assetunique.id.error', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
+                render(view: "createAsset", model: [assetInstance: assetInstance])
             }
-
     }
 
     def showAsset = {

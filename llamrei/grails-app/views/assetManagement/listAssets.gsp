@@ -41,7 +41,7 @@
 
                             <td>${fieldValue(bean: assetInstance, field: "imageurl")}</td>
                             <td>
-                                <g:link action="editAsset" params="[id: assetInstance.id]"><button value='Edit'                                                                                              class="buttonClass1">Edit</button></g:link>
+                                <g:link action="editAsset" params="[id: assetInstance.id]"><button value='Edit' class="actionButton">Edit</button></g:link>
                             </td>
                         </tr>
                     </g:each>

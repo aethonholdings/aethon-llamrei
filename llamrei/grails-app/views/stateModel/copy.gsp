@@ -16,20 +16,13 @@
 
 <body>
 
-<div class="subMenuDiv" id="admin"><div id='subMenuDivItem'><g:link controller="userProfile"
-                                                                    action="list">Manage Users</g:link></div>
-
-    <div style="margin-left: 10px;width:150px"><g:link>Data service management</g:link></div>
-
-    <div><g:link controller="asset" action="list" style="margin-left: 10px;width: 200px">Asset manager</g:link></div>
-
-    <div style="margin-left: 10px;width: 200px"><g:link controller="timeSeries">TimeSeries Management</g:link></div>
-</div>
 
 
-<div style="width: 100%;background-color: #666666;">
-    <h2 style="padding:10px;margin-left:10px;color: #ffffff;font-weight: bold;text-transform: uppercase;">Copy State Model From Existing Assets</h2>
-</div>
+
+<div>
+
+    <h2>Copy state model</h2>
+
 
 <div class="dialog">
     <g:if test="${flash.message}">
@@ -37,16 +30,23 @@
     </g:if>
 
     <g:form id="copy-form" method="get">
-        <label for="assetSelection" style="margin-left:50px; font-size: 18px;">
+        <label for="assetSelection" style="margin-left:05px; font-size: 18px;">
             <g:message code="asset selection" default=" Select Assets"/>
         </label>
         <g:select id="assetSelection" style="margin-left: 20px; width: 150px; " name="assetId" from="${Asset.list()}"
                   noSelection="['': 'Please Select']" optionKey="id" optionValue="assetName"/>
 
         <g:hiddenField name="stateModelId" value="${stateModelId}" />
-        <g:actionSubmit value="Continue" action="copyStateModel" class='buttonClass1' />
-        <g:form controller="stateModel" style='display: inline' action="edit" value="Cancel"><button value='Cancel'
-                                                                                                     class="buttonClass1">Cancel</button></g:form>
+
+        <g:actionSubmit value="Continue" style="display: inline" action="copyStateModel" class='actionButton' />
+
+
+    </g:form>
+
+
+
+<g:form controller="stateModel" style='display: inline' action="edit" params="[id: stateModelId]" value="Cancel">
+        <button value='Cancel' class="actionButton">Cancel</button>
     </g:form>
 
 </div>
