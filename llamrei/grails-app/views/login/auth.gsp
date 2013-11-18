@@ -7,8 +7,6 @@
 
 <body>
 
-<p/>
-
 <div class="login s2ui_center ui-corner-all" style='text-align:center;'>
 	<div class="login-inner">
 	<form action='${postUrl}' method='POST' id="loginForm" name="loginForm" autocomplete='off'>
@@ -28,10 +26,7 @@
 		<tr>
 			<td colspan='2'>
 				<input type="checkbox" class="checkbox" name="${rememberMeParameter}" id="remember_me" checked="checked" />
-				<label for='remember_me'><g:message code='spring.security.ui.login.rememberme'/></label> |
-				<span class="forgot-link">
-					<g:link controller='register' action='forgotPassword'><g:message code='spring.security.ui.login.forgotPassword'/></g:link>
-				</span>
+				<label for='remember_me'><g:message code='spring.security.ui.login.rememberme'/></label>
 			</td>
 		</tr>
 		<tr>

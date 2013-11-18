@@ -4,7 +4,10 @@
     <option name="myUseUcmModel" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
+<<<<<<< HEAD
     <mapping directory="$USER_HOME$" vcs="Git" />
+=======
+>>>>>>> 10fe5f59d884ad80f1ade96941041e4afc46d92d
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
   </component>
 </project>

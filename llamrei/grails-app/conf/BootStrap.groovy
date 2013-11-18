@@ -1,6 +1,6 @@
-import llamreiproject.SecRole
-import llamreiproject.SecUser
-import llamreiproject.SecUserSecRole
+import com.llamrei.domain.SecRole
+import com.llamrei.domain.SecUser
+import com.llamrei.domain.SecUserSecRole
 
 class BootStrap {
 
@@ -20,10 +20,10 @@ class BootStrap {
 
         if (!adminUser.authorities.contains(adminRole)) {
             SecUserSecRole.create adminUser, adminRole
-    }
-//        if(!adminUser.authorities.contains(operatorRole)){
-//            SecUserSecRole.create adminUser, operatorRole
-//        }
+        }
+        if(!adminUser.authorities.contains(operatorRole)){
+            SecUserSecRole.create adminUser, operatorRole
+        }
 
         def operatorUser = SecUser.findByUsername('operator') ?: new SecUser(
                 username: 'operator',
@@ -54,7 +54,7 @@ class BootStrap {
             SecUserSecRole.create engineerUser, engineerRole
         }
 
-    def destroy = {
-    }
+        def destroy = {
+        }
 }
 }

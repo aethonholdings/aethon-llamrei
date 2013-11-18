@@ -16,8 +16,7 @@ $(document).ready(function(){
         }
     });
 
-})
-
+});
 
 function showContents(){
 
@@ -31,9 +30,6 @@ function showContents(){
         success:function(data)
         {
             var jsonLengthCount=0;
-            var  ins=data[1].value;
-
-
             $.each(data, function() {
                 jsonLengthCount++
 
@@ -43,10 +39,10 @@ function showContents(){
             for(var i=1;i<=jsonLengthCount;i++)  {
                 if (i % 2) {
 
-                    $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td onclick=openChart("'+data[i].assetId+'",1)>'+data[i].value1+'</td><td onclick=openChart("'+data[i].assetId+'",2)>'+data[i].value+'</td><td><input type="button" class="buttonClass" value="Lock"></td><td><input type="button" class="buttonClass" value="Start"></td><td><input type="button" class="buttonClass" value="Stop"></td></tr>')
+                    $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td onclick=openChart("'+data[i].assetId+'",1)>'+data[i].value1+'</td><td onclick=openChart("'+data[i].assetId+'",2)>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
                 }
                 else{
-                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td onclick=openChart("'+data[i].assetId+'",1)>'+data[i].value1+'</td><td onclick=openChart("'+data[i].assetId+'",2)>'+data[i].value+'</td><td><input type="button" class="buttonClass" value="Lock"></td><td><input type="button" class="buttonClass" value="Start"></td><td><input type="button" class="buttonClass" value="Stop"></td></tr>')
+                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td onclick=openChart("'+data[i].assetId+'",1)>'+data[i].value1+'</td><td onclick=openChart("'+data[i].assetId+'",2)>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
                 }
             }
 
@@ -59,8 +55,8 @@ function showContents(){
 
 }
 
-function openChart(data,timeSeriesId,assetName){
 
+function openChart(data,timeSeriesId,assetName){
     $('#main1').hide();
     $('#main2').hide();
     $('#chartDiv').show();
@@ -68,24 +64,35 @@ function openChart(data,timeSeriesId,assetName){
 
     getDataForChart(data,timeSeriesId);
 
-
 }
+
+
+function getCheckedTimeSeries(){
+
+       var arrayOfId = getSelectedCheckBoxes('series');
+       var dataToSend = JSON.stringify(arrayOfId);
+           if(arrayOfId.length!=0){
+            $("#hiddenField").val(dataToSend);
+        }else{
+
+        }
+     }
+      function getSelectedCheckBoxes(s){
+       var ids=[];
+       $.each($('input[name='+s+']'),
+       function () {
+       if($(this).is(':checked')){
+       ids.push($(this).val()); } });
+       return ids;
+}
+
 
 function showChart(data11,jsonLengthCount,timeSeriesId){
 
 
     dataLen=jsonLengthCount;
-//    dataList=data11
 
-//    $(function (data11,a) {
-//        $(document).ready(function() {
-//            Highcharts.setOptions({
-//                global: {
-//                    useUTC: false
-//                }
-//            });
-    var X1=83;
-    var chart;
+//    var chart;
 
     var label;
     if(timeSeriesId==1){
@@ -106,10 +113,8 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
                     // set up the updating of the chart each second
                     var series = this.series[0];
                     setInterval(function() {
-                        var x = (new Date()).getTime() // current time
+                        var x = (new Date()).getTime(); // current time
                         var result=    nextData();
-
-
                         series.addPoint([x, y], true, true);
                     }, 1000);
                 }
@@ -168,11 +173,7 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
                 // generate an array of random data
                 var data = [],
                     time = (new Date()).getTime(),
-
                     i,j;
-
-                var test=[10,20,30,40,50,20,70,80];
-
 
                 for (j=0,i = -19; j < dataLen; i++,j++) {
 

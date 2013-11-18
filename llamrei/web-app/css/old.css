@@ -1,0 +1,215 @@
+
+
+
+
+
+
+
+.serviceMenu{
+    background: url(../images/gerySubheader.jpg) no-repeat;
+    width: 100%;
+    /*float: left;*/
+    /*padding-top: 5px;*/
+    background-size:100% 23px;
+    height: 30px;
+    font: 11px verdana, arial, helvetica, sans-serif;
+    margin-left: 0px;
+    color: white;
+}
+
+.menuItem{
+    margin-top:50px;
+    min-height:400px
+}
+
+.subMenuDiv div  {
+    width: 100px;
+    float: left;
+    padding-top: 5px;
+    /*color: white;*/
+    /*font: 11px verdana, arial, helvetica, sans-serif;*/
+
+}
+
+h1 {
+    color: #48802c;
+    font-weight: normal;
+    font-size: 16px;
+    margin: .8em 0 .3em 0;
+}
+ #subMenuDivItem{
+     margin-left: 30px;
+ }
+ul {
+    padding-left: 15px;
+}
+ .header1{
+     width:100% ;
+     height:117px;
+ }
+input, select, textarea {
+    background-color: #fcfcfc;
+    border: 1px solid #ccc;
+    /*font: 11px verdana, arial, helvetica, sans-serif;*/
+    margin: 2px 0;
+    padding: 2px 4px;
+
+}
+.textInput{width: 300px;height: 30px}
+
+select {
+   padding: 2px 2px 2px 0;
+}
+
+textarea {
+	width: 250px;
+	height: 150px;
+	vertical-align: top;
+}
+
+input:focus, select:focus, textarea:focus {
+    border: 1px solid #b2d1ff;
+}
+
+.body {
+
+    margin: 0 15px 10px 15px;
+}
+
+/* NAVIGATION MENU */
+
+.nav {
+    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    border: 1px solid #ccc;
+    border-style: solid none solid none;
+    margin-top: 5px;
+    padding: 7px 12px;
+}
+
+.menuButton {
+    font-size: 10px;
+    padding: 0 5px;
+}
+.menuButton a {
+    color: #333;
+    padding: 4px 6px;
+}
+.menuButton a.home {
+    background: url(../images/skin/house.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+.menuButton a.list {
+    background: url(../images/skin/database_table.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+.menuButton a.create {
+    background: url(../images/skin/database_add.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
+
+/* PAGINATION */
+
+.paginateButtons {
+    /*background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;*/
+    border: 0px solid #ccc;
+    border-top: 0;
+    color: #666;
+    font-size: 10px;
+    overflow: hidden;
+    padding: 10px 3px;
+
+}
+.paginateButtons a {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-color: #ccc #aaa #aaa #ccc;
+    color: #666;
+    margin: 0 3px;
+    padding: 2px 6px;
+}
+.paginateButtons span {
+    padding: 2px 3px;
+}
+
+/* DIALOG */
+
+.dialog table {
+    padding: 5px 0;
+}
+
+.prop {
+    padding: 5px;
+}
+.prop .name {
+    text-align: left;
+    width: 15%;
+    white-space: nowrap;
+}
+.prop .value {
+    text-align: left;
+    width: 85%;
+}
+
+
+
+
+
+
+.spanClass1{
+
+    float: right;
+    font: arial;
+    font-weight: bolder;
+    font-size: 120%;
+    margin-top: 20px;
+    color: #000000;
+    margin-right: 0px;
+}
+
+.footer{
+    /*background-color: grey;*/
+    background: url(../images/header.jpg) repeat-x;
+    /*background-size:1365px 80px;*/
+    height: 50px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.buttonClass{
+    width:80px;
+     cursor: pointer;
+    border: 1px solid #3079ed;
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    background-color: #4d90fe;
+    background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -moz-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -ms-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -o-linear-gradient(top,#4d90fe,#4787ed);
+    /*background-image: linear-gradient(to*/
+}
+
+.actionButton{
+    height:25px;
+    width:120px;
+    cursor: pointer;
+    border: 1px solid #3079ed;
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    background-color: #4d90fe;
+    background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -moz-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -ms-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -o-linear-gradient(top,#4d90fe,#4787ed);
+    /*background-image: linear-gradient(to*/
+}
+
+.spinner {
+    padding: 5px;
+    position: absolute;
+    right: 0;
+}
+
