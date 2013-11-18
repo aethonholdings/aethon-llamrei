@@ -1,5 +1,5 @@
 package llamreiAssets
-class DataSeries {
+class DataPoint {
 
     /**
      * properties of Assets

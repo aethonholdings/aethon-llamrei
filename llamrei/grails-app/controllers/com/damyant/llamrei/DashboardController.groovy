@@ -2,7 +2,7 @@
 package com.damyant.llamrei
 import grails.converters.JSON
 import llamreiAssets.Asset
-import llamreiAssets.DataSeries
+import llamreiAssets.DataPoint
 import llamreiAssets.TimeSeries
 
 
@@ -21,7 +21,7 @@ class DashboardController {
         assetInstance?.each{ asset->
             params.sort  ="id"
             params.order   ="desc"
-            dataInstanceList = DataSeries.findAllByAsset(asset,params)
+            dataInstanceList = DataPoint.findAllByAsset(asset,params)
             def timeSeriesList     =[]
             dataInstanceList?.eachWithIndex { data, i ->
                 if(i==0) {
@@ -40,6 +40,27 @@ class DashboardController {
     }
 
     def chartContents={
+
+        def dataMap=[:]
+        params.sort  ="id"
+        params.order   ="desc"
+        params.max=8
+         def assetIns=Asset.findByAssetUniqueID(params.assetId)
+        def timeIns=TimeSeries.findById(params.timeSeriesId)
+        def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+
+      println("?????????????????????"+dataList.value)
+//        dataList?.each{itr->
+//            dataMap=[itr.value]
+//        }
+//
+//        println("==map====="+dataMap)
+
+//        def a=dataList.value as JSON
+//        println("mmmm===="+a)
+
+        render dataList.value
+
 
     }
 }

@@ -11,9 +11,10 @@
         <g:javascript library="application"/>
         <g:javascript library="jquery" plugin="jquery"/>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.ui.js')}"></script>
+        <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js/DataTables-1.8.2', file: 'media/js/jquery.dataTables.js')}"></script>
-        <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script
+
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.easing-sooper.js')}"></script>--}%
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.kwicks-1.5.1.js')}"></script>--}%
         %{--<script type="text/javascript" src="${resource(dir: 'js/style1', file: 'jquery.sooperfish.js')}"></script>--}%

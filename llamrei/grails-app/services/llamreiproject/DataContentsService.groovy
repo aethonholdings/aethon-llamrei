@@ -24,7 +24,7 @@ class DataContentsService {
 //            def assetInstance=  Asset.findAll()
 //            assetInstance.each{ ins ->
 //                println("dataseries===="+ins)
-//                dataSeriesInstance.add(DataSeries.findAllByAsset(ins))
+//                dataSeriesInstance.add(DataPoint.findAllByAsset(ins))
 //                println("===???????===="+dataSeriesInstance.size())
 
             }
