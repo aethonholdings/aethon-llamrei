@@ -1,0 +1,4 @@
+./.idea/*
+./grails-app/conf/BuildConfig.groovy
+*.class
+
