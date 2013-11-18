@@ -57,11 +57,11 @@
                         <tr class="prop">
                             <td valign="top" class="name">
                                 <label for="assetUniqueID"><g:message code="asset.assetUniqueID.label"
-                                                                      default="Asset Unique ID"/></label>
+                                                                      default="Asset Unique ID" /></label>
                             </td>
                             <td valign="top"
                                 class="value ${hasErrors(bean: assetInstance, field: 'assetUniqueID', 'errors')}">
-                                <g:textField name="assetUniqueID" value="${assetInstance?.assetUniqueID}"/>
+                                <g:textField name="assetUniqueID" value="${assetInstance?.assetUniqueID}" disabled="true"/>
                             </td>
                         </tr>
                         <tr class="prop">
@@ -96,7 +96,7 @@
             <g:link controller="assetManagement" action="listAssets">
                 <input type="button" class='actionButton' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
             </g:link>
-            <g:form controller="statemodel" style= 'display: inline'  action="list" ><button value='editstatemodel' class="actionButton">Edit State Model</button></g:form>
+            <g:form controller="stateModel" params="[id: assetInstance.id]" style= 'display: inline'  action="edit" ><button value='editstatemodel' class="actionButton">Edit State Model</button></g:form>
             <g:form controller="assetManagement" style= 'display: inline' action=" goToAssociateTimeSeries" params="[id:assetInstance.id]"><button value='editstatemodel' class="actionButton" style="width:auto">Associate Time Series</button></g:form>
 
         </div>

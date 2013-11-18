@@ -1,11 +1,9 @@
 package com.llamrei.controllers
-
 import grails.plugins.springsecurity.Secured
 import com.llamrei.domain.StateModel
 import com.llamrei.domain.Asset
-
 @Secured(['ROLE_ADMIN'])
-class StatemodelController {
+class StateModelController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 

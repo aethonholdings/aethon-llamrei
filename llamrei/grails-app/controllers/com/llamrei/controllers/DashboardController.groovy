@@ -4,7 +4,7 @@ package com.llamrei.controllers
 import grails.plugins.springsecurity.Secured
 import grails.converters.JSON
 import com.llamrei.domain.Asset
-import com.llamrei.domain.DataSeries
+import com.llamrei.domain.DataPoint
 import com.llamrei.domain.TimeSeries
 
 @Secured(['ROLE_OPERATOR'])
@@ -23,7 +23,7 @@ class DashboardController {
         assetInstance?.each{ asset->
             params.sort  ="id"
             params.order   ="desc"
-            dataInstanceList = DataSeries.findAllByAsset(asset,params)
+            dataInstanceList = DataPoint.findAllByAsset(asset,params)
             def timeSeriesList     =[]
             dataInstanceList?.eachWithIndex { data, i ->
                 if(i==0) {

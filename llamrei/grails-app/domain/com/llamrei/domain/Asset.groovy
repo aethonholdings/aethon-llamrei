@@ -14,8 +14,8 @@ class Asset {
     /**
      * Relationship mapping
      */
-    StateModel stateModel
-    static hasMany= [timeSeries: TimeSeries, dataSeries: DataSeries]
+
+    static hasMany= [timeSeries: TimeSeries, dataSeries: DataPoint]
     
     /**
      * Putting constraints with properties
@@ -29,7 +29,7 @@ class Asset {
         clientName  (nullable: false)
         creationDate(nullable: true)
         modificationDate(nullable: true)
-        stateModel(nullable:false)
+
     }
     
     /**
@@ -38,9 +38,9 @@ class Asset {
     static mapping = {
         assetUniqueID column:"assetUniqueID"
         assetName column:"assetName"
-        stateModelId column:"stateModelId"
+
         imageurl column : "imageurl"
-        imagethumburl column:"imagethumburl"
+
         creationDate column: "creationDate"
         modificationDate column:"modificationDate"
     }

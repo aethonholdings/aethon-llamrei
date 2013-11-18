@@ -51,11 +51,13 @@
                     </tr>
 
                     <tr class="prop">
-                        <td valign="middle" class="name">
-                            <label for="stateModelId"><g:message code="asset.stateModelId.label" default="State Model Id" /></label>
+                        <td valign="top" class="name">
+                            <label for="description"><g:message code="asset.description.label"
+                                                                default="Description"/></label>
                         </td>
-                        <td valign="middle" class="value ${hasErrors(bean: assetInstance, field: 'stateModelId', 'errors')}">
-                            <g:textField  class='textInput' name="stateModelId" value="${assetInstance?.stateModelId}" />
+                        <td valign="top"
+                            class="value ${hasErrors(bean: assetInstance, field: 'description', 'errors')}">
+                            <g:textField name="description" value="${assetInstance?.description}"/>
                         </td>
                     </tr>
 
@@ -68,14 +70,7 @@
                         </td>
                     </tr>
 
-                    <tr class="prop">
-                        <td valign="middle" class="name">
-                            <label for="imagethumburl"><g:message code="asset.imagethumburl.label" default="Imagethumburl" /></label>
-                        </td>
-                        <td valign="middle" class="value ${hasErrors(bean: assetInstance, field: 'imagethumburl', 'errors')}">
-                            <g:textField  class='textInput' name="imagethumburl" value="${assetInstance?.imagethumburl}" />
-                        </td>
-                    </tr>
+
 
                     </tbody>
                 </table>
