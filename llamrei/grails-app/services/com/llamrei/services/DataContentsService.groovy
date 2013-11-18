@@ -11,7 +11,7 @@ class DataContentsService {
     public showData(dataInstance,it){
         def assetList=[:]
         def assetObject=[:]
-        def  dataSeriesInstance=[]
+        def  dataPointInstance=[]
 
 
         try{

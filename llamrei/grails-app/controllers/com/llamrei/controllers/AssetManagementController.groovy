@@ -129,59 +129,59 @@ class AssetManagementController {
         }
     }
 
-    def editStateModel = {
-
-    }
+//    def editStateModel = {
+//
+//    }
 
     /**
      * action to associate asset with TimeSeries
      */
-    def goToAssociateTimeSeries ={
-        def assetInstance = Asset.get(params.id)
-      /*  println("&&&&&&&&&&&&&&&&&&&&&&&"+params.id)*/
-        def timeSeries = TimeSeries.findAll()
-        def associatedTimeSeries = AssociateTimeSeries.findByAsset(assetInstance)
+//    def goToAssociateTimeSeries ={
+//        def assetInstance = Asset.get(params.id)
+//      /*  println("&&&&&&&&&&&&&&&&&&&&&&&"+params.id)*/
+//        def timeSeries = TimeSeries.findAll()
+//        def associatedTimeSeries = AssociateTimeSeries.findByAsset(assetInstance)
+//
+//
+//      /*  println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+timeSeries)*/
+//        if (!assetInstance) {
+//            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
+//            redirect(action: "listAssets")
+//        }
+//        else {
+//            return [assetInstance: assetInstance,timeSeries:timeSeries,associatedTimeSeries:associatedTimeSeries ]
+//        }
+//
+//    }
 
-
-      /*  println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+timeSeries)*/
-        if (!assetInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
-            redirect(action: "listAssets")
-        }
-        else {
-            return [assetInstance: assetInstance,timeSeries:timeSeries,associatedTimeSeries:associatedTimeSeries ]
-        }
-
-    }
-
-    def associateTimeSeries = {
-
-            def id = params.id
-            def associateTimeSeries
-            def arrayOfId
-        try{
-             arrayOfId=JSON.parse(params.hiddenField)
-        }catch(Exception ex){
-            log.info(""+ex)
-          redirect(action: "listAssets")
-        }
-         arrayOfId.each{
-            if(it){
-            associateTimeSeries = new AssociateTimeSeries()
-            associateTimeSeries.asset = Asset.findById(id)
-            associateTimeSeries.timeSeries = TimeSeries.findById(it)
-            associateTimeSeries.save(flush: true)
-           }
-         }
-
-        if (!associateTimeSeries) {
-            flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset'), associateTimeSeries.id])}"
-            redirect(action: "listAssets")
-           }
-        else {
-            redirect(action: "listAssets")
-        }
-    }
+//    def associateTimeSeries = {
+//
+//            def id = params.id
+//            def associateTimeSeries
+//            def arrayOfId
+//        try{
+//             arrayOfId=JSON.parse(params.hiddenField)
+//        }catch(Exception ex){
+//            log.info(""+ex)
+//          redirect(action: "listAssets")
+//        }
+//         arrayOfId.each{
+//            if(it){
+//            associateTimeSeries = new AssociateTimeSeries()
+//            associateTimeSeries.asset = Asset.findById(id)
+//            associateTimeSeries.timeSeries = TimeSeries.findById(it)
+//            associateTimeSeries.save(flush: true)
+//           }
+//         }
+//
+//        if (!associateTimeSeries) {
+//            flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset'), associateTimeSeries.id])}"
+//            redirect(action: "listAssets")
+//           }
+//        else {
+//            redirect(action: "listAssets")
+//        }
+//    }
 
     def editStateModel ={
         def stateModelInstance = new StateModel(params)

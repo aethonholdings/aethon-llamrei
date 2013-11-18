@@ -15,176 +15,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f370b26d-998e-49d5-85a0-fc34f62504a9" name="Default" comment="Asset, StateModel implementation-part1">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/llamreiAssets/AssetControllerTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/llamreiAssets/StateRuleTests.groovy" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\.idea\compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\grails-app\views\asset\show.gsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\llamrei-grailsPlugins.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\llamrei.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\BootStrap.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\Config.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\DataSource$_run_closure3_closure4_closure7.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\DataSource.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\FamfamfamGrailsPlugin.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\HibernateGrailsPlugin.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\JqueryGrailsPlugin.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\JqueryUiGrailsPlugin.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LoginController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LoginController$_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LoginController$_closure3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LoginController$_closure4.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LoginController$_closure5.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LoginController$_closure6.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LoginController$_closure7.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LoginController$_closure8.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LoginController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LogoutController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\LogoutController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\MailGrailsPlugin.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\SpringSecurityCoreGrailsPlugin$_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\SpringSecurityCoreGrailsPlugin.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\SpringSecurityUiGrailsPlugin.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\TomcatGrailsPlugin.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\UrlMappings.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\WebxmlGrailsPlugin.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\AdminController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\AdminController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\DashboardController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\DashboardController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterCommand$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterCommand$__clinit__closure1_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$__clinit__closure6.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$__clinit__closure7.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$_closure2_closure8.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$_closure3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$_closure3_closure9.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$_closure4.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$_closure4_closure10.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$_closure5.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController$_closure5_closure11.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegisterController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegistrationCodeController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegistrationCodeController$_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegistrationCodeController$_closure3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegistrationCodeController$_closure4.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegistrationCodeController$_closure5.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegistrationCodeController$_closure6.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RegistrationCodeController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RequestmapController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RequestmapController$_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RequestmapController$_closure3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RequestmapController$_closure4.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RequestmapController$_closure5.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RequestmapController$_closure6.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RequestmapController$_closure7.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RequestmapController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\ResetPasswordCommand$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\ResetPasswordCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RoleController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RoleController$_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RoleController$_closure3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RoleController$_closure4.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RoleController$_closure5.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RoleController$_closure6.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RoleController$_closure7.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RoleController$_closure8.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\RoleController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\SecurityInfoController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_buildUserModel_closure9.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_closure3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_closure4.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_closure5.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_closure6.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_closure7.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_closure8.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController$_sortedRoles_closure10.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserProfileController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserProfileController$_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserProfileController$_closure3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserProfileController$_closure4.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserProfileController$_closure5.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserProfileController$_closure6.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserProfileController$_closure7.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserProfileController$_closure8.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\com\damyant\llamrei\UserProfileController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\Asset$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\Asset$__clinit__closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\Asset.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\AssetController$_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\AssetController$_closure3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\AssetController$_closure4.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\AssetController$_closure5.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\AssetController$_closure6.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\AssetController$_closure7.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\AssetController$_closure8.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\AssetController$_closure9.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\AssetController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\DataSeries$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\DataSeries$__clinit__closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\DataSeries.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\StateModel$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\StateModel.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\StatemodelController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\StatemodelController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\TimeSeries$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\TimeSeries$__clinit__closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiAssets\TimeSeries.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\Role$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\Role.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\SecRole$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\SecRole$__clinit__closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\SecRole.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\SecUser$__clinit__closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\SecUser$__clinit__closure3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\SecUser$_getAuthorities_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\SecUser.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\SecUserSecRole$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\SecUserSecRole.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\User$__clinit__closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\llamreiproject\User.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\resources.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\AssetsController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\AssetsController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\HomeController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\HomeController.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\Show1Controller$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\Show1Controller.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\Show2Controller$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\Show2Controller.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\ShowController$_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\target\classes\untitled3\ShowController.class" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\test\unit\com\llamrei\tests\StatemodelControllerTests.groovy" afterPath="$PROJECT_DIR$/test/unit/llamreiAssets/StateModelControllerTests.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" />
-    </list>
-    <list id="c44d9fe8-e3b3-4bda-91ba-c9dc96ab1a08" name="Failed commit: Default" comment="Asset, StateModel implementation-part1">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/State.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/StateRule.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/utils/com/llamrei/utils/Constants.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/views/stateModel/copy.gsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/views/stateModel/create.gsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/views/stateModel/edit.gsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/views/stateModel/list.gsp" />
-      <change type="MOVED" beforePath="C:\Users\Dell\projects\llamrei-service\llamrei\grails-app\controllers\com\llamrei\controllers\StatemodelController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/StateModelController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/Asset.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/Asset.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/StateModel.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/StateModel.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/i18n/messages.properties" afterPath="$PROJECT_DIR$/grails-app/i18n/messages.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/asset/associateTimeSeries.gsp" afterPath="$PROJECT_DIR$/grails-app/views/asset/associateTimeSeries.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/asset/create.gsp" afterPath="$PROJECT_DIR$/grails-app/views/asset/create.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/asset/edit.gsp" afterPath="$PROJECT_DIR$/grails-app/views/asset/edit.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/asset/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/asset/list.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetManagementController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetManagementController.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/com/llamrei/services/DataContentsService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/com/llamrei/services/DataContentsService.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
+    <list id="c44d9fe8-e3b3-4bda-91ba-c9dc96ab1a08" name="Failed commit: Default" comment="Asset, StateModel implementation-part1" />
     <list id="0a6a9975-4a5c-49df-8782-ee8ffcaa5f93" name="Failed commit: Default (2)" comment="Asset, StateModel implementation-part1" />
     <ignored path="LlamreiProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -212,13 +50,15 @@
     <file path="/editUser.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384249314803" ignored="false" />
     <file path="G:/oldOsrs/osrs/grails-app/conf/BuildConfig.groovy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1383897046685" ignored="false" />
     <file path="/UserProfileController.groovy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384166964002" ignored="false" />
-    <file path="/Dummy.txt" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1383895265014" ignored="false" />
-    <file path="/a.dummy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1383895252895" ignored="false" />
+    <file path="/Dummy.txt" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384755709315" ignored="false" />
+    <file path="/a.dummy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384755704510" ignored="false" />
     <file path="/create.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384161564309" ignored="false" />
     <file path="/list.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384168482692" ignored="false" />
     <file path="/UserController.groovy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1383894926264" ignored="false" />
     <file path="/_header.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384250204467" ignored="false" />
     <file path="/BuildConfig.groovy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384238113289" ignored="false" />
+    <file path="/DashboardController.groovy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384755593199" ignored="false" />
+    <file path="/Asset.groovy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384755774167" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,33 +73,20 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll">
-      <breakpoint url="file://$PROJECT_DIR$/grails-app/views/timeSeries/create.gsp" line="29" class="gsp.default.timeSeries/create_gsp" package="gsp.default">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" />
-    <breakpoint_any default_suspend_policy="SuspendAll">
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
         <option name="ENABLED" value="false" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
         <option name="CONDITION" value="" />
@@ -271,10 +98,12 @@
         <option name="ENABLED" value="false" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
         <option name="CONDITION" value="" />
@@ -290,92 +119,99 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="messages.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/i18n/messages.properties">
-          <provider editor-type-id="ResourceBundle">
-            <state />
-          </provider>
+      <file leaf-file-name="DataPoint.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/DataPoint.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="2694" selection-end="2694" vertical-scroll-proportion="-12.75">
+            <state line="24" column="5" selection-start="482" selection-end="482" vertical-scroll-proportion="-7.3469386">
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.gsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/stateModel/edit.gsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="23" selection-start="903" selection-end="1005" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1384635561187" expanded="true" signature="479:509" placeholder="{...}" />
-                <marker date="1384635561187" expanded="true" signature="5258:5273" placeholder="{...}" />
-                <marker date="1384635561187" expanded="true" signature="5663:5678" placeholder="{...}" />
-                <marker date="1384635561187" expanded="true" signature="5886:5901" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="copy.gsp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/stateModel/copy.gsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="71" selection-start="1060" selection-end="1060" vertical-scroll-proportion="0.09497207">
-              <folding>
-                <marker date="1384637026832" expanded="true" signature="663:693" placeholder="{...}" />
-                <marker date="1384637026832" expanded="true" signature="1438:1471" placeholder="{...}" />
-                <marker date="1384637026832" expanded="true" signature="1813:1828" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create.gsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/asset/create.gsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="2" selection-start="6279" selection-end="6279" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AssetController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="8" selection-start="2919" selection-end="2919" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Asset.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/Asset.groovy">
           <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TimeSeriesManagementController.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/TimeSeriesManagementController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="6" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
+            <state line="106" column="5" selection-start="4408" selection-end="4408" vertical-scroll-proportion="-11.434783">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.gsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/asset/edit.gsp">
+      <file leaf-file-name="AssetManagementController.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetManagementController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="43" selection-start="5716" selection-end="5722" vertical-scroll-proportion="0.0">
+            <state line="156" column="36" selection-start="6114" selection-end="6114" vertical-scroll-proportion="-2.6086957">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0001-updating-asset-and-statemodel-management.patch" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/0001-updating-asset-and-statemodel-management.patch">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="629" column="48" selection-start="42390" selection-end="42390" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Asset.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/Asset.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="33" selection-start="424" selection-end="424" vertical-scroll-proportion="0.7929515">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataContentsService.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/services/com/llamrei/services/DataContentsService.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="45" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RGraph.common.adjusting.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-app/js/rgraph/RGraph.common.adjusting.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="31" selection-start="2065" selection-end="2065" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stacktrace.log" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/target/stacktrace.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29637" column="28" selection-start="2457749" selection-end="2457749" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DashboardController.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="40" selection-start="613" selection-end="613" vertical-scroll-proportion="-4.304348">
               <folding>
-                <marker date="1384630723277" expanded="true" signature="5852:5867" placeholder="{...}" />
-                <marker date="1384630723277" expanded="true" signature="6292:6307" placeholder="{...}" />
-                <marker date="1384630723277" expanded="true" signature="6592:6607" placeholder="{...}" />
+                <element signature="e#34#78#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/utils/com/llamrei/utils/Constants.groovy">
+      <file leaf-file-name="DataSource.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="31" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0">
+            <state line="19" column="32" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -399,16 +235,14 @@
   </component>
   <component name="GitLogSettings">
     <option name="myStructureFilterPaths" />
+    <option name="myDateState">
+      <MyDateState />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/views/asset/create.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/stateModel/create.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/stateModel/list.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/asset/associateTimeSeries.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/Asset.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/State.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/StateRule.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/StateModel.groovy" />
@@ -419,6 +253,11 @@
         <option value="$PROJECT_DIR$/grails-app/views/stateModel/edit.gsp" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/StateModelController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/stateModel/copy.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetManagementController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/services/com/llamrei/services/DataContentsService.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/Asset.groovy" />
       </list>
     </option>
   </component>
@@ -430,7 +269,7 @@
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="-9" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
@@ -463,26 +302,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="llamrei" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -498,6 +317,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -591,7 +442,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userProfile" />
+              <option name="myItemId" value="userManagement" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -613,7 +464,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="timeSeries" />
+              <option name="myItemId" value="timeSeriesManagement" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -636,6 +487,94 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="stateModel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dashboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assetManagement" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -759,24 +698,66 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/grails-app/utils/com/llamrei" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="RESOURCE_BUNDLE_SPLITTER_PROPORTION" value="0.5" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="dynamic.classpath" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -795,18 +776,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Grails.Grails:llamrei">
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
-      <option name="PROGRAM_PARAMETERS" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -816,12 +785,14 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <setting name="launchBrowser" value="true" />
       <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
       </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -829,14 +800,9 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
-      </method>
+      <method />
     </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" class_name="" method_name="" output_log_level="" package_name="" scope="Class">
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" output_log_level="null" package_name="" scope="Class">
       <option name="BCName" value="" />
       <option name="launcherParameters">
         <LauncherParameters>
@@ -847,32 +813,7 @@
       </option>
       <option name="moduleName" value="" />
       <option name="trusted" value="true" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -900,13 +841,20 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
-      </method>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -921,13 +869,7 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -948,13 +890,7 @@
       </option>
       <envs />
       <patterns />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="false" name="Grails:LlamreiProject" type="GrailsRunConfigurationType" factoryName="Grails">
       <module name="LlamreiProject" />
@@ -1058,39 +994,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="false" />
+    <frame x="-9" y="-8" width="1382" height="744" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5303777" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29734218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32724252" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43021345" sideWeight="0.50732064" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39534885" sideWeight="0.0" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6174056" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34846267" sideWeight="0.46962234" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43021345" sideWeight="0.4875549" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39554796" sideWeight="0.0" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34801763" sideWeight="0.57641196" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42358804" sideWeight="0.4875549" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6174056" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1117,19 +1053,24 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
     <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="UPDATE_FILTER_SCOPE_NAME" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" value="Asset, StateModel implementation-part1" />
@@ -1143,6 +1084,7 @@
     <option name="ACTIVE_VCS_NAME" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Asset, StateModel implementation-part1" />
@@ -1193,124 +1135,131 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/views/asset/associateTimeSeries.gsp">
+    <entry file="file://$PROJECT_DIR$/grails-app/i18n/messages.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="73" selection-start="2040" selection-end="2040" vertical-scroll-proportion="-3.368526" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/AssociateTimeSeries.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="32" selection-start="237" selection-end="237" vertical-scroll-proportion="0.5220729" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/StateRule.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="18" selection-start="521" selection-end="521" vertical-scroll-proportion="0.38003838" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/State.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="39" selection-start="206" selection-end="206" vertical-scroll-proportion="-2.372093" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/stateModel/create.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="55" selection-start="1277" selection-end="1277" vertical-scroll-proportion="-0.3469388" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/StateModel.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="22" selection-start="176" selection-end="176" vertical-scroll-proportion="-3.5581396" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/StateModelController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="158" column="58" selection-start="6516" selection-end="6516" vertical-scroll-proportion="1.1491395" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/stateModel/edit.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="23" selection-start="903" selection-end="1005" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1384635561187" expanded="true" signature="479:509" placeholder="{...}" />
-            <marker date="1384635561187" expanded="true" signature="5258:5273" placeholder="{...}" />
-            <marker date="1384635561187" expanded="true" signature="5663:5678" placeholder="{...}" />
-            <marker date="1384635561187" expanded="true" signature="5886:5901" placeholder="{...}" />
-          </folding>
+        <state line="44" column="0" selection-start="2694" selection-end="2694" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/stateModel/copy.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="71" selection-start="1060" selection-end="1060" vertical-scroll-proportion="0.09497207">
+        <state line="50" column="42" selection-start="2043" selection-end="2043" vertical-scroll-proportion="-6.5957446">
           <folding>
-            <marker date="1384637026832" expanded="true" signature="663:693" placeholder="{...}" />
-            <marker date="1384637026832" expanded="true" signature="1438:1471" placeholder="{...}" />
-            <marker date="1384637026832" expanded="true" signature="1813:1828" placeholder="{...}" />
+            <marker date="1384749770749" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1384749770749" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1384749770749" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/asset/create.gsp">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="2" selection-start="6279" selection-end="6279" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="5.625">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetController.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/_footer.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="8" selection-start="2919" selection-end="2919" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/_header.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.958333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="41" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/DataPoint.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="5" selection-start="482" selection-end="482" vertical-scroll-proportion="-7.3469386">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/TimeSeriesManagementController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="5" selection-start="4408" selection-end="4408" vertical-scroll-proportion="-11.434783">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="32" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetManagementController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="156" column="36" selection-start="6114" selection-end="6114" vertical-scroll-proportion="-2.6086957">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/0001-updating-asset-and-statemodel-management.patch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="629" column="48" selection-start="42390" selection-end="42390" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="40" selection-start="613" selection-end="613" vertical-scroll-proportion="-4.304348">
+          <folding>
+            <element signature="e#34#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/services/com/llamrei/services/DataContentsService.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="45" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/js/rgraph/RGraph.common.adjusting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="31" selection-start="2065" selection-end="2065" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/stacktrace.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29637" column="28" selection-start="2457749" selection-end="2457749" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/Asset.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="33" selection-start="424" selection-end="424" vertical-scroll-proportion="0.7929515">
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/asset/edit.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="43" selection-start="5716" selection-end="5722" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1384630723277" expanded="true" signature="5852:5867" placeholder="{...}" />
-            <marker date="1384630723277" expanded="true" signature="6292:6307" placeholder="{...}" />
-            <marker date="1384630723277" expanded="true" signature="6592:6607" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/utils/com/llamrei/utils/Constants.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="31" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/i18n/messages.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="2694" selection-end="2694" vertical-scroll-proportion="-12.75">
-          <folding />
-        </state>
       </provider>
     </entry>
   </component>
@@ -1324,10 +1273,10 @@
               <option name="pluginDependenciesCrc" value="-2134181893" />
               <option name="properties">
                 <map>
-                  <entry key="grails.global.plugins.dir" value="C:\Users\Dell\.grails\1.3.7\global-plugins" />
-                  <entry key="grails.project.plugins.dir" value="C:\Users\Dell\.grails\1.3.7\projects\llamrei\plugins" />
-                  <entry key="grails.project.work.dir" value="C:\Users\Dell\.grails\1.3.7\projects\llamrei" />
-                  <entry key="grails.work.dir" value="C:\Users\Dell\.grails\1.3.7" />
+                  <entry key="grails.global.plugins.dir" value="$USER_HOME$/.grails/1.3.7/global-plugins" />
+                  <entry key="grails.project.plugins.dir" value="$USER_HOME$/.grails/1.3.7/projects/llamrei/plugins" />
+                  <entry key="grails.project.work.dir" value="$USER_HOME$/.grails/1.3.7/projects/llamrei" />
+                  <entry key="grails.work.dir" value="$USER_HOME$/.grails/1.3.7" />
                 </map>
               </option>
             </GrailsSettings>

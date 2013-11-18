@@ -15,7 +15,7 @@ class Asset {
      * Relationship mapping
      */
     StateModel stateModel
-    static hasMany= [timeSeries: TimeSeries, dataSeries: DataSeries]
+    static hasMany= [timeSeries: TimeSeries, dataSeries: DataPoint]
     
     /**
      * Putting constraints with properties
