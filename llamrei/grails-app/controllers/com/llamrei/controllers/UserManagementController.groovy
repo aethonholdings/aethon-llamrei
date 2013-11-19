@@ -52,7 +52,12 @@ class UserManagementController extends grails.plugins.springsecurity.ui.UserCont
 
 
     def editUser = {
+        def currentUser= springSecurityService.getCurrentUser().getUsername()
+        def boolean compare= false
         def userInstance = SecUser.get(params.id)
+        if(currentUser==userInstance.username){
+            compare=true
+         }
         def userRoles = SecUserSecRole.findAllBySecUser(userInstance)*.secRole
            if (!userInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message( default: 'User'), params.id])}"
@@ -63,7 +68,7 @@ class UserManagementController extends grails.plugins.springsecurity.ui.UserCont
            def roles=SecRole.getAll()
                   println(roles.id)
                   println(userRoles)
-                      return [userInstance: userInstance,roles:roles, userRoles:userRoles]
+                      return [userInstance: userInstance,roles:roles, userRoles:userRoles, compare:compare]
         }
     }
 
