@@ -7,7 +7,7 @@
  */
 
 var dataLen=0;
-
+var singlePointVal=true;
 $(document).ready(function(){
 
     Highcharts.setOptions({
@@ -16,7 +16,8 @@ $(document).ready(function(){
         }
     });
 
-});
+})
+
 
 function showContents(){
 
@@ -30,6 +31,9 @@ function showContents(){
         success:function(data)
         {
             var jsonLengthCount=0;
+            var  ins=data[1].value;
+
+
             $.each(data, function() {
                 jsonLengthCount++
 
@@ -55,44 +59,22 @@ function showContents(){
 
 }
 
-
 function openChart(data,timeSeriesId,assetName){
+
     $('#main1').hide();
     $('#main2').hide();
     $('#chartDiv').show();
 //    $("#headingTab").append('<tr><td><b>'+"Asset Name :"+'</b></td><td>'+"ll"+'</td></tr>');
+    singlePointVal=false;
+    getDataForChart(data,timeSeriesId,singlePointVal);
 
-    getDataForChart(data,timeSeriesId);
 
 }
-
-
-function getCheckedTimeSeries(){
-
-       var arrayOfId = getSelectedCheckBoxes('series');
-       var dataToSend = JSON.stringify(arrayOfId);
-           if(arrayOfId.length!=0){
-            $("#hiddenField").val(dataToSend);
-        }else{
-
-        }
-     }
-      function getSelectedCheckBoxes(s){
-       var ids=[];
-       $.each($('input[name='+s+']'),
-       function () {
-       if($(this).is(':checked')){
-       ids.push($(this).val()); } });
-       return ids;
-}
-
 
 function showChart(data11,jsonLengthCount,timeSeriesId){
 
 
     dataLen=jsonLengthCount;
-
-//    var chart;
 
     var label;
     if(timeSeriesId==1){
@@ -113,8 +95,11 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
                     // set up the updating of the chart each second
                     var series = this.series[0];
                     setInterval(function() {
-                        var x = (new Date()).getTime(); // current time
-                        var result=    nextData();
+                        var x = (new Date()).getTime() // current time
+                        singlePointVal=true;
+                        var result=       getDataForChart(data11,timeSeriesId,singlePointVal);
+
+
                         series.addPoint([x, y], true, true);
                     }, 1000);
                 }
@@ -173,7 +158,11 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
                 // generate an array of random data
                 var data = [],
                     time = (new Date()).getTime(),
+
                     i,j;
+
+                var test=[10,20,30,40,50,20,70,80];
+
 
                 for (j=0,i = -19; j < dataLen; i++,j++) {
 
@@ -191,18 +180,15 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
 }
 
 
-function nextData(){
 
-}
-
-function getDataForChart(data,timeSeriesId){
+function getDataForChart(data,timeSeriesId,singlePointVal){
 
     jQuery.ajax
     ({
         type:'POST',
         url:g.createLink({controller: 'dashboard', action: 'chartContents'}),
 
-        data: "assetId=" + data+"&timeSeriesId="+ timeSeriesId,
+        data: "assetId=" + data+"&timeSeriesId="+ timeSeriesId+"&singlePointVal="+singlePointVal,
         dataType: "json",
         success:function(data)
         {
@@ -222,7 +208,25 @@ function getDataForChart(data,timeSeriesId){
     });
 
 
+}
 
-//     showChart()
 
+
+function getCheckedTimeSeries(){
+
+    var arrayOfId = getSelectedCheckBoxes('series');
+    var dataToSend = JSON.stringify(arrayOfId);
+    if(arrayOfId.length!=0){
+        $("#hiddenField").val(dataToSend);
+    }else{
+
+    }
+}
+function getSelectedCheckBoxes(s){
+    var ids=[];
+    $.each($('input[name='+s+']'),
+        function () {
+            if($(this).is(':checked')){
+                ids.push($(this).val()); } });
+    return ids;
 }
