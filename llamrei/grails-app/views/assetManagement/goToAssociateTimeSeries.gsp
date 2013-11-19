@@ -34,8 +34,8 @@
                 </div>
             </g:hasErrors>
 
-            %{--<g:form action="associateTimeSeries" params="[id:assetInstance.id,timeSeries:timeSeries]" >--}%
-            <g:form action="associateTimeSeries" params="[id:assetInstance.id]" >
+          <g:form action="associateTimeSeries" params="[id:assetInstance.id,timeSeries:timeSeries]" >
+            %{--<g:form action="associateTimeSeries" params="[id:assetInstance.id]" >--}%
                 <div class="dialog" style="overflow-x:auto; height:200px; border:1px solid #ccc" >
 
                     <table style='border: 0px' >
