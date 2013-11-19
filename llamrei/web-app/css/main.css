@@ -8,6 +8,8 @@ body {
     background: #ffffff;
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
 }
 
 /* ELEMENT STYLES */
