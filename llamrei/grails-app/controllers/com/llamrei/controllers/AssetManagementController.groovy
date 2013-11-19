@@ -134,20 +134,15 @@ class AssetManagementController {
     /**
      * action to associate asset with TimeSeries
      */
-   /* def goToAssociateTimeSeries ={
+   def goToAssociateTimeSeries ={
         def assetInstance = Asset.get(params.id)
-        println("&&&&&&&&&&&&&&&&&&&&&&&"+params.id)
+       // println("&&&&&&&&&&&&&&&&&&&&&&&"+params.id)
         def timeSeries = TimeSeries.findAll()
-       // def associatedTimeSeries = AssociateTimeSeries.findByAsset(assetInstance)
-
-
-      *//*  println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+timeSeries)*//*
-        if (!assetInstance) {
+             if (!assetInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
             redirect(action: "listAssets")
         }
         else {
-            *//*return [assetInstance: assetInstance,timeSeries:timeSeries,associatedTimeSeries:associatedTimeSeries ]*//*
             return [assetInstance: assetInstance,timeSeries:timeSeries]
         }
 
@@ -158,12 +153,12 @@ class AssetManagementController {
             def assetId = params.id
             def associateTimeSeries
             def arrayOfId
-        println("+++++++++++++++++++++"+assetId)
+        //println("+++++++++++++++++++++"+assetId)
         try{
              arrayOfId=JSON.parse(params.hiddenField)
         }catch(Exception ex){
             log.info(""+ex)
-            println("EEEEEEEEEEEEEEEEEEEEEE"+ex)
+//            println("EEEEEEEEEEEEEEEEEEEEEE"+ex)
           redirect(action: "listAssets")
         }
 
@@ -171,22 +166,42 @@ class AssetManagementController {
         tsIdList= new ArrayList<Integer>()
          arrayOfId.each{
             if(it){
-             tsIdList.add(it)
-            println("&&&&&&&&&_&&&&&&&&&&&&&&"+it)
+                println("999999999999999999"+it.getClass())
+             tsIdList.add((long)Integer.parseInt(it))
+            }
            }
-         }
-        Asset asset = Asset.get(assetId);
-        Set<TimeSeries> timeSeriesList = TimeSeries.findAllById(tsIdList)
-         asset.timeSeries = timeSeriesList
-         asset.save(flush:true)
-        if (!asset) {
-            flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset')])}"
-            redirect(action: "listAssets")
-           }
+            Asset assetInstance = Asset.get(assetId);
+            Set<TimeSeries> timeSeriesList = TimeSeries.findAllByIdInList(tsIdList)
+            assetInstance.timeSeries = timeSeriesList
+            println("gfsfgjsgf")
+         if (assetInstance) {
+            if (params.version) {
+                def version = params.version.toLong()
+                if (assetInstance.version > version) {
+
+                    assetInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'asset.label', default: 'Asset')] as Object[], "Another user has updated this Asset while you were editing")
+                    render(view: "editAssets", model: [assetInstance: assetInstance])
+                    return
+                }
+            }
+           // assetInstance.properties = params
+            if (!assetInstance.hasErrors() && assetInstance.save(flush: true)) {
+                println("Updating Asset")
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
+                redirect(action: "listAssets", id: assetInstance.id)
+            }
+            else {
+                render(view: "editAssets", model: [assetInstance: assetInstance])
+            }
+        }
         else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
             redirect(action: "listAssets")
         }
-    }*/
+
+         }
+
+
 
     def editStateModel ={
         def stateModelInstance = new StateModel(params)

@@ -16,8 +16,8 @@ class TimeSeries {
      * Relationship mapping
      */
     
-    
-    
+       static hasMany = [asset:Asset]
+       static belongsTo = Asset
      /**
      * Putting constraints with properties
      */

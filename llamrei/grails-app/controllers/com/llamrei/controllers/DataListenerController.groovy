@@ -12,12 +12,12 @@ class DataListenerController {
         /**
          * Retreiving the data coming from node
          */
-        println("==========="+params)
+       // println("==========="+params)
         String id = params.getProperty("id")
         if(!(id==null || id=="")){
-        println("Already Exists  "+id)
+       // println("Already Exists  "+id)
         if(Asset.findByAssetUniqueID(id)){
-        log.info("Already Exists")
+        //log.info("Already Exists")
         String time = params.getProperty("T")
         time=time.replace("|"," ")
 

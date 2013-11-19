@@ -18,10 +18,10 @@
                 </li>
             </sec:ifAnyGranted>
             <sec:ifAnyGranted roles="ROLE_ENGINEER">
-                <li class="roleMenu">Engineering</li>
+                <li class="roleMenu"><a href='#' class='roleMenu' onmouseover='activate("")'>Engineering</a></li>
             </sec:ifAnyGranted>
             <sec:ifAnyGranted roles="ROLE_FINANCE">
-                <li class="roleMenu">Finance</li>
+                <li class="roleMenu"><a href='#' class='roleMenu' onmouseover='activate("")'>Finance</a></li>
             </sec:ifAnyGranted>
             <sec:ifAnyGranted roles="ROLE_ADMIN">
                 <li class="roleMenu"><a href='#' class='roleMenu' onmouseover='activate("adminServiceMenu")'>Admin</a>

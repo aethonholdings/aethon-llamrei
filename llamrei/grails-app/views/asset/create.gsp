@@ -10,7 +10,7 @@
 <g:render template="/layouts/adminSubMenu"/>
 <div class='menuItem'>
     <div style="width: 100%;background-color: #666666;">
-        <h2 style="padding:10px;margin-left:10px;color: #ffffff;font-weight: bold;text-transform: uppercase;">Create Asset</h2>
+        <h2>Create Asset</h2>
     </div>
 
     <div style="margin-left: 20px;font-size: 20px;border:1px solid">
