@@ -20,7 +20,7 @@
             showContents();
             setInterval(function () {
                 showContents();
-            }, 30000);
+            }, 3000000);
         });
 
 

@@ -6,20 +6,15 @@
 </head>
 
 <body>
-<div class="subMenuDiv" id="admin"><div id='subMenuDivItem'><g:link controller="userProfile"
-                                                                    action="list">Manage Users</g:link></div>
 
-    <div style="margin-left: 10px;width:150px"><g:link>Data service management</g:link></div>
 
-    <div><g:link controller="asset" action="list" style="margin-left: 10px;width: 200px">Asset manager</g:link></div>
 
-    <div style="margin-left: 10px;width: 200px"><g:link controller="timeSeries">TimeSeries Management</g:link></div>
 </div>
 
 <div>
-    <div style="width: 100%;background-color: #666666;">
-        <h2 style="padding:10px;margin-left:10px;color: #ffffff;font-weight: bold;text-transform: uppercase;">Edit StaeModel</h2>
-    </div>
+
+    <h2>Edit state model</h2>
+
 
     <div class="body">
 
@@ -38,28 +33,28 @@
                 <table>
                     <tbody>
 
-                    <tr class="prop">
-                        <td valign="top" class="name">
-                            <label for="stateModelId"><g:message code="stateModel.stateModelId.label"
-                                                                 default="State Model Id"/></label>
-                        </td>
-                        <td valign="top"
-                            class="value ${hasErrors(bean: stateModelInstance, field: 'stateModelId', 'errors')}">
-                            <g:textField name="stateModelId" value="${stateModelInstance?.stateModelId}"/>
-                        </td>
-                    </tr>
+                    %{--<tr class="prop">--}%
+                        %{--<td valign="top" class="name">--}%
+                            %{--<label for="stateModelId"><g:message code="stateModel.stateModelId.label"--}%
+                                                                 %{--default="State Model Id"/></label>--}%
+                        %{--</td>--}%
+                        %{--<td valign="top"--}%
+                            %{--class="value ${hasErrors(bean: stateModelInstance, field: 'stateModelId', 'errors')}">--}%
+                            %{--<g:textField name="stateModelId" value="${stateModelInstance?.stateModelId}"/>--}%
+                        %{--</td>--}%
+                    %{--</tr>--}%
 
-                    <tr class="prop">
-                        <td valign="top" class="name">
-                            <label for="asset"><g:message code="stateModel.asset.label"
-                                                          default="Asset Unique Id"/></label>
-                        </td>
-                        <td valign="top" class="value ${hasErrors(bean: stateModelInstance, field: 'asset', 'errors')}">
+                    %{--<tr class="prop">--}%
+                        %{--<td valign="top" class="name">--}%
+                            %{--<label for="asset"><g:message code="stateModel.asset.label"--}%
+                                                          %{--default="Asset Unique Id"/></label>--}%
+                        %{--</td>--}%
+                        %{--<td valign="top" class="value ${hasErrors(bean: stateModelInstance, field: 'asset', 'errors')}">--}%
 
-                            <g:textField name="assetUniqueId" value="${stateModelInstance?.asset?.assetUniqueID}" disabled="true"/>
+                            %{--<g:textField name="assetUniqueId" value="${stateModelInstance?.asset?.assetUniqueID}" disabled="true"/>--}%
 
-                        </td>
-                    </tr>
+                        %{--</td>--}%
+                    %{--</tr>--}%
 
                     <tr class="prop">
                         <td valign="top" class="name">
@@ -104,18 +99,18 @@
                 </table>
             </div>
             <div style='display: inline; width: 500px'>
-            <g:actionSubmit action="update" class='buttonClass1' value="Update">Update</g:actionSubmit>
+            <g:actionSubmit action="update" class='actionButton' value="Update">Update</g:actionSubmit>
         </g:form>
         <g:form controller="stateModel" style='display: inline' action='edit' params="[delete: true, id: stateModelInstance?.id]">
             <button value='Delete state model' onclick="  confirm('Are you sure you want to delete this State Model?');
-            alert('you must define a new stateModel');" id='deleteButton' class="buttonClass1">
+            alert('you must define a new stateModel');" id='deleteButton' class="actionButton">
                 Delete
             </button>
         </g:form>
-        <g:form controller="asset" style='display: inline' action="edit" params="[id: stateModelInstance?.asset?.id]"
-                value="Cancel"><button value='Cancel' class="buttonClass1">Cancel</button></g:form>
+        <g:form controller="assetManagement" style='display: inline' action="editAsset" params="[id: stateModelInstance?.asset?.id]"
+                value="Cancel"><button value='Cancel' class="actionButton">Cancel</button></g:form>
         <g:form controller="stateModel" style='display: inline' action="copy" value="copy" params="[stateModelId : stateModelInstance?.id]"><button value='Copy'
-                                                                                                   class="buttonClass1">Copy</button></g:form>
+                                                                                                   class="actionButton">Copy</button></g:form>
     </div>
     </div>
 </div>

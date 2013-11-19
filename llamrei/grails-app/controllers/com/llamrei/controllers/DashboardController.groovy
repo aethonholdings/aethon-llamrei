@@ -24,46 +24,65 @@ class DashboardController {
             params.sort  ="id"
             params.order   ="desc"
             dataInstanceList = DataPoint.findAllByAsset(asset,params)
+            def timeSeriesList  =[]
 
-            println("???????????"+dataInstanceList)
-            def timeSeriesList     =[]
+
+            if(dataInstanceList){
+
             dataInstanceList?.eachWithIndex { data, i ->
+
                 if(i==0) {
                     contentMap."${asset.id}" =  [assetId:asset.assetUniqueID,name:asset.assetName,id:data.id,value:data.value ]
                     timeSeriesList<<data.timeSeries.id
-                }else if(!(timeSeriesList.contains(data.timeSeries.id)))  {
+                }
+                else if(!(timeSeriesList.contains(data.timeSeries.id)))  {
                     contentMap."${asset.id}"."value${timeSeriesList.size()}"=data.value
                     timeSeriesList<<data.timeSeries.id
                 }
             }
+            }
+            else{
 
-        }
+                    contentMap."${asset.id}" =  [assetId:"",name:asset.assetName,id:"",value:"" ,value1:""]
+                    timeSeriesList<<"a"
 
-        println("================="+contentMap)
+
+                }
+            }
+
         render contentMap as JSON
     }
 
     def chartContents={
-       println("??????"+params.singlePointVal)
-        def dataMap=[:]
+
         params.sort  ="id"
         params.order   ="desc"
-        params.max=8
+        params.max=30
         def assetIns=Asset.findByAssetUniqueID(params.assetId)
         def timeIns=TimeSeries.findById(params.timeSeriesId)
-        if(params.singlePointVal==true){
-            params.max=1
-        }
-        else{
-            params.max=8
-        }
-        def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
-
-        println("?????????????????????"+dataList.value)
-
-
+         def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
         render dataList.value
 
+
+    }
+
+
+    def nextContent={
+        println("???????"+params)
+        params.sort  ="id"
+        params.order   ="desc"
+        params.max=1
+        def assetIns=Asset.findByAssetUniqueID(params.assetId)
+        def timeIns=TimeSeries.findById(params.timeSeriesId)
+//        if(params.singlePointVal==true){
+//            params.max=1
+//        }
+//        else{
+//            params.max=8
+//        }
+        def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+
+        render dataList.value
 
     }
 }
