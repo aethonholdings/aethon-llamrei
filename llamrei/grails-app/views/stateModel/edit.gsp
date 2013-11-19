@@ -9,7 +9,7 @@
 
 
 
-</div>
+
 
 <div>
 
@@ -63,7 +63,7 @@
                         </td>
                         <td valign="top"
                             class="value ${hasErrors(bean: stateModelInstance, field: 'description', 'errors')}">
-                            <g:textField name="description" value="${stateModelInstance?.description}"/>
+                            <g:textArea name="description" value="${stateModelInstance?.description}"/>
                         </td>
                     </tr>
 

@@ -5,12 +5,15 @@ class State {
     static belongsTo = [stateModel: StateModel]
     static hasMany = [stateRules: StateRule]
     
-    static constraints = {
+
         String stateId
         String name
         String description
-    }
 
+     static constraints = {
+         stateId(nullable: true)
+         stateModel(nullable: true)
+     }
     static mapping = {
         stateId column: "stateId"
         name column: "name"
