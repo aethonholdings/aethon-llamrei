@@ -27,7 +27,7 @@
                     </thead>
                     <tbody class='tdclass'>
                     <g:each in="${assetInstanceList}" status="i" var="assetInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" onclick='window.location = "${createLink(action: "editAsset", id: assetInstance.id)}"'   style ="cursor: pointer;">
 
                             <td>${fieldValue(bean: assetInstance, field: "assetUniqueID")}</td>
 
