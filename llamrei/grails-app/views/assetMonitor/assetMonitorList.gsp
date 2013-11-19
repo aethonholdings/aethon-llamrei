@@ -5,7 +5,7 @@
 </head>
 <body>
 <div class='menuItem'>
-    <h2>Asset management</h2>
+    <h2>Asset List</h2>
     <div style="font-size: 15px;">
         <div class="body">
 
@@ -21,14 +21,15 @@
                         <th>Description</th>
                         <th>client Name</th>
                         <th>Location</th>
-                        <th>Imageurl</th>
-                        <th></th>
+                        %{--<th>Imageurl</th>--}%
+                        %{--<th></th>--}%
                     </tr>
                     </thead>
                     <tbody class='tdclass'>
                     <g:each in="${assetInstanceList}" status="i" var="assetInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                        <g:link controller="assetMonitor" action="assetMonitorDetail" params="${assetInstance.id}">
                             <td>${fieldValue(bean: assetInstance, field: "assetUniqueID")}</td>
 
                             <td>${fieldValue(bean: assetInstance, field: "assetName")}</td>
@@ -39,16 +40,18 @@
 
                             <td>${fieldValue(bean: assetInstance, field: "location")}</td>
 
-                            <td>${fieldValue(bean: assetInstance, field: "imageurl")}</td>
-                            <td>
-                                <g:link action="editAsset" params="[id: assetInstance.id]"><button value='Edit' class="actionButton">Edit</button></g:link>
-                            </td>
+                            %{--<td>${fieldValue(bean: assetInstance, field: "imageurl")}</td>--}%
+                            %{--<td>--}%
+                                %{--<g:link action="edit" params="[id: assetInstance.id]"><button value='Edit'                                                                                              class="buttonClass1">Edit</button></g:link>--}%
+                            %{--</td>--}%
+                        </g:link>
                         </tr>
+
                     </g:each>
                     </tbody>
                 </table>
             </div>
-            <g:link controller="assetManagement" action="createAsset"><button value='Create New' class="actionButton" style='float:left; margin-top:5px'>Add +</button></g:link>
+            %{--<g:link controller="assetManagement" action="createAsset"><button value='Create New' class="actionButton" style='float:left; margin-top:5px'>Add +</button></g:link>--}%
         </div>
     </div>
 </div>
