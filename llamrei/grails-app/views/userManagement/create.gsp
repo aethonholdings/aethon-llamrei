@@ -20,8 +20,25 @@
                 </div>
             </g:hasErrors>
             <g:form name="save" action="save">
-                <div class="dialog">
-                    <table>
+                <div  style="border:1px solid #cccccc">
+
+                    %{--<fieldset style="border: 1px solid gold">--}%
+                        %{--<legend>--}%
+                            %{--test--}%
+                            %{--<table>--}%
+                            %{--<tr>--}%
+                                %{--<td>aaa</td>--}%
+                            %{--</tr>--}%
+                            %{--</table>--}%
+                        %{--</legend>--}%
+
+                    %{--<table>--}%
+                        %{--<tr>--}%
+                            %{--<td>aaa</td>--}%
+                        %{--</tr>--}%
+                    %{--</table>--}%
+                    %{--</fieldset>--}%
+                    <table  style="border:0px solid gray">
                         <tbody>
 
                         <tr class="prop">
@@ -58,17 +75,44 @@
                             </td>   <td style="width: 300px"><div id="userEmail" style="display: none; color: red">Please Enter Email</div></td>
                         </tr>
 
-                        <tr class="prop">
-                            <td valign="middle" class="name">
-                                <label for="email"><g:message code="role.label" default="Role"/></label>
-                            </td>
+                        %{--<tr class="prop">--}%
+                            %{--<td valign="middle" class="name">--}%
+                                %{--<label for="email"><g:message code="role.label" default="Role"/></label>--}%
+                            %{--</td>--}%
+                        %{--</tr>--}%
+                          %{--<g:each in="${roles}" status="i" var="roleInstance">--}%
+                              %{--<tr>--}%
+                            %{--<td><td valign="top" class="name">--}%
+                        %{--<label for="r"><g:message code="user.Role.label"--}%
+                                                         %{--default="Role"/></label>--}%
+                    %{--</td> ${fieldValue(bean: roleInstance, field: "authority")}--}%
+                              %{--</td>--}%
+                              %{--<td>--}%
+                            %{--<g:checkBox name="roleInstance.authority" value="${roleInstance?.authority}"/>--}%
+                            %{--</td>--}%
+                              %{--</tr>--}%
+                          %{--</g:each>--}%
+                         %{--<td valign="middle" >--}%
+                                %{--<g:select  from="${roles}" name="userRole" optionKey="authority" optionValue="authority" style="width: 300px;height: 30px"  />--}%
+                            %{--</td>  </tr>--}%
+                        %{--<fieldset>--}%
+                            %{--<legend>aaa</legend>--}%
+                        %{--<g:each in="${roles}" status="i" var='roleInstance'>--}%
 
-                            <td valign="middle" >
-                                <g:select  from="${roles}" name="userRole" optionKey="authority" optionValue="authority" style="width: 300px;height: 30px"  />
-                            </td>
-                        </tr>
+                            %{--<tr >--}%
 
+                   %{--<td>--}%
+                      %{--<label> ${fieldValue(bean: roleInstance, field: "authority")} </label>--}%
+                            %{--</td>--}%
+                                %{--<td>--}%
+                                    %{--<g:checkBox name="myCheckbox" value="${roleInstance.id}" checked=""/>--}%
+                                 %{--</td>--}%
 
+                            %{--</tr>--}%
+
+                        %{--</g:each>--}%
+
+                        %{--</fieldset>--}%
                         <tr class="prop">
                             <td valign="middle" class="name">
                                 <label for="accountExpired"><g:message code="user.accountExpired.label"
@@ -111,9 +155,33 @@
                                 <g:checkBox name="passwordExpired" value="${userInstance?.passwordExpired}"/>
                             </td>
                         </tr>
-
                         </tbody>
                     </table>
+
+                    <fieldset class='roleFieldSet'>
+                        <legend>
+                         Please Select Roles
+                        </legend>
+                            <table class='rolesTable'>
+                                <tbody>
+                            <g:each in="${roles}" status="i" var='roleInstance'>
+
+                                <tr class="prop">
+
+                                    <td valign="middle" class="name">
+                                        <label> ${fieldValue(bean: roleInstance, field: "authority")} </label>
+                                    </td>
+                                    <td valign="middle">
+                                        <g:checkBox name="myCheckbox" value="${roleInstance.id}" checked=""/>
+                                    </td>
+
+                                </tr>
+                            </g:each>
+                                </tbody>
+                               </table>
+
+
+                    </fieldset>
                 </div>
 
                 <div >
