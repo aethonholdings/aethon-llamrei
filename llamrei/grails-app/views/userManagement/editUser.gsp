@@ -11,13 +11,13 @@
 <head>
     <meta name="layout" content="main"/>
 
-</head>
+
 
 </head>
+
+
 <body>
-%{-- <div align="center">
-    <h2 style="text-transform: uppercase;">Administration</h2>
-</div>--}%
+
 <div class='menuItem'>
     <h2>Administration</h2>
     <div style="margin-left: 20px;font-size: 20px;border:1px solid">
@@ -147,7 +147,15 @@
                 <input type="SUBMIT" class="actionButton" value="Update" id="updateUser"/>
             </span>
         </g:form>
-        <g:form controller="userManagement" onsubmit="remove()" style= 'display: inline' action="remove" params="[id:userInstance.id]"><button value='Delete User' onclick=" return confirm('Are you sure you want to delete this user?');" id='deleteButton' class="actionButton" >Delete</button></g:form>
+
+        <g:if test='${!compare}'>
+        <g:form controller="userManagement"  style= 'display: inline' action="remove" params="[id:userInstance.id]">
+            <button value='Delete User'  id='deleteButton' class="actionButton" onclick="return confirm('Are you sure you would like to delete this User?')">Delete</button>
+
+        </g:form>
+            </g:if>
+
+
 
         <g:link controller="userManagement" style= 'display: inline'  action="changePwd" params="[id:userInstance.id]"><button value='Reset password' class="actionButton">Reset password</button></g:link>
         <g:link  action="list"   value="Cancel"><button value='Cancel' class="actionButton">Cancel</button></g:link>
