@@ -211,6 +211,7 @@ class AssetManagementController {
        stateModelInstance.setDescription(Constants.STATE_MODEL_DEFAULT_DESCRIPTION)
        stateModelInstance.setStateModelId(Constants.STATE_MODEL_DEFAULT_STATE_MODEL_ID)
 
+
        println "Going to save statemodel : "+stateModelInstance
        println "validate :"+stateModelInstance.validate()
        if (stateModelInstance.save(flush: true)){

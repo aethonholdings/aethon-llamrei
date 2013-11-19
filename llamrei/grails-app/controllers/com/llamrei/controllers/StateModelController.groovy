@@ -79,8 +79,23 @@ class StateModelController {
     }
 
     def update = {
+        def stateModelInstance = new StateModel(params)
+
+        def _toBeRemoved = stateModelInstance.states.findAll {!it}
+
+        // if there are states to be removed
+        if (_toBeRemoved) {
+            stateModelInstance.states.removeAll(_toBeRemoved)
+        }
+
+        //update my indexes
+        stateModelInstance.states.eachWithIndex(){state, i ->
+            if(state)
+                state.index = i
+        }
+
         println "Prams in update : "+params
-        def stateModelInstance=StateModel.get(params.id)
+         stateModelInstance=StateModel.get(params.id)
         if (stateModelInstance) {
             if (params.version) {
                 def version = params.version.toLong()
