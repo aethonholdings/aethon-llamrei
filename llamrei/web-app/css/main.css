@@ -235,3 +235,35 @@ td.errors textarea {
     border: 1px solid red;
 }
 
+
+.leftDiv{
+    float: right;
+    /*background-color: red;*/
+    width:970px;
+    margin-right: 100px;
+    margin-top:30px;
+    height:400px;
+    font: 11px verdana, arial, helvetica, sans-serif;
+    /*border: gray solid 2px;*/
+}
+
+.rightDiv{
+    float: left;
+    /*background-color: lightgray;*/
+    width:180px;
+    height:400px;
+    font: 11px verdana, arial, helvetica, sans-serif;
+    color: #000000;
+    margin-top: 30px;
+    margin-right: 40px;
+}
+
+
+.imgDiv{
+    margin-top: 30px;
+    margin-left: 10px;
+    border: gainsboro outset 1px;
+    height: 150px;
+    width: 200px;
+}
+

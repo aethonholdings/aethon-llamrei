@@ -2,9 +2,20 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
+    <script>
+        $(function() {
+            $( "#tabs" ).tabs();
+        });
+
+        $(function() {
+            $( "#tabs1" ).tabs();
+        });
+
+    </script>
 </head>
 <body>
-<div class='menuItem'>
+<g:render template="assetDetail"></g:render>
+<div class='menuItem' id="assetListDiv">
     <h2>Asset List</h2>
     <div style="font-size: 15px;">
         <div class="body">
@@ -28,7 +39,7 @@
                     <tbody class='tdclass'>
                     <g:each in="${assetInstanceList}" status="i" var="assetInstance">
 
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" onclick="assetDetail(${assetInstance.id})">
                         <g:link controller="assetMonitor" action="assetMonitorDetail" params="${assetInstance.id}">
                             <td>${fieldValue(bean: assetInstance, field: "assetUniqueID")}</td>
 
