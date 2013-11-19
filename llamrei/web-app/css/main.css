@@ -8,6 +8,9 @@ body {
     background: #ffffff;
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+
 }
 
 /* ELEMENT STYLES */
@@ -60,12 +63,15 @@ h2 {
     vertical-align: middle;
     margin-left: 0px;
 }
+
 .rolesTable{
     border:0px; width:72%
 }
+
 .roleFieldSet{border: 1px solid #cccccc; width:30% }
 
 .editRoleFieldSet{border: 1px solid #cccccc; width:42%}
+
 ul.roleMenu{
     background-color: #20728D;
     list-style-type: none;
