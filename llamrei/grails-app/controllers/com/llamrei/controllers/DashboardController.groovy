@@ -24,6 +24,8 @@ class DashboardController {
             params.sort  ="id"
             params.order   ="desc"
             dataInstanceList = DataPoint.findAllByAsset(asset,params)
+
+            println("???????????"+dataInstanceList)
             def timeSeriesList     =[]
             dataInstanceList?.eachWithIndex { data, i ->
                 if(i==0) {
@@ -42,24 +44,23 @@ class DashboardController {
     }
 
     def chartContents={
-
+       println("??????"+params.singlePointVal)
         def dataMap=[:]
         params.sort  ="id"
         params.order   ="desc"
         params.max=8
         def assetIns=Asset.findByAssetUniqueID(params.assetId)
         def timeIns=TimeSeries.findById(params.timeSeriesId)
+        if(params.singlePointVal==true){
+            params.max=1
+        }
+        else{
+            params.max=8
+        }
         def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
 
         println("?????????????????????"+dataList.value)
-//        dataList?.each{itr->
-//            dataMap=[itr.value]
-//        }
-//
-//        println("==map====="+dataMap)
 
-//        def a=dataList.value as JSON
-//        println("mmmm===="+a)
 
         render dataList.value
 
