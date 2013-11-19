@@ -5,6 +5,7 @@
 
 # IDE support files
 /.classpath
+/.idea
 /.launch
 /.project
 /.settings
@@ -40,5 +41,6 @@
 
 # other
 *.iws
-*.iml
 *.xml
+*.iml
+*.idea
