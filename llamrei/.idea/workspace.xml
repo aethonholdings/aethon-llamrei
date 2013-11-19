@@ -16,9 +16,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f370b26d-998e-49d5-85a0-fc34f62504a9" name="Default" comment="Merge branch 'dev' of https://github.com/cocodinos/llamrei-service into dev&#10;&#10;Conflicts:&#10;&#9;llamrei/.idea/vcs.xml&#10;&#9;llamrei/.idea/workspace.xml&#10;&#9;llamrei/grails-app/conf/DataSource.groovy&#10;&#9;llamrei/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy&#10;&#9;llamrei/grails-app/domain/llamreiAssets/DataPoint.groovy&#10;&#9;llamrei/grails-app/views/dashboard/dashboardIndex.gsp&#10;&#9;llamrei/grails-app/views/layouts/main.gsp&#10;&#9;llamrei/llamrei-grailsPlugins.iml&#10;&#9;llamrei/llamrei.iml&#10;&#9;llamrei/target/classes/BootStrap.class&#10;&#9;llamrei/target/classes/BuildConfig$_run_closure1_closure4.class&#10;&#9;llamrei/target/classes/BuildConfig.class&#10;&#9;llamrei/target/classes/Config.class&#10;&#9;llamrei/target/classes/DataSource$_run_closure3_closure4_closure7.class&#10;&#9;llamrei/target/classes/DataSource.class&#10;&#9;llamrei/target/classes/FamfamfamGrailsPlugin.class&#10;&#9;llamrei/target/classes/HibernateGrailsPlugin.class&#10;&#9;llamrei/target/classes/JqueryGrailsPlugin.class&#10;&#9;llamrei/target/classes/JqueryUiGrailsPlugin.class&#10;&#9;llamrei/target/classes/LoginController.class&#10;&#9;llamrei/target/classes/LogoutController.class&#10;&#9;llamrei/target/classes/MailGrailsPlugin.class&#10;&#9;llamrei/target/classes/SpringSecurityCoreGrailsPlugin.class&#10;&#9;llamrei/target/classes/SpringSecurityUiGrailsPlugin.class&#10;&#9;llamrei/target/classes/TomcatGrailsPlugin.class&#10;&#9;llamrei/target/classes/UrlMappings.class&#10;&#9;llamrei/target/classes/WebxmlGrailsPlugin.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/AdminController.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/DashboardController$_closure1.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/DashboardController.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/RegisterCommand.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/RegisterController.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/RegistrationCodeController.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/RequestmapController.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/ResetPasswordCommand.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/RoleController.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/SecurityInfoController.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/UserController.class&#10;&#9;llamrei/target/classes/com/damyant/llamrei/UserProfileController.class&#10;&#9;llamrei/target/classes/llamreiAssets/Asset$__clinit__closure1.class&#10;&#9;llamrei/target/classes/llamreiAssets/Asset$__clinit__closure2.class&#10;&#9;llamrei/target/classes/llamreiAssets/Asset.class&#10;&#9;llamrei/target/classes/llamreiAssets/DataSeries$__clinit__closure1.class&#10;&#9;llamrei/target/classes/llamreiAssets/DataSeries$__clinit__closure2.class&#10;&#9;llamrei/target/classes/llamreiAssets/DataSeries.class&#10;&#9;llamrei/target/classes/llamreiAssets/StateModel.class&#10;&#9;llamrei/target/classes/llamreiAssets/TimeSeries.class&#10;&#9;llamrei/target/classes/llamreiproject/Role.class&#10;&#9;llamrei/target/classes/llamreiproject/SecRole.class&#10;&#9;llamrei/target/classes/llamreiproject/SecUser.class&#10;&#9;llamrei/target/classes/llamreiproject/SecUserSecRole.class&#10;&#9;llamrei/target/classes/llamreiproject/User.class&#10;&#9;llamrei/target/classes/resources.class&#10;&#9;llamrei/web-app/js/dashBoard.js&#10;">
       <change type="MOVED" beforePath="C:\Users\Administrator\Llamrei\llamrei-service\llamrei\grails-app\controllers\com\llamrei\controllers\AsssetMonitorController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetMonitorController.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llamrei.iml" afterPath="$PROJECT_DIR$/llamrei.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llamrei-grailsPlugins.iml" afterPath="$PROJECT_DIR$/llamrei-grailsPlugins.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/llamrei.iml" afterPath="$PROJECT_DIR$/llamrei.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LlamreiProject.iws" />
@@ -49,7 +49,7 @@
     <file path="/Dummy.txt" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384838388316" ignored="false" />
     <file path="/a.dummy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384757798916" ignored="false" />
     <file path="/create.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384161564309" ignored="false" />
-    <file path="/list.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384168482692" ignored="false" />
+    <file path="/list.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384845028614" ignored="false" />
     <file path="/UserController.groovy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1383894926264" ignored="false" />
     <file path="/_header.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384250204467" ignored="false" />
     <file path="/BuildConfig.groovy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384238113289" ignored="false" />
@@ -58,6 +58,8 @@
     <file path="/DashboardController.groovy" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384757592379" ignored="false" />
     <file path="/_chartPage.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384601032896" ignored="false" />
     <file path="D:/Myspace/18novLLamrei/llamrei/grails-app/views/dashboard/dashboardIndex.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384756799100" ignored="false" />
+    <file path="/listAssets.gsp" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384845094984" ignored="false" />
+    <file path="/.gitignore" changelist="f370b26d-998e-49d5-85a0-fc34f62504a9" time="1384848162410" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +74,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
@@ -109,7 +112,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -119,49 +121,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dashBoard.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-app/js/dashBoard.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="218" column="52" selection-start="5938" selection-end="5938" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1384762139993" expanded="false" signature="945:958" placeholder="..." />
-                <marker date="1384762139993" expanded="false" signature="1479:1492" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AssetMonitorController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetMonitorController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="23" selection-start="219" selection-end="219" vertical-scroll-proportion="-8.130435">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AssetManagementControllerTests.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/unit/com/llamrei/controllers/AssetManagementControllerTests.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="6" selection-start="61" selection-end="61" vertical-scroll-proportion="-2.9565217">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionControllerTests.groovy" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/unit/com/llamrei/controllers/SessionControllerTests.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="6" selection-start="61" selection-end="61" vertical-scroll-proportion="0.2060606">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AssetManagementController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetManagementController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="2" selection-start="627" selection-end="707" vertical-scroll-proportion="-9.217391">
+            <state line="20" column="2" selection-start="627" selection-end="707" vertical-scroll-proportion="-0.65217394">
               <folding />
             </state>
           </provider>
@@ -170,7 +133,7 @@
       <file leaf-file-name="DashboardController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="8" selection-start="272" selection-end="272" vertical-scroll-proportion="-6.652174">
+            <state line="13" column="8" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -179,7 +142,7 @@
       <file leaf-file-name="_header.gsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/_header.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="98" selection-start="1728" selection-end="1728" vertical-scroll-proportion="-15.038462">
+            <state line="8" column="63" selection-start="271" selection-end="271" vertical-scroll-proportion="-1.25">
               <folding />
             </state>
           </provider>
@@ -188,16 +151,64 @@
       <file leaf-file-name="UserManagementController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/UserManagementController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="8" selection-start="459" selection-end="459" vertical-scroll-proportion="-7.7391305">
+            <state line="18" column="8" selection-start="459" selection-end="459" vertical-scroll-proportion="52.173912">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboardIndex.gsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/dashboard/dashboardIndex.gsp">
+      <file leaf-file-name="DataSource.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="1012" selection-end="1018" vertical-scroll-proportion="0.0">
+            <state line="29" column="46" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="18" selection-start="502" selection-end="502" vertical-scroll-proportion="0.6651786">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editUser.gsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/userManagement/editUser.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="44.042553">
+              <folding>
+                <marker date="1384838037316" expanded="true" signature="6766:6781" placeholder="{...}" />
+                <marker date="1384838037316" expanded="true" signature="7048:7063" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.gsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/userManagement/list.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="23" selection-start="1296" selection-end="1455" vertical-scroll-proportion="-1.5957447">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.gsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/timeSeriesManagement/list.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="123" selection-start="1027" selection-end="1027" vertical-scroll-proportion="-0.31914893">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listAssets.gsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/assetManagement/listAssets.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="128" selection-start="1120" selection-end="1120" vertical-scroll-proportion="1.7446809">
               <folding />
             </state>
           </provider>
@@ -222,22 +233,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/grails-app/views/asset/editStateModel.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/asset/edit.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/domain/llamreiAssets/StateModel.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/domain/llamreiAssets/Asset.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/controllers/com/damyant/llamrei/AdminController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/damyant/llamrei/DashboardController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/dashboard/_chartPage.gsp" />
         <option value="$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/llamreiAssets/DataPint.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/llamreiAssets/DataPoint.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/layouts/main.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/dashboard/dashboardIndex.gsp" />
         <option value="$PROJECT_DIR$/web-app/js/dashBoard.js" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetMonitorController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/userManagement/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/timeSeriesManagement/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/assetManagement/listAssets.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/layouts/_header.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -249,10 +260,10 @@
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="-10" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="width" value="1386" />
+    <option name="height" value="761" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -292,7 +303,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -335,33 +345,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="grails-app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="unit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="llamrei" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="llamrei" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="unit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="llamrei" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -375,19 +363,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="grails-app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="unit" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="llamrei" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="userManagement" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -401,7 +385,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="timeSeriesManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assetManagement" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -438,11 +474,30 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="llamrei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Favorites" />
     </panes>
   </component>
@@ -450,10 +505,11 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RecentsManager">
@@ -470,6 +526,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Grails.Grails:llamrei">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -481,12 +543,6 @@
       <method>
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
-      <option name="PROGRAM_PARAMETERS" />
-      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -507,6 +563,19 @@
       </option>
       <option name="moduleName" value="" />
       <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -535,19 +604,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -670,12 +726,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <frame x="-10" y="-8" width="1386" height="761" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3277311" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263328" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -687,7 +743,6 @@
       <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -695,14 +750,15 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23030303" sideWeight="0.6722689" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47731093" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22986823" sideWeight="0.80290794" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19709209" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -775,116 +831,120 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/SecUser.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="53" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="8" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="13" selection-start="3046" selection-end="3058" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/css/old.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="19" selection-start="3509" selection-end="3516" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/com/llamrei/domain/DataPoint.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="42" selection-start="367" selection-end="367" vertical-scroll-proportion="-0.73913044">
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/dashboard/dashboardIndex.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1012" selection-end="1018" vertical-scroll-proportion="0.0">
+        <state line="15" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/js/dashBoard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="218" column="52" selection-start="5938" selection-end="5938" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1384762139993" expanded="false" signature="945:958" placeholder="..." />
-            <marker date="1384762139993" expanded="false" signature="1479:1492" placeholder="..." />
-          </folding>
+        <state line="218" column="52" selection-start="5979" selection-end="5979" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/DashboardController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="8" selection-start="272" selection-end="272" vertical-scroll-proportion="-6.652174">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/_header.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="98" selection-start="1728" selection-end="1728" vertical-scroll-proportion="-15.038462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetManagementController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="2" selection-start="627" selection-end="707" vertical-scroll-proportion="-9.217391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/UserManagementController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="8" selection-start="459" selection-end="459" vertical-scroll-proportion="-7.7391305">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetMonitorController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="23" selection-start="219" selection-end="219" vertical-scroll-proportion="-8.130435">
+        <state line="13" column="8" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/com/llamrei/controllers/AssetManagementControllerTests.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="6" selection-start="61" selection-end="61" vertical-scroll-proportion="-2.9565217">
+        <state line="4" column="6" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/userManagement/editUser.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="44.042553">
+          <folding>
+            <marker date="1384838037316" expanded="true" signature="6766:6781" placeholder="{...}" />
+            <marker date="1384838037316" expanded="true" signature="7048:7063" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/UserManagementController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="8" selection-start="459" selection-end="459" vertical-scroll-proportion="52.173912">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/com/llamrei/controllers/SessionControllerTests.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="6" selection-start="61" selection-end="61" vertical-scroll-proportion="0.2060606">
+        <state line="4" column="6" selection-start="61" selection-end="61" vertical-scroll-proportion="0.10968921">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetMonitorController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="23" selection-start="219" selection-end="219" vertical-scroll-proportion="0.30164534">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/llamrei/controllers/AssetManagementController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="2" selection-start="627" selection-end="707" vertical-scroll-proportion="-0.65217394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/userManagement/list.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="23" selection-start="1296" selection-end="1455" vertical-scroll-proportion="-1.5957447">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/timeSeriesManagement/list.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="123" selection-start="1027" selection-end="1027" vertical-scroll-proportion="-0.31914893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/assetManagement/listAssets.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="128" selection-start="1120" selection-end="1120" vertical-scroll-proportion="1.7446809">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/_header.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="63" selection-start="271" selection-end="271" vertical-scroll-proportion="-1.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="46" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="18" selection-start="502" selection-end="502" vertical-scroll-proportion="0.6651786">
           <folding />
         </state>
       </provider>
@@ -900,10 +960,10 @@
               <option name="pluginDependenciesCrc" value="-2134181893" />
               <option name="properties">
                 <map>
-                  <entry key="grails.global.plugins.dir" value="C:\Users\Administrator\.grails\1.3.7\global-plugins" />
-                  <entry key="grails.project.plugins.dir" value="C:\Users\Administrator\.grails\1.3.7\projects\llamrei\plugins" />
-                  <entry key="grails.project.work.dir" value="C:\Users\Administrator\.grails\1.3.7\projects\llamrei" />
-                  <entry key="grails.work.dir" value="C:\Users\Administrator\.grails\1.3.7" />
+                  <entry key="grails.global.plugins.dir" value="$USER_HOME$/.grails/1.3.7/global-plugins" />
+                  <entry key="grails.project.plugins.dir" value="$USER_HOME$/.grails/1.3.7/projects/llamrei/plugins" />
+                  <entry key="grails.project.work.dir" value="$USER_HOME$/.grails/1.3.7/projects/llamrei" />
+                  <entry key="grails.work.dir" value="$USER_HOME$/.grails/1.3.7" />
                 </map>
               </option>
             </GrailsSettings>
