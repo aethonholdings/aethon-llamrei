@@ -8,4 +8,9 @@ class AssetMonitorController {
 
         [assetInstanceList: Asset.list(params), assetInstanceTotal: Asset.count()]
     }
+
+    def assetDetail={
+
+        println("???assett==="+params)
+    }
 }
