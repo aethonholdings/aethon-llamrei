@@ -60,7 +60,12 @@ h2 {
     vertical-align: middle;
     margin-left: 0px;
 }
+.rolesTable{
+    border:0px; width:72%
+}
+.roleFieldSet{border: 1px solid #cccccc; width:30% }
 
+.editRoleFieldSet{border: 1px solid #cccccc; width:42%}
 ul.roleMenu{
     background-color: #20728D;
     list-style-type: none;
