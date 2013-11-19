@@ -32,7 +32,7 @@
                     <tbody class='tdclass'>
 
                     <g:each in="${timeSeriesInstanceList}" status="i" var="timeSeriesInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" onclick='window.location = "${createLink(action: "edit", id: timeSeriesInstance.id)}"'   style ="cursor: pointer;">
                             <g:link action="edit" params="[id:timeSeriesInstance.id]">
 
 
