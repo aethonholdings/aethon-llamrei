@@ -25,8 +25,8 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop','update'
             driverClassName = "com.mysql.jdbc.Driver"
             url = "jdbc:mysql://llamrei.cokd1jwuhqlu.ap-southeast-1.rds.amazonaws.com:3306/llamrei?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&autoReconnect=true"
-            username = "root"
-            password = "root123"
+            username = "llamrei"
+            password = "k7ALp3vQ"
         }
     }
     production {
