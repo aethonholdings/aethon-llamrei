@@ -97,7 +97,7 @@
                 <input type="button" class='actionButton' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
             </g:link>
             <g:form controller="stateModel" params="[id: assetInstance.id]" style= 'display: inline'  action="edit" ><button value='editstatemodel' class="actionButton">Edit State Model</button></g:form>
-            <g:form controller="assetManagement" style= 'display: inline' action=" goToAssociateTimeSeries" params="[id:assetInstance.id]"><button value='editstatemodel' class="actionButton" style="width:auto">Associate Time Series</button></g:form>
+            <g:form controller="assetManagement" style= 'display: inline' action="goToAssociateTimeSeries" params="[id:assetInstance.id]"><button value='editstatemodel' class="actionButton" style="width:auto">Associate Time Series</button></g:form>
 
         </div>
         </div>
