@@ -28,8 +28,8 @@ class State {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", version=" + version +
-                ", staterules=" + staterules +
-                ", statemodel=" + statemodel +
+                ", statemodel id=" + stateModel.id +
+                ", staterules=" + stateRules +
                 '}';
     }
 }

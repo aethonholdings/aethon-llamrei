@@ -19,7 +19,6 @@ class StateModel {
 
     static transients = [ 'deleted' ]
 
-    List states = new ArrayList()
     static mapping = {
         stateModelId column: "stateModelId"
         name column: "name"
