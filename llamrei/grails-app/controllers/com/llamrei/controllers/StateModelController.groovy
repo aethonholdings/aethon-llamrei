@@ -83,23 +83,8 @@ class StateModelController {
     }
 
     def update = {
-        def stateModelInstance = new StateModel(params)
-
-        def _toBeRemoved = stateModelInstance.states.findAll {!it}
-
-        // if there are states to be removed
-        if (_toBeRemoved) {
-            stateModelInstance.states.removeAll(_toBeRemoved)
-        }
-
-        //update my indexes
-        stateModelInstance.states.eachWithIndex(){state, i ->
-            if(state)
-                state.index = i
-        }
-
-        println "Prams in update : "+params
-         stateModelInstance=StateModel.get(params.id)
+     println "Prams in update : "+params
+       def  stateModelInstance=StateModel.get(params.id)
         if (stateModelInstance) {
             if (params.version) {
                 def version = params.version.toLong()
@@ -187,20 +172,6 @@ class StateModelController {
 
     def addState = {
         println ">>>>>"+params
-        println ">>>SR>>"+params.stateRule
-
-        StateRule stateRule
-        Set<StateRule> stateRules
-        params.stateRule.each{ sr ->
-            println "sr : " +sr
-            /*stateRule = new StateRule()
-            stateRule.setRuleType(sr.ruleType)
-            stateRule.setRuleValue1(sr.ruleValue)
-            stateRule.setTimeSeriesId(sr.timeSeries)
-
-            println "StateRule to be saved : "+stateRule
-            stateRules.add(stateRule)*/
-        }
 
         StateModel stateModel = StateModel.get(params.int('stateModelId'))
         println "found state model : "+stateModel
@@ -208,16 +179,40 @@ class StateModelController {
         state.setName(params.state.name)
         state.setDescription(params.state.description)
         state.setStateModel(stateModel)
-        state.setStateRules(stateRules)
 
         println "going to save state : "+state
+        StateRule stateRule
+        Set<StateRule> stateRules = []
         if(state.validate()) {
             state.save(flush: true)
             println "state saved :)"
+
+            //now save state rules
+            Integer stateRulesCount = Integer.parseInt(params.stateRulesCount)
+            for(int i=0; i<stateRulesCount; i++){
+
+                stateRule = new StateRule()
+                stateRule.setRuleType(params["stateRule.${i}.ruleType"])
+                stateRule.setRuleValue1(params["stateRule.${i}.ruleValue"])
+                stateRule.setTimeSeriesId(params["stateRule.${i}.timeSeries"])
+                stateRule.setState(state)
+
+                println "StateRule to be saved : "+stateRule
+                println "sr validate : "+stateRule.validate()
+                if(stateRule.validate()){
+                    stateRule.save(flush: true)
+                    println "state rule saved"
+
+                    stateRules.add(stateRule)
+                }  else {
+                    println "state rule not saved"
+                }
+            }
         } else {
             println "Could not save the state :("
         }
 
+        state.setStateRules(stateRules)
         Set states = stateModel.states
         states.add(state)
         render template: 'states', model: [states:states, stateModelId:stateModel.id]

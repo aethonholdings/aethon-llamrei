@@ -11,6 +11,8 @@ class StateRule {
     static belongsTo = [state: State]
     
     static constraints = {
+        stateRuleId(nullable: true)
+        ruleValue2(nullable: true)
     }
 
     static mapping = {
@@ -31,7 +33,7 @@ class StateRule {
                 ", ruleValue1='" + ruleValue1 + '\'' +
                 ", ruleValue2='" + ruleValue2 + '\'' +
                 ", version=" + version +
-                ", state=" + state +
+                ", state id=" + state.id +
                 '}';
     }
 }

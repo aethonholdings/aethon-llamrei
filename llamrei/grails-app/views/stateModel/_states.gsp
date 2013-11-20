@@ -11,7 +11,17 @@
             <tr>
                 <td>${state.name}</td>
                 <td>${state.description}</td>
-                <td>${state.stateRules}</td>
+                <td>
+                        <g:each in="${state.stateRules}" var="stateRule">
+                             <ul>
+                                 State Rule ${stateRule.id} :
+                                 <li>Rule Type : ${stateRule.ruleType}</li>
+                                 <li>Rule Value :  ${stateRule.ruleValue1}</li>
+                                 <li>Time Series : ${stateRule.timeSeriesId}</li>
+                             </ul>
+                        </g:each>
+                </td>
+            </</td>
             </tr>
         </g:each>
         <tr>
