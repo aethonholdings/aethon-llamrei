@@ -2,22 +2,13 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-
 </head>
 
 <body>
-
-
-
-
-
 <div>
-
     <h2>Edit state model</h2>
 
-
     <div class="body">
-
         <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
         </g:if>
@@ -32,29 +23,6 @@
             <div class="dialog">
                 <table>
                     <tbody>
-
-                    %{--<tr class="prop">--}%
-                        %{--<td valign="top" class="name">--}%
-                            %{--<label for="stateModelId"><g:message code="stateModel.stateModelId.label"--}%
-                                                                 %{--default="State Model Id"/></label>--}%
-                        %{--</td>--}%
-                        %{--<td valign="top"--}%
-                            %{--class="value ${hasErrors(bean: stateModelInstance, field: 'stateModelId', 'errors')}">--}%
-                            %{--<g:textField name="stateModelId" value="${stateModelInstance?.stateModelId}"/>--}%
-                        %{--</td>--}%
-                    %{--</tr>--}%
-
-                    %{--<tr class="prop">--}%
-                        %{--<td valign="top" class="name">--}%
-                            %{--<label for="asset"><g:message code="stateModel.asset.label"--}%
-                                                          %{--default="Asset Unique Id"/></label>--}%
-                        %{--</td>--}%
-                        %{--<td valign="top" class="value ${hasErrors(bean: stateModelInstance, field: 'asset', 'errors')}">--}%
-
-                            %{--<g:textField name="assetUniqueId" value="${stateModelInstance?.asset?.assetUniqueID}" disabled="true"/>--}%
-
-                        %{--</td>--}%
-                    %{--</tr>--}%
 
                     <tr class="prop">
                         <td valign="top" class="name">
@@ -75,17 +43,21 @@
                             <g:textField name="name" value="${stateModelInstance?.name}"/>
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="box-cards">
+                                <div class="box-cards-title">
+                                    <a class="btn-open" href="#"><span><g:message code="title.states"/></span></a>
+                                </div>
 
-                    <tr class="prop">
-                        <td valign="top" class="name">
-                            <label for="states"><g:message code="stateModel.states.label" default="State List" /></label>
-                        </td>
-                        <td valign="top" class="value ${hasErrors(bean: stateModelInstance, field: 'states', 'errors')}">
-
-                            <!-- Render the states template (_addStates.gsp) here -->
-                            <g:render template="addStates" model="['stateModelInstance':stateModelInstance]" />
-                            <!-- Render the states template (_addStates.gsp) here -->
-
+                                <div class="box-card-hold">
+                                    <div style="position:relative">
+                                        <div id="states">
+                                            <g:render template="states1" model="[states:stateModelInstance.states, stateModelId:stateModelInstance.id]" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
 
@@ -109,6 +81,83 @@
     </div>
     </div>
 </div>
-<g:render template='addstate' model="['addstate':null,'i':'_clone','hidden':true]"/>
+<script type="text/javascript">
+    function toggleSlide(element) {
+        var parent = $(element).is('.box-cards') ? element : $(element).parents('.box-cards');
+
+        if ($(parent).is('.box-cards-open')) {
+            closeSlide(parent);
+        } else {
+            openSlide(parent);
+        }
+    }
+
+    function openSlide(parent) {
+        if ($(parent).not('.box-cards-open')) {
+            $(parent).addClass('box-cards-open');
+            $(parent).find('.box-card-hold').slideDown(500, function() {
+                eval($(parent).attr('onOpen'));
+                eval($(parent).attr('onSlide'));
+            });
+        }
+    }
+
+    function closeSlide(parent) {
+        if ($(parent).is('.box-cards-open')) {
+            $(parent).removeClass('box-cards-open');
+            $(parent).find('.box-card-hold').slideUp(500, function() {
+                eval($(parent).attr('onClose'));
+                eval($(parent).attr('onSlide'));
+            });
+        }
+    }
+
+    $(document).ready(function(){
+        // hide closed box-cards
+        $('.box-cards').each(function(){
+            if (!$(this).is('.box-cards-open'))
+                $(this).find('.box-card-hold').css('display','none');
+        });
+
+        // toggle box-cards on click
+        $('a.btn-open', '.box-cards').click(function() {
+            toggleSlide(this);
+            return false;
+        });
+    });
+
+    function showStateForm(){
+        $('#stateForm').toggle();
+    }
+    function addState(){
+        $.ajax({
+            type: 'POST',
+            url: '${createLink(action: 'addState')}',
+            data: $('div#state-form').parents('form').serialize(),
+            success: function(data) {
+                $('div#states').replaceWith(data);
+            }
+        });
+    }
+
+    var srIndex = 0;
+    function showStateRulesForm(){
+        $('#stateRuleForm').toggle();
+    }
+    function addStateRule(){
+        var timeSeries = $('select[name="state.stateRule.timeSeries"]').val();
+        var ruleType = $('input[name="state.stateRule.ruleType"]').val();
+        var ruleValue = $('input[name="state.stateRule.ruleValue"]').val();
+
+        $('#stateRulesTable tbody').prepend('<tr>' +
+                '<td>'+timeSeries+'</td><input type="hidden" name="stateRule.'+srIndex+'.timeSeries" value="'+timeSeries+'"/>' +
+                '<td>'+ruleType+'</td><input type="hidden" name="stateRule.'+srIndex+'.ruleType" value="'+ruleType+'"/>' +
+                '<td>'+ruleValue+'</td><input type="hidden" name="stateRule.'+srIndex+'.ruleValue" value="'+ruleValue+'"/>' +
+                '</tr>')
+
+        srIndex++;
+    }
+
+</script>
 </body>
 </html>
