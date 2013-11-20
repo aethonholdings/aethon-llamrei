@@ -18,6 +18,13 @@
             <g:hasErrors bean="${timeSeries}">
                 <div class="errors">
                     <g:renderErrors bean="${timeSeries}" as="list" />
+
+                </div>
+            </g:hasErrors>
+            <g:hasErrors bean="${associatedTimeSeries}">
+                <div class="errors">
+                    <g:renderErrors bean="${associatedTimeSeries}" as="list" />
+
                 </div>
             </g:hasErrors>
             <g:hasErrors bean="${assetInstance}">
@@ -27,8 +34,8 @@
                 </div>
             </g:hasErrors>
 
-          <g:form action="associateTimeSeries" params="[id:assetInstance.id,timeSeries:timeSeries]" >
-
+            %{--<g:form action="associateTimeSeries" params="[id:assetInstance.id,timeSeries:timeSeries]" >--}%
+            <g:form action="associateTimeSeries" params="[id:assetInstance.id]" >
                 <div class="dialog" style="overflow-x:auto; height:200px; border:1px solid #ccc" >
 
                     <table style='border: 0px' >
@@ -72,9 +79,16 @@
                         %{--</td>--}%
                         <tr>
                             <td>
+
                             <g:hiddenField name="hiddenField"  id="hiddenField" />
-                            </td>
+
+
+                          </td>
+
                         </tr>
+
+
+
                         </tbody>
                     </table>
                     <fieldset class='editRoleFieldSet'>
@@ -108,10 +122,12 @@
                 </div>
                 <div >
                     <span>
+                        %{--        <g:submitButton name="Create" class="save"
+                     value="${message(code: 'default.button.create.label', default: 'Create')}"/>--}%
                         <input type="SUBMIT" class="actionButton" value="Associate" id="createAsset" onclick="getCheckedTimeSeries()" />
                     </span>
                     <span class="button">
-                        <g:link action="listAssets">
+                        <g:link action="list">
                             <input type="button" class='actionButton' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
                         </g:link>
                     </span>
