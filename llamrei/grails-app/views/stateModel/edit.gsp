@@ -53,7 +53,7 @@
                                 <div class="box-card-hold">
                                     <div style="position:relative">
                                         <div id="states">
-                                            <g:render template="states1" model="[states:stateModelInstance.states, stateModelId:stateModelInstance.id]" />
+                                            <g:render template="states" model="[states:stateModelInstance.states, stateModelId:stateModelInstance.id]" />
                                         </div>
                                     </div>
                                 </div>

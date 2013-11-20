@@ -26,5 +26,5 @@
 </div>
 
 <div id="stateRuleForm" style="display: none">
-     <g:render template="stateRulesForm" />
+     <g:render template="stateRulesForm" model="[stateModelId:stateModelId]" />
 </div>

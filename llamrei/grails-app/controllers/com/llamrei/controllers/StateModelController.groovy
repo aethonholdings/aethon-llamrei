@@ -2,6 +2,7 @@ package com.llamrei.controllers
 
 import com.llamrei.domain.State
 import com.llamrei.domain.StateRule
+import com.llamrei.domain.TimeSeries
 import grails.plugins.springsecurity.Secured
 import com.llamrei.domain.StateModel
 import com.llamrei.domain.Asset
@@ -219,6 +220,6 @@ class StateModelController {
 
         Set states = stateModel.states
         states.add(state)
-        render template: 'states1', model: [states:states, stateModelId:stateModel.id]
+        render template: 'states', model: [states:states, stateModelId:stateModel.id]
     }
 }
