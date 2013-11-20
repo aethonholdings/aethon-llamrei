@@ -7,15 +7,13 @@
     <div class="rightDiv">
 
         <div>
-            %{--<div class="heading"><label>Asset Name </label>:&nbsp;&nbsp;&nbsp; <label>test </label></div>--}%
-            %{--<div class="heading"><label>Client Name</label>:&nbsp;&nbsp;&nbsp;<label>test </label></div>--}%
-            %{--<div class="heading"><label>Location</label>:&nbsp;&nbsp;&nbsp; <label>test </label></div>--}%
-            <table style="margin-top: 5px;border: none">
-                <tr>
-                    <td><b>Asset Name</b></td><td>:</td><td>test</td>    </tr>
-                <tr>  <td><b>Client Name</b></td><td>:</td><td>test</td>  </tr>
-                <tr> <td><b>Location</b></td><td>:</td><td>test</td>
-                </tr>
+
+            <table style="margin-top: 5px;border: none" id="assetName">
+                %{--<tr>--}%
+                    %{--<td><b>Asset Name</b></td><td>:</td><td>test</td>    </tr>--}%
+                %{--<tr>  <td><b>Client Name</b></td><td>:</td><td>test</td>  </tr>--}%
+                %{--<tr> <td><b>Location</b></td><td>:</td><td>test</td>--}%
+                %{--</tr>--}%
             </table>
         </div>
         <div class="imgDiv">
@@ -48,21 +46,22 @@
             <div id="tabs-1">
                 %{--<input type="button" value="Add" class="buttonClass">  <input type="button" value="Remove" class="buttonClass">--}%
                 <div style="margin-top: 10px">
-                    <table>
+                    <table id="detailTable">
 
                         <tr>
                             <th class="thclass">&nbsp;</th>
                             <th class="thclass">Value</th>
                             <th class="thclass">Unit</th>
-                            <th class="thclass">Max</th>
-                            <th class="thclass">Min</th></tr>
-                        <tr>
-                            <td class="tdclass">  </td>
-                            <td class="tdclass"></td>
-                            <td class="tdclass">  </td>
-                            <td class="tdclass"></td>
-                            <td class="tdclass"></td>
+                            %{--<th class="thclass">Max</th>--}%
+                            %{--<th class="thclass">Min</th>--}%
                         </tr>
+                        %{--<tr>--}%
+                            %{--<td class="tdclass"></td>--}%
+                            %{--<td class="tdclass"></td>--}%
+                            %{--<td class="tdclass"></td>--}%
+                            %{--<td class="tdclass"></td>--}%
+                            %{--<td class="tdclass"></td>--}%
+                        %{--</tr>--}%
                     </table>
                 </div>
             </div>

@@ -5,17 +5,16 @@
  * Time: 11:59 AM
  * To change this template use File | Settings | File Templates.
  */
-
+var savedAssetID;
 
 $(document).ready(function(){
 
 
 
-})
+});
 
 function assetDetail(assetId){
- alert("id=="+assetId)
-
+    savedAssetID=assetId
     $("#assetListDiv").hide();
     $("#assetDetailDiv").show();
 
@@ -33,7 +32,15 @@ function assetDetail(assetId){
             $.each(data, function() {
                 jsonLengthCount++
             });
-//            showChart(data,jsonLengthCount,timeSeriesId)
+            $("#assetName").find("tr").remove();
+            $('#assetName').append('<tr><td><b>Asset Name<b></td><td>:</td><td>'+data[0].name+'</td></tr>' +
+                '<tr><td><b>Client Name<b></td><td>:</td><td>'+data[0].clientName+'</td></tr>'+
+                '<tr><td><b>Location<b></td><td>:</td><td>'+data[0].location+'</td></tr>');
+
+            $("#detailTable").find("tr:gt(0)").remove();
+            for(var i=0;i<=jsonLengthCount;i++)  {
+                $('#detailTable').append('<tr><td>'+data[i].timeSeriesName+'</td><td>'+data[i].value+'</td><td>'+data[i].unit+'</td></tr>');
+            }
 
         }
         ,error:function(XMLHttpRequest, textStatus, errorThrown) {

@@ -2,7 +2,22 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+                    alert("j")
+
+        setInterval(function () {
+            if($('#assetListDiv').is(':hidden')) {
+                assetDetail(savedAssetID);
+            }
+            else{
+
+            }
+        }, 20000);
+        });
+
+
         $(function() {
             $( "#tabs" ).tabs();
         });
@@ -10,6 +25,8 @@
         $(function() {
             $( "#tabs1" ).tabs();
         });
+
+
 
     </script>
 </head>

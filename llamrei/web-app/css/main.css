@@ -267,3 +267,9 @@ td.errors textarea {
     width: 200px;
 }
 
+.updateMsgClass{
+    float: right;
+    padding-top: 20px;
+    color: darkcyan;
+    display: none;
+}
