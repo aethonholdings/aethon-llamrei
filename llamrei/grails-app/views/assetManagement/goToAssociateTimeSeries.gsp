@@ -18,13 +18,6 @@
             <g:hasErrors bean="${timeSeries}">
                 <div class="errors">
                     <g:renderErrors bean="${timeSeries}" as="list" />
-
-                </div>
-            </g:hasErrors>
-            <g:hasErrors bean="${associatedTimeSeries}">
-                <div class="errors">
-                    <g:renderErrors bean="${associatedTimeSeries}" as="list" />
-
                 </div>
             </g:hasErrors>
             <g:hasErrors bean="${assetInstance}">
@@ -34,8 +27,8 @@
                 </div>
             </g:hasErrors>
 
-            %{--<g:form action="associateTimeSeries" params="[id:assetInstance.id,timeSeries:timeSeries]" >--}%
-            <g:form action="associateTimeSeries" params="[id:assetInstance.id]" >
+          <g:form action="associateTimeSeries" params="[id:assetInstance.id,timeSeries:timeSeries]" >
+
                 <div class="dialog" style="overflow-x:auto; height:200px; border:1px solid #ccc" >
 
                     <table style='border: 0px' >
@@ -61,33 +54,33 @@
                             <div id='timeSeries' style="width: 25% ; border: 0px solid gainsboro; ">
 
                                 <g:each var="series"   in="${timeSeries}">
-                                <div  style="width: 50%; float:left; margin-top:7px" >
+                                <div  style="width: 50%; margin-top:7px" >
                                    <label for="timeSeries" ><g:message code="${series?.name}"  value="${series?.name}" /></label>
                                  </div>
-                                  <div style="width: 50%; float: right;margin-top:3px">
-                                  %{-- <g:checkBox  chkId="${timeSeries?.id}" name="box" value="${timeSeries?.name}" checked="unchecked" style="margin-left: 25px" >${timeSeries?.name}</g:checkBox>--}%
-                                  <g:checkBox id="series${series?.id}" name="series" value="${series?.id}" style="margin-left: 5px ;float:right" checked="unchecked"></g:checkBox>
+                                  <div style="width: 50%; float: right;margin-top:0px">
+                                  <g:set var="a_series" value="${assetInstance.timeSeries}"/>
+                                 <g:if test="${a_series.contains(series)}">
+                                  <g:checkBox id="series${series?.id}" name="series" value="${series?.id}" style="margin-left: 3px ;float:right" checked="true" ></g:checkBox>
+                                 </g:if>
+                                  <g:else>
+                                  <g:checkBox id="series${series?.id}" name="series" value="${series?.id}" style="margin-left: 3px ;float:right" checked="false"></g:checkBox>
+                              </g:else>
                                   </div>
 
                                  </g:each>
-                                  <g:hiddenField name="hiddenField"  id="hiddenField" />
                              </div>
                         </td>
+                            <g:hiddenField name="hiddenField"  id="hiddenField" />
                         </tr>
-
-
-
                         </tbody>
                     </table>
                 </div>
                 <div >
                     <span>
-                        %{--        <g:submitButton name="Create" class="save"
-                     value="${message(code: 'default.button.create.label', default: 'Create')}"/>--}%
                         <input type="SUBMIT" class="actionButton" value="Associate" id="createAsset" onclick="getCheckedTimeSeries()" />
                     </span>
                     <span class="button">
-                        <g:link action="list">
+                        <g:link action="listAssets">
                             <input type="button" class='actionButton' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
                         </g:link>
                     </span>

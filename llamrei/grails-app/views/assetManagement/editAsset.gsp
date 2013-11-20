@@ -71,7 +71,7 @@
                             </td>
                             <td valign="top"
                                 class="value ${hasErrors(bean: assetInstance, field: 'description', 'errors')}">
-                                <g:textArea name="description" value="${assetInstance?.description}"/>
+                                <g:textField name="description" value="${assetInstance?.description}"/>
                             </td>
                         </tr>
                         <tr class="prop">
