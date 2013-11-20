@@ -3,7 +3,7 @@ package com.llamrei.controllers.session
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
 class SessionController {
-    def scaffold = true
+    static scaffold = true
 
     def index = {
         //Only admin users can create, edit, list the downloads
