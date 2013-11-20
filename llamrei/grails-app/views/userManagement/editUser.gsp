@@ -11,13 +11,13 @@
 <head>
     <meta name="layout" content="main"/>
 
-
-
 </head>
 
-
+</head>
 <body>
-
+%{-- <div align="center">
+    <h2 style="text-transform: uppercase;">Administration</h2>
+</div>--}%
 <div class='menuItem'>
     <h2>Administration</h2>
     <div style="margin-left: 20px;font-size: 20px;border:1px solid">
@@ -32,7 +32,7 @@
         </g:hasErrors>
 
 
-        <g:form name="edit" action='updateUser'>
+        <g:form method="post">
             <g:hiddenField name="id" value="${userInstance?.id}"/>
             <g:hiddenField name="version" value="${userInstance?.version}"/>
             <table style='border:0px'>
@@ -49,16 +49,26 @@
                     </td>
                 </tr>
 
+
+
                 <tr class="prop">
                     <td valign="top" class="name">
-                        <label for="email"><g:message code="user.email.label" default="Email"/></label>
+                        <label for="userRole"><g:message code="user.Role.label"
+                                                         default="Role"/></label>
                     </td>
-                    <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'email', 'errors')}">
-                        <g:textField class='textInput' name="email" value="${userInstance?.email}"/>
-                    </td>
+                    <g:if test="${SecUserSecRole.findBySecUser(userInstance)!=null}" >
+                        <td valign="top">
+                            <g:select class='textInput' from="${SecRole.list()}" optionKey="authority" optionValue="authority" value="${role.authority}" name="userRole"
+                                      style="width: 300px;"/>
+                        </td>
+                    </g:if>
+                    <g:else>
+                        <td valign="top">
+                            <g:select  class='textInput'  from="${SecRole.list()}" optionKey="authority" optionValue="authority" value="" name="userRole"  noSelection="['':'-Choose role-']"
+                                       style="width: 300px;"/>
+                        </td>
+                    </g:else>
                 </tr>
-
-
 
                 <tr class="prop">
                     <td valign="top" class="name">
@@ -82,6 +92,14 @@
                     </td>
                 </tr>
 
+                <tr class="prop">
+                    <td valign="top" class="name">
+                        <label for="email"><g:message code="user.email.label" default="Email"/></label>
+                    </td>
+                    <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'email', 'errors')}">
+                        <g:textField class='textInput' name="email" value="${userInstance?.email}"/>
+                    </td>
+                </tr>
 
                 <tr class="prop">
                     <td valign="top" class="name">
@@ -106,56 +124,16 @@
 
                 </tbody>
             </table>
-            <fieldset class='editRoleFieldSet'>
-                      <legend>
-                       Please Select Roles
-                      </legend>
-              <table style='border:0px'>
-                  <tbody>
-                  <g:each in="${roles}" status="i" var='roleInstance'>
+            </div>
 
-                      <tr>
-                          <td class='name'>
-                              <label> ${fieldValue(bean: roleInstance, field: "authority")} </label>
-                          </td>
-                          <td class='value'>
-                              <g:set var="userRoleIds" value="${userRoles.id}"/>
-                              <g:if test="${userRoleIds.contains(roleInstance.id)}">
-                                  <g:checkBox name="myCheckbox" value="${roleInstance.id}" checked="true"/>
-                              </g:if>
-                              <g:else>
-                                  <g:checkBox name="myCheckbox" value="${roleInstance.id}" checked="false"/>
-                              </g:else>
-                          </td>
-
-                      </tr>
-
-                  </g:each>
-                  </tbody>
-              </table>
-            </fieldset>
-          </div>
-
-          <div style='display: inline; width: 500px'>
-            %{--<g:actionSubmit  action="updateUser" class='actionButton' value="Update">Update</g:actionSubmit>--}%
+            <div style='display: inline; width: 500px'>
+            <g:actionSubmit  action="updateUser" class='actionButton' value="Update">Update</g:actionSubmit>
         %{-- <span class="button"><g:actionSubmit class="delete" action="delete"
                                               value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                               onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/></span>--}%
-            <span>
-                %{--        <g:submitButton name="Create" class="save"
-                                                         value="${message(code: 'default.button.create.label', default: 'Create')}"/>--}%
-                <input type="SUBMIT" class="actionButton" value="Update" id="updateUser"/>
-            </span>
-        </g:form>
-
-        <g:if test='${!compare}'>
-        <g:form controller="userManagement"  style= 'display: inline' action="remove" params="[id:userInstance.id]">
-            <button value='Delete User'  id='deleteButton' class="actionButton" onclick="return confirm('Are you sure you would like to delete this User?')">Delete</button>
 
         </g:form>
-            </g:if>
-
-
+        <g:form controller="userManagement" onsubmit="remove()" style= 'display: inline' action="remove" params="[id:userInstance.id]"><button value='Delete User' onclick=" return confirm('Are you sure you want to delete this user?');" id='deleteButton' class="actionButton" >Delete</button></g:form>
 
         <g:link controller="userManagement" style= 'display: inline'  action="changePwd" params="[id:userInstance.id]"><button value='Reset password' class="actionButton">Reset password</button></g:link>
         <g:link  action="list"   value="Cancel"><button value='Cancel' class="actionButton">Cancel</button></g:link>

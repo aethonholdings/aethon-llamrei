@@ -13,15 +13,15 @@
                 <li class="roleMenu"><a href='#' class='roleMenu' onmouseover='activate("operatorServiceMenu")'>Operations</a>
                     <ul class="serviceMenu" id="operatorServiceMenu">
                         <li class="serviceMenu"><g:link controller="dashboard" action="dashboardIndex" class="serviceMenu">Dashboard</g:link></li>
-                        <li class="serviceMenu"><g:link controller="assetMonitor" action="assetMonitorList" class="serviceMenu">Asset monitor</g:link></li>
+                        <li class="serviceMenu"><a href="#">Asset monitor</a></li>
                     </ul>            
                 </li>
             </sec:ifAnyGranted>
             <sec:ifAnyGranted roles="ROLE_ENGINEER">
-                <li class="roleMenu"><a href='#' class='roleMenu' onmouseover='activate("")'>Engineering</a></li>
+                <li class="roleMenu">Engineering</li>
             </sec:ifAnyGranted>
             <sec:ifAnyGranted roles="ROLE_FINANCE">
-                <li class="roleMenu"><a href='#' class='roleMenu' onmouseover='activate("")'>Finance</a></li>
+                <li class="roleMenu">Finance</li>
             </sec:ifAnyGranted>
             <sec:ifAnyGranted roles="ROLE_ADMIN">
                 <li class="roleMenu"><a href='#' class='roleMenu' onmouseover='activate("adminServiceMenu")'>Admin</a>

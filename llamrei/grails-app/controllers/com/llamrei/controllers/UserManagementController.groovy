@@ -25,21 +25,20 @@ class UserManagementController extends grails.plugins.springsecurity.ui.UserCont
         def UserInstance = new SecUser()
         UserInstance.properties = params
         def roleList=SecRole.getAll()
-            [userInstance: UserInstance,roles:roleList]
+        println(roleList)
+        [userInstance: UserInstance,roles:roleList]
     }
 
     def save = {
 
         def userInstance = new SecUser(params)
-        def checked = params.list('myCheckbox')
         def roleList=SecRole.getAll()
+        def role=SecRole.findByAuthority(params?.userRole)
+        println(role);
         if (userInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
-            for(int i=0;i<checked.size();i++){
-                def role=SecRole.findById(checked[i])
-                SecUserSecRole.create userInstance, role
 
-            }
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
+            SecUserSecRole.create userInstance, role
             redirect(action: "list", id: userInstance.id)
         }
         else {
@@ -47,28 +46,28 @@ class UserManagementController extends grails.plugins.springsecurity.ui.UserCont
            render(view: "create", model: [userInstance: userInstance,roles:roleList])
 
         }
-   }
+    }
 
-
+//    def show = {
+//        println("?????????????????????????????????????")
+//        //def userInstance=User.findById(params.userId)
+//        def UserInstance = SecUser.findById(params.id)
+//        def userInstance = SecUser.findByUser(UserInstance)
+//
+//        [UserInstance: UserInstance, userInstance: userInstance]
+//
+//    }
 
     def editUser = {
-        def currentUser= springSecurityService.getCurrentUser().getUsername()
-        def boolean compare= false
-        def userInstance = SecUser.get(params.id)
-        if(currentUser==userInstance.username){
-            compare=true
-         }
-        def userRoles = SecUserSecRole.findAllBySecUser(userInstance)*.secRole
-           if (!userInstance) {
+        def UserInstance = SecUser.get(params.id)
+              if (!UserInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message( default: 'User'), params.id])}"
             redirect(action: "list")
         }
         else {
 
-           def roles=SecRole.getAll()
-                  println(roles.id)
-                  println(userRoles)
-                      return [userInstance: userInstance,roles:roles, userRoles:userRoles, compare:compare]
+           def role=SecUserSecRole.findBySecUser(UserInstance)
+                      return [userInstance: UserInstance,role:role.secRole]
         }
     }
 
@@ -77,38 +76,21 @@ class UserManagementController extends grails.plugins.springsecurity.ui.UserCont
         def UserInstance = SecUser.get(params.id)
         if (UserInstance) {
             if (params.version) {
-
                 def version = params.version.toLong()
                 if (UserInstance.version > version) {
-
                     UserInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message( default: 'User')] as Object[], "Another user has updated this User while you were editing")
                     render(view: "editUser", model: [UserInstance: UserInstance])
                     return
                 }
             }
-
-            UserInstance.properties=params
-
-            def secUserSecRoleInstance = SecUserSecRole.findAllBySecUser(UserInstance)
-            secUserSecRoleInstance.each{
-                it.delete()
-            }
-            def checked = params.list('myCheckbox')
-            if (UserInstance.save(flush: true)) {
-
-                flash.message = "${message(code: 'default.updated.message', args: [message( default: 'User'),   UserInstance.id])}"
-                 for(int i=0;i<checked.size();i++){
-                    def role=SecRole.findById(checked[i])
-                    SecUserSecRole.create    UserInstance, role
-
-                }
-
-                redirect(action: "list", id:    UserInstance.id)
+            UserInstance.properties = params
+            if (!UserInstance.hasErrors() && UserInstance.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message( default: 'User'), UserInstance.id])}"
+                redirect(action: "list", id: UserInstance.id)
             }
             else {
-
-               log.debug "-----------" +    UserInstance.errors
-                render(view: "editUser", model: [userInstance:UserInstance])
+                log.debug "-----------" + UserInstance.errors
+                render(view: "editUser", model: [UserInstance: UserInstance])
             }
         }
         else {
@@ -118,18 +100,13 @@ class UserManagementController extends grails.plugins.springsecurity.ui.UserCont
     }
 
     def remove = {
-        println "entering"+ params.id
-        def userInstance = SecUser.get(params.id)
-        def userRoles = SecUserSecRole.findAllBySecUser(userInstance)
-        println(userInstance)
-
-
-        if (userInstance) {
+        println "entering"
+        def UserInstance = SecUser.get(params.id)
+        def UserInstance1 = SecUserSecRole.findBySecUser(UserInstance)
+        if (UserInstance) {
             try {
-                userRoles.each{
-                    it.delete(flush: true)
-                }
-               userInstance.delete(flush: true)
+                UserInstance1.delete(flush: true)
+               UserInstance.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message( default: 'User'), params.id])}"
                 redirect(action: "list")
             }
@@ -156,16 +133,44 @@ class UserManagementController extends grails.plugins.springsecurity.ui.UserCont
     * If error then redirect to changePwd page with message.
     * */
     def changPwdAction = {
+//        log.debug("------change pwd params:" + params)
+//        def UserInstance = SecUser.findById(params.id)
+//        def userInstance = SecUser.findByUser(UserInstance)
+//        if (params.newPwd == params.reNewPwd) {
+//            def password = springSecurityService.encodePassword(params.oldPwd)
+//            if (userInstance.password != password) {
+//                flash.message = "Old password is Not validated."
+//                redirect(action: 'changePwd', params: [id: UserInstance.id])
+//            } else {
+//                userInstance.password = params.newPwd
+//                if (userInstance.save(Flushable: true)) {
+//                    flash.message = "Password Changed Successfully."
+//                    redirect(action: 'show', params: [id: UserInstance.id])
+//                }
+//            }
+//
+//        } else {
+//            flash.message = "New password and re entered password Not matched"
+//            return
+//        }
+//
+//
         def userInstance=SecUser.findById(params.id)
         userInstance.password=params.newPwd
         userInstance.save(flush: true)
+//        println newPassword
+//        userInstance.password=newPassword
+//         if (!userInstance.hasErrors() && userInstance.save(flush: true)) {
+//             mailerService.sendForgetPassword(newPassword,userInstance)
 
         flash.message = "${message(code:'password.reset.msg',args:[userInstance.username,userInstance.email])}"
         redirect(action: "list")
-
+//         }
    }
 
-
+    def data={
+        render "hello"
+    }
 
 
 }

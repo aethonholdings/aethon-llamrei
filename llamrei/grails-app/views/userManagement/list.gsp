@@ -44,8 +44,7 @@
                     </thead>
                     <tbody class='tdclass'>
                     <g:each in="${SecUserInstanceList}" status="i" var="userInstance">
-
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" onclick='window.location = "${createLink(action: "editUser", id: userInstance.id)}"'   style ="cursor: pointer;">
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td> ${fieldValue(bean: userInstance, field: "username")}</td>
 
                             <td>${fieldValue(bean: userInstance, field: "email")}</td>
@@ -63,7 +62,6 @@
                             </td>
 
                         </tr>
-
                     </g:each>
                     </tbody>
                 </table>
