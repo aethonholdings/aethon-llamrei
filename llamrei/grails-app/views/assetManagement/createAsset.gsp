@@ -1,6 +1,6 @@
 
 
-<%@ page import="com.llamrei.domain.Asset" %><html>
+<%@ page import="com.llamrei.domain.Asset" %>
 
 <html>
 <head>
