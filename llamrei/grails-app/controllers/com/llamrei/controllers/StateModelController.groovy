@@ -1,4 +1,7 @@
 package com.llamrei.controllers
+
+import com.llamrei.domain.State
+import com.llamrei.domain.StateRule
 import grails.plugins.springsecurity.Secured
 import com.llamrei.domain.StateModel
 import com.llamrei.domain.Asset
@@ -49,11 +52,11 @@ class StateModelController {
     def edit = {
         def stateModelInstance
         if (params.assetId){
-            println "finding state model by asset id"
+            println "finding state model by asset id "+params.assetId
             Integer assetId = Integer.parseInt(params.assetId)
             stateModelInstance = StateModel.findByAsset(Asset.findById(assetId.longValue()))
         } else if (params.id){
-            println "finding state model by id"
+            println "finding state model by id "+params.id
             stateModelInstance = StateModel.get(params.id)
         }
 
@@ -79,8 +82,23 @@ class StateModelController {
     }
 
     def update = {
+        def stateModelInstance = new StateModel(params)
+
+        def _toBeRemoved = stateModelInstance.states.findAll {!it}
+
+        // if there are states to be removed
+        if (_toBeRemoved) {
+            stateModelInstance.states.removeAll(_toBeRemoved)
+        }
+
+        //update my indexes
+        stateModelInstance.states.eachWithIndex(){state, i ->
+            if(state)
+                state.index = i
+        }
+
         println "Prams in update : "+params
-        def stateModelInstance=StateModel.get(params.id)
+         stateModelInstance=StateModel.get(params.id)
         if (stateModelInstance) {
             if (params.version) {
                 def version = params.version.toLong()
@@ -164,5 +182,43 @@ class StateModelController {
             flash.message = "Could not find asset"
             redirect(action: 'copy', stateModelId:params.stateModelId )
         }
+    }
+
+    def addState = {
+        println ">>>>>"+params
+        println ">>>SR>>"+params.stateRule
+
+        StateRule stateRule
+        Set<StateRule> stateRules
+        params.stateRule.each{ sr ->
+            println "sr : " +sr
+            /*stateRule = new StateRule()
+            stateRule.setRuleType(sr.ruleType)
+            stateRule.setRuleValue1(sr.ruleValue)
+            stateRule.setTimeSeriesId(sr.timeSeries)
+
+            println "StateRule to be saved : "+stateRule
+            stateRules.add(stateRule)*/
+        }
+
+        StateModel stateModel = StateModel.get(params.int('stateModelId'))
+        println "found state model : "+stateModel
+        State state = new State()
+        state.setName(params.state.name)
+        state.setDescription(params.state.description)
+        state.setStateModel(stateModel)
+        state.setStateRules(stateRules)
+
+        println "going to save state : "+state
+        if(state.validate()) {
+            state.save(flush: true)
+            println "state saved :)"
+        } else {
+            println "Could not save the state :("
+        }
+
+        Set states = stateModel.states
+        states.add(state)
+        render template: 'states1', model: [states:states, stateModelId:stateModel.id]
     }
 }

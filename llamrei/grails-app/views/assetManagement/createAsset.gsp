@@ -1,6 +1,6 @@
 
 
-<%@ page import="com.llamrei.domain.Asset" %>
+<%@ page import="com.llamrei.domain.Asset" %><html>
 
 <html>
 <head>
@@ -57,7 +57,7 @@
                         </td>
                         <td valign="top"
                             class="value ${hasErrors(bean: assetInstance, field: 'description', 'errors')}">
-                            <g:textField name="description" value="${assetInstance?.description}"/>
+                            <g:textArea name="description" value="${assetInstance?.description}"/>
                         </td>
                     </tr>
 
