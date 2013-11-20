@@ -17,7 +17,7 @@ environments {
             driverClassName = "com.mysql.jdbc.Driver"
             url = "jdbc:mysql://localhost:3306/llamrei?autoreconnect=true"
             username = "root"
-            password = "root123"
+            password = "root@123"
         }
     }
     test {
