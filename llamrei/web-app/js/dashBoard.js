@@ -6,12 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var dataLen=0;
-
-var singlePointVal=true;
-
-var assetID,timeSeriesID,pointValue;
-var statusFlag=false;
+var dataLen= 0,counter=0;
+var assetID,timeSeriesID,pointValue,prevPointID=0;
+var statusFlag=false,checkFlag=false;
 
 $(document).ready(function(){
 
@@ -29,9 +26,9 @@ function showContents(){
     jQuery.ajax
     ({
         type:'POST',
-        url:g.createLink({controller: 'dashboard', action: 'showContents1'}),
+        url:g.createLink({controller: 'dashboard', action: 'dashboardIndex'}),
 
-        data: "loginName=" + "aaa",
+        data: "updateDashBoard=" + true,
         dataType: "json",
         success:function(data)
         {
@@ -44,18 +41,19 @@ function showContents(){
 
             });
 
-//            alert("jjj=="+data[])
+
             $("#main1").find("tr:gt(0)").remove();
             for(var i=1;i<=jsonLengthCount;i++)  {
-                assetID=data[i].assetId
+
                 if (i % 2) {
 
-                    $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td onclick=openChart("'+data[i].assetId+'",1)>'+data[i].value1+'</td><td onclick=openChart("'+data[i].assetId+'",2)>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
+                    $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
                 }
                 else{
-                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td onclick=openChart("'+data[i].assetId+'",1)>'+data[i].value1+'</td><td onclick=openChart("'+data[i].assetId+'",2)>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
+                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
                 }
             }
+
 
         }
         ,error:function(XMLHttpRequest, textStatus, errorThrown) {
@@ -66,8 +64,11 @@ function showContents(){
 
 }
 
-function openChart(data,timeSeriesId,assetName){
 
+
+function openChart(data,timeSeriesId){
+
+    assetID=data
     $('#main1').hide();
     $('#main2').hide();
      $('h2').text('');
@@ -104,15 +105,14 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
                     var series = this.series[0];
                     setInterval(function() {
 
+                        var x ; // current time
+
+                       getNextPoint(assetID,timeSeriesID);
 
 
-                        var x = (new Date()).getTime() // current time
-//                        alert("in id=="+timeSeriesID)
-                        var result=       getNextPoint(assetID,timeSeriesID);
-
-                        if(statusFlag==true){
-
-                        series.addPoint([x, parseFloat(pointValue)], true, true);
+                        if(statusFlag==true && checkFlag==true){
+                            x = (new Date()).getTime()
+                           series.addPoint([x, parseFloat(pointValue)], true, true);
                         }
 
                     }, 5000);
@@ -203,7 +203,7 @@ function getDataForChart(data,timeSeriesId){
         type:'POST',
         url:g.createLink({controller: 'dashboard', action: 'chartContents'}),
 
-        data: "assetId=" + data+"&timeSeriesId="+ timeSeriesId+"&singlePointVal="+singlePointVal,
+        data: "assetId=" + data+"&timeSeriesId="+ timeSeriesId,
         dataType: "json",
         success:function(data)
         {
@@ -226,7 +226,7 @@ function getDataForChart(data,timeSeriesId){
 function getNextPoint(assetID,timeSeriesID){
 
 
-    var newData;
+    var currentPointID;
     jQuery.ajax
     ({
         type:'POST',
@@ -242,19 +242,30 @@ function getNextPoint(assetID,timeSeriesID){
                 jsonLengthCount++
             });
 
-                  newData=data;
+
+            pointValue=parseFloat(data[0].value)
+
 
             statusFlag=true;
-            pointValue=data
-//            showChart(data,jsonLengthCount,timeSeriesId)
+
+            if(prevPointID==data[0].id){
+             checkFlag=false;
+            }
+            else{
+                checkFlag=true;
+                prevPointID=data[0].id
+            }
+
+
 
         }
         ,error:function(XMLHttpRequest, textStatus, errorThrown) {
 //            alert("Error in fetching Data")
         }
+
     });
 
-    return newData;
+
 }
 
 
@@ -290,3 +301,26 @@ function getSelectedCheckBoxes(s){
                 ids.push($(this).val()); } });
     return ids;
 }
+
+$(document).ajaxStart(function() {
+    if($('#main1').is(':hidden')) {
+
+    }
+    else{
+        $('#msgDiv').show()
+    }
+
+});
+
+$(document).ajaxStop(function() {
+
+    if($('#main1').is(':hidden')) {
+
+    }
+    else{
+        $('#msgDiv').hide()
+    }
+
+
+});
+

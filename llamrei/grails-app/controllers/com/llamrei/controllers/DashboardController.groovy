@@ -11,15 +11,13 @@ import com.llamrei.domain.TimeSeries
 class DashboardController {
 
     def dataContentsService
+
     def dashboardIndex = {
 
-    }
-
-    def showContents1={
-//
         def contentMap=[:]
         def dataInstanceList
         def assetInstance = Asset.list()
+        def timeSeriesName
         assetInstance?.each{ asset->
             params.sort  ="id"
             params.order   ="desc"
@@ -27,40 +25,57 @@ class DashboardController {
             def timeSeriesList  =[]
 
 
+
             if(dataInstanceList){
+//                timeSeriesName=asset.timeSeries.name
 
-            dataInstanceList?.eachWithIndex { data, i ->
+        timeSeriesName = asset.timeSeries.find{it.inDashboard}
 
-                if(i==0) {
-                    contentMap."${asset.id}" =  [assetId:asset.assetUniqueID,name:asset.assetName,id:data.id,value:data.value ]
-                    timeSeriesList<<data.timeSeries.id
+                dataInstanceList?.eachWithIndex { data, i ->
+
+                    if(i==0) {
+                        contentMap."${asset.id}" =  [uID:asset.id,assetId:asset.assetUniqueID,name:asset.assetName,timeSereisID:data.timeSeries.id,id:data.id,value:data.value ]
+                        timeSeriesList<<data.timeSeries.id
+                        }
+                    else if(!(timeSeriesList.contains(data.timeSeries.id)))  {
+                        contentMap."${asset.id}"."value${timeSeriesList.size()}"=data.value
+                        timeSeriesList<<data.timeSeries.id
+
+                    }
                 }
-                else if(!(timeSeriesList.contains(data.timeSeries.id)))  {
-                    contentMap."${asset.id}"."value${timeSeriesList.size()}"=data.value
-                    timeSeriesList<<data.timeSeries.id
-                }
-            }
             }
             else{
+                contentMap."${asset.id}" =  [assetId:"",name:asset.assetName,id:"",value:"" ,value1:""]
+                timeSeriesList<<"a"
 
-                    contentMap."${asset.id}" =  [assetId:"",name:asset.assetName,id:"",value:"" ,value1:""]
-                    timeSeriesList<<"a"
 
-
-                }
             }
+        }
 
-        render contentMap as JSON
+
+        if(params.updateDashBoard=="true"){
+
+
+            render contentMap as JSON
+        }
+        else{
+
+
+        render (view: "dashboardIndex", model: [contentmap:contentMap,timeSeriesName:timeSeriesName] )
+        }
+
     }
+
 
     def chartContents={
 
         params.sort  ="id"
         params.order   ="desc"
         params.max=30
-        def assetIns=Asset.findByAssetUniqueID(params.assetId)
+        def assetIns=Asset.findById(params.assetId)
         def timeIns=TimeSeries.findById(params.timeSeriesId)
-         def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+        def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+        println("======="+dataList)
         render dataList.value
 
 
@@ -68,21 +83,16 @@ class DashboardController {
 
 
     def nextContent={
-        println("???????"+params)
+
         params.sort  ="id"
         params.order   ="desc"
-        params.max=1
-        def assetIns=Asset.findByAssetUniqueID(params.assetId)
+        params.max=2
+        def assetIns=Asset.findById(params.assetId)
         def timeIns=TimeSeries.findById(params.timeSeriesId)
-//        if(params.singlePointVal==true){
-//            params.max=1
-//        }
-//        else{
-//            params.max=8
-//        }
-        def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
 
-        render dataList.value
+        def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+       println("next value==="+dataList.id)
+        render dataList as JSON
 
     }
 }

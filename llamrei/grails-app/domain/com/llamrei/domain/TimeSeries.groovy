@@ -11,6 +11,8 @@ class TimeSeries {
      String description
      String units
      String dataType
+     Boolean inDashboard
+//
 
     /**
      * Relationship mapping
@@ -35,5 +37,6 @@ class TimeSeries {
     static mapping = {
     timeSeriesUniqueID column: "timeSeriesUniqueID"
     dataType column :"dataType"
+        inDashboard column: "inDashboard"
     }
 }
