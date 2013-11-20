@@ -45,35 +45,66 @@
                             </td>
                         </tr>
 
-                        <tr class="prop">
-                            <td valign="top" class="name">
-                                <label for="timeSeries"><g:message code="asset.clientName.label" default="Time Series" /></label>
-                            </td>
+                        %{--<tr class="prop">--}%
+                            %{--<td valign="top" class="name">--}%
+                                %{--<label for="timeSeries"><g:message code="asset.clientName.label" default="Time Series" /></label>--}%
+                            %{--</td>--}%
 
+                            %{--<td>--}%
+                            %{--<div id='timeSeries' style="width: 25% ; border: 0px solid gainsboro; ">--}%
+
+                                %{--<g:each var="series"   in="${timeSeries}">--}%
+                                %{--<div  style="width: 50%; margin-top:7px" >--}%
+                                   %{--<label for="timeSeries" ><g:message code="${series?.name}"  value="${series?.name}" /></label>--}%
+                                 %{--</div>--}%
+                                  %{--<div style="width: 50%; float: right;margin-top:0px">--}%
+                                  %{--<g:set var="a_series" value="${assetInstance.timeSeries}"/>--}%
+                                 %{--<g:if test="${a_series.contains(series)}">--}%
+                                  %{--<g:checkBox id="series${series?.id}" name="series" value="${series?.id}" style="margin-left: 3px ;float:right" checked="true" ></g:checkBox>--}%
+                                 %{--</g:if>--}%
+                                  %{--<g:else>--}%
+                                  %{--<g:checkBox id="series${series?.id}" name="series" value="${series?.id}" style="margin-left: 3px ;float:right" checked="false"></g:checkBox>--}%
+                              %{--</g:else>--}%
+                                  %{--</div>--}%
+
+                                 %{--</g:each>--}%
+                             %{--</div>--}%
+                        %{--</td>--}%
+                        <tr>
                             <td>
-                            <div id='timeSeries' style="width: 25% ; border: 0px solid gainsboro; ">
-
-                                <g:each var="series"   in="${timeSeries}">
-                                <div  style="width: 50%; margin-top:7px" >
-                                   <label for="timeSeries" ><g:message code="${series?.name}"  value="${series?.name}" /></label>
-                                 </div>
-                                  <div style="width: 50%; float: right;margin-top:0px">
-                                  <g:set var="a_series" value="${assetInstance.timeSeries}"/>
-                                 <g:if test="${a_series.contains(series)}">
-                                  <g:checkBox id="series${series?.id}" name="series" value="${series?.id}" style="margin-left: 3px ;float:right" checked="true" ></g:checkBox>
-                                 </g:if>
-                                  <g:else>
-                                  <g:checkBox id="series${series?.id}" name="series" value="${series?.id}" style="margin-left: 3px ;float:right" checked="false"></g:checkBox>
-                              </g:else>
-                                  </div>
-
-                                 </g:each>
-                             </div>
-                        </td>
                             <g:hiddenField name="hiddenField"  id="hiddenField" />
+                            </td>
                         </tr>
                         </tbody>
                     </table>
+                    <fieldset class='editRoleFieldSet'>
+                        <legend>
+                            Please Select Time Series
+                        </legend>
+                        <table style='border:0px'>
+                            <tbody>
+                            <g:each in="${timeSeries}" status="i" var='timeSeriesInstance'>
+
+                                <tr>
+                                    <td class='name'>
+                                        <label> ${fieldValue(bean: timeSeriesInstance, field: "name")} </label>
+                                    </td>
+                                    <td class='value'>
+                                        <g:set var="a_series" value="${assetInstance.timeSeries}"/>
+                                        <g:if test="${a_series.contains(timeSeries)}">
+                                            <g:checkBox id="series${timeSeriesInstance?.id}" name="series" value="${timeSeriesInstance?.id}" checked="true"/>
+                                        </g:if>
+                                        <g:else>
+                                            <g:checkBox id="series${timeSeriesInstance?.id}" name="series" value="${timeSeriesInstance?.id}" checked="false"/>
+                                        </g:else>
+                                    </td>
+
+                                </tr>
+
+                            </g:each>
+                            </tbody>
+                        </table>
+                    </fieldset>
                 </div>
                 <div >
                     <span>

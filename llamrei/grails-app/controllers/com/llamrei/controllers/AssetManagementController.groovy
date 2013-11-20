@@ -108,8 +108,13 @@ class AssetManagementController {
 
     def deleteAsset = {
         def assetInstance = Asset.get(params.id)
+        def assetStateModelInstance=  StateModel.findByAsset(assetInstance)
+        println("hello kuldeeppppppppppppppppp"+assetStateModelInstance)
+
+        if(assetStateModelInstance){
         if (assetInstance) {
             try {
+                assetStateModelInstance.delete(flush:true)
                 assetInstance.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
                 redirect(action: "listAssets")
@@ -123,7 +128,12 @@ class AssetManagementController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
             redirect(action: "listAssets")
         }
+        }
 
+            else {
+                flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
+                redirect(action: "listAssets")
+        }
 
     }
 
