@@ -10,7 +10,7 @@ class DataSeriesService {
 
     static transactional = true
 
-    def boolean saveDataToDB(String id, String time, ArrayList seriesList ) {
+    def boolean saveDataToDB(String id, String time, ArrayList seriesList,List<TimeSeries> tsIns) {
            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss")
              try
               {
@@ -22,7 +22,7 @@ class DataSeriesService {
                        dataObject.nodeTimestamp=date
                        dataObject.timestamp= new Date()
                        dataObject.asset=Asset.findByAssetUniqueID(id)
-                       dataObject.timeSeries=TimeSeries.findByTimeSeriesUniqueID("000"+(i+1))
+                       dataObject.timeSeries=TimeSeries.findByTimeSeriesUniqueID(tsIns.get(i).timeSeriesUniqueID)
                        dataObject.save(flush:true)
 
               }catch(Exception e){
@@ -30,21 +30,16 @@ class DataSeriesService {
            }
          }
              }catch (ParseException ex) {
-           System.out.println("Exception "+ex);
+           log.info("Exception "+ex);
        }
         return  true
     }
 
-    def boolean saveDataToDB(String id, String time, Queue dataQueue ) {
+    def boolean saveDataToDB(String id, String time, Queue dataQueue, List<TimeSeries> tsIns ) {
            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss")
              try
               {
                 Date date = simpleDateFormat.parse(time);
-               /* System.out.println("date : "+simpleDateFormat.format(date));
-               println("==========##############====="+seriesList.size())
-               println("????date=="+date+"<<<<<<<<<<<<"+date.getClass())*/
-
-
                   Iterator it=dataQueue.iterator();
                   int i=0
                   while(it.hasNext()){
@@ -55,17 +50,15 @@ class DataSeriesService {
                        dataObject.nodeTimestamp=date
                        dataObject.timestamp= new Date()
                        dataObject.asset=Asset.findByAssetUniqueID(id)
-                       dataObject.timeSeries=TimeSeries.findByTimeSeriesUniqueID("000"+(i+1))
-                       // println("************************************")
+                       dataObject.timeSeries=TimeSeries.findByTimeSeriesUniqueID(tsIns.get(i).timeSeriesUniqueID)
                        dataObject.save(flush:true)
 
               }catch(Exception e){
            e.printStackTrace()
            }
           }
-
-             }catch (ParseException ex) {
-           System.out.println("Exception "+ex);
+              }catch (ParseException ex) {
+           log.info("Exception "+ex);
        }
         return  true
     }
