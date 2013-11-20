@@ -14,6 +14,7 @@ $(document).ready(function(){
 });
 
 function assetDetail(assetId){
+
     savedAssetID=assetId
     $("#assetListDiv").hide();
     $("#assetDetailDiv").show();
@@ -21,9 +22,9 @@ function assetDetail(assetId){
     jQuery.ajax
     ({
         type:'POST',
-        url:g.createLink({controller: 'assetMonitor', action: 'assetDetail'}),
+        url:g.createLink({controller: 'assetMonitor', action: 'assetMonitorDetail'}),
 
-        data: "assetId=" + assetId,
+        data: "assetId=" + assetId+"&nextVal="+true,
         dataType: "json",
         success:function(data)
         {
@@ -32,6 +33,7 @@ function assetDetail(assetId){
             $.each(data, function() {
                 jsonLengthCount++
             });
+
             $("#assetName").find("tr").remove();
             $('#assetName').append('<tr><td><b>Asset Name<b></td><td>:</td><td>'+data[0].name+'</td></tr>' +
                 '<tr><td><b>Client Name<b></td><td>:</td><td>'+data[0].clientName+'</td></tr>'+

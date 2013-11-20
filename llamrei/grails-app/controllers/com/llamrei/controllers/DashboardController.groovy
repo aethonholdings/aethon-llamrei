@@ -59,7 +59,7 @@ class DashboardController {
             render contentMap as JSON
         }
         else{
-         println("?============"+timeSeriesName.name)
+
 
         render (view: "dashboardIndex", model: [contentmap:contentMap,timeSeriesName:timeSeriesName] )
         }

@@ -12,8 +12,8 @@ class AssetMonitorController {
         [assetInstanceList: Asset.list(params), assetInstanceTotal: Asset.count()]
     }
 
-    def assetDetail={
-
+    def assetMonitorDetail={
+        println("?????????"+params)
         def contentMap=[:]
         params.sort  ="id"
         params.order   ="desc"
@@ -29,9 +29,15 @@ class AssetMonitorController {
             contentMap."${count}" =  [name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location,timeSeriesName:time.name,unit:time.units,value:dataList.value[0] ]
         count++
         }
+      if(params.nextVal=="true"){
+       println("innnnnnnnn")
+          render contentMap as JSON
+      }  else{
+          [contentMap:contentMap,assetId:assetIns.id,name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location]
+      }
 
 
-        render contentMap as JSON
+//        render contentMap as JSON
 
     }
 }
