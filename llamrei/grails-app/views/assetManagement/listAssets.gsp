@@ -39,8 +39,16 @@
 
                             <td>${fieldValue(bean: assetInstance, field: "location")}</td>
 
-                            <td>${fieldValue(bean: assetInstance, field: "imageurl")}</td>
-                            <td>
+                            <td class='buttonCenter'>
+                                <g:if test="${assetInstance.imageurl}">
+
+                                <img class=imageThumbnail src="${assetInstance.imageurl}"/>
+
+                                    </g:if>
+                            <g:else>
+                                <div class="imageNotAvailable" ></div>
+                            </g:else>
+                            <td class='buttonCenter'>
                                 <g:link action="editAsset" params="[id: assetInstance.id]"><button value='Edit' class="actionButton">Edit</button></g:link>
                             </td>
                         </tr>

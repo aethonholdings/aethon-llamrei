@@ -63,6 +63,15 @@
                             <g:textField  class='textInput' name="dataType" value="${timeSeriesInstance?.dataType}" />
                         </td>
                     </tr>
+                    <tr class="prop">
+                        <td valign="middle" class="name">
+                            <label for="dataType"><g:message code="timeSeries.inDashboard.label" default="Show In Dashboard" /></label>
+                        </td>
+                        <td valign="top" >
+                            <input type="radio" name="myGroup" value="true" checked="${timeSeriesInstance.inDashboard}"/>True
+                            <input type="radio" name="myGroup" value="false" checked="${timeSeriesInstance.inDashboard}" style='margin-left: 20px'/>False
+                        </td>
+                    </tr>
 
                     <tr class="prop">
                         <td valign="top" class="name">

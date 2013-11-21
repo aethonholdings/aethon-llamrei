@@ -2,19 +2,10 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <script>
-        $(function() {
-            $( "#tabs" ).tabs();
-        });
 
-        $(function() {
-            $( "#tabs1" ).tabs();
-        });
-
-    </script>
 </head>
 <body>
-<g:render template="assetDetail"></g:render>
+
 <div class='menuItem' id="assetListDiv">
     <h2>Asset List</h2>
     <div style="font-size: 15px;">
@@ -30,7 +21,7 @@
                         <th>Asset Unique ID</th>
                         <th>Asset Name</th>
                         <th>Description</th>
-                        <th>client Name</th>
+                        <th>Client Name</th>
                         <th>Location</th>
                         %{--<th>Imageurl</th>--}%
                         %{--<th></th>--}%
@@ -39,23 +30,19 @@
                     <tbody class='tdclass'>
                     <g:each in="${assetInstanceList}" status="i" var="assetInstance">
 
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" onclick="assetDetail(${assetInstance.id})">
-                        <g:link controller="assetMonitor" action="assetMonitorDetail" params="${assetInstance.id}">
-                            <td>${fieldValue(bean: assetInstance, field: "assetUniqueID")}</td>
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
 
-                            <td>${fieldValue(bean: assetInstance, field: "assetName")}</td>
+                            <td>  <g:link style="color: #000000" controller="assetMonitor" action="assetMonitorDetail" params="[assetId:assetInstance.id]">${fieldValue(bean: assetInstance, field: "assetUniqueID")}</g:link></td>
 
-                            <td>${fieldValue(bean: assetInstance, field: "description")}</td>
+                            <td><g:link style="color: #000000" controller="assetMonitor" action="assetMonitorDetail"  params="[assetId:assetInstance.id]">${fieldValue(bean: assetInstance, field: "assetName")}</g:link></td>
 
-                            <td>${fieldValue(bean: assetInstance, field: "clientName")}</td>
+                            <td><g:link style="color: #000000" controller="assetMonitor" action="assetMonitorDetail"  params="[assetId:assetInstance.id]">${fieldValue(bean: assetInstance, field: "description")}</g:link></td>
 
-                            <td>${fieldValue(bean: assetInstance, field: "location")}</td>
+                            <td><g:link style="color: #000000" controller="assetMonitor" action="assetMonitorDetail"  params="[assetId:assetInstance.id]">${fieldValue(bean: assetInstance, field: "clientName")}</g:link></td>
 
-                            %{--<td>${fieldValue(bean: assetInstance, field: "imageurl")}</td>--}%
-                            %{--<td>--}%
-                                %{--<g:link action="edit" params="[id: assetInstance.id]"><button value='Edit'                                                                                              class="buttonClass1">Edit</button></g:link>--}%
-                            %{--</td>--}%
-                        </g:link>
+                            <td><g:link style="color: #000000" controller="assetMonitor" action="assetMonitorDetail"  params="[assetId:assetInstance.id]">${fieldValue(bean: assetInstance, field: "location")}</g:link></td>
+
+
                         </tr>
 
                     </g:each>

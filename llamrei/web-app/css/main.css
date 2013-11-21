@@ -8,8 +8,6 @@ body {
     background: #ffffff;
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
-    overflow: -moz-scrollbars-vertical; 
-    overflow-y: scroll;
 }
 
 /* ELEMENT STYLES */
@@ -42,7 +40,12 @@ h2 {
     line-height: 80px;
     vertical-align: middle;
 }
-
+ .imageNotAvailable{
+     width:86px;
+     overflow-y: hidden ;
+     height:80px;
+     background: url('../images/noImageAvailable.jpg')
+ }
 .sessionManagement{
     float: right;
     font-weight: bold;
@@ -52,7 +55,7 @@ h2 {
 }
 
 /* MENU BARS */
-
+ .imageThumbnail{height:100px;width:150px}
 .headerMenu{
     float: left;
     height: 30px;
@@ -68,7 +71,7 @@ h2 {
 }
 
 .roleFieldSet{border: 1px solid #cccccc; width:30% }
-
+.buttonCenter{text-align: center}
 .editRoleFieldSet{border: 1px solid #cccccc; width:42%}
 
 ul.roleMenu{
@@ -239,12 +242,98 @@ td.errors input {
 td.errors textarea {
     border: 1px solid red;
 }
+.box-cards {
+    margin: 0 20px 0;
+    padding: 10px 0 0 0;
+}
 
+/* line 1290, sass/all.sass */
+.box-cards .box-cards {
+    width: 80%;
+    margin: 10px auto;
+}
+
+.box-cards {
+    margin: 0 20px 0;
+    padding: 10px 0 0 0;
+}
+
+.box-cards .box-cards {
+    width: 80%;
+    margin: 10px auto;
+}
+
+/*.box-cards-title {*/
+    /*height: 30px;*/
+    /*background-color: #4d90fe;*/
+    /**zoom: 1;*/
+    /*filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF8DC449', endColorstr='#FF7BAA3F');*/
+    /*background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2NjZTRhZCIvPjxzdG9wIG9mZnNldD0iMyUiIHN0b3AtY29sb3I9IiM4ZGM0NDkiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YmFhM2YiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');*/
+    /*background-size: 100%;*/
+    /*background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffff), color-stop(3%, #ffff), color-stop(100%, #ffff));*/
+    /*background-image: -webkit-linear-gradient(top, #ffff 0%, #ffff 3%, #ffff 100%);*/
+    /*background-image: -moz-linear-gradient(top, #ffff 0%, #ffff 3%, #ffff 100%);*/
+    /*background-image: -o-linear-gradient(top, #ffff 0%, #ffff 3%, #ffff 100%);*/
+    /*background-image: linear-gradient(top, #ffff 0%, #ffff 3%, #ffff 100%);*/
+    /*-webkit-border-radius: 3px 3px 0 0;*/
+    /*-moz-border-radius: 3px 3px 0 0;*/
+    /*-ms-border-radius: 3px 3px 0 0;*/
+    /*-o-border-radius: 3px 3px 0 0;*/
+    /*border-radius: 3px 3px 0 0;*/
+    /*border-width: 1px;*/
+    /*border-style: solid;*/
+    /*border-color: #ddd;*/
+/*}*/
+
+.ie9 .box-cards-title {
+    filter: none;
+}
+
+.box-cards-title span {
+    font-size: 11px;
+    font-weight: bold;
+    color: #000000;
+    line-height: 30px;
+    padding-right: 35px;
+    padding-left: 7px;
+    text-shadow: rgba(255, 255, 255, 0.4) 0 1px 0;
+    text-transform: uppercase;
+}
+
+.box-cards-title a.btn-open {
+    display: block;
+    width: 100%;
+    color: #383838;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+.box-cards-title a.btn-open span {
+    padding-left: 32px;
+    display: block;
+    cursor: pointer;
+    background: url(../images/bullet.gif) no-repeat 8px 50%;
+}
+
+.box-cards-title a.btn-open:hover {
+    text-decoration: none;
+}
+
+.box-cards-open a.btn-open span {
+    background: url(../images/bullet2.gif) no-repeat 8px 50%;
+}
+
+.box-cards .box-card-hold {
+    /*padding: 10px 10px 25px;*/
+    border: 1px solid #bbbbbb;
+    border-top: none;
+}
 
 .leftDiv{
     float: right;
     /*background-color: red;*/
-    width:970px;
+    width:900px;
     margin-right: 100px;
     margin-top:30px;
     height:400px;
@@ -255,7 +344,7 @@ td.errors textarea {
 .rightDiv{
     float: left;
     /*background-color: lightgray;*/
-    width:180px;
+    width:220px;
     height:400px;
     font: 11px verdana, arial, helvetica, sans-serif;
     color: #000000;
@@ -272,3 +361,9 @@ td.errors textarea {
     width: 200px;
 }
 
+.updateMsgClass{
+    float: right;
+    padding-top: 20px;
+    color: darkcyan;
+    display: none;
+}

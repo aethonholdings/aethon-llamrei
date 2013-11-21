@@ -47,7 +47,7 @@ grails.enable.native2ascii = true
 grails.logging.jul.usebridge = true
 // packages to include in Spring bean scanning
 grails.spring.bean.packages = []
-
+   def localHost= InetAddress.getLocalHost().getHostAddress()
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
 
@@ -57,10 +57,12 @@ environments {
         grails.serverURL = "http://www.changeme.com"
     }
     development {
-        grails.serverURL = "http://localhost:8080/${appName}"
+           grails.serverURL = "http://localhost:8080/${appName}"
+//        grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
     }
     test {
         grails.serverURL = "http://localhost:8080/${appName}"
+//        grails.serverURL = "http://"+localHost+":"+grails.server.port.http+"/${appName}"
     }
 
 }

@@ -1,4 +1,8 @@
 package com.llamrei.controllers
+
+import com.llamrei.domain.State
+import com.llamrei.domain.StateRule
+import com.llamrei.domain.TimeSeries
 import grails.plugins.springsecurity.Secured
 import com.llamrei.domain.StateModel
 import com.llamrei.domain.Asset
@@ -49,11 +53,11 @@ class StateModelController {
     def edit = {
         def stateModelInstance
         if (params.assetId){
-            println "finding state model by asset id"
+            println "finding state model by asset id "+params.assetId
             Integer assetId = Integer.parseInt(params.assetId)
             stateModelInstance = StateModel.findByAsset(Asset.findById(assetId.longValue()))
         } else if (params.id){
-            println "finding state model by id"
+            println "finding state model by id "+params.id
             stateModelInstance = StateModel.get(params.id)
         }
 
@@ -79,8 +83,8 @@ class StateModelController {
     }
 
     def update = {
-        println "Prams in update : "+params
-        def stateModelInstance=StateModel.get(params.id)
+     println "Prams in update : "+params
+       def  stateModelInstance=StateModel.get(params.id)
         if (stateModelInstance) {
             if (params.version) {
                 def version = params.version.toLong()
@@ -164,5 +168,53 @@ class StateModelController {
             flash.message = "Could not find asset"
             redirect(action: 'copy', stateModelId:params.stateModelId )
         }
+    }
+
+    def addState = {
+        println ">>>>>"+params
+
+        StateModel stateModel = StateModel.get(params.int('stateModelId'))
+        println "found state model : "+stateModel
+        State state = new State()
+        state.setName(params.state.name)
+        state.setDescription(params.state.description)
+        state.setStateModel(stateModel)
+
+        println "going to save state : "+state
+        StateRule stateRule
+        Set<StateRule> stateRules = []
+        if(state.validate()) {
+            state.save(flush: true)
+            println "state saved :)"
+
+            //now save state rules
+            Integer stateRulesCount = Integer.parseInt(params.stateRulesCount)
+            for(int i=0; i<stateRulesCount; i++){
+
+                stateRule = new StateRule()
+                stateRule.setRuleType(params["stateRule.${i}.ruleType"])
+                stateRule.setRuleValue1(params["stateRule.${i}.ruleValue"])
+                stateRule.setTimeSeriesId(params["stateRule.${i}.timeSeries"])
+                stateRule.setState(state)
+
+                println "StateRule to be saved : "+stateRule
+                println "sr validate : "+stateRule.validate()
+                if(stateRule.validate()){
+                    stateRule.save(flush: true)
+                    println "state rule saved"
+
+                    stateRules.add(stateRule)
+                }  else {
+                    println "state rule not saved"
+                }
+            }
+        } else {
+            println "Could not save the state :("
+        }
+
+        state.setStateRules(stateRules)
+        Set states = stateModel.states
+        states.add(state)
+        render template: 'states', model: [states:states, stateModelId:stateModel.id]
     }
 }

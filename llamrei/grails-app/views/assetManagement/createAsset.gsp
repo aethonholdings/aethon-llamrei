@@ -1,6 +1,6 @@
 
 
-<%@ page import="com.llamrei.domain.Asset" %>
+<%@ page import="com.llamrei.domain.Asset" %><html>
 
 <html>
 <head>
@@ -19,7 +19,7 @@
                 <g:renderErrors bean="${assetInstance}" as="list" />
             </div>
         </g:hasErrors>
-        <g:form action="saveAsset">
+        <g:uploadForm action="saveAsset" method='post' enctype="multipart/form-data">
             <div class="dialog">
                 <table>
                     <tbody>
@@ -57,16 +57,18 @@
                         </td>
                         <td valign="top"
                             class="value ${hasErrors(bean: assetInstance, field: 'description', 'errors')}">
-                            <g:textField name="description" value="${assetInstance?.description}"/>
+                            <g:textArea name="description" value="${assetInstance?.description}"/>
                         </td>
                     </tr>
 
                     <tr class="prop">
                         <td valign="middle" class="name">
-                            <label for="imageurl"><g:message code="asset.imageurl.label" default="Imageurl" /></label>
+                            <label for="uploadedFile"><g:message code="asset.imageurl.label" default="imageurl" /></label>
                         </td>
-                        <td valign="middle" class="value ${hasErrors(bean: assetInstance, field: 'imageurl', 'errors')}">
-                            <g:textField  class='textInput' name="imageurl" value="${assetInstance?.imageurl}" />
+
+                        <td valign="top" class="value ${hasErrors(bean: assetInstance, field: 'imageurl', 'errors')}">
+                            <input type="file" name="uploadedFile" id="uploadedFile" /> ${assetInstance.imageurl}
+
                         </td>
                     </tr>
 
@@ -87,7 +89,7 @@
                     </g:link>
                 </span>
             </div>
-        </g:form>
+        </g:uploadForm>
     </div>
 
 </div>

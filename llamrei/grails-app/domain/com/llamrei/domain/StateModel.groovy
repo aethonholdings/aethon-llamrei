@@ -5,18 +5,22 @@ class StateModel {
     String description
     String stateModelId
 
+    boolean deleted
     Asset asset
     static hasMany = [states:State]
     
     static constraints = {
-//        stateModelId(unique: true)
     }
+
+    static transients = [ 'deleted' ]
 
     static mapping = {
         stateModelId column: "stateModelId"
         name column: "name"
         description column: "description"
+        states cascade:"all-delete-orphan"
     }
+
 
     @Override
     public String toString() {
