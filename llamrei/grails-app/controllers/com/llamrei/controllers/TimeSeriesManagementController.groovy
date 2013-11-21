@@ -24,16 +24,16 @@ class TimeSeriesManagementController {
     }
 
     def save = {
-       def timeSeriesInstance = new TimeSeries(params)
-       def Boolean inDashboardValue
+        def timeSeriesInstance = new TimeSeries(params)
+        def Boolean inDashboardValue
         if(params.myGroup=='true')
-           inDashboardValue=true
+            inDashboardValue=true
         else
             inDashboardValue=false
         timeSeriesInstance.inDashboard= inDashboardValue
         if (timeSeriesInstance.save(flush: true)) {
-          flash.message = "${message(code: 'default.created.message', args: [message(code: 'timeSeries.label', default: 'TimeSeries'), timeSeriesInstance.id])}"
-          redirect(action: "list")
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'timeSeries.label', default: 'TimeSeries'), timeSeriesInstance.id])}"
+            redirect(action: "list")
         }
         else {
             render(view: "create", model: [timeSeriesInstance: timeSeriesInstance])
@@ -57,7 +57,7 @@ class TimeSeriesManagementController {
             if (params.version) {
                 def version = params.version.toLong()
                 if (timeSeriesInstance.version > version) {
-                    
+
                     timeSeriesInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'timeSeries.label', default: 'TimeSeries')] as Object[], "Another user has updated this TimeSeries while you were editing")
                     render(view: "edit", model: [timeSeriesInstance: timeSeriesInstance])
                     return

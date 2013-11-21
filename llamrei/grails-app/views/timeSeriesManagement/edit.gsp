@@ -59,8 +59,9 @@
                         <td valign="top" class="name">
                             <label for="dataType"><g:message code="timeSeries.dataType.label" default="Data Type" /></label>
                         </td>
-                        <td valign="top" class="value ${hasErrors(bean: timeSeriesInstance, field: 'dataType', 'errors')}">
-                            <g:textField  class='textInput' name="dataType" value="${timeSeriesInstance?.dataType}" />
+
+                        <td valign="middle" class="value ${hasErrors(bean: timeSeriesInstance, field: 'dataType', 'errors')}">
+                            <g:select  class='value' name="dataType" from="${timeSeriesInstance.constraints.dataType.inList}" value="${timeSeriesInstance?.dataType}" valueMessagePrefix="timeSeries.dataType" style="width:170px" />
                         </td>
                     </tr>
                     <tr class="prop">
@@ -78,7 +79,7 @@
                             <label for="description"><g:message code="timeSeries.description.label" default="Description" /></label>
                         </td>
                         <td valign="top" class="value ${hasErrors(bean: timeSeriesInstance, field: 'description', 'errors')}">
-                            <g:textField  class='textInput' name="description" value="${timeSeriesInstance?.description}" />
+                            <g:textArea  class='textInput' name="description" value="${timeSeriesInstance?.description}" />
                         </td>
                     </tr>
 

@@ -26,14 +26,14 @@ class AssetMonitorController {
         def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,time,params)
 
 
-            contentMap."${count}" =  [name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location,timeSeriesName:time.name,unit:time.units,value:dataList.value[0] ]
+            contentMap."${count}" =  [name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location,timeSeriesName:time.name,unit:time.units,value:dataList.value[0],imageUrl:assetIns.imageurl ]
         count++
         }
       if(params.nextVal=="true"){
        println("innnnnnnnn")
           render contentMap as JSON
       }  else{
-          [contentMap:contentMap,assetId:assetIns.id,name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location]
+          [contentMap:contentMap,assetId:assetIns.id,name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location, imageUrl:assetIns.imageurl]
       }
 
 

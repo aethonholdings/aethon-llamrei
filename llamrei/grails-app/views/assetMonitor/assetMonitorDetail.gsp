@@ -53,7 +53,7 @@
             </table>
         </div>
         <div class="imgDiv">
-            Image
+            <img class=imageThumbnail src=${imageUrl}/>
         </div>
         <div style="margin-top: 80px">
 
