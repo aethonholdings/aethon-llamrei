@@ -27,14 +27,14 @@ class DataListenerController {
         dataQueue.add(params.getProperty("0001"))
         dataQueue.add(params.getProperty("0002"))*/
 
-       List<TimeSeries> tsList = new ArrayList<TimeSeries>()
-            tsList = TimeSeries.list()
-            ArrayList seriesList = new ArrayList()
-            for(TimeSeries series: tsList) {
-              String value= params.getProperty(series.timeSeriesUniqueID)
-              if(value!=null || value!="")
-               seriesList.add(value)
-              }
+        List<TimeSeries> tsList = new ArrayList<TimeSeries>()
+        tsList = TimeSeries.list()
+        ArrayList seriesList = new ArrayList()
+        for(TimeSeries series: tsList) {
+          String value= params.getProperty(series.timeSeriesUniqueID)
+          if(value!=null || value!="")
+           seriesList.add(value)
+          }
         /**
          * Invoking the service to save the data into database
          */
