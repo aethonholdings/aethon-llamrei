@@ -8,6 +8,8 @@ body {
     background: #ffffff;
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
 }
 
 /* ELEMENT STYLES */
@@ -300,14 +302,14 @@ td.errors textarea {
     text-transform: uppercase;
 }
 
-.box-cards-title a.btn-open {
-    display: block;
-    width: 100%;
-    color: #383838;
-    font-size: 14px;
-    line-height: 30px;
-    font-weight: bold;
-}
+/*.box-cards-title a.btn-open {*/
+    /*display: block;*/
+    /*width: 100%;*/
+    /*color: #383838;*/
+    /*font-size: 14px;*/
+    /*line-height: 30px;*/
+    /*font-weight: bold;*/
+/*}*/
 
 .box-cards-title a.btn-open span {
     padding-left: 32px;

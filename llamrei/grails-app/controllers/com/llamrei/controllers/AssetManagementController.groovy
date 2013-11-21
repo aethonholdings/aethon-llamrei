@@ -122,8 +122,15 @@ class AssetManagementController {
 
     def deleteAsset = {
         def assetInstance = Asset.get(params.id)
+        def assetStateModelInstance=  StateModel.findByAsset(assetInstance)
+
+
+        if(assetStateModelInstance){
+            assetStateModelInstance.delete(flush:true)
+        }
         if (assetInstance) {
             try {
+
                 assetInstance.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
                 redirect(action: "listAssets")
