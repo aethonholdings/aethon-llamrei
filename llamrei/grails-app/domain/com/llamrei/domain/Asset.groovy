@@ -23,6 +23,7 @@ class Asset {
     static constraints = {
         assetUniqueID(nullable: true, unique: true)
         assetName(nullable: false)
+        connectivityStatus(nullable: false)
         description(nullable: true)
         location(nullable: false)
         imageurl(nullable:true)
