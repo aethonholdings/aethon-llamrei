@@ -72,7 +72,7 @@ class DataListenerController {
      * action to check the nodeConnectivity Status
      * @returns connectivity status
      */
-        /* def checkConnectivityStatus = {
+         def checkConnectivityStatus = {
                 long diffSeconds
                 long diffMinuts
                 //second
@@ -108,6 +108,6 @@ class DataListenerController {
                      redirect(controller: "assetManagement", action: "updateAsset", assetList:assetList)
 
 
-         }*/
+         }
 
 }
