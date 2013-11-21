@@ -13,7 +13,7 @@
     </div>
     <div>
         <label class="lb"><g:message code="title.stateRule.ruleType"/></label>
-        <g:textField class="field" id="state.stateRule.ruleType" name="state.stateRule.ruleType" value="" style="margin-left: 5%;"/>
+        <g:select id="state.stateRule.ruleType" name="state.stateRule.ruleType" from="${['>', '<', '=']}" />
     </div>
     <div>
         <label class="lb"><g:message code="title.stateRule.ruleValue"/></label>
@@ -23,6 +23,7 @@
 
 <div>
     <a onclick="addStateRule()" class="actionButton">
-        <span><g:message code="button.add"/></span>
-    </a>
+    <span><g:message code="button.add"/></span>
+</a>
 </div>
+

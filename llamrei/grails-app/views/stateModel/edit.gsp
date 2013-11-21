@@ -146,13 +146,26 @@
         });
     }
 
+
+    function deleteState(id){
+        alert("You are about to delete a state");
+         $.ajax({
+               type: 'POST',
+               url: '${createLink(controller: 'stateModel', action: 'deleteState')}',
+               data: {stateId:id},
+               success: function(data) {
+
+                  $('tr#state-'+id).remove();
+               }
+         });
+    }
     var srIndex = 0;
     function showStateRulesForm(){
         $('#stateRuleForm').toggle();
     }
     function addStateRule(){
         var timeSeries = $('select[name="state.stateRule.timeSeries"]').val();
-        var ruleType = $('input[name="state.stateRule.ruleType"]').val();
+        var ruleType = $('select[name="state.stateRule.ruleType"]').val();
         var ruleValue = $('input[name="state.stateRule.ruleValue"]').val();
 
         $('#stateRulesTable tbody').prepend('<tr class="stateRule">' +
