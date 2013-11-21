@@ -46,6 +46,7 @@
                             <td valign="middle"class="name">
                                 <label for="units"><g:message code="timeSeries.units.label" default="Units" /></label>
                             </td>
+
                             <td valign="middle" class="value ${hasErrors(bean: timeSeriesInstance, field: 'units', 'errors')}">
                                 <g:textField  class='textInput' name="units" value="${timeSeriesInstance?.units}" />
                             </td>
@@ -57,6 +58,15 @@
                             </td>
                             <td valign="middle" class="value ${hasErrors(bean: timeSeriesInstance, field: 'dataType', 'errors')}">
                                 <g:textField  class='textInput' name="dataType" value="${timeSeriesInstance?.dataType}" />
+                            </td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="middle" class="name">
+                                <label for="dataType"><g:message code="timeSeries.inDashboard.label" default="Show In Dashboard" /></label>
+                            </td>
+                            <td valign="top" >
+                                <input type="radio" name="myGroup" value="true" />True
+                                <input type="radio" name="myGroup" value="false" style='margin-left: 20px'/>False
                             </td>
                         </tr>
 

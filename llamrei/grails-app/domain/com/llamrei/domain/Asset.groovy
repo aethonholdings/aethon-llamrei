@@ -25,7 +25,7 @@ class Asset {
         assetName(nullable: false)
         description(nullable: true)
         location(nullable: false)
-        imageurl(nullable: false)
+        imageurl(nullable:true)
         clientName  (nullable: false)
         creationDate(nullable: true)
         modificationDate(nullable: true)
@@ -39,7 +39,7 @@ class Asset {
         assetUniqueID column:"assetUniqueID"
         assetName column:"assetName"
 
-        imageurl column : "imageurl"
+//        imageurl column : "imageurl"
 
         creationDate column: "creationDate"
         modificationDate column:"modificationDate"
@@ -54,7 +54,7 @@ class Asset {
                 ", clientName='" + clientName + '\'' +
                 ", description='" + description + '\'' +
                 ", location='" + location + '\'' +
-                ", imageurl='" + imageurl + '\'' +
+//                ", imageurl='" + imageurl + '\'' +
                 ", creationDate=" + creationDate +
                 ", modificationDate=" + modificationDate +
                 ", version=" + version +

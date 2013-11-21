@@ -24,26 +24,21 @@ class TimeSeriesManagementController {
     }
 
     def save = {
-        def timeSeriesInstance = new TimeSeries(params)
+       def timeSeriesInstance = new TimeSeries(params)
+       def Boolean inDashboardValue
+        if(params.myGroup=='true')
+           inDashboardValue=true
+        else
+            inDashboardValue=false
+        timeSeriesInstance.inDashboard= inDashboardValue
         if (timeSeriesInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'timeSeries.label', default: 'TimeSeries'), timeSeriesInstance.id])}"
-            redirect(action: "list")
+          flash.message = "${message(code: 'default.created.message', args: [message(code: 'timeSeries.label', default: 'TimeSeries'), timeSeriesInstance.id])}"
+          redirect(action: "list")
         }
         else {
             render(view: "create", model: [timeSeriesInstance: timeSeriesInstance])
         }
     }
-
-//    def show = {
-//        def timeSeriesInstance = TimeSeries.get(params.timeSeriesUniqueID)
-//        if (!timeSeriesInstance) {
-//            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'timeSeries.label', default: 'TimeSeries'), params.id])}"
-//            redirect(action: "list")
-//        }
-//        else {
-//            [timeSeriesInstance: timeSeriesInstance]
-//        }
-//    }
 
     def edit = {
         def timeSeriesInstance = TimeSeries.get(params.id)
@@ -69,8 +64,13 @@ class TimeSeriesManagementController {
                 }
             }
             timeSeriesInstance.properties = params
+            def Boolean inDashboardValue
+            if(params.myGroup=='true')
+                inDashboardValue=true
+            else
+                inDashboardValue=false
+            timeSeriesInstance.inDashboard=inDashboardValue
             if (!timeSeriesInstance.hasErrors() && timeSeriesInstance.save(flush: true)) {
-                println("hello kuldeep")
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'timeSeries.label', default: 'TimeSeries'), timeSeriesInstance.id])}"
                 redirect(action: "list")
             }
@@ -85,7 +85,6 @@ class TimeSeriesManagementController {
     }
 
     def delete = {
-        println('hello kuldeep'+ params.id)
         def timeSeriesInstance = TimeSeries.get(params.id)
         if (timeSeriesInstance) {
             try {
