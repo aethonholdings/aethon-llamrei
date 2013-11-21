@@ -40,7 +40,8 @@ function assetDetail(assetId){
                 '<tr><td><b>Location<b></td><td>:</td><td>'+data[0].location+'</td></tr>');
 
             $("#detailTable").find("tr:gt(0)").remove();
-            for(var i=0;i<=jsonLengthCount;i++)  {
+
+            for(var i=0;i<jsonLengthCount;i++)  {
                 $('#detailTable').append('<tr><td>'+data[i].timeSeriesName+'</td><td>'+data[i].value+'</td><td>'+data[i].unit+'</td></tr>');
             }
 
@@ -51,3 +52,20 @@ function assetDetail(assetId){
     });
 
 }
+
+$(document).ajaxStart(function() {
+
+        $('#msgDiv1').show()
+
+
+});
+
+$(document).ajaxStop(function() {
+
+
+        $('#msgDiv1').hide()
+
+
+
+});
+

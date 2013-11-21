@@ -373,3 +373,6 @@ td.errors textarea {
     color: darkcyan;
     display: none;
 }
+   .linkClass{
+       cursor: pointer;
+   }
