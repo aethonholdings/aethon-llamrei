@@ -21,12 +21,7 @@
 
                 </div>
             </g:hasErrors>
-            <g:hasErrors bean="${associatedTimeSeries}">
-                <div class="errors">
-                    <g:renderErrors bean="${associatedTimeSeries}" as="list" />
 
-                </div>
-            </g:hasErrors>
             <g:hasErrors bean="${assetInstance}">
                 <div class="errors">
                     <g:renderErrors bean="${assetInstance}" as="list" />
@@ -80,7 +75,7 @@
                         <tr>
                             <td>
 
-                                <g:hiddenField name="hiddenField"  id="hiddenField" />
+
 
 
                             </td>
@@ -105,7 +100,7 @@
                                     </td>
                                     <td class='value'>
                                         <g:set var="a_series" value="${assetInstance.timeSeries}"/>
-                                        <g:if test="${a_series.contains(timeSeries)}">
+                                        <g:if test="${a_series.contains(timeSeriesInstance)}">
                                             <g:checkBox id="series${timeSeriesInstance?.id}" name="series" value="${timeSeriesInstance?.id}" checked="true"/>
                                         </g:if>
                                         <g:else>
@@ -118,6 +113,7 @@
                             </g:each>
                             </tbody>
                         </table>
+                        <g:hiddenField name="hiddenField"  id="hiddenField" />
                     </fieldset>
                 </div>
                 <div >
