@@ -10,7 +10,7 @@ class Asset {
     String imageurl
     Date creationDate
     Date modificationDate
-
+    String connectivityStatus
     /**
      * Relationship mapping
      */

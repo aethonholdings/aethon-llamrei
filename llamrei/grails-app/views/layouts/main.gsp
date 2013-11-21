@@ -24,7 +24,39 @@
 
 
         <g:layoutHead />
+       <script type="text/javascript">
+          $(document).ready(function(){
 
+            setInterval(function () {
+                 checkConnectionStatus();
+            }, 20000);
+        });
+
+
+        function checkConnectionStatus(){
+        jQuery.ajax
+          ({
+        type:'POST',
+        url:g.createLink({controller: 'dataListener', action: 'checkConnectivityStatus'}),
+
+        dataType: "json",
+        success:function(data)
+        {
+            var jsonLengthCount=0;
+
+            $.each(data, function() {
+                jsonLengthCount++
+            });
+
+
+        }
+        ,error:function(XMLHttpRequest, textStatus, errorThrown) {
+//            alert("Error in fetching Data")
+        }
+
+            });
+        }
+          </script>
 
     </head>
     
