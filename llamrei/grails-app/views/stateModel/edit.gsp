@@ -159,6 +159,18 @@
                }
          });
     }
+    function deleteStateRule(id){
+        alert("You are about to delete a state rule");
+        $.ajax({
+            type: 'POST',
+            url: '${createLink(controller: 'stateModel', action: 'deleteStateRule')}',
+            data: {stateRuleId:id},
+            success: function(data) {
+                $('tr#stateRule-'+id).remove();
+            }
+        });
+    }
+
     var srIndex = 0;
     function showStateRulesForm(){
         $('#stateRuleForm').toggle();
