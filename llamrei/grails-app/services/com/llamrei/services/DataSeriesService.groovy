@@ -86,6 +86,7 @@ class DataSeriesService {
         def state = stateModelIns.states
     //   println("#########################"+obj1)
          def status= state.name
+         String newStatus=null
         for(int i=0;i<seriesList.size();i++){
         def list = StateRule.findAllByTimeSeries(seriesList.get(i))
 
@@ -94,16 +95,18 @@ class DataSeriesService {
             def oldValue  = Float.parseFloat(stateRule.ruleValue1)
           if(stateRule.ruleType=="<"){
               if(newValue<oldValue)
-                state.name="Stoped"
+                  newStatus="Stopped"
           }else if(stateRule.ruleType==">"){
                 if(newValue>oldValue)
-                state.name="Stoped"
+                    newStatus="Stopped"
           }
           }
           }
-         stateModelIns.states.name = state.name
+            if(status!=newStatus) {
+               status=newStatus
+            }
 
-          return  stateModelIns
+          return  status
    }
 
     def timeDifferenceSeconds(Date assetT, Date serverT){
@@ -118,9 +121,7 @@ class DataSeriesService {
 			//in milliseconds
 			double diff = serverT.getTime() - assetT.getTime();
              diffSeconds = diff / 1000 % 60
-
-            println("Time Difference 7777777777777777777++++++++++"+diffSeconds)
-        }catch(Exception e){
+            }catch(Exception e){
              e.printStackTrace()
         }
         return  diffSeconds
@@ -133,11 +134,9 @@ class DataSeriesService {
             /* Date serverTime =null
              Date nodeTime = null*/
               try {
-
-                double diff = curr.getTime() - serverT.getTime();
+                 double diff = curr.getTime() - serverT.getTime();
                  diffMinutes = diff / (60 * 1000) % 60
-                println("Time Difference 7777777777777777777++++++++++"+diffMinutes)
-            }catch(Exception e){
+               }catch(Exception e){
                  e.printStackTrace()
             }
         return diffMinutes
