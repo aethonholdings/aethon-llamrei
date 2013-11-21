@@ -11,13 +11,13 @@
     <div style="display: inline;">
         <div class="box-cards">
             <div class="box-cards-title">
-                <a class="btn-open" href="#"><span><g:message code="title.stateRules"/></span></a>
+                <a class="btn-open" href="#"><span><g:message code="title.state.stateRules"/></span></a>
             </div>
 
             <div class="box-card-hold">
                 <div style="position:relative">
                     <div id="stateRules">
-                        <g:render template="statesRules" />
+                        <g:render template="statesRules" model="[stateModelId:stateModelId]" />
                     </div>
                 </div>
             </div>

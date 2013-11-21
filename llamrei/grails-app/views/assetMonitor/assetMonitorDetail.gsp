@@ -1,7 +1,43 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 11/20/13
+  Time: 5:21 PM
+  To change this template use File | Settings | File Templates.
+--%>
+
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
+<head>
+    <meta name="layout" content="main" />
+  <title>AssetDetail</title>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            setInterval(function () {
+
+               assetDetail(${assetId});
+
+            }, 20000);
+        });
+
+
+        $(function() {
+            $( "#tabs" ).tabs();
+        });
+
+        $(function() {
+            $( "#tabs1" ).tabs();
+        });
 
 
 
-<div class='menuItem' style="float: left; width:100%;display: none" id="assetDetailDiv">
+    </script>
+</head>
+<body>
+
+<div class='menuItem' style="float: left; width:100%;" id="assetDetailDiv">
 
     %{--<h2> Assets home page</h2>--}%
     <div class="rightDiv">
@@ -9,11 +45,11 @@
         <div>
 
             <table style="margin-top: 5px;border: none" id="assetName">
-                %{--<tr>--}%
-                    %{--<td><b>Asset Name</b></td><td>:</td><td>test</td>    </tr>--}%
-                %{--<tr>  <td><b>Client Name</b></td><td>:</td><td>test</td>  </tr>--}%
-                %{--<tr> <td><b>Location</b></td><td>:</td><td>test</td>--}%
-                %{--</tr>--}%
+                <tr>
+                    <td><b>Asset Name</b></td><td>:</td><td>${name}</td>    </tr>
+                <tr>  <td><b>Client Name</b></td><td>:</td><td>${clientName}</td>  </tr>
+                <tr> <td><b>Location</b></td><td>:</td><td>${location}</td>
+                </tr>
             </table>
         </div>
         <div class="imgDiv">
@@ -47,21 +83,26 @@
                 %{--<input type="button" value="Add" class="buttonClass">  <input type="button" value="Remove" class="buttonClass">--}%
                 <div style="margin-top: 10px">
                     <table id="detailTable">
+                        <thead class='thclass'>
 
                         <tr>
-                            <th class="thclass">&nbsp;</th>
-                            <th class="thclass">Value</th>
-                            <th class="thclass">Unit</th>
+                            <th>&nbsp;</th>
+                            <th>Value</th>
+                            <th >Unit</th>
                             %{--<th class="thclass">Max</th>--}%
                             %{--<th class="thclass">Min</th>--}%
                         </tr>
-                        %{--<tr>--}%
-                            %{--<td class="tdclass"></td>--}%
-                            %{--<td class="tdclass"></td>--}%
-                            %{--<td class="tdclass"></td>--}%
-                            %{--<td class="tdclass"></td>--}%
-                            %{--<td class="tdclass"></td>--}%
-                        %{--</tr>--}%
+                        </thead>
+                        <tbody class='tdclass'>
+                        <g:each in="${contentMap}" status="i" var="content">
+                        <tr>
+                        <td>${content.value.timeSeriesName}</td>
+                        <td>${content.value.value}</td>
+                        <td>${content.value.unit}</td>
+
+                        </tr>
+                        </g:each>
+                        <tbody class='tdclass'>
                     </table>
                 </div>
             </div>
@@ -119,3 +160,6 @@
         %{--</ul>--}%
     </div>
 </div>
+
+</body>
+</html>

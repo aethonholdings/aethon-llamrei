@@ -8,7 +8,7 @@
         </thead>
         <tbody>
         <g:each in="${stateRules}" var="stateRule">
-            <tr>
+            <tr class="stateRule">
                 <td>${stateRule.timeSeries}</td>
                 <td>${stateRule.ruleType}</td>
                 <td>${stateRule.ruleValue1}</td>
@@ -24,7 +24,7 @@
         </tbody>
     </table>
 </div>
-
+<g:hiddenField name="stateRulesCount" value=""/>
 <div id="stateRuleForm" style="display: none">
-     <g:render template="stateRulesForm" />
+     <g:render template="stateRulesForm" model="[stateModelId:stateModelId]" />
 </div>

@@ -1,8 +1,5 @@
 package com.llamrei.domain
 
-import org.apache.commons.collections.FactoryUtils
-import org.apache.commons.collections.list.LazyList
-
 class StateModel {
     String name
     String description
@@ -13,8 +10,6 @@ class StateModel {
     static hasMany = [states:State]
     
     static constraints = {
-//        stateModelId(unique: true)
-
     }
 
     static transients = [ 'deleted' ]
@@ -25,11 +20,7 @@ class StateModel {
         description column: "description"
         states cascade:"all-delete-orphan"
     }
-//    def getStatesList() {
-//        return LazyList.decorate(
-//                states,
-//                FactoryUtils.instantiateFactory(State.class))
-//    }
+
 
     @Override
     public String toString() {

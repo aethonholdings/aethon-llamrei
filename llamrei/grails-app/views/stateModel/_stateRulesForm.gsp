@@ -1,8 +1,12 @@
+<%@ page import="com.llamrei.domain.StateModel; com.llamrei.domain.Asset; com.llamrei.domain.TimeSeries" %>
 <div id="state-form">
     <div>
         <label class="lb"><g:message code="title.stateRule.timeSeries"/></label>
+
+        <g:set var="stateModelInstance" value="${StateModel.findById(stateModelId)}"/>
+        <g:set var="timeSeriesList" value="${stateModelInstance.asset.timeSeries}" />
         <g:select id="state.stateRule.timeSeries" name="state.stateRule.timeSeries"
-                  from="${com.llamrei.domain.TimeSeries.list()}"
+                  from="${timeSeriesList}"
                   optionKey="id"
                   optionValue="name"
                   style="margin-left: 5%;"/>

@@ -53,7 +53,7 @@
                                 <div class="box-card-hold">
                                     <div style="position:relative">
                                         <div id="states">
-                                            <g:render template="states1" model="[states:stateModelInstance.states, stateModelId:stateModelInstance.id]" />
+                                            <g:render template="states" model="[states:stateModelInstance.states, stateModelId:stateModelInstance.id]" />
                                         </div>
                                     </div>
                                 </div>
@@ -130,6 +130,12 @@
         $('#stateForm').toggle();
     }
     function addState(){
+        var stateRulesCount = 0;
+        $('#stateRulesTable tbody tr.stateRule').each(function(){
+              stateRulesCount++;
+        }) ;
+        $('#stateRulesCount').val(stateRulesCount);
+
         $.ajax({
             type: 'POST',
             url: '${createLink(action: 'addState')}',
@@ -149,7 +155,7 @@
         var ruleType = $('input[name="state.stateRule.ruleType"]').val();
         var ruleValue = $('input[name="state.stateRule.ruleValue"]').val();
 
-        $('#stateRulesTable tbody').prepend('<tr>' +
+        $('#stateRulesTable tbody').prepend('<tr class="stateRule">' +
                 '<td>'+timeSeries+'</td><input type="hidden" name="stateRule.'+srIndex+'.timeSeries" value="'+timeSeries+'"/>' +
                 '<td>'+ruleType+'</td><input type="hidden" name="stateRule.'+srIndex+'.ruleType" value="'+ruleType+'"/>' +
                 '<td>'+ruleValue+'</td><input type="hidden" name="stateRule.'+srIndex+'.ruleValue" value="'+ruleValue+'"/>' +

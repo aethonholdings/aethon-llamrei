@@ -9,7 +9,7 @@
     <h2>Edit Asset</h2>
     <div style="margin-left: 20px;font-size: 20px;border:1px solid">
 
-        <div class="body">
+        <div class="body" >
             <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
             </g:if>
@@ -18,7 +18,10 @@
                     <g:renderErrors bean="${assetInstance}" as="list"/>
                 </div>
             </g:hasErrors>
+
             <g:uploadForm method="post">
+
+
                 <g:hiddenField name="id" value="${assetInstance?.id}"/>
                 <g:hiddenField name="version" value="${assetInstance?.version}"/>
                 <div class="dialog">
@@ -107,7 +110,7 @@
                 <input type="button" class='actionButton' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
             </g:link>
             <g:form controller="stateModel" params="[id: assetInstance.id]" style= 'display: inline'  action="edit" ><button value='editstatemodel' class="actionButton">Edit State Model</button></g:form>
-            <g:form controller="assetManagement" style= 'display: inline' action="goToAssociateTimeSeries" params="[id:assetInstance.id]"><button value='editstatemodel' class="actionButton" style="width:auto">Associate Time Series</button></g:form>
+            <g:form controller="assetManagement" style= 'display: inline' action=" goToAssociateTimeSeries" params="[id:assetInstance.id]"><button value='associatetimeSeries' class="actionButton" style="width:auto">Associate Time Series</button></g:form>
 
         </div>
         </div>
