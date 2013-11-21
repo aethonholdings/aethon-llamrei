@@ -18,6 +18,31 @@ $(document).ready(function(){
         }
     });
 
+    $('#showPrev').click(function(){
+
+        jQuery.ajax
+        ({
+            type:'POST',
+            url:g.createLink({controller: 'dashboard', action: 'prevChartContents'}),
+
+            data: "assetId=" + assetID+"&timeSeriesId="+ timeSeriesID+"&selectedFromDate="+$('#datePickerFrom').val()+"&selectedToDate="+$('#datePickerTo').val(),
+            dataType: "json",
+            success:function(data)
+            {
+                var jsonLengthCount=0;
+
+                $.each(data, function() {
+                    jsonLengthCount++
+                });
+                showHistoryChart(data,jsonLengthCount,timeSeriesID)
+
+            }
+            ,error:function(XMLHttpRequest, textStatus, errorThrown) {
+//            alert("Error in fetching Data")
+            }
+        });
+    })
+
 })
 
 
@@ -71,7 +96,7 @@ function openChart(data,timeSeriesId){
     assetID=data
     $('#main1').hide();
     $('#main2').hide();
-     $('h2').text('');
+    $('h2').text('');
     $('#chartDiv').show();
 //    $("#headingTab").append('<tr><td><b>'+"Asset Name :"+'</b></td><td>'+"ll"+'</td></tr>');
 
@@ -107,12 +132,12 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
 
                         var x ; // current time
 
-                       getNextPoint(assetID,timeSeriesID);
+                        getNextPoint(assetID,timeSeriesID);
 
 
                         if(statusFlag==true && checkFlag==true){
                             x = (new Date()).getTime()
-                           series.addPoint([x, parseFloat(pointValue)], true, true);
+                            series.addPoint([x, parseFloat(pointValue)], true, true);
                         }
 
                     }, 5000);
@@ -193,7 +218,107 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
     });
 }
 
+function showHistoryChart(data11,jsonLengthCount,timeSeriesId){
 
+    dataLen=jsonLengthCount;
+
+    var label;
+    if(timeSeriesId==1){
+        label="Humidity"
+    }
+    else{
+        label="Temperature"
+    }
+
+    $('#chartDiv1').highcharts({
+        chart: {
+            type: 'line',
+            animation: Highcharts.svg, // don't animate in old IE
+            marginRight: 10,
+            events: {
+                load: function() {
+
+                    // set up the updating of the chart each second
+                    var series = this.series[0];
+//                    setInterval(function() {
+//
+//                        var x ; // current time
+//
+//                        getNextPoint(assetID,timeSeriesID);
+//
+//
+//                        if(statusFlag==true && checkFlag==true){
+//                            x = (new Date()).getTime()
+//                            series.addPoint([x, parseFloat(pointValue)], true, true);
+//                        }
+//
+//                    }, 5000);
+
+                }
+            }
+        },
+
+        title: {
+            text: ''
+        },
+        xAxis: {
+//            type: 'datetime',
+//            tickPixelInterval: 100
+        },
+        yAxis: {
+            title: {
+                text: label
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            formatter: function() {
+                return '<b>'+ this.series.name +'</b><br/>'+this.y;
+//                            + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+//                            Highcharts.numberFormat(this.y, 2);
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        series: [{
+            name: label,
+            data: (function() {
+
+                // generate an array of random data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i,j;
+//               for (i=0;i<10 ;i++ ){
+//                   data.push({
+//                        x: time + i * 1000,
+//                        y:2
+//
+//                    });
+//               }
+
+                for (j=0,i =1 ; j < 1000; i++,j++) {
+
+                    data.push({
+                        x: i ,
+                        y:parseFloat(data11[j])
+
+                    });
+                }
+
+                return data;
+            })()
+        }]
+    });
+
+}
 
 function getDataForChart(data,timeSeriesId){
 
@@ -249,7 +374,7 @@ function getNextPoint(assetID,timeSeriesID){
             statusFlag=true;
 
             if(prevPointID==data[0].id){
-             checkFlag=false;
+                checkFlag=false;
             }
             else{
                 checkFlag=true;

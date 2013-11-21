@@ -14,6 +14,7 @@
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.ui.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
+        <script type="text/javascript" src="${resource(dir: 'js/jquery', file: 'jquery.ui.datepicker.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'assetMonitor.js')}"></script>
         <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'subTab.css')}"/>
         <script type="text/javascript" src="${resource(dir: 'js/DataTables-1.8.2', file: 'media/js/jquery.dataTables.js')}"></script>
@@ -23,7 +24,39 @@
 
 
         <g:layoutHead />
+       <script type="text/javascript">
+          $(document).ready(function(){
 
+            setInterval(function () {
+                 checkConnectionStatus();
+            }, 20000);
+        });
+
+
+        function checkConnectionStatus(){
+        jQuery.ajax
+          ({
+        type:'POST',
+        url:g.createLink({controller: 'dataListener', action: 'checkConnectivityStatus'}),
+
+        dataType: "json",
+        success:function(data)
+        {
+            var jsonLengthCount=0;
+
+            $.each(data, function() {
+                jsonLengthCount++
+            });
+
+
+        }
+        ,error:function(XMLHttpRequest, textStatus, errorThrown) {
+//            alert("Error in fetching Data")
+        }
+
+            });
+        }
+          </script>
 
     </head>
     

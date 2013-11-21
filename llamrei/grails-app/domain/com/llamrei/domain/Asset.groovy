@@ -10,7 +10,7 @@ class Asset {
     String imageurl
     Date creationDate
     Date modificationDate
-
+    String connectivityStatus
     /**
      * Relationship mapping
      */
@@ -23,6 +23,7 @@ class Asset {
     static constraints = {
         assetUniqueID(nullable: true, unique: true)
         assetName(nullable: false)
+        connectivityStatus(nullable: false)
         description(nullable: true)
         location(nullable: false)
         imageurl(nullable:true)
