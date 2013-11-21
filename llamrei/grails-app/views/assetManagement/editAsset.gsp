@@ -18,7 +18,7 @@
                     <g:renderErrors bean="${assetInstance}" as="list"/>
                 </div>
             </g:hasErrors>
-            <g:form method="post">
+            <g:uploadForm method="post">
                 <g:hiddenField name="id" value="${assetInstance?.id}"/>
                 <g:hiddenField name="version" value="${assetInstance?.version}"/>
                 <div class="dialog">
@@ -74,14 +74,24 @@
                                 <g:textArea name="description" value="${assetInstance?.description}"/>
                             </td>
                         </tr>
+                        %{--<tr class="prop">--}%
+                            %{--<td valign="top" class="name">--}%
+                                %{--<label for="imageurl"><g:message code="asset.imageurl.label"--}%
+                                                                 %{--default="Imageurl"/></label>--}%
+                            %{--</td>--}%
+                            %{--<td valign="top"--}%
+                                %{--class="value ${hasErrors(bean: assetInstance, field: 'imageurl', 'errors')}">--}%
+                                %{--<g:textField name="imageurl" value="${assetInstance?.imageurl}"/>--}%
+                            %{--</td>--}%
+                        %{--</tr>--}%
                         <tr class="prop">
-                            <td valign="top" class="name">
-                                <label for="imageurl"><g:message code="asset.imageurl.label"
-                                                                 default="Imageurl"/></label>
+                            <td valign="middle" class="name">
+                                <label for="uploadedFile"><g:message code="asset.imageurl.label" default="imageurl" /></label>
                             </td>
-                            <td valign="top"
-                                class="value ${hasErrors(bean: assetInstance, field: 'imageurl', 'errors')}">
-                                <g:textField name="imageurl" value="${assetInstance?.imageurl}"/>
+
+                            <td valign="top" class="value ${hasErrors(bean: assetInstance, field: 'imageurl', 'errors')}">
+                                <input type="file" name="uploadedFile" id="uploadedFile" />
+
                             </td>
                         </tr>
                         </tbody>
@@ -90,7 +100,7 @@
                 <div style='display: inline; width:auto'>
                 <g:actionSubmit  action="updateAsset" class='actionButton' value="Update">Update</g:actionSubmit>
 
-            </g:form>
+            </g:uploadForm>
 
             <g:form controller="assetManagement" style= 'display: inline' action="deleteAsset" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure you would like to delete this asset?')}');" params="[id:assetInstance.id]"><button value='Delete Asset' class="actionButton">Delete</button></g:form>
             <g:link controller="assetManagement" action="listAssets">

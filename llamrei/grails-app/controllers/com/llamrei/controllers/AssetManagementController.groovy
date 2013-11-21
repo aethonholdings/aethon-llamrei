@@ -2,6 +2,7 @@ package com.llamrei.controllers
 
 import grails.plugins.springsecurity.Secured
 import com.llamrei.services.UtilityService
+import com.llamrei.services.FileUploadService
 import com.llamrei.domain.Asset
 import com.llamrei.domain.TimeSeries
 import grails.converters.JSON
@@ -10,10 +11,10 @@ import com.llamrei.utils.Constants
 
 @Secured(['ROLE_ADMIN'])
 class AssetManagementController {
-    
+    FileUploadService fileUploadService
     def index = { redirect(action: 'listAssets') }
     
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST",saveAsset: "POST"]
     UtilityService utilityService
     
     def listAssets = {
@@ -29,25 +30,30 @@ class AssetManagementController {
 
     def saveAsset = {
         
-        def assetInstance = new Asset(params)
+       def assetInstance = new Asset()
        def assetUniqueId = utilityService.uniqueIdFormat()
-
+            assetInstance.assetName=params.assetName
+            assetInstance.clientName=params.clientName
+            assetInstance.description=params.description
+            assetInstance.location=params.location
             assetInstance.assetUniqueID=assetUniqueId
             assetInstance.creationDate = new Date()
             assetInstance.modificationDate = new Date()
-            if (assetInstance.save(flush: true)) {
+            if ( assetInstance.validate()&& assetInstance.save()) {
                 //Save statemodel for this asset
                 //find this saved instance
                 Asset asset = Asset.findByAssetUniqueID(assetUniqueId);
                 println "The saved asset is : "+asset
-
                 //Pass this saved asset instance to be referenced in stateModel
                 saveSateModel(asset)
-
-                flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
-                redirect(action: "listAssets", id: assetInstance.id)
+                def imageurl = params.uploadedFile
+                if  (!imageurl?.empty && imageurl)  {
+                    assetInstance = fileUploadService.uploadFile(assetInstance, imageurl)
+                }
+                flash.message = "${message(code: 'default.asset.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance])}"
+                redirect(action: "listAssets", id: assetInstance)
             } else {
-                flash.message = "${message(code: 'default.assetunique.id.error', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
+                flash.message = "${message(code: 'default.assetunique.id.error', args: [message(code: 'asset.label', default: 'Asset'), assetInstance])}"
                 render(view: "createAsset", model: [assetInstance: assetInstance])
             }
     }
@@ -93,8 +99,16 @@ class AssetManagementController {
             }
             assetInstance.properties = params
             if (!assetInstance.hasErrors() && assetInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
-                redirect(action: "listAssets", id: assetInstance.id)
+                def imageurl = params.uploadedFile
+                if  (!imageurl?.empty && imageurl)  {
+                    if(assetInstance.imageurl) {
+                    assetInstance.imageurl.empty
+                    }
+                    assetInstance = fileUploadService.uploadFile(assetInstance, imageurl)
+                }
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance])}"
+                redirect(action: "listAssets", id: assetInstance)
+
             }
             else {
                 render(view: "editAssets", model: [assetInstance: assetInstance])

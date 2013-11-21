@@ -45,7 +45,7 @@
                                 <td>${fieldValue(bean: timeSeriesInstance, field: "dataType")}</td>
 
                                 <td>${fieldValue(bean: timeSeriesInstance, field: "description")}</td>
-                                <td style="text-align: center">
+                                <td class='buttonCenter'>
                                     <g:link action="edit" params="[id:timeSeriesInstance.id]"><button value='Edit' class="actionButton">Edit</button></g:link>
                                 </td>
                             </g:link>

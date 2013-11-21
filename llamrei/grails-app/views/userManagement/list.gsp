@@ -58,7 +58,7 @@
 
                             <td><g:formatBoolean boolean="${userInstance.accountLocked}"/></td>
 
-                            <td style="text-align:center;">
+                            <td class="buttonCenter">
                                 <g:link action="editUser" params="[id:userInstance.id]"><button value='Edit' class="actionButton">Edit</button></g:link>
                             </td>
 

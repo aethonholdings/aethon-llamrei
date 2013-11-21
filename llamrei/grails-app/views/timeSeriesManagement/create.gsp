@@ -60,6 +60,15 @@
 
                             </td>
                         </tr>
+                        <tr class="prop">
+                            <td valign="middle" class="name">
+                                <label for="dataType"><g:message code="timeSeries.inDashboard.label" default="Show In Dashboard" /></label>
+                            </td>
+                            <td valign="top" >
+                                <input type="radio" name="myGroup" value="true" />True
+                                <input type="radio" name="myGroup" value="false" style='margin-left: 20px'/>False
+                            </td>
+                        </tr>
 
                         <tr class="prop">
                             <td valign="middle" class="name">

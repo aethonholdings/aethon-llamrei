@@ -11,6 +11,7 @@ class TimeSeries {
      String description
      String units
      String dataType
+     Boolean inDashboard
 
     /**
      * Relationship mapping
@@ -23,6 +24,7 @@ class TimeSeries {
      */
     static constraints = {
         timeSeriesUniqueID(nullable: false,unique: true, blank:false)
+        inDashboard(nullable:false)
         name(nullable: false,unique: true, blank:false)
         units(nullable: false, unique: true, blank:false)
         dataType(inList: ['INTEGER', 'LONG INTEGER', 'UNSIBNED INTEGER','UNSIGNED LONG INTEGER', 'FLOAT','STRING','BOOLEAN', 'DATETIME' ])

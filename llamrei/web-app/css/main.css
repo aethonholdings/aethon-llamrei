@@ -42,7 +42,12 @@ h2 {
     line-height: 80px;
     vertical-align: middle;
 }
-
+ .imageNotAvailable{
+     width:86px;
+     overflow-y: hidden ;
+     height:80px;
+     background: url('../images/noImageAvailable.jpg')
+ }
 .sessionManagement{
     float: right;
     font-weight: bold;
@@ -52,7 +57,7 @@ h2 {
 }
 
 /* MENU BARS */
-
+ .imageThumbnail{height:100px;width:150px}
 .headerMenu{
     float: left;
     height: 30px;
@@ -66,7 +71,7 @@ h2 {
     border:0px; width:72%
 }
 .roleFieldSet{border: 1px solid #cccccc; width:30% }
-
+.buttonCenter{text-align: center}
 .editRoleFieldSet{border: 1px solid #cccccc; width:42%}
 ul.roleMenu{
     background-color: #20728D;
