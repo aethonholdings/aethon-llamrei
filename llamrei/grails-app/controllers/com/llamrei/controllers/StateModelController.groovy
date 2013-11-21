@@ -217,4 +217,25 @@ class StateModelController {
         states.add(state)
         render template: 'states', model: [states:states, stateModelId:stateModel.id]
     }
+
+
+    def deleteState={
+        println "params in deleteState : "+params
+        Integer stateId = Integer.parseInt(params.stateId)
+        State state = State.get(stateId)
+        state.delete()
+        println "state deleted :)"
+        render true
+    }
+
+
+    def deleteStateRule={
+        println "params in deleteStateRule : "+params
+        Integer stateRuleId = Integer.parseInt(params.stateRuleId)
+        StateRule stateRule = StateRule.get(stateRuleId)
+        stateRule.delete()
+        println "stateRule deleted :)"
+        render true
+    }
 }
+
