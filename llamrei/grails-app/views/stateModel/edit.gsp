@@ -45,9 +45,11 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <div class="box-cards">
-                                <div class="box-cards-title">
-                                    <a class="btn-open" href="#"><span><g:message code="title.states"/></span></a>
+                            %{--<div class="box-cards">--}%
+                                %{--<div class="box-cards-title">--}%
+                            <div>
+                            <div>
+                                    <span><g:message code="title.states"/></span></a>
                                 </div>
 
                                 <div class="box-card-hold">

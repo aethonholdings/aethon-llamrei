@@ -13,7 +13,7 @@
     </div>
     <div>
         <label class="lb"><g:message code="title.stateRule.ruleType"/></label>
-        <g:select id="state.stateRule.ruleType" name="state.stateRule.ruleType" from="${['>', '<', '=']}" />
+        <g:select id="state.stateRule.ruleType" name="state.stateRule.ruleType" from="${['>', '<', '=' ,'&le']}" />
     </div>
     <div>
         <label class="lb"><g:message code="title.stateRule.ruleValue"/></label>

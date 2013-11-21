@@ -6,6 +6,7 @@
         <th width="150px"><g:message code="title.state.description"/></th>
         <th ><g:message code="title.state.stateRules"/></th>
         <th></th>
+        <th></th>
         </thead>
         <tbody>
         <th>
@@ -16,10 +17,11 @@
 
                 <td>
                     <table>
-                        <th>State Rile Id</th>
+                        <th>State Rule Id</th>
                         <th>Rule Type</th>
                         <th>Rule Value</th>
                         <th>Time Series</th>
+                        <th></th>
                         <th></th>
                         <g:each in="${state.stateRules}" var="stateRule">
                             <tr id="stateRule-${stateRule.id}">
@@ -32,8 +34,16 @@
                                         <span><g:message code="button.add.stateRule.delete"/>
                                         </span>
                                     </a>
+
+                                </td>
+                                <td>
+                                    <a onclick="updateStateRule('${stateRule.id}')"class="actionButton" style="display:inline">
+                                        <span><g:message code="button.add.stateRule.update"/>
+                                        </span>
+                                    </a>
                                 </td>
                             </tr>
+
                         </g:each>
 
                     </table>
@@ -45,17 +55,27 @@
                                       </a>
                                 </td>
 
+                    <td>
+                        <a onclick="updateState('${state.id}')"class="actionButton" style="display:inline">
+                            <span><g:message code="button.add.state.update"/>
+                            </span>
+                        </a>
+                    </td>
+
+
+
             </tr>
         </g:each>
-       <div>
-                <a onclick="showStateForm()" class="actionButton" style="display:inline">
-                    <span><g:message code="button.add.state"/></span>
-                </a>
-          </div>
+
         </th>
         </tbody>
 
     </table>
+        <div>
+        <a onclick="showStateForm()" class="actionButton" style="display:inline">
+            <span><g:message code="button.add.state"/></span>
+        </a>
+        </div>
 </div>
 
 <div id="stateForm" style="display: none">
