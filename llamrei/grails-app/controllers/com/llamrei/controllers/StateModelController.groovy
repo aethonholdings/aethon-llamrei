@@ -194,7 +194,10 @@ class StateModelController {
                 stateRule = new StateRule()
                 stateRule.setRuleType(params["stateRule.${i}.ruleType"])
                 stateRule.setRuleValue1(params["stateRule.${i}.ruleValue"])
-                stateRule.setTimeSeriesId(params["stateRule.${i}.timeSeries"])
+
+                Integer timeSeriesId = Integer.parseInt(params["stateRule.${i}.timeSeries"])
+                TimeSeries timeSeries = TimeSeries.get(timeSeriesId)
+                stateRule.setTimeSeries(timeSeries)
                 stateRule.setState(state)
 
                 println "StateRule to be saved : "+stateRule
@@ -236,6 +239,32 @@ class StateModelController {
         stateRule.delete()
         println "stateRule deleted :)"
         render true
+    }
+
+    def updateStateRule = {
+        println "params in update state rule : "+params
+        StateRule stateRule = StateRule.get(Integer.parseInt(params.stateRuleId))
+        stateRule.setRuleType(params.ruleType)
+        stateRule.setRuleValue1(params.ruleValue)
+        
+        TimeSeries timeSeries = TimeSeries.get(Integer.parseInt(params.timeSeriesId))
+        stateRule.setTimeSeries(timeSeries)
+        
+        println "Going to stateRule : "+stateRule
+        stateRule.save(flush: true)
+        println "State rule updated :)"
+    }
+
+
+    def updateState = {
+        println "params in update state  : "+params
+        State state = State.get(Integer.parseInt(params.stateId))
+        state.setName(params.name)
+        state.setDescription(params.description)
+
+        println "Going to state : "+state
+        state.save(flush: true)
+        println "State updated :)"
     }
 }
 

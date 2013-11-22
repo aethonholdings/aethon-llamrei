@@ -90,8 +90,8 @@ class DataListenerController {
                     params.max=1
                     def assetIns=Asset.findById(asset.id)
                     def dataList=DataPoint.findByAsset(assetIns,params)
-                    Date assetTime = dataList.nodeTimestamp
-                    Date serverT   = dataList.timestamp
+                    Date assetTime = dataList.getNodeTimestamp()
+                    Date serverT   = dataList.getTimestamp()
                     Date currentTime = new Date()
                     diffSeconds = dataSeriesService.timeDifferenceSeconds(assetTime,serverT)
                     if(diffSeconds>maxlog)

@@ -18,7 +18,7 @@ class StateRule {
     static mapping = {
         stateRuleId column: "stateRuleId"
         ruleType column: "ruleType"
-        timeSeriesId column: "timeSeriesId"
+
         ruleValue1   column  : "ruleValue1"
         ruleValue2   column  : "ruleValue2"
     }
