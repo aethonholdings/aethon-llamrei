@@ -40,7 +40,7 @@
 <div class='menuItem' style="float: left; width:100%;" id="assetDetailDiv">
 
     %{--<h2> Assets home page</h2>--}%
-    <div class="rightDiv">
+    <div class="rightDiv" style="width: 20%">
 
         <div>
 
@@ -52,8 +52,8 @@
                 </tr>
             </table>
         </div>
-        <div class="imgDiv">
-            <img class=imageThumbnail src=${imageUrl}/>
+        <div class="imgDiv" style="width: 40%">
+            <img class=imageThumbnail src=${imageUrl}>
         </div>
         <div style="margin-top: 80px">
 
@@ -71,8 +71,13 @@
     </div>
 
 
+
     %{--<div style="margin-right: 100px"  class="updateMsgClass" id="msgDiv1">Updating...</div>--}%
     <div class="leftDiv" >
+
+
+
+    <div class="leftDiv" style='width:70%' >
 
         <div id="tabs">
 
@@ -112,7 +117,6 @@
             <div id="tabs-2">
                 %{--<input type="SUBMIT" value="Add" class="buttonClass">  <input type="button" value="Remove" class="buttonClass" >--}%
                 <div style="margin-top: 10px">
-                    %{--<label>&nbsp;</label><label> Start&nbsp;&nbsp;&nbsp;</label><label>End&nbsp;&nbsp;&nbsp;</label><label> Description</label>--}%
                     <table>
 
                         <tr>
@@ -120,9 +124,7 @@
                             <th class="thclass">Start</th>
                             <th class="thclass">End</th>
                             <th class="thclass">Description</th></tr>
-                        %{--<tr><th>&nbsp;</th><th>Start</th>--}%
-                        %{--<th>End</th>--}%
-                        %{--<th>Description</th></tr>--}%
+
                         <tr>
                             <td class="tdclass"> <input type="checkbox" /></td>
                             <td class="tdclass"></td>
@@ -133,7 +135,32 @@
                 </div>
             </div>
             <div id="tabs-3">
-                Work in progress....
+                <div style="margin-top: 10px">
+                    <table>
+
+                        <tr>
+                            <th class="thclass">Date Time</th>
+                            <th class="thclass">Event</th>
+                            <th class="thclass">Details</th>
+
+
+                        <tr>
+                            <td class="tdclass"></td>
+                            <td class="tdclass"></td>
+                            <td class="tdclass"></td>
+                         </tr>
+                        <tr>
+                            <td class="tdclass"></td>
+                            <td class="tdclass"></td>
+                            <td class="tdclass"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdclass"></td>
+                            <td class="tdclass"></td>
+                            <td class="tdclass"></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
 

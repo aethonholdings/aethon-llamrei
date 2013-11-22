@@ -25,7 +25,7 @@ h2 {
 
 /* HEADER */
 
-.header {
+.headerBlock {
     background: url(../images/header.jpg) no-repeat;
     background-size: 100% 80px;
     width: 100%;
@@ -103,6 +103,7 @@ ul.serviceMenu{
     vertical-align: middle;
     height: 100%;
 }
+ul.serviceMenuDisplay{display:list-item}
 
 li.serviceMenu{
     display: inline;
@@ -133,6 +134,10 @@ div.serviceMenu{
 
 table {
     border: 1px solid #ccc;
+    width: 100%
+}
+.editTable{
+    border: 0px ;
     width: 100%
 }
 tr {
@@ -350,14 +355,14 @@ td.errors textarea {
     font: 11px verdana, arial, helvetica, sans-serif;
     color: #000000;
     margin-top: 30px;
-    margin-right: 40px;
+    /*margin-right: 40px;*/
 }
 
 
 .imgDiv{
     margin-top: 30px;
     margin-left: 10px;
-    border: gainsboro outset 1px;
+    /*border: gainsboro outset 1px;*/
     height: 150px;
     width: 200px;
 }

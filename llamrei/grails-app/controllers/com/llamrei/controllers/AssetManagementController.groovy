@@ -36,6 +36,7 @@ class AssetManagementController {
             assetInstance.clientName=params.clientName
             assetInstance.description=params.description
             assetInstance.location=params.location
+            assetInstance.connectivityStatus="Poor"
             assetInstance.assetUniqueID=assetUniqueId
             assetInstance.creationDate = new Date()
             assetInstance.modificationDate = new Date()
@@ -195,7 +196,7 @@ class AssetManagementController {
                 def version = params.version.toLong()
                 if (assetInstance.version > version) {
                     assetInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'asset.label', default: 'Asset')] as Object[], "Another user has updated this Asset while you were editing")
-                    render(view: "editAssets", model: [assetInstance: assetInstance])
+                    render(view: "editAsset", id:assetInstance.id)
                     return
                 }
             }
@@ -203,13 +204,13 @@ class AssetManagementController {
             if (!assetInstance.hasErrors() && assetInstance.save(flush: true)) {
                 println("Updating Asset")
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance.id])}"
-                redirect(action: "listAssets", id: assetInstance.id)
+                redirect(action: "editAsset", id: assetInstance.id)
             } else {
-                render(view: "editAssets", model: [assetInstance: assetInstance])
+                render(view: "editAsset",id: assetInstance.id)
             }
         }else {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
-            redirect(action: "listAssets")
+            redirect(action: "editAsset", id: assetInstance.id)
         }
     }
 
