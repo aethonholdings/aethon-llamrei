@@ -38,6 +38,8 @@ class AssetManagementController {
             assetInstance.location=params.location
             assetInstance.connectivityStatus="Poor"
             assetInstance.assetUniqueID=assetUniqueId
+            assetInstance.assetUniqueID="test2"
+
             assetInstance.creationDate = new Date()
             assetInstance.modificationDate = new Date()
             if ( assetInstance.validate()&& assetInstance.save()) {

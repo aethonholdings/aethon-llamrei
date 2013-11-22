@@ -86,6 +86,8 @@ class TimeSeriesManagementController {
 
     def delete = {
         def timeSeriesInstance = TimeSeries.get(params.id)
+         def assetTimeSeriesInstance=timeSeriesInstance.asset.find{it.id}
+         timeSeriesInstance.removeFromAsset(assetTimeSeriesInstance)
         if (timeSeriesInstance) {
             try {
                 timeSeriesInstance.delete(flush: true)

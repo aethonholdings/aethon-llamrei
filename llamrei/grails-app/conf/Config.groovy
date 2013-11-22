@@ -1,3 +1,4 @@
+
 // locations to search for config files that get merged into the main config
 // config files can either be Java properties files or ConfigSlurper scripts
 
@@ -61,7 +62,7 @@ environments {
 //       grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
     }
     test {
-        grails.serverURL = "http://localhost:8080/${appName}"
+       grails.serverURL = "http://localhost:8080/${appName}"
 //        grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
     }
 
