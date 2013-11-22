@@ -10,7 +10,7 @@ class Asset {
     String imageurl
     Date creationDate
     Date modificationDate
-
+    String connectivityStatus
     /**
      * Relationship mapping
      */
@@ -23,6 +23,7 @@ class Asset {
     static constraints = {
         assetUniqueID(nullable: true, unique: true)
         assetName(nullable: false)
+        connectivityStatus(nullable: true)
         description(nullable: true)
         location(nullable: false)
         imageurl(nullable:true)
@@ -38,9 +39,6 @@ class Asset {
     static mapping = {
         assetUniqueID column:"assetUniqueID"
         assetName column:"assetName"
-
-//        imageurl column : "imageurl"
-
         creationDate column: "creationDate"
         modificationDate column:"modificationDate"
     }
@@ -54,7 +52,7 @@ class Asset {
                 ", clientName='" + clientName + '\'' +
                 ", description='" + description + '\'' +
                 ", location='" + location + '\'' +
-//                ", imageurl='" + imageurl + '\'' +
+
                 ", creationDate=" + creationDate +
                 ", modificationDate=" + modificationDate +
                 ", version=" + version +

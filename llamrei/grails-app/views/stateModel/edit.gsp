@@ -45,9 +45,11 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <div class="box-cards">
-                                <div class="box-cards-title">
-                                    <a class="btn-open" href="#"><span><g:message code="title.states"/></span></a>
+                            %{--<div class="box-cards">--}%
+                                %{--<div class="box-cards-title">--}%
+                            <div>
+                            <div>
+                                    <span><g:message code="title.states"/></span></a>
                                 </div>
 
                                 <div class="box-card-hold">
@@ -146,22 +148,82 @@
         });
     }
 
+
+    function deleteState(id){
+        alert("You are about to delete a state");
+         $.ajax({
+               type: 'POST',
+               url: '${createLink(controller: 'stateModel', action: 'deleteState')}',
+               data: {stateId:id},
+               success: function(data) {
+
+                  $('tr#state-'+id).remove();
+               }
+         });
+    }
+    function deleteStateRule(id){
+        alert("You are about to delete a state rule");
+        $.ajax({
+            type: 'POST',
+            url: '${createLink(controller: 'stateModel', action: 'deleteStateRule')}',
+            data: {stateRuleId:id},
+            success: function(data) {
+                $('tr#stateRule-'+id).remove();
+            }
+        });
+    }
+
     var srIndex = 0;
     function showStateRulesForm(){
         $('#stateRuleForm').toggle();
     }
     function addStateRule(){
         var timeSeries = $('select[name="state.stateRule.timeSeries"]').val();
-        var ruleType = $('input[name="state.stateRule.ruleType"]').val();
+        var ruleType = $('select[name="state.stateRule.ruleType"]').val();
         var ruleValue = $('input[name="state.stateRule.ruleValue"]').val();
 
         $('#stateRulesTable tbody').prepend('<tr class="stateRule">' +
                 '<td>'+timeSeries+'</td><input type="hidden" name="stateRule.'+srIndex+'.timeSeries" value="'+timeSeries+'"/>' +
                 '<td>'+ruleType+'</td><input type="hidden" name="stateRule.'+srIndex+'.ruleType" value="'+ruleType+'"/>' +
                 '<td>'+ruleValue+'</td><input type="hidden" name="stateRule.'+srIndex+'.ruleValue" value="'+ruleValue+'"/>' +
-                '</tr>')
+                '</tr>');
 
         srIndex++;
+    }
+
+    function updateStateRule(id){
+        var timeSeries = $('select[name="state.stateRule-'+id+'.timeSeries"]').val();
+        var ruleType = $('select[name="state.stateRule-'+id+'.ruleType"]').val();
+        var ruleValue = $('input[name="state.stateRule-'+id+'.ruleValue1"]').val();
+
+        alert("You are about to update a state rule");
+        $.ajax({
+            type: 'POST',
+            url: '${createLink(controller: 'stateModel', action: 'updateStateRule')}',
+            data: {stateRuleId:id, timeSeriesId:timeSeries, ruleType: ruleType, ruleValue:ruleValue},
+            success: function(data) {
+                alert("State rule updated");
+            }
+        });
+    }
+
+
+
+    function updateState(id){
+        var name = $('input[name="state-'+id+'.name"]').val();
+        var description = $('input[name="state-'+id+'.description"]').val();
+
+
+        alert(name+">>"+description);
+        alert("You are about to update a state rule");
+        $.ajax({
+            type: 'POST',
+            url: '${createLink(controller: 'stateModel', action: 'updateState')}',
+            data: {stateId:id, name:name, description: description},
+            success: function(data) {
+                alert("State updated");
+            }
+        });
     }
 
 </script>

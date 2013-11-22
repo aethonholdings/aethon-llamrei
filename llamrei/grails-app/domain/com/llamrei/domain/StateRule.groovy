@@ -4,10 +4,10 @@ class StateRule {
 
     String stateRuleId
     String ruleType
-    String timeSeriesId
+    TimeSeries timeSeries
+    State state
     String ruleValue1
     String ruleValue2
-    
     static belongsTo = [state: State]
     
     static constraints = {
@@ -18,7 +18,7 @@ class StateRule {
     static mapping = {
         stateRuleId column: "stateRuleId"
         ruleType column: "ruleType"
-        timeSeriesId column: "timeSeriesId"
+
         ruleValue1   column  : "ruleValue1"
         ruleValue2   column  : "ruleValue2"
     }

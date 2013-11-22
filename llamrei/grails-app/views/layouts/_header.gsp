@@ -1,4 +1,7 @@
-    <div class="header">
+
+
+<div class="header">
+    <div class="headerBlock">
         <div class="logo"></div>
         <div class="sessionManagement">
             Welcome 
@@ -41,4 +44,5 @@
     </div>
  
     <div class="headerMenu"></div>
+</div>
     

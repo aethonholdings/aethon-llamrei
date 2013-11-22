@@ -36,6 +36,7 @@ class AssetManagementController {
             assetInstance.clientName=params.clientName
             assetInstance.description=params.description
             assetInstance.location=params.location
+            assetInstance.connectivityStatus="Poor"
             assetInstance.assetUniqueID=assetUniqueId
             assetInstance.creationDate = new Date()
             assetInstance.modificationDate = new Date()
