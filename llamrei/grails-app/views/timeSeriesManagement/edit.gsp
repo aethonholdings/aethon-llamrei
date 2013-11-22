@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class='menuItem'>
-    <h2>Administration</h2>
+    <h2>Edit Time Series</h2>
     <div class="body">
 
         <g:if test="${flash.message}">
@@ -25,7 +25,7 @@
             <g:hiddenField name="id" value="${timeSeriesInstance?.id}" />
             <g:hiddenField name="version" value="${timeSeriesInstance?.version}" />
             <div class="dialog">
-                <table>
+                <table class="editTable">
                     <tbody>
 
                     <tr class="prop">

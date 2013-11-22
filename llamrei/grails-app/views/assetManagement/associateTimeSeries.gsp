@@ -140,7 +140,7 @@
                         <input type="SUBMIT" class="actionButton" value="Associate" id="createAsset"/>
                     </span>
                     <span class="button">
-                        <g:link action="list">
+                        <g:link action="editAsset">
                             <input type="button" class='actionButton' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
                         </g:link>
                     </span>

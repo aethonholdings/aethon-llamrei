@@ -7,7 +7,7 @@
 <body>
 <div class='menuItem'>
     <h2>Edit Asset</h2>
-    <div style="margin-left: 20px;font-size: 20px;border:1px solid">
+    <div style="margin-left: 20px;font-size: 20px;">
 
         <div class="body" >
             <g:if test="${flash.message}">
@@ -25,7 +25,7 @@
                 <g:hiddenField name="id" value="${assetInstance?.id}"/>
                 <g:hiddenField name="version" value="${assetInstance?.version}"/>
                 <div class="dialog">
-                    <table>
+                    <table class="editTable">
                         <tbody>
                         <tr class="prop">
                             <td valign="top" class="name">
@@ -110,7 +110,7 @@
                 <input type="button" class='actionButton' value="${message(code: 'default.button.Cancel.label', default: 'Cancel')}">
             </g:link>
             <g:form controller="stateModel" params="[id: assetInstance.id]" style= 'display: inline'  action="edit" ><button value='editstatemodel' class="actionButton">Edit State Model</button></g:form>
-            <g:form controller="assetManagement" style= 'display: inline' action=" goToAssociateTimeSeries" params="[id:assetInstance.id]"><button value='associatetimeSeries' class="actionButton" style="width:auto">Associate Time Series</button></g:form>
+            <g:form controller="assetManagement" style= 'display: inline' action="goToAssociateTimeSeries" params="[id:assetInstance.id]"><button value='associatetimeSeries' class="actionButton" style="width:auto">Associate Time Series</button></g:form>
 
         </div>
         </div>
