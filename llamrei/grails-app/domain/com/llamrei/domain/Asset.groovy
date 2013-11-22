@@ -1,7 +1,6 @@
 package com.llamrei.domain
 
 class Asset {
-
     String assetUniqueID
     String assetName
     String clientName
@@ -30,7 +29,7 @@ class Asset {
         clientName  (nullable: false)
         creationDate(nullable: true)
         modificationDate(nullable: true)
-
+        timeSeries(nullable: true)
     }
     
     /**
@@ -41,6 +40,7 @@ class Asset {
         assetName column:"assetName"
         creationDate column: "creationDate"
         modificationDate column:"modificationDate"
+        timeSeries cascade: 'none'
     }
 
     @Override

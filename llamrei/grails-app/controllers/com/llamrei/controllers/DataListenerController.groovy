@@ -1,5 +1,6 @@
 package com.llamrei.controllers
 
+import com.llamrei.domain.State
 import com.llamrei.services.DataSeriesService
 import com.llamrei.domain.Asset
 import com.llamrei.domain.TimeSeries
@@ -53,9 +54,14 @@ class DataListenerController {
 
                   dataSeriesService.saveDataToDB(id,time,seriesList,tsList)
 
-                    // Below line of code will be uncommented after writing the update stateAction
-//                  def  stateModelIns=dataSeriesService.stateService(id,map,tsList)
-//                  redirect(controller: "stateModel", action: "update", stateModelIns:stateModelIns)
+                  def  stateName=dataSeriesService.stateService(id,map,tsList)
+                     StateModel stateModel=StateModel.findByAsset(assetInstance)
+                     Set<State> state = new HashSet<State>()
+                     def stateIns =State.findByStateModel(stateModel)
+                     stateIns.name=stateName
+                     state .add(stateIns)
+                     stateModel.setStates(state)
+                     redirect(controller: "stateModel", action: "update", stateModelIns:stateModel)
           msg="ACK"
         }else{
                msg="Asset does not exists, So can not be saved the dataseries for this Asset"
@@ -75,11 +81,11 @@ class DataListenerController {
          def checkConnectivityStatus = {
                 long diffSeconds
                 long diffMinuts
-                //second
-                long maxlog = 15
-               //minuts
+                //second for good connection
+                long minLog = 15
+                //minuts
                 long timeout = 2
-                String status = null
+                String status = "Connected"
                 List<Asset> assetList = Asset.list()
                 List<Asset> updatedAssetList = new ArrayList<Asset>()
 
@@ -94,13 +100,14 @@ class DataListenerController {
                     Date serverT   = dataList.getTimestamp()
                     Date currentTime = new Date()
                     diffSeconds = dataSeriesService.timeDifferenceSeconds(assetTime,serverT)
-                    if(diffSeconds>maxlog)
-                    status ="Poor"
-
+                    if(diffSeconds<=minLog)
+                    status ="Good"
+                    else
+                    status="Poor"
                    diffMinuts  = dataSeriesService.timeDifferenceInMinute(currentTime,serverT)
                         if(diffMinuts>2)
                         status= "Disconnected"
-                        println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+asset.assetName+" is "+status)
+                       // println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+asset.assetName+" is "+status)
 
                         assetIns.connectivityStatus=status
                         updatedAssetList.add(assetIns)

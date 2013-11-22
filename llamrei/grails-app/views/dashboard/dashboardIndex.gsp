@@ -64,12 +64,12 @@
 
         <g:each in="${contentmap}" status="i" var="content">
 
-            <tr>
+            <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                 <td>${content.value.name}</td>
-                <td>--</td>
-                <td>Running</td>
-                <td onclick=openChart(${content.value.uID},${content.value.timeSereisID})>${content.value.value}</td>
-                <td onclick=openChart(${content.value.uID},${content.value.timeSereisID})>${content.value.value1}</td>
+                <td>${content.value.connection}</td>
+                <td>${content.value.stateName}</td>
+                <td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value}</td>
+                <td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value1}</td>
                 %{--<td></td>--}%
                 <td><input type="button" class="actionButton" value="Lock"></td>
                 <td><input type="button" class="actionButton" value="Start"></td>
