@@ -15,6 +15,7 @@ class DataSeriesService {
 
     static transactional = true
     boolean isSaved=false
+    def mailService
     def boolean saveDataToDB(String id, String time, ArrayList seriesList,List<TimeSeries> tsIns) {
            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss")
              try
@@ -86,6 +87,7 @@ class DataSeriesService {
         def state = stateModelIns.states
     //   println("#########################"+obj1)
          def status= state.name
+         String newStatus=null
         for(int i=0;i<seriesList.size();i++){
         def list = StateRule.findAllByTimeSeries(seriesList.get(i))
 
@@ -94,16 +96,19 @@ class DataSeriesService {
             def oldValue  = Float.parseFloat(stateRule.ruleValue1)
           if(stateRule.ruleType=="<"){
               if(newValue<oldValue)
-                state.name="Stoped"
+                  newStatus="Stopped"
           }else if(stateRule.ruleType==">"){
                 if(newValue>oldValue)
-                state.name="Stoped"
+                    newStatus="Stopped"
           }
           }
           }
-         stateModelIns.states.name = state.name
+            if(status!=newStatus) {
+                 sendAlert(obj,status[0],newStatus)
+                 status=newStatus
+           }
 
-          return  stateModelIns
+          return  status
    }
 
     def timeDifferenceSeconds(Date assetT, Date serverT){
@@ -118,9 +123,7 @@ class DataSeriesService {
 			//in milliseconds
 			double diff = serverT.getTime() - assetT.getTime();
              diffSeconds = diff / 1000 % 60
-
-            println("Time Difference 7777777777777777777++++++++++"+diffSeconds)
-        }catch(Exception e){
+            }catch(Exception e){
              e.printStackTrace()
         }
         return  diffSeconds
@@ -133,16 +136,53 @@ class DataSeriesService {
             /* Date serverTime =null
              Date nodeTime = null*/
               try {
-
-                double diff = curr.getTime() - serverT.getTime();
+                 double diff = curr.getTime() - serverT.getTime();
                  diffMinutes = diff / (60 * 1000) % 60
-                println("Time Difference 7777777777777777777++++++++++"+diffMinutes)
-            }catch(Exception e){
+               }catch(Exception e){
                  e.printStackTrace()
             }
         return diffMinutes
         }
 
+
+    def sendAlert(Asset asset, String oldState,String newState) {
+
+        String to1 = '', from = '', senderName = '', subject1 = '', message = '', renderMessage = '', emailId=''
+        Boolean send = false
+        //def userInstance=Sec.findByUsername(params.userName)
+
+        if(asset){
+            emailId="rajp@damyant.com"
+            send =true
+            from='raj95288@gmail.com'
+        }
+        else{
+            println("Sorry,we are not able to find the username")
+        }
+
+        if (send) {
+            subject1 = "State Transition Alert of State"
+            message = """Dear Operater,\n
+                   A state transition for asset  ${asset.assetName.trim()}  has occured:\n
+                    Asset Name        :   ${asset.assetName.trim()}\n
+                    Previous state    :   ${oldState.trim()}\n
+                    New State         :   ${newState.trim()}\n
+                    Transition Reason :   Low/High Temparature
+                                                                               \n\nThanks and Regards,\n
+ Administrative  Team"""
+
+
+            mailService.sendMail {
+                to(emailId)
+                subject(subject1)
+                body(message)
+            }
+            println("Mail Sent")
+        }
+        else {
+            print(renderMessage)
+        }
+    }
 
 
    }

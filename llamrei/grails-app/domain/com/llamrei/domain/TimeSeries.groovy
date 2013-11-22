@@ -24,6 +24,7 @@ class TimeSeries {
      */
     static constraints = {
         timeSeriesUniqueID(nullable: false,unique: true, blank:false)
+         asset(nullable: true)
         inDashboard(nullable:false)
         name(nullable: false,unique: true, blank:false)
         units(nullable: false, unique: true, blank:false)
@@ -38,5 +39,6 @@ class TimeSeries {
     static mapping = {
         timeSeriesUniqueID column: "timeSeriesUniqueID"
         dataType column :"dataType"
+        asset cascade:'none'
     }
 }
