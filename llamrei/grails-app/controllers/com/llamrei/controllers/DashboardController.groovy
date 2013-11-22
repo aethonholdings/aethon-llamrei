@@ -31,29 +31,35 @@ class DashboardController {
             params.order   ="desc"
             dataInstanceList = DataPoint.findAllByAsset(asset,params)
             def timeSeriesList  =[]
-
+            def stateName
             stateModelList=  StateModel.findAllByAsset(asset)
+            stateModelList.each{ st->
+                stateName= st.states.name[0]
+                        }
+
+            println("ssssssss"+asset.timeSeries.name)
+            timeSeriesName=asset.timeSeries.name
+//                timeSeriesName = asset.timeSeries.find{it.inDashboard}
+
 
             if(dataInstanceList){
-//                timeSeriesName=asset.timeSeries.name
-
-                timeSeriesName = asset.timeSeries.find{it.inDashboard}
 
                 dataInstanceList?.eachWithIndex { data, i ->
 
                     if(i==0) {
-                        contentMap."${asset.id}" =  [uID:asset.id,assetId:asset.assetUniqueID,name:asset.assetName,timeSereisID:data.timeSeries.id,id:data.id,value:data.value ]
+                        contentMap."${asset.id}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,timeSereisID:data.timeSeries.id,id:data.id,value :data.value ]
                         timeSeriesList<<data.timeSeries.id
                     }
                     else if(!(timeSeriesList.contains(data.timeSeries.id)))  {
-                        contentMap."${asset.id}"."value${timeSeriesList.size()}"=data.value
+                        contentMap."${asset.id}"."value${data.timeSeries.id}"=data.value
                         timeSeriesList<<data.timeSeries.id
+//                        println("@@@@@@@@@@222222"+contentMap)
 
                     }
                 }
             }
             else{
-                contentMap."${asset.id}" =  [assetId:"",name:asset.assetName,id:"",value:"" ,value1:""]
+                contentMap."${asset.id}" =  [assetId:"",name:asset.assetName,connection:asset.connectivityStatus,stateName:stateName,id:"",value:"" ,value1:""]
                 timeSeriesList<<"a"
 
 
@@ -66,6 +72,7 @@ class DashboardController {
             render contentMap as JSON
         }
         else{
+            println("?????????"+timeSeriesName)
             render (view: "dashboardIndex", model: [contentmap:contentMap,timeSeriesName:timeSeriesName] )
         }
 

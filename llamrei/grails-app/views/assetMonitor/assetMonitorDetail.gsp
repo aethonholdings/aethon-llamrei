@@ -73,7 +73,7 @@
 
 
     %{--<div style="margin-right: 100px"  class="updateMsgClass" id="msgDiv1">Updating...</div>--}%
-    <div class="leftDiv" >
+
 
 
 
