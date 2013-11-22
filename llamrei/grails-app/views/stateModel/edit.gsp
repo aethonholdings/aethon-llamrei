@@ -177,6 +177,12 @@
     function showStateRulesForm(){
         $('#stateRuleForm').toggle();
     }
+
+    function showRuleToggleAtTop(){
+        $('#ruleToggleAtTop').toggle();
+    }
+
+
     function addStateRule(){
         var timeSeries = $('select[name="state.stateRule.timeSeries"]').val();
         var ruleType = $('select[name="state.stateRule.ruleType"]').val();
@@ -224,6 +230,13 @@
                 alert("State updated");
             }
         });
+    }
+
+    function addStateRule1(){
+
+        var timeSeries = $('select[name="state.stateRule.timeSeries"]').val();
+        var ruleType = $('select[name="state.stateRule.ruleType"]').val();
+        var ruleValue = $('input[name="state.stateRule.ruleValue"]').val();
     }
 
 </script>
