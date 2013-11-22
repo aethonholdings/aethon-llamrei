@@ -84,31 +84,25 @@ class StateModelController {
 
     def update = {
      println "Prams in update : "+params
-       def  stateModelInstance=StateModel.get(params.id)
-        if (stateModelInstance) {
-            if (params.version) {
-                def version = params.version.toLong()
-                if (stateModelInstance.version > version) {
+         def stateModelInstance=StateModel.get(params.int('stateModelId'))
+        stateModelInstance.setName(params.name)
+        stateModelInstance.setDescription(params.description)
 
-                    stateModelInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'stateModel.label', default: 'StateModel')] as Object[], "Another user has updated this StateModel while you were editing")
-                    render(view: "edit", model: [stateModelInstance: stateModelInstance])
-                    return
-                }
-            }
+
+        println "found state model : "+stateModelInstance
+
             stateModelInstance.properties = params
             if (!stateModelInstance.hasErrors() && stateModelInstance.save(flush: true)) {
+                println "coming inside"
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'stateModel.label', default: 'StateModel'), stateModelInstance.id])}"
                 redirect(action: "edit", id: stateModelInstance.id)
             }
             else {
-                render(view: "edit", model: [stateModelInstance: stateModelInstance])
+                render(view: "edit", model: [stateModel: stateModelInstance])
             }
         }
-        else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'stateModel.label', default: 'StateModel'), params.id])}"
-            redirect(action: "edit")
-        }
-    }
+
+
 
     def delete = {
         println "params in delete : "+params
@@ -246,10 +240,10 @@ class StateModelController {
         StateRule stateRule = StateRule.get(Integer.parseInt(params.stateRuleId))
         stateRule.setRuleType(params.ruleType)
         stateRule.setRuleValue1(params.ruleValue)
-        
+
         TimeSeries timeSeries = TimeSeries.get(Integer.parseInt(params.timeSeriesId))
         stateRule.setTimeSeries(timeSeries)
-        
+
         println "Going to stateRule : "+stateRule
         stateRule.save(flush: true)
         println "State rule updated :)"
@@ -267,4 +261,5 @@ class StateModelController {
         println "State updated :)"
     }
 }
+
 
