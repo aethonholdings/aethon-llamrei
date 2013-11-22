@@ -19,8 +19,8 @@
 <body>
 
 <div class='menuItem'>
-    <h2>Administration</h2>
-    <div style="margin-left: 20px;font-size: 20px;border:1px solid">
+    <h2>Edit User</h2>
+    <div style="margin-left: 20px;font-size: 20px;">
     <div class="body">
         <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
