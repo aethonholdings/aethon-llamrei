@@ -6,6 +6,7 @@ import com.llamrei.domain.TimeSeries
 import grails.plugins.springsecurity.Secured
 import com.llamrei.domain.StateModel
 import com.llamrei.domain.Asset
+
 @Secured(['ROLE_ADMIN'])
 class StateModelController {
 
@@ -27,14 +28,13 @@ class StateModelController {
     }
 
     def save = {
-        println ">>params : "+params
+        println ">>params : " + params
         def stateModelInstance = new StateModel(params)
-        println "stateModel to be saved : "+stateModelInstance
+        println "stateModel to be saved : " + stateModelInstance
         if (stateModelInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'stateModel.label', default: 'StateModel'), stateModelInstance.id])}"
             redirect(action: "edit", id: stateModelInstance.id)
-        }
-        else {
+        } else {
             render(view: "create", model: [stateModelInstance: stateModelInstance])
         }
     }
@@ -52,12 +52,12 @@ class StateModelController {
 
     def edit = {
         def stateModelInstance
-        if (params.assetId){
-            println "finding state model by asset id "+params.assetId
+        if (params.assetId) {
+            println "finding state model by asset id " + params.assetId
             Integer assetId = Integer.parseInt(params.assetId)
             stateModelInstance = StateModel.findByAsset(Asset.findById(assetId.longValue()))
-        } else if (params.id){
-            println "finding state model by id "+params.id
+        } else if (params.id) {
+            println "finding state model by id " + params.id
             stateModelInstance = StateModel.get(params.id)
         }
 
@@ -66,7 +66,7 @@ class StateModelController {
             stateModelInstance.description = ""
             stateModelInstance.stateModelId = ""
         }
-        println "State model : "+stateModelInstance
+        println "State model : " + stateModelInstance
 
 
         println "cominggg"
@@ -83,29 +83,35 @@ class StateModelController {
     }
 
     def update = {
-     println "Prams in update : "+params
-         def stateModelInstance=StateModel.get(params.int('stateModelId'))
-        stateModelInstance.setName(params.name)
-        stateModelInstance.setDescription(params.description)
+        def stateModelInstance = StateModel.get(params.int('stateModelId'))
+        println "found state model : " + stateModelInstance
 
-
-        println "found state model : "+stateModelInstance
-
-            stateModelInstance.properties = params
-            if (!stateModelInstance.hasErrors() && stateModelInstance.save(flush: true)) {
-                println "coming inside"
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'stateModel.label', default: 'StateModel'), stateModelInstance.id])}"
-                redirect(action: "edit", id: stateModelInstance.id)
-            }
-            else {
-                render(view: "edit", model: [stateModel: stateModelInstance])
+        //bind manually
+        stateModelInstance.name = params['name']
+        stateModelInstance.description = params['description']
+        stateModelInstance.states.each {state ->
+            state.name = params['states.'+state.id+'.name']
+            state.description = params['states.'+state.id+'.description']
+            state.stateRules.each { stateRule ->
+              stateRule.ruleType = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleType']
+              stateRule.ruleValue1 = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleValue1']
+              stateRule.timeSeries = TimeSeries.get(params.int(['states.'+state.id+'.stateRules.'+stateRule.id+'.timeSeries']))
             }
         }
+        println "stateModel after binding : "+stateModelInstance
 
-
+        if (!stateModelInstance.hasErrors() && stateModelInstance.save(flush: true)) {
+            println "coming inside"
+            flash.message = "${message(code: 'default.updated.message', args: [message(code: 'stateModel.label', default: 'StateModel'), stateModelInstance.id])}"
+            redirect(action: "edit", id: stateModelInstance.id)
+        }
+        else {
+            render(view: "edit", model: [stateModel: stateModelInstance])
+        }
+    }
 
     def delete = {
-        println "params in delete : "+params
+        println "params in delete : " + params
         Integer assetId = Integer.parseInt(params.id)
         def stateModelInstance = StateModel.findByAsset(Asset.findById(assetId.longValue()))
         if (stateModelInstance) {
@@ -124,66 +130,66 @@ class StateModelController {
             redirect(action: "edit")
         }
     }
-    def copy ={
-        println ">>paramsin copy : "+params
-        [stateModelId:params.stateModelId]
+    def copy = {
+        println ">>paramsin copy : " + params
+        [stateModelId: params.stateModelId]
     }
 
     def copyStateModel = {
-        println ">>paramsin copy state model : "+params
+        println ">>paramsin copy state model : " + params
 
         StateModel stateModelToBeCopied = null
-        if (params.assetId){
+        if (params.assetId) {
             Integer assetId = Integer.parseInt(params.assetId)
             Asset asset = Asset.findById(assetId.longValue())
             stateModelToBeCopied = StateModel.findByAsset(asset)
-            println "stateModelToBeCopied : "+stateModelToBeCopied
+            println "stateModelToBeCopied : " + stateModelToBeCopied
         }
 
         StateModel stateModel = null
         if (params.stateModelId) {
             stateModel = StateModel.get(params.stateModelId)
-            println("statemodel to copy into : "+stateModel)
+            println("statemodel to copy into : " + stateModel)
         }
 
-        if (null!=stateModelToBeCopied && null!=stateModel){
+        if (null != stateModelToBeCopied && null != stateModel) {
             stateModel.setName(stateModelToBeCopied.name)
             stateModel.setDescription(stateModelToBeCopied.description)
-            println "validate :"+stateModel.validate()
+            println "validate :" + stateModel.validate()
             if (stateModel.save(flush: true)) {
                 println "statemodel copied"
-                redirect(action: 'edit',id: stateModel.id )
+                redirect(action: 'edit', id: stateModel.id)
             } else {
                 flash.message = "Could not copy statemodel"
-                redirect(action: 'copy', stateModelId:params.stateModelId )
+                redirect(action: 'copy', stateModelId: params.stateModelId)
             }
 
         } else {
             flash.message = "Could not find asset"
-            redirect(action: 'copy', stateModelId:params.stateModelId )
+            redirect(action: 'copy', stateModelId: params.stateModelId)
         }
     }
 
     def addState = {
-        println ">>>>>"+params
+        println ">>>>>" + params
 
         StateModel stateModel = StateModel.get(params.int('stateModelId'))
-        println "found state model : "+stateModel
+        println "found state model : " + stateModel
         State state = new State()
         state.setName(params.state.name)
         state.setDescription(params.state.description)
         state.setStateModel(stateModel)
 
-        println "going to save state : "+state
+        println "going to save state : " + state
         StateRule stateRule
         Set<StateRule> stateRules = []
-        if(state.validate()) {
+        if (state.validate()) {
             state.save(flush: true)
             println "state saved :)"
 
             //now save state rules
             Integer stateRulesCount = Integer.parseInt(params.stateRulesCount)
-            for(int i=0; i<stateRulesCount; i++){
+            for (int i = 0; i < stateRulesCount; i++) {
 
                 stateRule = new StateRule()
                 stateRule.setRuleType(params["stateRule.${i}.ruleType"])
@@ -194,14 +200,14 @@ class StateModelController {
                 stateRule.setTimeSeries(timeSeries)
                 stateRule.setState(state)
 
-                println "StateRule to be saved : "+stateRule
-                println "sr validate : "+stateRule.validate()
-                if(stateRule.validate()){
+                println "StateRule to be saved : " + stateRule
+                println "sr validate : " + stateRule.validate()
+                if (stateRule.validate()) {
                     stateRule.save(flush: true)
                     println "state rule saved"
 
                     stateRules.add(stateRule)
-                }  else {
+                } else {
                     println "state rule not saved"
                 }
             }
@@ -212,12 +218,12 @@ class StateModelController {
         state.setStateRules(stateRules)
         Set states = stateModel.states
         states.add(state)
-        render template: 'states', model: [states:states, stateModelId:stateModel.id]
+        render template: 'states', model: [states: states, stateModelId: stateModel.id]
     }
 
 
-    def deleteState={
-        println "params in deleteState : "+params
+    def deleteState = {
+        println "params in deleteState : " + params
         Integer stateId = Integer.parseInt(params.stateId)
         State state = State.get(stateId)
         state.delete()
@@ -226,8 +232,8 @@ class StateModelController {
     }
 
 
-    def deleteStateRule={
-        println "params in deleteStateRule : "+params
+    def deleteStateRule = {
+        println "params in deleteStateRule : " + params
         Integer stateRuleId = Integer.parseInt(params.stateRuleId)
         StateRule stateRule = StateRule.get(stateRuleId)
         stateRule.delete()
@@ -235,7 +241,7 @@ class StateModelController {
         render true
     }
 
-    def updateStateRule = {
+    /*def updateStateRule = {
         println "params in update state rule : "+params
         StateRule stateRule = StateRule.get(Integer.parseInt(params.stateRuleId))
         stateRule.setRuleType(params.ruleType)
@@ -259,6 +265,53 @@ class StateModelController {
         println "Going to state : "+state
         state.save(flush: true)
         println "State updated :)"
+    }
+*/
+
+    def addStateRule = {
+        println "params in addStateRule : "+params
+
+        Integer stateIdToBeModified = params.int('stateIdToBeModified')
+        def stateModelInstance = StateModel.get(params.int('stateModelId'))
+
+        //bind manually
+        stateModelInstance.states.each {state ->
+            if (state.id == stateIdToBeModified){
+
+                //update the existing state rules
+                state.stateRules.each { stateRule ->
+                    stateRule.ruleType = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleType']
+                    stateRule.ruleValue1 = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleValue1']
+                    stateRule.timeSeries = TimeSeries.get(params.int(['states.'+state.id+'.stateRules.'+stateRule.id+'.timeSeries']))
+                }
+                println "state to be saved : "+state
+                if (state.validate()) {
+                    state.save(flush: true)
+                    println "state saved"
+                } else {
+                    println "state not saved"
+                }
+
+                //add a new state rule
+                StateRule stateRule = new StateRule()
+                stateRule.setRuleType("")
+                stateRule.setRuleValue1("")
+                TimeSeries timeSeries = TimeSeries.list().get(0)
+                stateRule.setTimeSeries(timeSeries)
+                stateRule.setState(state)
+                println "StateRule to be saved : " + stateRule
+                if (stateRule.validate()) {
+                    stateRule.save(flush: true)
+                    println "state rule saved"
+
+                    state.stateRules.add(stateRule)
+                } else {
+                    println "state rule not saved"
+                }
+            }
+        }
+
+        render template: 'states', model: [states: stateModelInstance?.states, stateModelId: stateModelInstance?.id]
     }
 }
 

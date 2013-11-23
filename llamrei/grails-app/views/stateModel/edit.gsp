@@ -31,7 +31,7 @@
                         </td>
                         <td valign="top"
                             class="value ${hasErrors(bean: stateModelInstance, field: 'description', 'errors')}">
-                            <g:textArea name="description" value="${stateModelInstance?.description}"/>
+                            <g:textArea name="description" value="${stateModelInstance?.description}" rows="5" cols="16"/>
                         </td>
                     </tr>
 
@@ -45,17 +45,16 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            %{--<div class="box-cards">--}%
-                                %{--<div class="box-cards-title">--}%
                             <div>
-                            <div>
+                                <div>
                                     <span><g:message code="title.states"/></span></a>
                                 </div>
 
                                 <div class="box-card-hold">
                                     <div style="position:relative">
                                         <div id="states">
-                                            <g:render template="states" model="[states:stateModelInstance.states, stateModelId:stateModelInstance.id]" />
+                                            <g:render template="states"
+                                                      model="[states: stateModelInstance.states, stateModelId: stateModelInstance.id]"/>
                                         </div>
                                     </div>
                                 </div>
@@ -70,16 +69,19 @@
             <div style='display: inline; width: 500px'>
             <g:actionSubmit action="update" class='actionButton' value="Update">Update</g:actionSubmit>
         </g:form>
-        <g:form controller="stateModel" style='display: inline' action='edit' params="[delete: true, id: stateModelInstance?.id]">
+        <g:form controller="stateModel" style='display: inline' action='edit'
+                params="[delete: true, id: stateModelInstance?.id]">
             <button value='Delete state model' onclick="  confirm('Are you sure you want to delete this State Model?');
             alert('you must define a new stateModel');" id='deleteButton' class="actionButton">
                 Delete
             </button>
         </g:form>
-        <g:form controller="assetManagement" style='display: inline' action="editAsset" params="[id: stateModelInstance?.asset?.id]"
+        <g:form controller="assetManagement" style='display: inline' action="editAsset"
+                params="[id: stateModelInstance?.asset?.id]"
                 value="Cancel"><button value='Cancel' class="actionButton">Cancel</button></g:form>
-        <g:form controller="stateModel" style='display: inline' action="copy" value="copy" params="[stateModelId : stateModelInstance?.id]"><button value='Copy'
-                                                                                                   class="actionButton">Copy</button></g:form>
+        <g:form controller="stateModel" style='display: inline' action="copy" value="copy"
+                params="[stateModelId: stateModelInstance?.id]"><button value='Copy'
+                                                                        class="actionButton">Copy</button></g:form>
     </div>
     </div>
 </div>
@@ -97,7 +99,7 @@
     function openSlide(parent) {
         if ($(parent).not('.box-cards-open')) {
             $(parent).addClass('box-cards-open');
-            $(parent).find('.box-card-hold').slideDown(500, function() {
+            $(parent).find('.box-card-hold').slideDown(500, function () {
                 eval($(parent).attr('onOpen'));
                 eval($(parent).attr('onSlide'));
             });
@@ -107,136 +109,137 @@
     function closeSlide(parent) {
         if ($(parent).is('.box-cards-open')) {
             $(parent).removeClass('box-cards-open');
-            $(parent).find('.box-card-hold').slideUp(500, function() {
+            $(parent).find('.box-card-hold').slideUp(500, function () {
                 eval($(parent).attr('onClose'));
                 eval($(parent).attr('onSlide'));
             });
         }
     }
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         // hide closed box-cards
-        $('.box-cards').each(function(){
+        $('.box-cards').each(function () {
             if (!$(this).is('.box-cards-open'))
-                $(this).find('.box-card-hold').css('display','none');
+                $(this).find('.box-card-hold').css('display', 'none');
         });
 
         // toggle box-cards on click
-        $('a.btn-open', '.box-cards').click(function() {
+        $('a.btn-open', '.box-cards').click(function () {
             toggleSlide(this);
             return false;
         });
     });
 
-    function showStateForm(){
+    function showStateForm() {
         $('#stateForm').toggle();
     }
-    function addState(){
+    function addState() {
         var stateRulesCount = 0;
-        $('#stateRulesTable tbody tr.stateRule').each(function(){
-              stateRulesCount++;
-        }) ;
+        $('#stateRulesTable tbody tr.stateRule').each(function () {
+            stateRulesCount++;
+        });
         $('#stateRulesCount').val(stateRulesCount);
 
         $.ajax({
-            type: 'POST',
-            url: '${createLink(action: 'addState')}',
-            data: $('div#state-form').parents('form').serialize(),
-            success: function(data) {
-                $('div#states').replaceWith(data);
+            type:'POST',
+            url:'${createLink(action: 'addState')}',
+            data:$('div#state-form').parents('form').serialize(),
+            success:function (data) {
+                $('div#states').html(data);
             }
         });
     }
 
 
-    function deleteState(id){
+    function deleteState(id) {
         alert("You are about to delete a state");
-         $.ajax({
-               type: 'POST',
-               url: '${createLink(controller: 'stateModel', action: 'deleteState')}',
-               data: {stateId:id},
-               success: function(data) {
-
-                  $('tr#state-'+id).remove();
-               }
-         });
+        $.ajax({
+            type:'POST',
+            url:'${createLink(controller: 'stateModel', action: 'deleteState')}',
+            data:{stateId:id},
+            success:function (data) {
+                $('tr#state-' + id).remove();
+            }
+        });
     }
-    function deleteStateRule(id){
+    function deleteStateRule(id) {
         alert("You are about to delete a state rule");
         $.ajax({
-            type: 'POST',
-            url: '${createLink(controller: 'stateModel', action: 'deleteStateRule')}',
-            data: {stateRuleId:id},
-            success: function(data) {
-                $('tr#stateRule-'+id).remove();
+            type:'POST',
+            url:'${createLink(controller: 'stateModel', action: 'deleteStateRule')}',
+            data:{stateRuleId:id},
+            success:function (data) {
+                $('tr#stateRule-' + id).remove();
             }
         });
     }
 
     var srIndex = 0;
-    function showStateRulesForm(){
+    function showStateRulesForm() {
         $('#stateRuleForm').toggle();
     }
 
-    function showRuleToggleAtTop(){
+    function showRuleToggleAtTop() {
         $('#ruleToggleAtTop').toggle();
     }
 
 
-    function addStateRule(){
+    function addStateRule() {
         var timeSeries = $('select[name="state.stateRule.timeSeries"]').val();
         var ruleType = $('select[name="state.stateRule.ruleType"]').val();
         var ruleValue = $('input[name="state.stateRule.ruleValue"]').val();
 
         $('#stateRulesTable tbody').prepend('<tr class="stateRule">' +
-                '<td>'+timeSeries+'</td><input type="hidden" name="stateRule.'+srIndex+'.timeSeries" value="'+timeSeries+'"/>' +
-                '<td>'+ruleType+'</td><input type="hidden" name="stateRule.'+srIndex+'.ruleType" value="'+ruleType+'"/>' +
-                '<td>'+ruleValue+'</td><input type="hidden" name="stateRule.'+srIndex+'.ruleValue" value="'+ruleValue+'"/>' +
+                '<td>' + timeSeries + '</td><input type="hidden" name="stateRule.' + srIndex + '.timeSeries" value="' + timeSeries + '"/>' +
+                '<td>' + ruleType + '</td><input type="hidden" name="stateRule.' + srIndex + '.ruleType" value="' + ruleType + '"/>' +
+                '<td>' + ruleValue + '</td><input type="hidden" name="stateRule.' + srIndex + '.ruleValue" value="' + ruleValue + '"/>' +
                 '</tr>');
 
         srIndex++;
     }
-
-    function updateStateRule(id){
-        var timeSeries = $('select[name="state.stateRule-'+id+'.timeSeries"]').val();
-        var ruleType = $('select[name="state.stateRule-'+id+'.ruleType"]').val();
-        var ruleValue = $('input[name="state.stateRule-'+id+'.ruleValue1"]').val();
+/*
+    function updateStateRule(id) {
+        var timeSeries = $('select[name="state.stateRule-' + id + '.timeSeries"]').val();
+        var ruleType = $('select[name="state.stateRule-' + id + '.ruleType"]').val();
+        var ruleValue = $('input[name="state.stateRule-' + id + '.ruleValue1"]').val();
 
         alert("You are about to update a state rule");
         $.ajax({
-            type: 'POST',
-            url: '${createLink(controller: 'stateModel', action: 'updateStateRule')}',
-            data: {stateRuleId:id, timeSeriesId:timeSeries, ruleType: ruleType, ruleValue:ruleValue},
-            success: function(data) {
+            type:'POST',
+            url:'${createLink(controller: 'stateModel', action: 'updateStateRule')}',
+            data:{stateRuleId:id, timeSeriesId:timeSeries, ruleType:ruleType, ruleValue:ruleValue},
+            success:function (data) {
                 alert("State rule updated");
             }
         });
     }
 
+    function updateState(id) {
+        var name = $('input[name="state-' + id + '.name"]').val();
+        var description = $('input[name="state-' + id + '.description"]').val();
 
-
-    function updateState(id){
-        var name = $('input[name="state-'+id+'.name"]').val();
-        var description = $('input[name="state-'+id+'.description"]').val();
-
-
-        alert(name+">>"+description);
         alert("You are about to update a state rule");
         $.ajax({
-            type: 'POST',
-            url: '${createLink(controller: 'stateModel', action: 'updateState')}',
-            data: {stateId:id, name:name, description: description},
-            success: function(data) {
+            type:'POST',
+            url:'${createLink(controller: 'stateModel', action: 'updateState')}',
+            data:{stateId:id, name:name, description:description},
+            success:function (data) {
                 alert("State updated");
             }
         });
-    }
+    }*/
 
-    function addStateRule1(){
+    function addStateRuleRow(stateId) {
+        $('#stateIdToBeModified').val(stateId);
 
-        var timeSeries = $('select[name="state.stateRule.timeSeries"]').val();
-        var ruleType = $('select[name="state.stateRule.ruleType"]').val();
-        var ruleValue = $('input[name="state.stateRule.ruleValue"]').val();
+        $.ajax({
+            type:'POST',
+            url:'${createLink(controller: 'stateModel', action: 'addStateRule')}',
+            data:$('div#state-form').parents('form').serialize(),
+            success:function (data) {
+                $('div#states').html(data);
+            }
+        });
     }
 
 </script>
