@@ -1,5 +1,7 @@
 package com.llamrei.services
 
+import com.llamrei.domain.Alerts
+
 import java.text.SimpleDateFormat
 import java.text.ParseException
 import com.llamrei.domain.DataPoint
@@ -88,6 +90,8 @@ class DataSeriesService {
     //   println("#########################"+obj1)
          def status= state.name
          String newStatus=null
+         String reason=null
+         String unit = null
         for(int i=0;i<seriesList.size();i++){
         def list = StateRule.findAllByTimeSeries(seriesList.get(i))
 
@@ -95,18 +99,34 @@ class DataSeriesService {
             def newValue  = Float.parseFloat(keyValue.get(seriesList.get(i).timeSeriesUniqueID))
             def oldValue  = Float.parseFloat(stateRule.ruleValue1)
           if(stateRule.ruleType=="<"){
-              if(newValue<oldValue)
+              if(newValue<oldValue){
                   newStatus="Stopped"
+                  reason=  seriesList.get(i).name
+                  unit = "Low"
+              }
           }else if(stateRule.ruleType==">"){
-                if(newValue>oldValue)
+                if(newValue>oldValue){
                     newStatus="Stopped"
+                    reason=  seriesList.get(i).name
+                    unit = "High"
+                }
           }
           }
           }
             if(status!=newStatus) {
-                 sendAlert(obj,status[0],newStatus)
-                 status=newStatus
+
+                  String message= null
+                  message= sendAlert(obj,status[0],newStatus,reason,unit)
+                def alert = new Alerts()
+                alert.eventType="STATE TRANSITION"
+                alert.created = new Date()
+                alert.asset=obj
+                alert.details=message.substring(0,240)
+                alert.save(flush: true)
+                 /* sendAlert(obj,status[0],newStatus)
+                 status=newStatus*/
            }
+
 
           return  status
    }
@@ -145,7 +165,7 @@ class DataSeriesService {
         }
 
 
-    def sendAlert(Asset asset, String oldState,String newState) {
+    def sendAlert(Asset asset, String oldState,String newState,String reason, String unit) {
 
         String to1 = '', from = '', senderName = '', subject1 = '', message = '', renderMessage = '', emailId=''
         Boolean send = false
@@ -167,7 +187,7 @@ class DataSeriesService {
                     Asset Name        :   ${asset.assetName.trim()}\n
                     Previous state    :   ${oldState.trim()}\n
                     New State         :   ${newState.trim()}\n
-                    Transition Reason :   Low/High Temparature
+                    Transition Reason :   ${unit}  ${reason}
                                                                                \n\nThanks and Regards,\n
  Administrative  Team"""
 
@@ -180,8 +200,10 @@ class DataSeriesService {
             println("Mail Sent")
         }
         else {
-            print(renderMessage)
+            println(renderMessage)
         }
+
+        return message
     }
 
 

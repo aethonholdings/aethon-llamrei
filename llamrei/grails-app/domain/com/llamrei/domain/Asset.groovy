@@ -30,17 +30,19 @@ class Asset {
         creationDate(nullable: true)
         modificationDate(nullable: true)
         timeSeries(nullable: true)
+       // alerts(nullable: true)
     }
     
     /**
      * Mapping to define column names for domain objects in the database
      */
     static mapping = {
-        assetUniqueID column:"assetUniqueID"
+                assetUniqueID column:"assetUniqueID"
         assetName column:"assetName"
         creationDate column: "creationDate"
         modificationDate column:"modificationDate"
         timeSeries cascade: 'none'
+        alerts(sort:'created', order:'desc')
     }
 
     @Override
