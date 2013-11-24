@@ -56,6 +56,7 @@
                                             <g:render template="states"
                                                       model="[states: stateModelInstance.states, stateModelId: stateModelInstance.id]"/>
                                         </div>
+                                        <g:hiddenField name="stateIdToBeModified" value="" />
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +232,6 @@
 
     function addStateRuleRow(stateId) {
         $('#stateIdToBeModified').val(stateId);
-
         $.ajax({
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'addStateRule')}',
