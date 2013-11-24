@@ -1,13 +1,25 @@
+
 <div id="state-form">
     <g:hiddenField name="stateModelId" value="${stateModelId}" />
+    <table>
+    <tr>
+    <td>
     <div style="display: inline">
-        <label class="lb"><g:message code="title.state.name"/></label>
+        <label class="lb" style="margin-left: 2.5%"><g:message code="title.state.name"/></label>
         <g:textField class="field" name="state.name" value="" style="margin-left: 3%;" />
     </div>
+        </td>
+    </tr>
+    <tr>
+    <td>
     <div style="display: inline;">
-        <label class="lb"><g:message code="title.state.description"/></label>
-        <g:textField class="field" name="state.description" value="" style="margin-left: 1%;"/>
+        <label class="lb" style="margin-left: 2.5%"><g:message code="title.state.description"/></label>
+        <g:textField class="field" name="state.description" value="" style="margin-left: 0.5%;"/>
     </div>
+        </td>
+    </tr>
+     <tr>
+         <td>
     <div style="display: inline;">
         <div class="box-cards">
             <div class="box-cards-title">
@@ -23,7 +35,11 @@
             </div>
         </div>
     </div>
+    </td>
+    </tr>
+    </table>
 </div>
+
 
 <div>
     <a onclick="addState()" class="actionButton">

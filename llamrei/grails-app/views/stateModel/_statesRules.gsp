@@ -1,10 +1,10 @@
 <div class="table-box">
-    <table cellspacing="0" cellpadding="0" id="stateRulesTable">
+    <table  id="stateRulesTable">
         <thead>
         <tr class="ui-widget-header">
-        <th width="150px"><g:message code="title.stateRule.timeSeries"/></th>
-        <th width="150px"><g:message code="title.stateRule.ruleType"/></th>
-        <th width="150px"><g:message code="title.stateRule.ruleValue"/></th>
+        <th width="50px"><g:message code="title.stateRule.timeSeries"/></th>
+        <th width="50px"><g:message code="title.stateRule.ruleType"/></th>
+        <th width="50px"><g:message code="title.stateRule.ruleValue"/></th>
         </thead>
         <tbody>
         <g:each in="${stateRules}" var="stateRule">

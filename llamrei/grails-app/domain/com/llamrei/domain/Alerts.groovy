@@ -2,7 +2,6 @@ package com.llamrei.domain
 
 class Alerts {
 
-
     Date created
     Asset asset
     String details
