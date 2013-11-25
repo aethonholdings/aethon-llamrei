@@ -22,12 +22,12 @@
 
         %{--<g:select id="state.stateRule.ruleType"--}% %{--name="state.stateRule.ruleType"--}% %{--from="${['&le.encodeAsHTML()']}" />--}%
         <select id="state.stateRule.ruleType" name="state.stateRule.ruleType" style="margin-left: 5.5%" >
-            <option value="">&le;</option>
-            <option value="">&ge;</option>
-            <option value=""><</option>
-            <option value="">></option>
-            <option value="">=</option>
-            <option value="">&ne;</option>
+            <option>&le;</option>
+            <option>&ge;</option>
+            <option><</option>
+            <option>></option>
+            <option>=</option>
+            <option>&ne;</option>
         </select>
     </td>
         </tr>
@@ -41,7 +41,7 @@
 
 <div>
     <a onclick="addStateRule()" class="actionButton">
-    <span><g:message code="button.add"/></span>
+    <span>Add Rule</span>
 </a>
 </div>
 

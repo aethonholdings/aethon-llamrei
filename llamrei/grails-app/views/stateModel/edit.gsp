@@ -1,4 +1,5 @@
 <%@ page import="com.llamrei.domain.StateModel" %>
+<%@page defaultCodec="html" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -192,7 +193,8 @@
 
         $('#stateRulesTable tbody').prepend('<tr class="stateRule">' +
                 '<td>' + timeSeries + '</td><input type="hidden" name="stateRule.' + srIndex + '.timeSeries" value="' + timeSeries + '"/>' +
-                '<td>' + ruleType + '</td><input type="hidden" name="stateRule.' + srIndex + '.ruleType" value="' + ruleType + '"/>' +
+                '<td>  ' + ruleType + '</td><input type="hidden" name="stateRule.' + srIndex + '.ruleType" value="' + ruleType + '"/>' +
+
                 '<td>' + ruleValue + '</td><input type="hidden" name="stateRule.' + srIndex + '.ruleValue" value="' + ruleValue + '"/>' +
                 '</tr>');
 

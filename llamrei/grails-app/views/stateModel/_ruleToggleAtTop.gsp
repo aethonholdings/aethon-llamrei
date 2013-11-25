@@ -1,4 +1,5 @@
 <%@ page import="com.llamrei.domain.StateModel" %>
+<%@page defaultCodec="html" %>
 <tr id="stateRule-${stateRule?.id}">
     <td>
         <g:set var="stateModelInstance" value="${StateModel.findById(stateModelId)}"/>
@@ -12,11 +13,24 @@
                   style="margin-left: 5%;"/>
     </td>
     <td>
-        <g:select id="states.${stateId}.stateRules.${stateRule?.id}.ruleType"
-                  name="states.${stateId}.stateRules.${stateRule?.id}.ruleType"
-                  from="${['>', '<', '=', '&le']}"
-                  value="${stateRule?.ruleType}"
-                  style="margin-left: 5%;"/>
+        %{--<g:select id="states.${stateId}.stateRules.${stateRule?.id}.ruleType"--}%
+                  %{--name="states.${stateId}.stateRules.${stateRule?.id}.ruleType"--}%
+                  %{--from="${['>', '<', '=', '&le']}"--}%
+                  %{--value="${stateRule?.ruleType}"--}%
+                  %{--style="margin-left: 5%;"/>--}%
+
+        <select id= "states.${stateId}.stateRules.${stateRule?.id}.ruleType"
+                name="states.${stateId}.stateRules.${stateRule?.id}.ruleType"
+                value="${stateRule?.ruleType}"
+                style="margin-left: 5%" >
+            <option value="&le;">&le;</option>
+            <option value="&ge;">&ge;</option>
+            <option><</option>
+            <option>></option>
+            <option>=</option>
+            <option>&ne;</option>
+        </select>
+
     </td>
     <td>
         <input type="text"
