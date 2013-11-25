@@ -46,7 +46,7 @@
 
                                     </g:if>
                             <g:else>
-                                <div class="imageNotAvailable" ></div>
+                                <img class=imageThumbnail src="../images/noImageAvailable.jpg"/>
                             </g:else>
                             <td class='buttonCenter'>
                                 <g:link action="editAsset" params="[id: assetInstance.id]"><button value='Edit' class="actionButton">Edit</button></g:link>
