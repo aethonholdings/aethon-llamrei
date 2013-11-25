@@ -2,7 +2,6 @@ package com.llamrei.domain
 
 class Alerts {
 
-
     Date created
     String details
     String eventType

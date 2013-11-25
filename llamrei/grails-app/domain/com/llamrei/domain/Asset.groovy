@@ -14,7 +14,7 @@ class Asset {
      * Relationship mapping
      */
 
-    static hasMany= [timeSeries: TimeSeries, dataSeries: DataPoint]
+    static hasMany= [timeSeries: TimeSeries, dataSeries: DataPoint,alerts:Alerts]
     
     /**
      * Putting constraints with properties
@@ -30,6 +30,7 @@ class Asset {
         creationDate(nullable: true)
         modificationDate(nullable: true)
         timeSeries(nullable: true)
+        alerts(nullable: true)
     }
     
     /**
@@ -41,6 +42,8 @@ class Asset {
         creationDate column: "creationDate"
         modificationDate column:"modificationDate"
         timeSeries cascade: 'none'
+        alerts cascade: 'all'
+        alerts(sort:'created',order:'desc')
     }
 
     @Override
