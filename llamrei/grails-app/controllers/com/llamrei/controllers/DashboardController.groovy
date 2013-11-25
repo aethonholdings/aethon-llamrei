@@ -24,7 +24,7 @@ class DashboardController {
         def contentMap=[:]
         def dataInstanceList
         def assetInstance = Asset.list()
-        def timeSeriesName
+        def timeSeriesName=[], timeList=new HashSet()
         def stateModelList
         assetInstance?.each{ asset->
             params.sort  ="id"
@@ -37,9 +37,17 @@ class DashboardController {
                 stateName= st.states.name[0]
                         }
 
-            println("ssssssss"+asset.timeSeries.name)
-            timeSeriesName=asset.timeSeries.name
-//                timeSeriesName = asset.timeSeries.find{it.inDashboard}
+            timeSeriesName<<asset.timeSeries
+            timeSeriesName.each{
+//                println("??"+it.inDashboard)
+                if(it.inDashboard)   {
+                     timeList.addAll(it)
+                }
+            }
+//            println("LLLLLLLLLL====="+timeList)
+//                   timeList.each{
+//                       timeSeriesName<<it.name
+//                   }
 
 
             if(dataInstanceList){
@@ -51,9 +59,9 @@ class DashboardController {
                         timeSeriesList<<data.timeSeries.id
                     }
                     else if(!(timeSeriesList.contains(data.timeSeries.id)))  {
-                        contentMap."${asset.id}"."value${data.timeSeries.id}"=data.value
+                        contentMap."${asset.id}"."value${timeSeriesList.size()}"=data.value
                         timeSeriesList<<data.timeSeries.id
-//                        println("@@@@@@@@@@222222"+contentMap)
+
 
                     }
                 }
@@ -72,8 +80,10 @@ class DashboardController {
             render contentMap as JSON
         }
         else{
-            println("?????????"+timeSeriesName)
-            render (view: "dashboardIndex", model: [contentmap:contentMap,timeSeriesName:timeSeriesName] )
+//             println("<<<<<<<<<<<"+timeList.name[0])
+//            println("<<<<<<<<<<<"+timeList.name[1])
+//            println("<<<<<<<<<<<"+timeList.name[2])
+            render (view: "dashboardIndex", model: [contentmap:contentMap,timeSeriesName:timeList.name] )
         }
 
     }
