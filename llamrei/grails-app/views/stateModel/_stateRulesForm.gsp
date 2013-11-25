@@ -1,6 +1,10 @@
 <%@ page import="com.llamrei.domain.StateModel; com.llamrei.domain.Asset; com.llamrei.domain.TimeSeries" %>
+<%@page defaultCodec="html" %>
 <div id="state-form">
-    <div>
+    <table>
+      <tr>
+      <td>
+
         <label class="lb"><g:message code="title.stateRule.timeSeries"/></label>
 
         <g:set var="stateModelInstance" value="${StateModel.findById(stateModelId)}"/>
@@ -10,20 +14,35 @@
                   optionKey="id"
                   optionValue="name"
                   style="margin-left: 5%;"/>
-    </div>
-    <div>
+   </td>
+        </tr>
+    <tr>
+        <td>
         <label class="lb"><g:message code="title.stateRule.ruleType"/></label>
-        <g:select id="state.stateRule.ruleType" name="state.stateRule.ruleType" from="${['>', '<', '=' ,'&le']}" />
-    </div>
-    <div>
+
+        %{--<g:select id="state.stateRule.ruleType"--}% %{--name="state.stateRule.ruleType"--}% %{--from="${['&le.encodeAsHTML()']}" />--}%
+        <select id="state.stateRule.ruleType" name="state.stateRule.ruleType" style="margin-left: 5.5%" >
+            <option>&le;</option>
+            <option>&ge;</option>
+            <option><</option>
+            <option>></option>
+            <option>=</option>
+            <option>&ne;</option>
+        </select>
+    </td>
+        </tr>
+    <tr>
+        <td>
         <label class="lb"><g:message code="title.stateRule.ruleValue"/></label>
         <g:textField class="field" id="state.stateRule.ruleValue" name="state.stateRule.ruleValue" value="" style="margin-left: 5%;"/>
-    </div>
-</div>
+        </td>
+        </tr>
+     </table>
 
 <div>
     <a onclick="addStateRule()" class="actionButton">
-    <span><g:message code="button.add"/></span>
+    <span>Add Rule</span>
 </a>
 </div>
 
+  </div>

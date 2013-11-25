@@ -83,6 +83,7 @@ class StateModelController {
     }
 
     def update = {
+        println "params in update : "+params
         def stateModelInstance = StateModel.get(params.int('stateModelId'))
         println "found state model : " + stateModelInstance
 

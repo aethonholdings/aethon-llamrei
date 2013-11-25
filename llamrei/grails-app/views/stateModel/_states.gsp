@@ -27,6 +27,14 @@
                                value="${state.description}"/>
                     </td>
                     <td>
+                        <div class="box-cards">
+                            <div class="box-cards-title">
+                                <a class="btn-open" href="#"><span><g:message code="title.state.stateRules"/></span></a>
+                            </div>
+
+                            <div class="box-card-hold">
+                                <div style="position:relative">
+                                    <div id="stateRulesTop">
                         <table id="state-${state.id}.stateRule-table">
                             <thead>
                             <tr>
@@ -50,6 +58,11 @@
                                 <span><g:message code="button.add.state.rule"/></span>
                             </a>
                         </div>
+                         </div>
+                          </div>
+                           </div>
+                           </div>
+
                     </td>
                     <td>
                         <a onclick="deleteState('${state.id}')" class="actionButton" style="display:inline">
