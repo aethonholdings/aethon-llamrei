@@ -1,10 +1,10 @@
 
-<%@ page import="com.llamrei.domain.State" %>
+<%@ page import="com.llamrei.domain.Alerts" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'state.label', default: 'State')}" />
+        <g:set var="entityName" value="${message(code: 'alerts.label', default: 'Alerts')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -23,50 +23,37 @@
                     <tbody>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="state.id.label" default="Id" /></td>
+                            <td valign="top" class="name"><g:message code="alerts.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: stateInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="state.description.label" default="Description" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: stateInstance, field: "description")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: alertsInstance, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="state.name.label" default="Name" /></td>
+                            <td valign="top" class="name"><g:message code="alerts.details.label" default="Details" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: stateInstance, field: "name")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="state.stateId.label" default="State Id" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: stateInstance, field: "stateId")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: alertsInstance, field: "details")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="state.stateModel.label" default="State Model" /></td>
+                            <td valign="top" class="name"><g:message code="alerts.asset.label" default="Asset" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="stateModel" action="show" id="${stateInstance?.stateModel?.id}">${stateInstance?.stateModel?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="asset" action="show" id="${alertsInstance?.asset?.id}">${alertsInstance?.asset?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="state.stateRules.label" default="State Rules" /></td>
+                            <td valign="top" class="name"><g:message code="alerts.eventType.label" default="Event Type" /></td>
                             
-                            <td valign="top" style="text-align: left;" class="value">
-                                <ul>
-                                <g:each in="${stateInstance.stateRules}" var="s">
-                                    <li><g:link controller="stateRule" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
+                            <td valign="top" class="value">${fieldValue(bean: alertsInstance, field: "eventType")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="alerts.created.label" default="Created" /></td>
+                            
+                            <td valign="top" class="value"><g:formatDate date="${alertsInstance?.created}" /></td>
                             
                         </tr>
                     
@@ -75,7 +62,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${stateInstance?.id}" />
+                    <g:hiddenField name="id" value="${alertsInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

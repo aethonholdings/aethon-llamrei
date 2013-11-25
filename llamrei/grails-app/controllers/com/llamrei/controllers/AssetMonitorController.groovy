@@ -1,6 +1,7 @@
 package com.llamrei.controllers
 
 import com.llamrei.domain.Asset
+import com.llamrei.domain.Alerts
 import com.llamrei.domain.DataPoint
 import com.llamrei.domain.TimeSeries
 import grails.converters.JSON
@@ -20,19 +21,20 @@ class AssetMonitorController {
         params.max=1
         def assetIns=Asset.findById(params.assetId)
         def timeSeriesList=assetIns.timeSeries
+        def alerts= Alerts.findAllByAsset(assetIns,[max:5])
         def count=0;
         timeSeriesList?.eachWithIndex{  time, i ->
 
         def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,time,params)
 
-        contentMap."${count}" = [name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location,timeSeriesName:time.name,unit:time.units,value:dataList.value[0],imageUrl:assetIns.imageurl ]
+        contentMap."${count}" = [assetId:assetIns.id,  name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location,timeSeriesName:time.name,unit:time.units,value:dataList.value[0],imageUrl:assetIns.imageurl,alerts:alerts ]
         count++
         }
       if(params.nextVal=="true"){
 
           render contentMap as JSON
       }  else{
-          [contentMap:contentMap,assetId:assetIns.id,name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location, imageUrl:assetIns.imageurl]
+          [contentMap:contentMap,assetId:assetIns.id,name:assetIns.assetName,clientName:assetIns.clientName,location:assetIns.location, imageUrl:assetIns.imageurl,alerts:alerts]
       }
 
 

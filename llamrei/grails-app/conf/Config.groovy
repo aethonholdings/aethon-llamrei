@@ -32,7 +32,7 @@ grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
 //grails.urlmapping.cache.maxsize = 1000
 
 // The default codec used to encode data with ${}
-grails.views.default.codec = "none" // none, html, base64
+grails.views.default.codec = "html" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"
 grails.converters.encoding = "UTF-8"
 // enable Sitemesh preprocessing of GSP pages
@@ -51,8 +51,7 @@ grails.spring.bean.packages = []
    def localHost= InetAddress.getLocalHost().getHostAddress()
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
-
-// set per-environment ser>>>>>>> fef20cb27358e58de82b265b38547623c00eefd7verURL stem for creating absolute links
+ // set per-environment ser>>>>>>> fef20cb27358e58de82b265b38547623c00eefd7verURL stem for creating absolute links
 environments {
     production {
         grails.serverURL = "http://www.changeme.com"
@@ -60,12 +59,13 @@ environments {
     development {
        grails.serverURL = "http://localhost:8080/${appName}"
 //      grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
-//        grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"+"-"+${appVersion}
+//        grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"+"-"+appVersion
+
     }
     test {
        grails.serverURL = "http://localhost:8080/${appName}"
 //       grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
-//        grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"+"-"+${appVersion}
+//        grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"+"-"+appVersion
 
     }
 
@@ -74,8 +74,8 @@ grails {
     mail {
         host = "smtp.gmail.com"
         port = 465
-        username = "sonaligupta847@gmail.com"
-        password = "Angry shonali"
+        username = "rajp@damyant.com"
+        password = "damyant@123!#"
         props = ["mail.smtp.auth":"true",
                 "mail.smtp.socketFactory.port":"465",
                 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
