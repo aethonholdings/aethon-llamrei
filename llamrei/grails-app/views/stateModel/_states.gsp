@@ -14,7 +14,6 @@
         <th>
             <g:each in="${states}" var="state">
                 <tr id="state-${state.id}">
-                    <g:hiddenField name="stateIdToBeModified" value="" />
                     <td>
                         <input type="text"
                                id="states.${state.id}.name"
