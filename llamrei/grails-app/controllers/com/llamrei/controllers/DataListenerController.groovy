@@ -81,9 +81,9 @@ class DataListenerController {
          def checkConnectivityStatus = {
                 long diffSeconds
                 long diffMinuts
-                //second
-                long maxlog = 15
-               //minuts
+                //second for good connection
+                long minLog = 15
+                //minuts
                 long timeout = 2
                 String status = "Connected"
                 List<Asset> assetList = Asset.list()
@@ -100,9 +100,10 @@ class DataListenerController {
                     Date serverT   = dataList.getTimestamp()
                     Date currentTime = new Date()
                     diffSeconds = dataSeriesService.timeDifferenceSeconds(assetTime,serverT)
-                    if(diffSeconds>maxlog)
-                    status ="Poor"
-
+                    if(diffSeconds<=minLog)
+                    status ="Good"
+                    else
+                    status="Poor"
                    diffMinuts  = dataSeriesService.timeDifferenceInMinute(currentTime,serverT)
                         if(diffMinuts>2)
                         status= "Disconnected"

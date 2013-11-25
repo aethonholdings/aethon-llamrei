@@ -15,6 +15,7 @@ class DataSeriesService {
 
     static transactional = true
     boolean isSaved=false
+    def mailService
     def boolean saveDataToDB(String id, String time, ArrayList seriesList,List<TimeSeries> tsIns) {
            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss")
              try
@@ -103,8 +104,9 @@ class DataSeriesService {
           }
           }
             if(status!=newStatus) {
-               status=newStatus
-            }
+                 sendAlert(obj,status[0],newStatus)
+                 status=newStatus
+           }
 
           return  status
    }
@@ -142,6 +144,45 @@ class DataSeriesService {
         return diffMinutes
         }
 
+
+    def sendAlert(Asset asset, String oldState,String newState) {
+
+        String to1 = '', from = '', senderName = '', subject1 = '', message = '', renderMessage = '', emailId=''
+        Boolean send = false
+        //def userInstance=Sec.findByUsername(params.userName)
+
+        if(asset){
+            emailId="rajp@damyant.com"
+            send =true
+            from='raj95288@gmail.com'
+        }
+        else{
+            println("Sorry,we are not able to find the username")
+        }
+
+        if (send) {
+            subject1 = "State Transition Alert of State"
+            message = """Dear Operater,\n
+                   A state transition for asset  ${asset.assetName.trim()}  has occured:\n
+                    Asset Name        :   ${asset.assetName.trim()}\n
+                    Previous state    :   ${oldState.trim()}\n
+                    New State         :   ${newState.trim()}\n
+                    Transition Reason :   Low/High Temparature
+                                                                               \n\nThanks and Regards,\n
+ Administrative  Team"""
+
+
+            mailService.sendMail {
+                to(emailId)
+                subject(subject1)
+                body(message)
+            }
+            println("Mail Sent")
+        }
+        else {
+            print(renderMessage)
+        }
+    }
 
 
    }

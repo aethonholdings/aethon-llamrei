@@ -72,10 +72,10 @@ function showContents(){
 
                 if (i % 2) {
 
-                    $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
+                    $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td>'+data[i].stateName+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
                 }
                 else{
-                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+"--"+'</td><td>'+"Running"+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
+                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td>'+data[i].stateName+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
                 }
             }
 

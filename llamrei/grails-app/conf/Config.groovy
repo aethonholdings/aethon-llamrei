@@ -32,7 +32,7 @@ grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
 //grails.urlmapping.cache.maxsize = 1000
 
 // The default codec used to encode data with ${}
-grails.views.default.codec = "none" // none, html, base64
+grails.views.default.codec = "html" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"
 grails.converters.encoding = "UTF-8"
 // enable Sitemesh preprocessing of GSP pages
@@ -51,8 +51,7 @@ grails.spring.bean.packages = []
    def localHost= InetAddress.getLocalHost().getHostAddress()
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
-   println("hello kuldeepppppppppppppppppppp"+appVersion)
-// set per-environment ser>>>>>>> fef20cb27358e58de82b265b38547623c00eefd7verURL stem for creating absolute links
+ // set per-environment ser>>>>>>> fef20cb27358e58de82b265b38547623c00eefd7verURL stem for creating absolute links
 environments {
     production {
         grails.serverURL = "http://www.changeme.com"
