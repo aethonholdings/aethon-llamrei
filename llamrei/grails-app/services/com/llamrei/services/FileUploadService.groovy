@@ -19,6 +19,7 @@ package com.llamrei.services
                 def webRootDir = ServletContextHolder.servletContext.getRealPath("/") + '/images/assetImages'
                 def webRootUrl = config.grails.serverURL + '/images/assetImages'
                 def llamreiDir = new File(webRootDir, '/' + assetInstance.id)
+                println(llamreiDir)
                 def llamreiUrl = webRootUrl + '/' + assetInstance.id
                 def fileName = UUID.randomUUID().toString()+ext
                 llamreiDir.mkdirs()

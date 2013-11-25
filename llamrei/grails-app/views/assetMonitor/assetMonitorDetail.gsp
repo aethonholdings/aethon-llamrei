@@ -73,7 +73,7 @@
 
 
     %{--<div style="margin-right: 100px"  class="updateMsgClass" id="msgDiv1">Updating...</div>--}%
-    <div class="leftDiv" >
+
 
 
 
@@ -125,40 +125,39 @@
                             <th class="thclass">End</th>
                             <th class="thclass">Description</th></tr>
 
+
                         <tr>
                             <td class="tdclass"> <input type="checkbox" /></td>
                             <td class="tdclass"></td>
                             <td class="tdclass"></td>
                             <td class="tdclass"></td>
                         </tr>
+
                     </table>
                 </div>
             </div>
             <div id="tabs-3">
                 <div style="margin-top: 10px">
                     <table>
-
+                        <thead class='thclass'>
                         <tr>
                             <th class="thclass">Date Time</th>
                             <th class="thclass">Event</th>
                             <th class="thclass">Details</th>
 
-
-                        <tr>
-                            <td class="tdclass"></td>
-                            <td class="tdclass"></td>
-                            <td class="tdclass"></td>
+                        </thead>
+                        <tbody>
+                      <g:each in="${alerts}" status="i" var="alerts">
+                        <tr  class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                            <td>${fieldValue(bean: alerts, field: "created")}</td>
+                            <td>${fieldValue(bean:alerts, field: "eventType")}</td>
+                            <td>${fieldValue(bean: alerts, field: "details")}</td>
                          </tr>
-                        <tr>
-                            <td class="tdclass"></td>
-                            <td class="tdclass"></td>
-                            <td class="tdclass"></td>
-                        </tr>
-                        <tr>
-                            <td class="tdclass"></td>
-                            <td class="tdclass"></td>
-                            <td class="tdclass"></td>
-                        </tr>
+                          <g:if test="${i>=4}">
+                          <g:link  action="list" controller="alerts" params="[id:assetId]"><button value='Cancel' class="actionButton">Show All</button></g:link>
+                          </g:if>
+                       </g:each>
+                        </tbody>
                     </table>
                 </div>
             </div>
