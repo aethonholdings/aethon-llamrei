@@ -69,8 +69,9 @@
                             <label for="dataType"><g:message code="timeSeries.inDashboard.label" default="Show In Dashboard" /></label>
                         </td>
                         <td valign="top" >
-                            <input type="radio" name="myGroup" value="true" checked="${timeSeriesInstance.inDashboard}"/>True
-                            <input type="radio" name="myGroup" value="false" checked="${timeSeriesInstance.inDashboard}" style='margin-left: 20px'/>False
+                            <input type="radio" name="myGroup" value="true"  ${timeSeriesInstance.inDashboard== true ? 'checked="checked"' : ''}/>True
+                            <input type="radio" name="myGroup" value="false" ${timeSeriesInstance.inDashboard==false ? 'checked="checked"' : ''} style='margin-left: 20px' />False
+
                         </td>
                     </tr>
 

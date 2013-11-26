@@ -38,7 +38,7 @@
                      </g:each>
                     <g:link controller="assetMonitor" action='assetMonitorDetail'  params="[assetId:assetId]">
                     <button value='Back'  id='backButton' class="actionButton">Back</button>
-                        </g:link>
+                    </g:link>
                     </tbody>
                 </table>
             </div>
