@@ -21,7 +21,7 @@ class DataListenerController {
         /**
          * Retreiving the data coming from node
          */
-        //println(params)
+        println(params)
         String id = params.getProperty("id")
             println(id)
         if(!(id==null || id=="")){
@@ -40,16 +40,28 @@ class DataListenerController {
         dataQueue.add(params.getProperty("0002"))*/
 
        List<TimeSeries> tsList = new ArrayList<TimeSeries>()
+       List<TimeSeries> tsSeriesList = new ArrayList<TimeSeries>()
             tsList = TimeSeries.list()
           ArrayList seriesList = new ArrayList()
-
+          ArrayList tsli = new ArrayList()
             Map<String,String> map = new HashMap<String, String>()
             for(TimeSeries series: tsList) {
+              String tsId=series.timeSeriesUniqueID
               String value= params.getProperty(series.timeSeriesUniqueID)
-              if(value!=null || value!="")
+              if(value!=null && value!=""){
                seriesList.add(value)
-               map.put(series.timeSeriesUniqueID,value)
+               map.put(tsId,value)
+               tsli.add(tsId)
+              }else{
+                  log.info("Data point does not contains value")
               }
+            }
+
+            for(int i=0;i<tsli.size();i++){
+               tsSeriesList.add(tsList.get(i))
+            }
+
+
         /**
          * Invoking the service to save the data into database
          */
@@ -57,7 +69,8 @@ class DataListenerController {
 
                   dataSeriesService.saveDataToDB(id,time,seriesList,tsList)
 
-                  def  stateName=dataSeriesService.stateService(id,map,tsList)
+
+                  def  stateName=dataSeriesService.stateService(id,map,tsSeriesList)
                      StateModel stateModel=StateModel.findByAsset(assetInstance)
                      Set<State> state = new HashSet<State>()
                       def stateIns =State.findByStateModel(stateModel)
