@@ -41,7 +41,7 @@
                             <label for="name"><g:message code="stateModel.name.label" default="Name"/></label>
                         </td>
                         <td valign="top" class="value ${hasErrors(bean: stateModelInstance, field: 'name', 'errors')}">
-                            <g:textField name="name" value="${stateModelInstance?.name}"/>
+                          <g:textField name="name" value="${stateModelInstance?.name}"/>
                         </td>
                     </tr>
                     <tr>

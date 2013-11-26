@@ -37,6 +37,7 @@
                id="states.${stateId}.stateRules.${stateRule?.id}.ruleValue1"
                name="states.${stateId}.stateRules.${stateRule?.id}.ruleValue1"
                value="${stateRule?.ruleValue1}"/>
+
     </td>
     <td>
         <a onclick="deleteStateRule('${stateRule?.id}')" class="actionButton" style="display:inline">

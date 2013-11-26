@@ -298,8 +298,8 @@ td.errors textarea {
 
 .box-cards-title span {
     font-size: 11px;
-    font-weight: bold;
-    color: #000000;
+    font-weight:lighter;
+    color:#ffffff;
     line-height: 30px;
     padding-right: 35px;
     padding-left: 7px;
@@ -307,14 +307,14 @@ td.errors textarea {
     text-transform: uppercase;
 }
 
-/*.box-cards-title a.btn-open {*/
-    /*display: block;*/
-    /*width: 100%;*/
-    /*color: #383838;*/
-    /*font-size: 14px;*/
-    /*line-height: 30px;*/
-    /*font-weight: bold;*/
-/*}*/
+.box-cards-title a.btn-open {
+    display: block;
+    width: 100%;
+    color: #383838;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: bold;
+}
 
 .box-cards-title a.btn-open span {
     padding-left: 32px;
