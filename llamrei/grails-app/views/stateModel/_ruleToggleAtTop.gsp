@@ -12,7 +12,7 @@
                   value="${stateRule?.timeSeries?.id}"
                   style="margin-left: 5%;"/>
     </td>
-    <td>  //${stateRule?.ruleType}//
+    <td>
         <select id= "states.${stateId}.stateRules.${stateRule?.id}.ruleType"
                 name="states.${stateId}.stateRules.${stateRule?.id}.ruleType"
                 style="margin-left: 5%" >
