@@ -298,7 +298,7 @@ class StateModelController {
                 StateRule stateRule = new StateRule()
                 stateRule.setRuleType("")
                 stateRule.setRuleValue1("")
-                stateRule.setStrRule("")
+
                 stateRule.setTimeSeries(timeSeries)
                 stateRule.setState(state)
                 println "StateRule to be saved : " + stateRule
