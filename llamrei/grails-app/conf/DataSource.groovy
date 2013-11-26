@@ -16,8 +16,8 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop','update'
             driverClassName = "com.mysql.jdbc.Driver"
             url = "jdbc:mysql://localhost:3306/llamrei?autoreconnect=true&useUnicode=true&characterEncoding=utf-8"
-            username = "root"
-            password = "root123"
+            username = "llamrei"
+            password = "llamrei"
         }
     }
     test {
