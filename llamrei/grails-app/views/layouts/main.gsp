@@ -60,7 +60,7 @@
 
     </head>
     
-    <body>
+    <body >
       <g:render template="/layouts/header"/>
       <div id="content">
         <g:layoutBody/>

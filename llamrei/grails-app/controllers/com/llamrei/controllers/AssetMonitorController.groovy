@@ -21,7 +21,7 @@ class AssetMonitorController {
         params.max=1
         def assetIns=Asset.findById(params.assetId)
         def timeSeriesList=assetIns.timeSeries
-        def alerts= Alerts.findAllByAsset(assetIns,[max:5])
+        def alerts= Alerts.findAllByAsset(assetIns,[max:10])
         def count=0;
         timeSeriesList?.eachWithIndex{  time, i ->
 
