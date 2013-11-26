@@ -16,6 +16,7 @@ package com.llamrei.services
 
             if (!uploadedFile.empty) {
                 def ext=(uploadedFile.originalFilename).substring((uploadedFile.originalFilename).lastIndexOf('.'))
+
                 def webRootDir = ServletContextHolder.servletContext.getRealPath("/") + '/images/assetImages'
                 def webRootUrl = config.grails.serverURL + '/images/assetImages'
                 def llamreiDir = new File(webRootDir, '/' + assetInstance.id)

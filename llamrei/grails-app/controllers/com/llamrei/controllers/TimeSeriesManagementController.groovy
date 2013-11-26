@@ -99,7 +99,7 @@ class TimeSeriesManagementController {
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'timeSeries.label', default: 'TimeSeries'), params.id])}"
-                redirect(action: "show", id: params.id)
+                redirect(action: "list", id: params.id)
             }
         }
         else {

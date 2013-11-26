@@ -15,9 +15,9 @@ environments {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop','update'
             driverClassName = "com.mysql.jdbc.Driver"
-            url = "jdbc:mysql://localhost:3306/llamrei?autoreconnect=true&useUnicode=true&characterEncoding=utf-8"
-            username = "root"
-            password = "root123"
+            url = "jdbc:mysql://llamrei.cokd1jwuhqlu.ap-southeast-1.rds.amazonaws.com/llamrei?autoreconnect=true&useUnicode=true&characterEncoding=utf-8"
+            username = "llamrei"
+            password = "k7ALp3vQ"
         }
     }
     test {

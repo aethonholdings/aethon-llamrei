@@ -21,7 +21,9 @@ class DataListenerController {
         /**
          * Retreiving the data coming from node
          */
+        //println(params)
         String id = params.getProperty("id")
+            println(id)
         if(!(id==null || id=="")){
         def assetInstance = Asset.findByAssetUniqueID(id)
         if(assetInstance){
@@ -58,11 +60,14 @@ class DataListenerController {
                   def  stateName=dataSeriesService.stateService(id,map,tsList)
                      StateModel stateModel=StateModel.findByAsset(assetInstance)
                      Set<State> state = new HashSet<State>()
-                     def stateIns =State.findByStateModel(stateModel)
+                      def stateIns =State.findByStateModel(stateModel)
+                     if(stateName!=null){
                      stateIns.name=stateName
                      state .add(stateIns)
                      stateModel.setStates(state)
                      redirect(controller: "stateModel", action: "update", stateModelIns:stateModel)
+                     }
+
           msg="ACK"
         }else{
                msg="Asset does not exists, So can not be saved the dataseries for this Asset"
@@ -96,9 +101,15 @@ class DataListenerController {
                     params.order   ="desc"
                     params.max=1
                     def assetIns=Asset.findById(asset.id)
-                    def dataList=DataPoint.findByAsset(assetIns,params)
-                    Date assetTime = dataList.getNodeTimestamp()
-                    Date serverT   = dataList.getTimestamp()
+                   def dataList=DataPoint.findByAsset(assetIns,params)
+                   // dataList=null
+                       if(!dataList==null){
+                           Date assetTime = dataList.getNodeTimestamp()
+                           Date serverT   = dataList.getTimestamp()
+                       }else{
+                           log.info("there is no data_point")
+                       }
+
                     Date currentTime = new Date()
                     diffSeconds = dataSeriesService.timeDifferenceSeconds(assetTime,serverT)
                     if(diffSeconds<=minLog)

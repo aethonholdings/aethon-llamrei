@@ -43,11 +43,12 @@ h2 {
     vertical-align: middle;
 }
  .imageNotAvailable{
-     width:86px;
+     width:100px;
      overflow-y: hidden ;
-     height:80px;
+     height:150px;
      background: url('../images/noImageAvailable.jpg')
  }
+.imageThumbnail{height:100px;width:150px}
 .sessionManagement{
     float: right;
     font-weight: bold;
@@ -57,7 +58,7 @@ h2 {
 }
 
 /* MENU BARS */
- .imageThumbnail{height:100px;width:150px}
+
 .headerMenu{
     float: left;
     height: 30px;
