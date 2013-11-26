@@ -107,7 +107,7 @@ class StateModelController {
             redirect(action: "edit", id: stateModelInstance.id)
         }
         else {
-            render(view: "edit", model: [stateModel: stateModelInstance])
+            render(view: "edit", model: [stateModelInstance: stateModelInstance])
         }
     }
 
@@ -276,6 +276,7 @@ class StateModelController {
         def stateModelInstance = StateModel.get(params.int('stateModelId'))
 
         //bind manually
+        TimeSeries timeSeries = stateModelInstance.asset.timeSeries.asList()[0]?:TimeSeries.list().get(0)
         stateModelInstance.states.each {state ->
             if (state.id == stateIdToBeModified){
 
@@ -297,7 +298,7 @@ class StateModelController {
                 StateRule stateRule = new StateRule()
                 stateRule.setRuleType("")
                 stateRule.setRuleValue1("")
-                TimeSeries timeSeries = TimeSeries.list().get(0)
+                stateRule.setStrRule("")
                 stateRule.setTimeSeries(timeSeries)
                 stateRule.setState(state)
                 println "StateRule to be saved : " + stateRule
