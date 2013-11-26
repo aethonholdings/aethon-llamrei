@@ -1,5 +1,6 @@
 package com.llamrei.controllers
 
+import com.llamrei.domain.Alerts
 import com.llamrei.domain.State
 import com.llamrei.services.DataSeriesService
 import com.llamrei.domain.Asset
@@ -20,7 +21,6 @@ class DataListenerController {
         /**
          * Retreiving the data coming from node
          */
-        println(params)
         String id = params.getProperty("id")
         if(!(id==null || id=="")){
         def assetInstance = Asset.findByAssetUniqueID(id)
@@ -28,6 +28,7 @@ class DataListenerController {
         String time = params.getProperty("T")
 
         time=time.replace("|"," ")
+
 
         /**
          * creating list for dataSeries

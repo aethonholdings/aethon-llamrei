@@ -51,8 +51,12 @@
             %{--<th>${name}</th>--}%
             %{--</g:each>--}%
 
-            <th>Humidity</th>
-            <th>Temperature</th>
+            <g:each in="${timeSeriesName}"  status="i" var="ac">
+
+                <th>${ac.value}</th>
+                    </g:each>
+            %{--<th>Humidity</th>--}%
+            %{--<th>Temperature</th>--}%
             <th></th>
             <th></th>
             <th></th>
@@ -70,7 +74,7 @@
                 <td>${content.value.stateName}</td>
                 <td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value}</td>
                 <td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value1}</td>
-                %{--<td></td>--}%
+                <td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value2}</td>
                 <td><input type="button" class="actionButton" value="Lock"></td>
                 <td><input type="button" class="actionButton" value="Start"></td>
                 <td><input type="button" class="actionButton" value="Stop"></td>

@@ -28,7 +28,7 @@
           $(document).ready(function(){
 
             setInterval(function () {
-                 checkConnectionStatus();
+//                 checkConnectionStatus();
             }, 20000);
         });
 
