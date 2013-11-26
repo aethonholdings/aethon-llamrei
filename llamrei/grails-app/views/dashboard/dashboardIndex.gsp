@@ -51,9 +51,10 @@
             %{--<th>${name}</th>--}%
             %{--</g:each>--}%
 
-            <g:each in="${timeSeriesName}"  status="i" var="ac">
+            <g:each in="${timeSeriesName}"  status="i" var="ac1">
 
-                <th>${ac.value}</th>
+                <th>${ac1.name}</th>
+
                     </g:each>
             %{--<th>Humidity</th>--}%
             %{--<th>Temperature</th>--}%
@@ -69,12 +70,18 @@
         <g:each in="${contentmap}" status="i" var="content">
 
             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                <td>${content.value.name}</td>
+                <td>${content.value.name} </td>
                 <td>${content.value.connection}</td>
                 <td>${content.value.stateName}</td>
-                <td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value}</td>
-                <td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value1}</td>
-                <td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value2}</td>
+
+            <g:each in="${content.value.value}"  status="j" var="ac">
+
+                    <td onclick=openChart(${content.value.uID},${content.value.timeSeriesID[j]}) class="linkClass">${ac.value}</td>
+                    %{--<td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value1}</td>--}%
+                    %{--<td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value2}</td>  --}%
+                </g:each>
+
+
                 <td><input type="button" class="actionButton" value="Lock"></td>
                 <td><input type="button" class="actionButton" value="Start"></td>
                 <td><input type="button" class="actionButton" value="Stop"></td>
