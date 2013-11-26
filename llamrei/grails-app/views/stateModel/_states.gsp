@@ -13,7 +13,7 @@
         </thead>
         <tbody>
         <th>
-            <g:each in="${states.sort{it.id}}" var="state">
+            <g:each in="${states?.sort{it?.id}}" var="state">
                 <tr id="state-${state.id}">
                     <td>
                         <input type="text"
@@ -48,7 +48,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <g:each in="${state.stateRules.sort{it.id}}" var="stateRule">
+                            <g:each in="${state?.stateRules?.sort{it?.id}}" var="stateRule">
                                 <g:render template="ruleToggleAtTop"
                                           model="[stateRule: stateRule, stateId: state?.id, stateModelId: stateModelId]"/>
                             </g:each>

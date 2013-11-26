@@ -55,7 +55,7 @@
                                     <div style="position:relative">
                                         <div id="states">
                                             <g:render template="states"
-                                                      model="[states: stateModelInstance.states, stateModelId: stateModelInstance.id]"/>
+                                                      model="[states: stateModelInstance?.states, stateModelId: stateModelInstance?.id]"/>
                                         </div>
                                         <g:hiddenField name="stateIdToBeModified" value="" />
                                     </div>
