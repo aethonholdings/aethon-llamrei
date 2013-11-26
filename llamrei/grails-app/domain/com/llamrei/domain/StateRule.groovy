@@ -13,7 +13,7 @@ class StateRule {
     
     static constraints = {
         stateRuleId(nullable: true)
-        strRule(nullable: false)
+        strRule(nullable: true)
         ruleValue2(nullable: true)
     }
 
