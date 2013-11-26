@@ -57,14 +57,14 @@ environments {
         grails.serverURL = "http://www.changeme.com"
     }
     development {
-//       grails.serverURL = "http://localhost:8080/${appName}"
-      grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
+       grails.serverURL = "http://localhost:8080/${appName}"
+//      grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
 //    grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"+"-"+appVersion
 
     }
     test {
-//       grails.serverURL = "http://localhost:8080/${appName}"
-       grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
+       grails.serverURL = "http://localhost:8080/${appName}"
+//       grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
 //        grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"+"-"+appVersion
 
     }
