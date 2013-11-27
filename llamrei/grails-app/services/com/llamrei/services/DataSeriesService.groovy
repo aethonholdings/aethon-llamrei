@@ -1,6 +1,9 @@
 package com.llamrei.services
 
 import com.llamrei.domain.Alerts
+import com.llamrei.domain.SecRole
+import com.llamrei.domain.SecUser
+import com.llamrei.domain.SecUserSecRole
 
 import java.text.SimpleDateFormat
 import java.text.ParseException
@@ -71,7 +74,7 @@ class DataSeriesService {
                        else
                        isSaved=false
               }catch(Exception e){
-           e.printStackTrace()
+                        log.info(e.printStackTrace())
            }
           }
               }catch (ParseException ex) {
@@ -82,22 +85,32 @@ class DataSeriesService {
 
    def stateService(String id,Map keyValue,List<TimeSeries> seriesList){
 
-
+       float oldValue=0.0
+       float newValue =0.0
+       String newStatus=null
+       String reason=null
+       String unit = null
         def obj= Asset.findByAssetUniqueID(id)
         def stateModelIns = StateModel.findByAsset(obj)
 
         def state = stateModelIns.states
     //   println("#########################"+obj1)
-         def status= state.name
-         String newStatus=null
-         String reason=null
-         String unit = null
+       def status= null
+       state.each{
+           status= it.name
+
+       }
+       println(seriesList.size()+status)
         for(int i=0;i<seriesList.size();i++){
         def list = StateRule.findAllByTimeSeries(seriesList.get(i))
 
          for(StateRule stateRule:list){
-            def newValue  = Float.parseFloat(keyValue.get(seriesList.get(i).timeSeriesUniqueID))
-            def oldValue  = Float.parseFloat(stateRule.ruleValue1)
+          //   println()
+             newValue = Float.parseFloat(keyValue.get(seriesList.get(i).timeSeriesUniqueID))
+            // println(stateRule.ruleValue1+"hfddhbvdjbgvjdbvjbvjd"+stateRule.ruleType)
+            if(stateRule.ruleValue1=="" && stateRule.ruleValue1==null){
+                oldValue  = Float.parseFloat(stateRule.ruleValue1)
+            }
           if(stateRule.ruleType=="<"){
               if(newValue<oldValue){
                   newStatus="Stopped"
@@ -109,6 +122,14 @@ class DataSeriesService {
                     newStatus="Stopped"
                     reason=  seriesList.get(i).name
                     unit = "High"
+
+                }else if(stateRule.ruleType=="="){
+                    if(newValue == oldValue){
+                        newStatus="Stopped"
+                        reason=  seriesList.get(i).name
+                        unit = "Normal"
+
+                }
                 }
           }
           }
@@ -116,7 +137,7 @@ class DataSeriesService {
             if(status!=newStatus) {
 
                   String message= null
-                  message= sendAlert(obj,status[0],newStatus,reason,unit)
+                  message= sendAlert(obj,status,newStatus,reason,unit)
                 def alert = new Alerts()
                 alert.eventType="STATE TRANSITION"
                 alert.created = new Date()
@@ -170,39 +191,49 @@ class DataSeriesService {
         String to1 = '', from = '', senderName = '', subject1 = '', message = '', renderMessage = '', emailId=''
         Boolean send = false
         //def userInstance=Sec.findByUsername(params.userName)
-
+        def list = SecUserSecRole.findAllBySecRole(SecRole.get(1))
+        //println(list.size())
+        def operatorList
+        list.each{
+             operatorList = SecUser.findAllById(it.secUserId)
+            }
+          // println(operatorList.size())
+        operatorList.each{
+          emailId= it.email
         if(asset){
-            emailId="rajp@damyant.com"
+            
+            //emailId=emailId
             send =true
-            from='raj95288@gmail.com'
+            if (send) {
+                subject1 = "State Transition Alert of State"
+                message = """Dear Operater,\n
+                   A state transition for asset  ${asset.assetName.trim()}  has occured:\n
+                    Asset Name        :   ${asset.assetName.trim()}\n
+                    Previous state    :   ${oldState}\n
+                    New State         :   ${newState}\n
+                    Transition Reason :   ${unit}  ${reason}
+                                                                               \n\nThanks and Regards,\n
+ Administrative  Team"""
+
+                println(emailId)
+                mailService.sendMail {
+                    to(emailId)
+                    subject(subject1)
+                    body(message)
+                }
+                println("Mail Sent")
+            }
+            else {
+                println(renderMessage)
+            }
+            //from='raj95288@gmail.com'
         }
         else{
             println("Sorry,we are not able to find the username")
         }
 
-        if (send) {
-            subject1 = "State Transition Alert of State"
-            message = """Dear Operater,\n
-                   A state transition for asset  ${asset.assetName.trim()}  has occured:\n
-                    Asset Name        :   ${asset.assetName.trim()}\n
-                    Previous state    :   ${oldState.trim()}\n
-                    New State         :   ${newState.trim()}\n
-                    Transition Reason :   ${unit}  ${reason}
-                                                                               \n\nThanks and Regards,\n
- Administrative  Team"""
 
-
-            mailService.sendMail {
-                to(emailId)
-                subject(subject1)
-                body(message)
-            }
-            println("Mail Sent")
         }
-        else {
-            println(renderMessage)
-        }
-
         return message
     }
 

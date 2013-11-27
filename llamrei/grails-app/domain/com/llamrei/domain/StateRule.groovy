@@ -12,6 +12,7 @@ class StateRule {
     
     static constraints = {
         stateRuleId(nullable: true)
+
         ruleValue2(nullable: true)
     }
 
