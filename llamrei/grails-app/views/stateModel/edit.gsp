@@ -41,7 +41,7 @@
                             <label for="name"><g:message code="stateModel.name.label" default="Name"/></label>
                         </td>
                         <td valign="top" class="value ${hasErrors(bean: stateModelInstance, field: 'name', 'errors')}">
-                            <g:textField name="name" value="${stateModelInstance?.name}"/>
+                          <g:textField name="name" value="${stateModelInstance?.name}"/>
                         </td>
                     </tr>
                     <tr>
@@ -55,7 +55,7 @@
                                     <div style="position:relative">
                                         <div id="states">
                                             <g:render template="states"
-                                                      model="[states: stateModelInstance.states, stateModelId: stateModelInstance.id]"/>
+                                                      model="[states: stateModelInstance?.states, stateModelId: stateModelInstance?.id]"/>
                                         </div>
                                         <g:hiddenField name="stateIdToBeModified" value="" />
                                     </div>

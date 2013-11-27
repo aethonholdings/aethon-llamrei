@@ -1,4 +1,4 @@
-<%@ page import="com.llamrei.domain.StateModel" %>
+<%@ page import="com.llamrei.utils.Operators; com.llamrei.domain.StateModel" %>
 <%@page defaultCodec="html" %>
 <tr id="stateRule-${stateRule?.id}">
     <td>
@@ -13,22 +13,15 @@
                   style="margin-left: 5%;"/>
     </td>
     <td>
-        %{--<g:select id="states.${stateId}.stateRules.${stateRule?.id}.ruleType"--}%
-                  %{--name="states.${stateId}.stateRules.${stateRule?.id}.ruleType"--}%
-                  %{--from="${['>', '<', '=', '&le']}"--}%
-                  %{--value="${stateRule?.ruleType}"--}%
-                  %{--style="margin-left: 5%;"/>--}%
-
         <select id= "states.${stateId}.stateRules.${stateRule?.id}.ruleType"
                 name="states.${stateId}.stateRules.${stateRule?.id}.ruleType"
-                value="${stateRule?.ruleType}"
                 style="margin-left: 5%" >
-            <option value="&le;">&le;</option>
-            <option value="&ge;">&ge;</option>
-            <option><</option>
-            <option>></option>
-            <option>=</option>
-            <option>&ne;</option>
+            <option value="${Operators.LESS_THAN_EQUALS.getShortName()}">&le;</option>
+            <option value="${Operators.GREATER_THAN_EQUALS.getShortName()}">&ge;</option>
+            <option value="${Operators.LESS_THAN.getShortName()}"><</option>
+            <option value="${Operators.GREATER_THAN.getShortName()}">></option>
+            <option value="${Operators.EQUALS.getShortName()}">=</option>
+            <option value="${Operators.NOT_EQUALS.getShortName()}">&ne;</option>
         </select>
 
     </td>
@@ -37,6 +30,7 @@
                id="states.${stateId}.stateRules.${stateRule?.id}.ruleValue1"
                name="states.${stateId}.stateRules.${stateRule?.id}.ruleValue1"
                value="${stateRule?.ruleValue1}"/>
+
     </td>
     <td>
         <a onclick="deleteStateRule('${stateRule?.id}')" class="actionButton" style="display:inline">
