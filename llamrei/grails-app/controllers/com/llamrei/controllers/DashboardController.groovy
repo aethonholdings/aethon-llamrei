@@ -2,6 +2,7 @@
 package com.llamrei.controllers
 
 import com.llamrei.domain.DataPoint
+import com.llamrei.domain.State
 import com.llamrei.domain.StateModel
 import grails.converters.JSON
 import com.llamrei.domain.Asset
@@ -17,7 +18,7 @@ import java.text.SimpleDateFormat
 
 class DashboardController {
 
-    def dataContentsService
+//    def dataContentsService
 
     def dashboardIndex = {
 
@@ -27,39 +28,40 @@ class DashboardController {
         def timeSeriesName=[], timeList=new HashSet()
         def newList=[]
         def assetID
-
+        def countAsset=1;
         def stateModelList
         assetInstance?.each{ asset->
             params.sort  ="id"
             params.order   ="desc"
+//            params.max=3
+//            println("asettt==="+asset)
             dataInstanceList = DataPoint.findAllByAsset(asset,params)
             def timeSeriesList  =[]
             def tempList=[]
             def finalList=[]
-            def stateName
+            def stateName=[]
             stateModelList=  StateModel.findAllByAsset(asset)
-            stateModelList.each{ st->
-                stateName= st.states.name[0]
-                        }
+            def stateModelId=StateModel.executeQuery("select id from StateModel where asset=:asset ",[asset:asset])
+
+            if(stateModelId) {
+            stateName<< State.executeQuery("select name from State where stateModel.id=:stateModel order by id desc ",[stateModel:stateModelId[0],max:1])
+            }
+            else{
+                stateName<<"--"
+            }
 
             timeSeriesName<<asset.timeSeries
-
-
             timeSeriesName.each{
 
 //                println("kkkkk"+it.inDashboard)
                 if(it.inDashboard)   {
-
-                    timeList.addAll(it)
-
-
+                   timeList.addAll(it)
                 }
             }
 
             timeList.each{
-
-                if(it.inDashboard) {
-
+                    if(it.inDashboard)
+                    {
                     if(!newList.contains(it)) {
                     newList.addAll(it)
                         newList.sort{it.id}
@@ -73,82 +75,99 @@ class DashboardController {
                 dataInstanceList?.eachWithIndex { data, i ->
 
                     if(i==0 && data.timeSeries.inDashboard) {
+//                        println("1st if")
                          tempList << data
                         assetID=asset.id
-                        def valueMap=[:]
+
 //                        contentMap."${asset.id}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,timeSereisID:data.timeSeries.id,id:data.id,value :[data.value]]
-                        contentMap."${asset.id}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,id:data.id]
+                        contentMap."${countAsset}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,id:data.id]
 
                         timeSeriesList<<data.timeSeries.id
-
+//                        println("list=="+timeSeriesList)
+//                        println("data==="+data.timeSeries.id)
+//                        println("npard=="+(timeSeriesList.contains(data.timeSeries.id)))
                     }
 
-                    else if(!(timeSeriesList.contains(data.timeSeries.id)) && data.timeSeries.inDashboard)  {
 
+                    else if(!(timeSeriesList.contains(data.timeSeries.id)) && data.timeSeries.inDashboard)  {
+//                        println("2nd if")
                         if(timeSeriesList.size()==0){
                              tempList << data
-
-                            contentMap."${asset.id}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,id:data.id,value :[data.value] ]
+                            contentMap."${countAsset}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,id:data.id ]
                             timeSeriesList<<data.timeSeries.id
                         }
                         else{
-
+//                            println("3rd if")
                             tempList<<data
-                          finalList=tempList.sort{it.timeSeries.id}
+//                          finalList=tempList.sort{it.timeSeries.id}
 
-
-//                        contentMap."${asset.id}"."timeSereisID${timeSeriesList.size()}"=data.timeSeries.id
-                            timeSeriesID:[data.timeSeries.id]
-//                            contentMap."${asset.id}"."timeSeriesID"<<data.timeSeries.id
+                        timeSeriesID:[data.timeSeries.id]
                         timeSeriesList<<data.timeSeries.id
                         }
 
 
                     }
+                    else{
+//                        tempList << data
+                    }
                 }
-
+                finalList=tempList.sort{it.timeSeries.id}
+//                println("finalListsize====="+finalList)
+//                println("finalListsize====="+finalList.size())
                 for(int i=0;i<finalList.size();i++){
 
                         if(i==0){
-                        contentMap."${asset.id}"."value"=[]
-                        contentMap."${asset.id}"."value"<<finalList.get(i).value
+                        contentMap."${countAsset}"."value"=[]
+                        contentMap."${countAsset}"."value"<<finalList.get(i).value
 //                       contentMap."${asset.id}"."timeSeriesID"<<data.timeSeries.id
                         }
-                    else{
-                    contentMap."${asset.id}"."value"<<finalList.get(i).value
-                        }
+                                 else{
+                                contentMap."${countAsset}"."value"<<finalList.get(i).value
+                                 }
 
                 }
             }
             else{
+//                println("meeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
 //                contentMap."${asset.id}" =  [assetId:"",name:asset.assetName,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,id:"",value:"" ,value1:""]
 //                timeSeriesList<<"a"
 
+            }
+            for(int i=0;i<newList.size();i++){
+
+                if(i==0){
+                    contentMap."${countAsset}"."timeSeriesID"=[]
+                    contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
+                }
+                else{
+                    contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
+                }
 
             }
+            countAsset++
         }
 
-        for(int i=0;i<newList.size();i++){
-
-            if(i==0){
-                contentMap."${assetID}"."timeSeriesID"=[]
-
-                       contentMap."${assetID}"."timeSeriesID"<<newList.get(i).id
-            }
-            else{
-                contentMap."${assetID}"."timeSeriesID"<<newList.get(i).id
-            }
-
-        }
+//        for(int i=0;i<newList.size();i++){
+//
+//            if(i==0){
+//                contentMap."${assetID}"."timeSeriesID"=[]
+//
+//                       contentMap."${assetID}"."timeSeriesID"<<newList.get(i).id
+//            }
+//            else{
+//                contentMap."${assetID}"."timeSeriesID"<<newList.get(i).id
+//            }
+//
+//        }
 
 
         if(params.updateDashBoard=="true"){
-
+//            println("============@@@@@@@@@@@@"+contentMap)
             render contentMap as JSON
         }
         else{
 
-//            println("============@@@@@@@@@@@@"+contentMap)
+//            println("@@@@@@@@@@@@"+contentMap)
             render (view: "dashboardIndex", model: [contentmap:contentMap,timeSeriesName:newList] )
         }
 
