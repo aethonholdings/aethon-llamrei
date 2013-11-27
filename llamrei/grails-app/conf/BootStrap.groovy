@@ -28,7 +28,7 @@ class BootStrap {
         def operatorUser = SecUser.findByUsername('operator') ?: new SecUser(
                 username: 'operator',
                 password: 'password',
-                email:'operator@gmail.com',
+                email:'damyantsoftware@gmail.com',
                 enabled: true).save(failOnError: true)
 
         if (!operatorUser.authorities.contains(operatorRole)) {

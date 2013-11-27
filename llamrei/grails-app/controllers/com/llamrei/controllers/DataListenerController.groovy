@@ -41,6 +41,7 @@ class DataListenerController {
 
        List<TimeSeries> tsList = new ArrayList<TimeSeries>()
        List<TimeSeries> tsSeriesList = new ArrayList<TimeSeries>()
+       List<TimeSeries> tsListClone
             tsList = TimeSeries.list()
           ArrayList seriesList = new ArrayList()
           ArrayList tsli = new ArrayList()
@@ -57,8 +58,9 @@ class DataListenerController {
               }
             }
 
+            tsListClone = tsList.clone()
             for(int i=0;i<tsli.size();i++){
-               tsSeriesList.add(tsList.get(i))
+               tsSeriesList.add(tsListClone.get(i))
             }
 
 
