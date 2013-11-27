@@ -3,14 +3,16 @@ package com.llamrei.controllers
 import com.llamrei.domain.*
 import groovy.time.TimeCategory
 
-class ListenerController {
+class NodeController {
 
-    def index = {
+    def listen = {
+        
+        def ack = "FORBIDDEN"
         
         if(params.id!=null) {
             def thisAsset = Asset.findByAssetUniqueID(params.id)
             if(thisAsset!=null) {
-                render("ACK")
+                ack = "ACK"
                 def thisNodeTimeStamp = new Date().parse("yyyy|mm|dd|hh|mm|ss", params?.getProperty("T"))
                 def thisServerTimeStamp = new Date()
                 if(thisNodeTimeStamp != null) {
@@ -24,11 +26,8 @@ class ListenerController {
                         }
                     }
                 }
-            } else {
-                render("FORBIDDEN")    
-            }
-        } else {
-            render("FORBIDDEN")
-        }
+            } 
+        } 
+        render(ack)
     }    
 }
