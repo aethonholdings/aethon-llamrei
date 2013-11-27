@@ -90,17 +90,20 @@ class DataSeriesService {
        String newStatus=null
        String reason=null
        String unit = null
+        def status= null
         def obj= Asset.findByAssetUniqueID(id)
         def stateModelIns = StateModel.findByAsset(obj)
-
-        def state = stateModelIns.states
+        def state
+        if(stateModelIns!=null){
+        state = stateModelIns.states
     //   println("#########################"+obj1)
-       def status= null
+
        state.each{
            status= it.name
 
        }
-       println(seriesList.size()+status)
+       }
+     // println(seriesList.size()+status)
         for(int i=0;i<seriesList.size();i++){
         def list = StateRule.findAllByTimeSeries(seriesList.get(i))
 

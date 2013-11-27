@@ -75,12 +75,16 @@ class DataListenerController {
                   def  stateName=dataSeriesService.stateService(id,map,tsSeriesList)
                      StateModel stateModel=StateModel.findByAsset(assetInstance)
                      Set<State> state = new HashSet<State>()
+                     if(stateModel!=null){
                       def stateIns =State.findByStateModel(stateModel)
                      if(stateName!=null){
                      stateIns.name=stateName
                      state .add(stateIns)
                      stateModel.setStates(state)
                      redirect(controller: "stateModel", action: "update", stateModelIns:stateModel)
+                     }
+                     }  else{
+                         msg="Please Edit Asset State Model"
                      }
 
           msg="ACK"
