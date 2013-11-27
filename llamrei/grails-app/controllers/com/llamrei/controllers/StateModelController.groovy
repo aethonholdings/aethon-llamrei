@@ -190,13 +190,17 @@ class StateModelController {
 
             //now save state rules
             Integer stateRulesCount = Integer.parseInt(params.stateRulesCount)
+            println "stateRulesCount"  + stateRulesCount
+            println "stateRules : "  + params["stateRule"]
             for (int i = 0; i < stateRulesCount; i++) {
 
                 stateRule = new StateRule()
                 stateRule.setRuleType(params["stateRule.${i}.ruleType"])
+                println "ruleType" + stateRule.ruleType
                 stateRule.setRuleValue1(params["stateRule.${i}.ruleValue"])
-
+                println "timeSeriesId"  + params["stateRule.${i}.timeSeries"]
                 Integer timeSeriesId = Integer.parseInt(params["stateRule.${i}.timeSeries"])
+//                println "timeSeriesId"  + timeSeriesId
                 TimeSeries timeSeries = TimeSeries.get(timeSeriesId)
                 stateRule.setTimeSeries(timeSeries)
                 stateRule.setState(state)

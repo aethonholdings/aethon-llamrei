@@ -24,7 +24,7 @@
             $("#datePickerTo").datepicker({ changeMonth: true,changeYear: true,dateFormat: 'yy-mm-dd',maxDate: "0"   });
             setInterval(function () {
                 showContents();
-            }, 20000);
+            }, 50000);
         });
 
 
@@ -70,9 +70,10 @@
         <g:each in="${contentmap}" status="i" var="content">
 
             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+
                 <td>${content.value.name} </td>
                 <td>${content.value.connection}</td>
-                <td>${content.value.stateName}</td>
+                <td>${content.value.stateName[0][0]}</td>
 
             <g:each in="${content.value.value}"  status="j" var="ac">
 
