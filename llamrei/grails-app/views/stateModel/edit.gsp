@@ -141,6 +141,7 @@
             stateRulesCount++;
         });
         $('#stateRulesCount').val(stateRulesCount);
+        alert($('#stateRulesCount').val());
 
         $.ajax({
             type:'POST',
@@ -148,6 +149,7 @@
             data:$('div#state-form').parents('form').serialize(),
             success:function (data) {
                 $('div#states').html(data);
+                srIndex = 0;
             }
         });
     }
