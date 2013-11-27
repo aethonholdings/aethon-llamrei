@@ -111,25 +111,42 @@ class DataSeriesService {
             if(stateRule.ruleValue1=="" && stateRule.ruleValue1==null){
                 oldValue  = Float.parseFloat(stateRule.ruleValue1)
             }
-          if(stateRule.ruleType=="<"){
+          if(stateRule.ruleType=="LT"){
               if(newValue<oldValue){
                   newStatus="Stopped"
                   reason=  seriesList.get(i).name
                   unit = "Low"
               }
-          }else if(stateRule.ruleType==">"){
+          }else if(stateRule.ruleType=="GT"){
                 if(newValue>oldValue){
                     newStatus="Stopped"
                     reason=  seriesList.get(i).name
                     unit = "High"
 
-                }else if(stateRule.ruleType=="="){
+                }else if(stateRule.ruleType=="EQ"){
                     if(newValue == oldValue){
-                        newStatus="Stopped"
+                        newStatus="Running"
                         reason=  seriesList.get(i).name
                         unit = "Normal"
 
                 }
+                }else if(stateRule.ruleType=="NE"){
+                   if(newValue != oldValue){
+                        newStatus="Stopped"
+                        reason=  seriesList.get(i).name
+                        unit = "Normal"
+                }
+               } else if(stateRule.ruleType=="LE"){
+                    if(newValue <= oldValue){
+                        newStatus="Stopped"
+                        reason=  seriesList.get(i).name
+                        unit = "Normal"
+                }
+                } else if(stateRule.ruleType=="GE"){
+                    if(newValue >= oldValue){
+                        newStatus="Stopped"
+                        reason=  seriesList.get(i).name
+                        unit = "Normal"
                 }
           }
           }
@@ -147,7 +164,7 @@ class DataSeriesService {
                  /* sendAlert(obj,status[0],newStatus)
                  status=newStatus*/
            }
-
+        }
 
           return  status
    }
@@ -196,7 +213,7 @@ class DataSeriesService {
         def operatorList
         list.each{
              operatorList = SecUser.findAllById(it.secUserId)
-            }
+
           // println(operatorList.size())
         operatorList.each{
           emailId= it.email
@@ -234,10 +251,9 @@ class DataSeriesService {
 
 
         }
+               }
         return message
     }
 
 
    }
-
-

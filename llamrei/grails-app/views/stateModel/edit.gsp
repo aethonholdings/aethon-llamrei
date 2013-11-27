@@ -141,7 +141,7 @@
             stateRulesCount++;
         });
         $('#stateRulesCount').val(stateRulesCount);
-        alert($('#stateRulesCount').val());
+//        alert($('#stateRulesCount').val());
 
         $.ajax({
             type:'POST',
