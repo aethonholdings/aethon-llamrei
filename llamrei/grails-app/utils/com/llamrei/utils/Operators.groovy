@@ -5,7 +5,7 @@ public enum Operators {
     NOT_EQUALS("&ne;","NE"),
     GREATER_THAN(">","GT"),
     GREATER_THAN_EQUALS("&ge;","GE"),
-    LESS_THAN(">","LT"),
+    LESS_THAN("<","LT"),
     LESS_THAN_EQUALS("&le;","LE");
 
     String symbol;

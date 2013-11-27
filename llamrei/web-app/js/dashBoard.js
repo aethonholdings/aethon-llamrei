@@ -69,7 +69,7 @@ function showContents(){
             var length=0;
             $("#main1").find("tr:gt(0)").remove();
             for(var i=1;i<=jsonLengthCount;i++)  {
-
+//                alert("???"+data[i].name)
                 if (i % 2) {
 
                     $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td id="aa'+data[i].assetId+'">'+data[i].stateName+'</td>' +
