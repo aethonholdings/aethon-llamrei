@@ -29,7 +29,7 @@ class DashboardController {
         def newList=[]
         def assetID
         def countAsset=1;
-        def stateModelList
+//        def stateModelList
         assetInstance?.each{ asset->
             params.sort  ="id"
             params.order   ="desc"
@@ -40,11 +40,11 @@ class DashboardController {
             def tempList=[]
             def finalList=[]
             def stateName=[]
-            stateModelList=  StateModel.findAllByAsset(asset)
+//            stateModelList=  StateModel.findAllByAsset(asset)
             def stateModelId=StateModel.executeQuery("select id from StateModel where asset=:asset ",[asset:asset])
 
             if(stateModelId) {
-            stateName<< State.executeQuery("select name from State where stateModel.id=:stateModel order by id desc ",[stateModel:stateModelId[0],max:1])
+                stateName<< State.executeQuery("select name from State where stateModel.id=:stateModel order by id desc ",[stateModel:stateModelId[0],max:1])
             }
             else{
                 stateName<<"--"
@@ -55,28 +55,28 @@ class DashboardController {
 
 //                println("kkkkk"+it.inDashboard)
                 if(it.inDashboard)   {
-                   timeList.addAll(it)
+                    timeList.addAll(it)
                 }
             }
 
             timeList.each{
-                    if(it.inDashboard)
-                    {
+                if(it.inDashboard)
+                {
                     if(!newList.contains(it)) {
-                    newList.addAll(it)
+                        newList.addAll(it)
                         newList.sort{it.id}
                     }
                 }
             }
 
-
+//            println("<<<<<<<<<<<<<<"+newList)
             if(dataInstanceList){
 
                 dataInstanceList?.eachWithIndex { data, i ->
 
                     if(i==0 && data.timeSeries.inDashboard) {
 //                        println("1st if")
-                         tempList << data
+                        tempList << data
                         assetID=asset.id
 
 //                        contentMap."${asset.id}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,timeSereisID:data.timeSeries.id,id:data.id,value :[data.value]]
@@ -92,7 +92,7 @@ class DashboardController {
                     else if(!(timeSeriesList.contains(data.timeSeries.id)) && data.timeSeries.inDashboard)  {
 //                        println("2nd if")
                         if(timeSeriesList.size()==0){
-                             tempList << data
+                            tempList << data
                             contentMap."${countAsset}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,id:data.id ]
                             timeSeriesList<<data.timeSeries.id
                         }
@@ -101,8 +101,8 @@ class DashboardController {
                             tempList<<data
 //                          finalList=tempList.sort{it.timeSeries.id}
 
-                        timeSeriesID:[data.timeSeries.id]
-                        timeSeriesList<<data.timeSeries.id
+                            timeSeriesID:[data.timeSeries.id]
+                            timeSeriesList<<data.timeSeries.id
                         }
 
 
@@ -116,14 +116,26 @@ class DashboardController {
 //                println("finalListsize====="+finalList.size())
                 for(int i=0;i<finalList.size();i++){
 
-                        if(i==0){
+                    if(i==0){
                         contentMap."${countAsset}"."value"=[]
                         contentMap."${countAsset}"."value"<<finalList.get(i).value
 //                       contentMap."${asset.id}"."timeSeriesID"<<data.timeSeries.id
-                        }
-                                 else{
-                                contentMap."${countAsset}"."value"<<finalList.get(i).value
-                                 }
+                    }
+                    else{
+                        contentMap."${countAsset}"."value"<<finalList.get(i).value
+                    }
+
+                }
+                for(int i=0;i<newList.size();i++){
+//                    println("LLLLLLLLL"+i)
+//                    println("<<<<<"+newList.get(i).id)
+                    if(i==0){
+                        contentMap."${countAsset}"."timeSeriesID"=[]
+                        contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
+                    }
+                    else{
+                        contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
+                    }
 
                 }
             }
@@ -133,32 +145,21 @@ class DashboardController {
 //                timeSeriesList<<"a"
 
             }
-            for(int i=0;i<newList.size();i++){
-
-                if(i==0){
-                    contentMap."${countAsset}"."timeSeriesID"=[]
-                    contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
-                }
-                else{
-                    contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
-                }
-
-            }
+//            for(int i=0;i<newList.size();i++){
+//                   println("LLLLLLLLL"+i)
+//                println("<<<<<"+newList.get(i).id)
+//                if(i==0){
+//                    contentMap."${countAsset}"."timeSeriesID"=[]
+//                    contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
+//                }
+//                else{
+//                    contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
+//                }
+//
+//            }
             countAsset++
         }
 
-//        for(int i=0;i<newList.size();i++){
-//
-//            if(i==0){
-//                contentMap."${assetID}"."timeSeriesID"=[]
-//
-//                       contentMap."${assetID}"."timeSeriesID"<<newList.get(i).id
-//            }
-//            else{
-//                contentMap."${assetID}"."timeSeriesID"<<newList.get(i).id
-//            }
-//
-//        }
 
 
         if(params.updateDashBoard=="true"){
@@ -221,16 +222,16 @@ class DashboardController {
             between("timestamp" ,fromDate,nextDate)
         }
 
-       println("size==="+dataList.size()+"data=="+dataList.value)
-       double ratio= dataList.size()/max
+        println("size==="+dataList.size()+"data=="+dataList.value)
+        double ratio= dataList.size()/max
 
-       println("ratio===="+ratio)
-       def roundOF=(int)Math.ceil(ratio)
+        println("ratio===="+ratio)
+        def roundOF=(int)Math.ceil(ratio)
 
         double currentVal = Math.floor(ratio * 100) / 100;
-           BigDecimal bd = new BigDecimal( currentVal - Math.floor( currentVal ));
+        BigDecimal bd = new BigDecimal( currentVal - Math.floor( currentVal ));
         bd = bd.setScale(1,RoundingMode.HALF_DOWN);
-            String[] splitter = bd.toString().split("\\.");
+        String[] splitter = bd.toString().split("\\.");
         def secondVal=Integer.parseInt(splitter[1])
 //        println("###########"+secondVal)
         def loopVar=10-secondVal
@@ -239,18 +240,18 @@ class DashboardController {
         }
         println("count==="+loopVar)
 
-          def count=loopVar
-          def test=0
-            for( int i=0;i<dataList.size;i++){
+        def count=loopVar
+        def test=0
+        for( int i=0;i<dataList.size;i++){
 
-                if(i!=loopVar) {
+            if(i!=loopVar) {
                 newDataList<<dataList.get(i)
-                }
-                else{
-                    loopVar++;;
-                }
-
             }
+            else{
+                loopVar++;;
+            }
+
+        }
 
         println("lsss==="+newDataList.value)
         println("lsss==="+newDataList.size())
