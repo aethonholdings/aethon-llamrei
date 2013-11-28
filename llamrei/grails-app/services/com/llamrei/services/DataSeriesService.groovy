@@ -22,11 +22,18 @@ class DataSeriesService {
     boolean isSaved=false
     def mailService
     def boolean saveDataToDB(String id, String time, ArrayList seriesList,List<TimeSeries> tsIns) {
-           SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss")
-             try
+          SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+           Date date
+           try
               {
-                Date date = simpleDateFormat.parse(time);
-                  for(int i=0;i<seriesList.size();i++){
+                try {
+                 date = ft.parse(time);
+
+                   } catch (ParseException e) {
+                   log.info("Unparseable using " + time);
+                   }
+
+                      for(int i=0;i<seriesList.size();i++){
                       try{
                        def dataObject = new DataPoint()
                        dataObject.value=seriesList.get(i)
@@ -154,6 +161,7 @@ class DataSeriesService {
           }
           }
           }
+            }
             if(status!=newStatus) {
 
                   String message= null
@@ -167,7 +175,7 @@ class DataSeriesService {
                  /* sendAlert(obj,status[0],newStatus)
                  status=newStatus*/
            }
-        }
+
 
           return  status
    }
@@ -216,7 +224,7 @@ class DataSeriesService {
         def operatorList
         list.each{
              operatorList = SecUser.findAllById(it.secUserId)
-
+        }
           // println(operatorList.size())
         operatorList.each{
           emailId= it.email
@@ -246,17 +254,11 @@ class DataSeriesService {
             else {
                 println(renderMessage)
             }
-            //from='raj95288@gmail.com'
-        }
+           }
         else{
             println("Sorry,we are not able to find the username")
         }
-
-
         }
-               }
         return message
     }
-
-
-   }
+ }

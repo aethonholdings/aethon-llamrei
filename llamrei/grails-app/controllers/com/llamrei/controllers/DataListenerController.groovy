@@ -21,9 +21,7 @@ class DataListenerController {
         /**
          * Retreiving the data coming from node
          */
-        println(params)
         String id = params.getProperty("id")
-            println(id)
         if(!(id==null || id=="")){
         def assetInstance = Asset.findByAssetUniqueID(id)
         if(assetInstance){
@@ -31,7 +29,7 @@ class DataListenerController {
 
         time=time.replace("|"," ")
 
-
+         println(time)
         /**
          * creating list for dataSeries
          */
@@ -75,6 +73,7 @@ class DataListenerController {
                   def  stateName=dataSeriesService.stateService(id,map,tsSeriesList)
                      StateModel stateModel=StateModel.findByAsset(assetInstance)
                      Set<State> state = new HashSet<State>()
+
                      if(stateModel!=null){
                       def stateIns =State.findByStateModel(stateModel)
                      if(stateName!=null){
@@ -106,11 +105,15 @@ class DataListenerController {
          def checkConnectivityStatus = {
                 long diffSeconds
                 long diffMinuts
+
+
                 //second for good connection
                 long minLog = 15
                 //minuts
                 long timeout = 2
                 String status = "Connected"
+                Date assetTime
+                Date serverT
                 List<Asset> assetList = Asset.list()
                 List<Asset> updatedAssetList = new ArrayList<Asset>()
 
@@ -122,9 +125,9 @@ class DataListenerController {
                     def assetIns=Asset.findById(asset.id)
                    def dataList=DataPoint.findByAsset(assetIns,params)
                    // dataList=null
-                       if(!dataList==null){
-                           Date assetTime = dataList.getNodeTimestamp()
-                           Date serverT   = dataList.getTimestamp()
+                       if(dataList!=null){
+                          assetTime = dataList.getNodeTimestamp()
+                          serverT   = dataList.getTimestamp()
                        }else{
                            log.info("there is no data_point")
                        }
@@ -135,11 +138,9 @@ class DataListenerController {
                     status ="Good"
                     else
                     status="Poor"
-                   diffMinuts  = dataSeriesService.timeDifferenceInMinute(currentTime,serverT)
+                    diffMinuts  = dataSeriesService.timeDifferenceInMinute(currentTime,serverT)
                         if(diffMinuts>2)
                         status= "Disconnected"
-                       // println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+asset.assetName+" is "+status)
-
                         assetIns.connectivityStatus=status
                         updatedAssetList.add(assetIns)
                       }
