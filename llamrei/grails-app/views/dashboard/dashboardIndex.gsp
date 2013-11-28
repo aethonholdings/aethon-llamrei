@@ -51,7 +51,7 @@
             %{--<th>${name}</th>--}%
             %{--</g:each>--}%
 
-            <g:each in="${timeSeriesName}"  status="i" var="ac1">
+            <g:each in="${timeSeriesName}"  status="i1" var="ac1">
 
                 <th>${ac1.name}</th>
 

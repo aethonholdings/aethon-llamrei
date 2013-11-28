@@ -26,20 +26,70 @@ class DashboardController {
         def dataInstanceList
         def assetInstance = Asset.list()
         def timeSeriesName=[], timeList=new HashSet()
-        def newList=[]
+
         def assetID
-        def countAsset=1;
+        def countAsset=0;
+        def newList=[]
 //        def stateModelList
         assetInstance?.each{ asset->
             params.sort  ="id"
             params.order   ="desc"
-//            params.max=3
-//            println("asettt==="+asset)
-            dataInstanceList = DataPoint.findAllByAsset(asset,params)
             def timeSeriesList  =[]
             def tempList=[]
             def finalList=[]
             def stateName=[]
+             newList=[]
+            def noValue=false
+            def noTimeSeries=false,inDashBoard=false
+//            params.max=3
+//            println("asettt==="+asset)
+
+            timeSeriesName<<asset.timeSeries
+//            println("========="+timeSeriesName.size())
+//            println("sereis==="+timeSeriesName)
+            timeSeriesName.each{
+
+                if(it){
+
+                    noTimeSeries=false
+                }
+                else{
+
+                    noTimeSeries=true
+                }
+                if(it.inDashboard)   {
+
+                    timeList.addAll(it)
+//                    timeList.sort{it.id}
+                }
+            }
+//            println("flag========="+timeList)
+            timeList.each{
+//                println(it)
+                if(it.inDashboard)
+                {
+
+                    if(!newList.contains(it)) {
+
+                        newList.addAll(it)
+                        newList.sort{it.id}
+
+                        noTimeSeries=false
+                        inDashBoard=true
+                    }
+                }
+
+                else if(inDashBoard==false){
+
+                    noTimeSeries=true
+                }
+            }
+//            println("newList====="+newList)
+
+            if(noTimeSeries==false)   {
+            dataInstanceList = DataPoint.findAllByAsset(asset,params)
+            }
+
 //            stateModelList=  StateModel.findAllByAsset(asset)
             def stateModelId=StateModel.executeQuery("select id from StateModel where asset=:asset ",[asset:asset])
 
@@ -50,30 +100,11 @@ class DashboardController {
                 stateName<<"--"
             }
 
-            timeSeriesName<<asset.timeSeries
-            timeSeriesName.each{
-
-//                println("kkkkk"+it.inDashboard)
-                if(it.inDashboard)   {
-                    timeList.addAll(it)
-                }
-            }
-
-            timeList.each{
-                if(it.inDashboard)
-                {
-                    if(!newList.contains(it)) {
-                        newList.addAll(it)
-                        newList.sort{it.id}
-                    }
-                }
-            }
-
-//            println("<<<<<<<<<<<<<<"+newList)
-            if(dataInstanceList){
-
+//             println("falg===="+noTimeSeries)
+            if(dataInstanceList && noTimeSeries==false){
+                countAsset++
                 dataInstanceList?.eachWithIndex { data, i ->
-
+//                    println(i+"==meeeeeeeeeeeeeeeeeeeeee")
                     if(i==0 && data.timeSeries.inDashboard) {
 //                        println("1st if")
                         tempList << data
@@ -83,21 +114,18 @@ class DashboardController {
                         contentMap."${countAsset}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,id:data.id]
 
                         timeSeriesList<<data.timeSeries.id
-//                        println("list=="+timeSeriesList)
-//                        println("data==="+data.timeSeries.id)
-//                        println("npard=="+(timeSeriesList.contains(data.timeSeries.id)))
+
                     }
 
 
                     else if(!(timeSeriesList.contains(data.timeSeries.id)) && data.timeSeries.inDashboard)  {
-//                        println("2nd if")
+//                           println("2nd ifff")
                         if(timeSeriesList.size()==0){
                             tempList << data
                             contentMap."${countAsset}" =  [uID:asset.id,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,name:asset.assetName,id:data.id ]
                             timeSeriesList<<data.timeSeries.id
                         }
                         else{
-//                            println("3rd if")
                             tempList<<data
 //                          finalList=tempList.sort{it.timeSeries.id}
 
@@ -108,6 +136,8 @@ class DashboardController {
 
                     }
                     else{
+                        noValue=true
+                        contentMap."${countAsset}" =  [uID:asset.id,name:asset.assetName,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,id:data.id]
 //                        tempList << data
                     }
                 }
@@ -125,10 +155,26 @@ class DashboardController {
                         contentMap."${countAsset}"."value"<<finalList.get(i).value
                     }
 
+
                 }
+
+//                println("**********"+timeList.size())
+//                if(finalList.size()<newList.size()){
+//                    def inc=newList.size()-finalList.size()
+//                    println("=="+noValue)
+//                    if(noValue==true){
+//                        contentMap."${countAsset}"."value"=[]
+//                    }
+////                    contentMap."${countAsset}"."value"=[]
+//                    for(int i=inc;i<timeList.size();i++){
+//                        println("#######################")
+//                        contentMap."${countAsset}"."value"<<"-"
+//                    }
+//                }
                 for(int i=0;i<newList.size();i++){
-//                    println("LLLLLLLLL"+i)
-//                    println("<<<<<"+newList.get(i).id)
+//                    println("<<<<<<<"+countAsset)
+//                    println("con map==="+contentMap)
+                    if(contentMap.size()>0){
                     if(i==0){
                         contentMap."${countAsset}"."timeSeriesID"=[]
                         contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
@@ -136,12 +182,13 @@ class DashboardController {
                     else{
                         contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
                     }
+                    }
 
                 }
             }
             else{
-//                println("meeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-//                contentMap."${asset.id}" =  [assetId:"",name:asset.assetName,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,id:"",value:"" ,value1:""]
+
+//                contentMap."${countAsset}" =  [uID:asset.id,name:asset.assetName,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,id:data.id]
 //                timeSeriesList<<"a"
 
             }
@@ -157,7 +204,7 @@ class DashboardController {
 //                }
 //
 //            }
-            countAsset++
+// temp commented           countAsset++
         }
 
 
@@ -222,10 +269,10 @@ class DashboardController {
             between("timestamp" ,fromDate,nextDate)
         }
 
-        println("size==="+dataList.size()+"data=="+dataList.value)
+//        println("size==="+dataList.size()+"data=="+dataList.value)
         double ratio= dataList.size()/max
 
-        println("ratio===="+ratio)
+//        println("ratio===="+ratio)
         def roundOF=(int)Math.ceil(ratio)
 
         double currentVal = Math.floor(ratio * 100) / 100;
@@ -238,7 +285,7 @@ class DashboardController {
         if(loopVar==10){
             loopVar==0
         }
-        println("count==="+loopVar)
+//        println("count==="+loopVar)
 
         def count=loopVar
         def test=0
@@ -253,8 +300,8 @@ class DashboardController {
 
         }
 
-        println("lsss==="+newDataList.value)
-        println("lsss==="+newDataList.size())
+//        println("lsss==="+newDataList.value)
+//        println("lsss==="+newDataList.size())
 
         render dataList.value
     }
