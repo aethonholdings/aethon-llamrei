@@ -65,6 +65,13 @@ class StateModelController {
             stateModelInstance.name = ""
             stateModelInstance.description = ""
             stateModelInstance.stateModelId = ""
+
+            stateModelInstance?.states?.each {state ->
+                println "Deleting state "+state?.id
+                state.delete()
+            }
+
+            stateModelInstance.states.clear()
         }
         println "State model : " + stateModelInstance
 
@@ -111,26 +118,6 @@ class StateModelController {
         }
     }
 
-    def delete = {
-        println "params in delete : " + params
-        Integer assetId = Integer.parseInt(params.id)
-        def stateModelInstance = StateModel.findByAsset(Asset.findById(assetId.longValue()))
-        if (stateModelInstance) {
-            try {
-                stateModelInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'stateModel.label', default: 'StateModel'), params.id])}"
-                redirect(action: "edit")
-            }
-            catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'stateModel.label', default: 'StateModel'), params.id])}"
-                redirect(action: "edit", id: params.id)
-            }
-        }
-        else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'stateModel.label', default: 'StateModel'), params.id])}"
-            redirect(action: "edit")
-        }
-    }
     def copy = {
         println ">>paramsin copy : " + params
         [stateModelId: params.stateModelId]
@@ -196,11 +183,11 @@ class StateModelController {
 
                 stateRule = new StateRule()
                 stateRule.setRuleType(params["stateRule.${i}.ruleType"])
-                println "ruleType" + stateRule.ruleType
+
                 stateRule.setRuleValue1(params["stateRule.${i}.ruleValue"])
-                println "timeSeriesId"  + params["stateRule.${i}.timeSeries"]
+
                 Integer timeSeriesId = Integer.parseInt(params["stateRule.${i}.timeSeries"])
-//                println "timeSeriesId"  + timeSeriesId
+
                 TimeSeries timeSeries = TimeSeries.get(timeSeriesId)
                 stateRule.setTimeSeries(timeSeries)
                 stateRule.setState(state)
