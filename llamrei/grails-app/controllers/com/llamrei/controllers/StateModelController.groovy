@@ -197,6 +197,36 @@ class StateModelController {
         if (state.validate()) {
             state.save(flush: true)
             println "state saved :)"
+
+            //now save state rules
+            Integer stateRulesCount = Integer.parseInt(params.stateRulesCount)
+            println "stateRulesCount"  + stateRulesCount
+            println "stateRules : "  + params["stateRule"]
+            for (int i = 0; i < stateRulesCount; i++) {
+
+                stateRule = new StateRule()
+                stateRule.setRuleType(params["stateRule.${i}.ruleType"])
+
+                stateRule.setRuleValue1(params["stateRule.${i}.ruleValue"])
+
+                Integer timeSeriesId = Integer.parseInt(params["stateRule.${i}.timeSeries"])
+
+                TimeSeries timeSeries = TimeSeries.get(timeSeriesId)
+                stateRule.setTimeSeries(timeSeries)
+                stateRule.setState(state)
+
+                println "StateRule to be saved : " + stateRule
+                println "sr validate : " + stateRule.validate()
+                if (stateRule.validate()) {
+                    stateRule.save(flush: true)
+                    println "state rule saved"
+
+                    stateRules.add(stateRule)
+                } else {
+                    println "state rule not saved"
+                }
+            }
+
         } else {
             println "Could not save the state :("
         }

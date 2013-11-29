@@ -97,7 +97,6 @@ class TimeSeriesManagementController {
             timeSeriesInStateRule.each{it.delete()}
         }
         def dataPointTimeSeriesInstance=DataPoint.findAllByTimeSeries(timeSeriesInstance)
-        println(dataPointTimeSeriesInstance)
         if(dataPointTimeSeriesInstance){
             dataPointTimeSeriesInstance.each{it.delete()}
         }

@@ -45,7 +45,7 @@ class Asset {
         timeSeries cascade: 'none'
         alerts cascade: 'all'
         dataSeries cascade: 'all'
-        alerts(sort:'created',order:'asc')
+        alerts(sort:'created',order:'desc')
 
     }
 

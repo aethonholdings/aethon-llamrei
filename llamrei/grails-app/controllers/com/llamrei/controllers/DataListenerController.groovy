@@ -21,9 +21,7 @@ class DataListenerController {
         /**
          * Retreiving the data coming from node
          */
-        println(params)
         String id = params.getProperty("id")
-            println(id)
         if(!(id==null || id=="")){
         def assetInstance = Asset.findByAssetUniqueID(id)
         if(assetInstance){
@@ -31,7 +29,7 @@ class DataListenerController {
 
         time=time.replace("|"," ")
 
-
+         println(time)
         /**
          * creating list for dataSeries
          */
@@ -41,10 +39,16 @@ class DataListenerController {
 
        List<TimeSeries> tsList = new ArrayList<TimeSeries>()
        List<TimeSeries> tsSeriesList = new ArrayList<TimeSeries>()
-            tsList = TimeSeries.list()
+       List<TimeSeries> tsListClone
+            def associatedTs= assetInstance.timeSeries
+            associatedTs.each{
+               tsList.add(it)
+            }
+           // tsList.add(assetInstance.timeSeries)
+           // println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"+tsList)
           ArrayList seriesList = new ArrayList()
           ArrayList tsli = new ArrayList()
-            Map<String,String> map = new HashMap<String, String>()
+          Map<String,String> map = new HashMap<String, String>()
             for(TimeSeries series: tsList) {
               String tsId=series.timeSeriesUniqueID
               String value= params.getProperty(series.timeSeriesUniqueID)
@@ -57,8 +61,9 @@ class DataListenerController {
               }
             }
 
+            tsListClone = tsList.clone()
             for(int i=0;i<tsli.size();i++){
-               tsSeriesList.add(tsList.get(i))
+               tsSeriesList.add(tsListClone.get(i))
             }
 
 
@@ -73,12 +78,17 @@ class DataListenerController {
                   def  stateName=dataSeriesService.stateService(id,map,tsSeriesList)
                      StateModel stateModel=StateModel.findByAsset(assetInstance)
                      Set<State> state = new HashSet<State>()
+
+                     if(stateModel!=null){
                       def stateIns =State.findByStateModel(stateModel)
                      if(stateName!=null){
                      stateIns.name=stateName
                      state .add(stateIns)
                      stateModel.setStates(state)
                      redirect(controller: "stateModel", action: "update", stateModelIns:stateModel)
+                     }
+                     }  else{
+                         msg="Please Edit Asset State Model"
                      }
 
           msg="ACK"
@@ -105,6 +115,8 @@ class DataListenerController {
                 //minuts
                 long timeout = 2
                 String status = "Connected"
+                Date assetTime
+                Date serverT
                 List<Asset> assetList = Asset.list()
                 List<Asset> updatedAssetList = new ArrayList<Asset>()
 
@@ -116,9 +128,9 @@ class DataListenerController {
                     def assetIns=Asset.findById(asset.id)
                    def dataList=DataPoint.findByAsset(assetIns,params)
                    // dataList=null
-                       if(!dataList==null){
-                           Date assetTime = dataList.getNodeTimestamp()
-                           Date serverT   = dataList.getTimestamp()
+                       if(dataList!=null){
+                          assetTime = dataList.getNodeTimestamp()
+                          serverT   = dataList.getTimestamp()
                        }else{
                            log.info("there is no data_point")
                        }
@@ -129,11 +141,9 @@ class DataListenerController {
                     status ="Good"
                     else
                     status="Poor"
-                   diffMinuts  = dataSeriesService.timeDifferenceInMinute(currentTime,serverT)
+                    diffMinuts  = dataSeriesService.timeDifferenceInMinute(currentTime,serverT)
                         if(diffMinuts>2)
                         status= "Disconnected"
-                       // println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+asset.assetName+" is "+status)
-
                         assetIns.connectivityStatus=status
                         updatedAssetList.add(assetIns)
                       }

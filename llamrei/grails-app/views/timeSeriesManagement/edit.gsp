@@ -7,6 +7,9 @@
     <meta name="layout" content="main" />
     <g:set var="entityName" value="${message(code: 'timeSeries.label', default: 'TimeSeries')}" />
     <title><g:message code="default.edit.label" args="[entityName]" /></title>
+    <script>
+
+    </script>
 </head>
 <body>
 <div class='menuItem'>
@@ -97,7 +100,7 @@
         </g:form>
         <g:form controller="timeSeriesManagement" style= 'display: inline' action="delete" params="[id:timeSeriesInstance.id]"><button value='Delete User' onclick=" return confirm('Are you sure you want to delete this time series?');" id='deleteButton' class="actionButton" >Delete</button></g:form>
 
-        <g:link  action="list"   value="Cancel"><button value='Cancel' class="actionButton">Cancel</button></g:link>
+        <g:link  action="list"   value="Cancel"><button value='Cancel' id=cancelButton class="actionButton">Cancel</button></g:link>
 
 
 
