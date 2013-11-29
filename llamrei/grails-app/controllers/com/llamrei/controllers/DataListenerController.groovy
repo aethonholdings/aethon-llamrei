@@ -40,10 +40,15 @@ class DataListenerController {
        List<TimeSeries> tsList = new ArrayList<TimeSeries>()
        List<TimeSeries> tsSeriesList = new ArrayList<TimeSeries>()
        List<TimeSeries> tsListClone
-            tsList = TimeSeries.list()
+            def associatedTs= assetInstance.timeSeries
+            associatedTs.each{
+               tsList.add(it)
+            }
+           // tsList.add(assetInstance.timeSeries)
+           // println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"+tsList)
           ArrayList seriesList = new ArrayList()
           ArrayList tsli = new ArrayList()
-            Map<String,String> map = new HashMap<String, String>()
+          Map<String,String> map = new HashMap<String, String>()
             for(TimeSeries series: tsList) {
               String tsId=series.timeSeriesUniqueID
               String value= params.getProperty(series.timeSeriesUniqueID)
@@ -105,8 +110,6 @@ class DataListenerController {
          def checkConnectivityStatus = {
                 long diffSeconds
                 long diffMinuts
-
-
                 //second for good connection
                 long minLog = 15
                 //minuts
