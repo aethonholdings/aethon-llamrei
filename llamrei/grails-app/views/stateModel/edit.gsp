@@ -141,6 +141,7 @@
             stateRulesCount++;
         });
         $('#stateRulesCount').val(stateRulesCount);
+//        alert($('#stateRulesCount').val());
 
         $.ajax({
             type:'POST',
@@ -148,6 +149,7 @@
             data:$('div#state-form').parents('form').serialize(),
             success:function (data) {
                 $('div#states').html(data);
+                srIndex = 0;
             }
         });
     }
@@ -237,6 +239,17 @@
         $.ajax({
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'addStateRule')}',
+            data:$('div#state-form').parents('form').serialize(),
+            success:function (data) {
+                $('div#states').html(data);
+            }
+        });
+    }
+
+    function addStateRow() {
+        $.ajax({
+            type:'POST',
+            url:'${createLink(controller: 'stateModel', action: 'addState')}',
             data:$('div#state-form').parents('form').serialize(),
             success:function (data) {
                 $('div#states').html(data);

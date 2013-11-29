@@ -38,14 +38,14 @@ class Asset {
      * Mapping to define column names for domain objects in the database
      */
     static mapping = {
-                assetUniqueID column:"assetUniqueID"
+        assetUniqueID column:"assetUniqueID"
         assetName column:"assetName"
         creationDate column: "creationDate"
         modificationDate column:"modificationDate"
         timeSeries cascade: 'none'
-
         alerts cascade: 'all'
-        alerts(sort:'created',order:'desc')
+        dataSeries cascade: 'all'
+        alerts(sort:'created',order:'asc')
 
     }
 

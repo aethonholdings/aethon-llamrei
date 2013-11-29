@@ -1,5 +1,6 @@
 package com.llamrei.controllers
 
+import com.llamrei.domain.DataPoint
 import com.llamrei.domain.StateRule
 import grails.plugins.springsecurity.Secured
 import com.llamrei.domain.TimeSeries
@@ -94,6 +95,11 @@ class TimeSeriesManagementController {
         def timeSeriesInStateRule= StateRule.findAllByTimeSeries(timeSeriesInstance)
         if(timeSeriesInStateRule){
             timeSeriesInStateRule.each{it.delete()}
+        }
+        def dataPointTimeSeriesInstance=DataPoint.findAllByTimeSeries(timeSeriesInstance)
+        println(dataPointTimeSeriesInstance)
+        if(dataPointTimeSeriesInstance){
+            dataPointTimeSeriesInstance.each{it.delete()}
         }
         if (timeSeriesInstance) {
             try {
