@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var dataLen= 0,counter=0;
+var dataLen= 0,counter= 0,value=0;
 var assetID,timeSeriesID,pointValue,prevPointID=0;
 var statusFlag=false,checkFlag=false;
 
@@ -69,7 +69,7 @@ function showContents(){
             var length=0;
             $("#main1").find("tr:gt(0)").remove();
             for(var i=1;i<=jsonLengthCount;i++)  {
-//                alert("???"+data[i].name)
+
                 if (i % 2) {
 
                     $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td id="aa'+data[i].assetId+'">'+data[i].stateName+'</td>' +
@@ -102,13 +102,17 @@ function showContents(){
 
 function appendTimeSeries(data,i)
 {
-//        alert(length)
-//
-   var length=data[i].value.length;
-//    alert(data[1].timeSeriesID[0])
+
+    var length=data[i].value.length;
+
     for(var j=length- 1,k=0;j>=0;j--,k++){
 
-        $("#aa"+data[i].assetId).after('<td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSeriesID[j]+'") >'+data[i].value[j]+'</td>')
+        if(data[i].value[j]=='NA'){
+            $("#aa"+data[i].assetId).after('<td>'+data[i].value[j]+'</td>')
+        }
+        else{
+            $("#aa"+data[i].assetId).after('<td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSeriesID[j]+'") >'+data[i].value[j]+'</td>')
+        }
     }
 
 }
@@ -117,6 +121,7 @@ function appendTimeSeries(data,i)
 
 function openChart(data,timeSeriesId){
 //    alert(">>>>>>>>"+timeSeriesId)
+
     assetID=data
     $('#main1').hide();
     $('#main2').hide();
@@ -141,6 +146,9 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
     else{
         label=""
     }
+//    var b=Date.parse(data11[0].nodeTimestamp).getTime()
+
+    var chart;
 
     $('#chartDiv1').highcharts({
         chart: {
@@ -152,17 +160,25 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
 
                     // set up the updating of the chart each second
                     var series = this.series[0];
+                    var ab=this.xAxis[0]
+//                     alert("<<<"+this.xAxis[0])
                     setInterval(function() {
 
                         var x ; // current time
-
+//                        alert("hhh")
                         getNextPoint(assetID,timeSeriesID);
-
-
-                        if(statusFlag==true && checkFlag==true){
-                            x = (new Date()).getTime()
-                            series.addPoint([x, parseFloat(pointValue)], true, true);
+//                        alert(statusFlag+"==ch==="+checkFlag)
+                        if(statusFlag==true){
+//                           alert("pointval=="+pointTime)
+//                            categories =
+                            debugger;
+                            ab.categories.push(pointTime);
+//                            ab.categories.push(pointTime);//time is 0:00-23:00
+//                            xAxis.setCategories(categories);
+                            series.addPoint([ parseFloat(pointValue)],true, true);
                         }
+
+
 
                     }, 5000);
 
@@ -188,9 +204,22 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
         title: {
             text: ''
         },
+
         xAxis: {
-            type: 'datetime',
-            tickPixelInterval: 100
+            tickPixelInterval: 100,
+            title:'Date' ,
+
+            categories: (function() {
+                var categories = [],
+                    i,j;
+                for (j=0,i = -19; j < dataLen; i++,j++) {
+                    categories.push(data11[j].time);
+                }
+
+                return categories;
+            })()
+
+
         },
         yAxis: {
             title: {
@@ -221,18 +250,13 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
 
                 // generate an array of random data
                 var data = [],
-                    time = (new Date()).getTime(),
-
                     i,j;
-
-                var test=[10,20,30,40,50,20,70,80];
-
 
                 for (j=0,i = -19; j < dataLen; i++,j++) {
 
                     data.push({
-                        x: time + i * 1000,
-                        y:parseFloat(data11[j])
+//                        x:data11[j].time,
+                        y:parseFloat(data11[j].value)
                     });
                 }
 
@@ -264,19 +288,20 @@ function showHistoryChart(data11,jsonLengthCount,timeSeriesId){
 
                     // set up the updating of the chart each second
                     var series = this.series[0];
-//                    setInterval(function() {
-//
-//                        var x ; // current time
-//
-//                        getNextPoint(assetID,timeSeriesID);
-//
-//
-//                        if(statusFlag==true && checkFlag==true){
+                    setInterval(function() {
+
+                        var x ; // current time
+
+                        getNextPoint(assetID,timeSeriesID);
+
+
+                        if(statusFlag==true){
 //                            x = (new Date()).getTime()
-//                            series.addPoint([x, parseFloat(pointValue)], true, true);
-//                        }
-//
-//                    }, 5000);
+
+                            series.addPoint([pointTime, parseFloat(pointValue)], true, true);
+                        }
+
+                    }, 5000);
 
                 }
             }
@@ -349,6 +374,7 @@ function getDataForChart(data,timeSeriesId){
 
     jQuery.ajax
     ({
+
         type:'POST',
         url:g.createLink({controller: 'dashboard', action: 'chartContents'}),
 
@@ -361,7 +387,13 @@ function getDataForChart(data,timeSeriesId){
             $.each(data, function() {
                 jsonLengthCount++
             });
-//            alert(timeSeriesId)
+
+
+//            var date = Date.parse(data[0].nodeTimestamp.toString());
+//            var c=date-19*1000;
+//            var birthday = new Date("1995-12-17T03:24:00");
+
+
             showChart(data,jsonLengthCount,timeSeriesId)
 
         }
@@ -394,17 +426,19 @@ function getNextPoint(assetID,timeSeriesID){
 
 
             pointValue=parseFloat(data[0].value)
-
+            pointTime=data[0].time
+//            alert("time==="+pointTime)
 
             statusFlag=true;
-
-            if(prevPointID==data[0].id){
-                checkFlag=false;
-            }
-            else{
-                checkFlag=true;
-                prevPointID=data[0].id
-            }
+//               alert("data=="+data[0].id)
+//            if(data11[0].time==data[0].time){
+////                alert("innnn")
+//                checkFlag=false;
+//            }
+//            else{
+//                checkFlag=true;
+//                prevPointID=data[0].id
+//            }
 
 
 
