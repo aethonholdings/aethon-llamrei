@@ -4,13 +4,13 @@
    <table>
 
        <tr>
-           <td style="width:50px">
-        <label class="lb" ><g:message code="title.state.name"/></label>
-        <g:textField class="field" name="state.name" value="" style="margin-left: 3%;" />
+           <td style="width:40px">
+        %{--<label class="lb" ><g:message code="title.state.name"/></label>--}%
+        <g:textField class="field" name="state.name" value=""  />
          </td>
                <td style="width:160px">
-         <label class="lb" ><g:message code="title.state.description"/></label>
-         <g:textField class="field" name="state.description" value="" style="margin-left: 3.5%;"/>
+         %{--<label class="lb" ><g:message code="title.state.description"/></label>--}%
+         <g:textField class="field" name="state.description" value="" />
        </td>
              <td style="width:480px">
              <div class="box-cards">
@@ -41,7 +41,7 @@
 
 
 <div>
-    <a onclick="addState()" class="actionButton">
+    <a onclick=addState() class="actionButton">
         <span><g:message code="button.add"/></span>
     </a>
 

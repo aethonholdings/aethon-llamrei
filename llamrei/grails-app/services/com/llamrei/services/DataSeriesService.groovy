@@ -39,14 +39,15 @@ class DataSeriesService {
                        dataObject.value=seriesList.get(i)
                        dataObject.nodeTimestamp=date
                        dataObject.timestamp= new Date()
-                       dataObject.asset=Asset.findByAssetUniqueID(id)
-                       dataObject.timeSeries=TimeSeries.findByTimeSeriesUniqueID(tsIns.get(i).timeSeriesUniqueID)
-                       dataObject.save(flush:true)
-                       if(dataObject)
-                       isSaved=true
-                       else
-                       isSaved=false
 
+                       dataObject.asset=Asset.findByAssetUniqueID(id)
+                        if(tsIns.get(i)){
+                        dataObject.timeSeries=TimeSeries.findByTimeSeriesUniqueID(tsIns.get(i).timeSeriesUniqueID)
+                        if(dataObject.save(flush:true))
+                        isSaved=true
+                        else
+                        isSaved=false
+                        }
 
               }catch(Exception e){
            e.printStackTrace()
@@ -94,23 +95,30 @@ class DataSeriesService {
 
        float oldValue=0.0
        float newValue =0.0
-       String newStatus=null
-       String reason=null
+       String newStatus="Running"
+       String reason="Stopped"
        String unit = null
-        def status= null
+        def status= "Running"
         def obj= Asset.findByAssetUniqueID(id)
         def stateModelIns = StateModel.findByAsset(obj)
         def state
+
+
         if(stateModelIns!=null){
         state = stateModelIns.states
+
     //   println("#########################"+obj1)
 
        state.each{
            status= it.name
 
-       }
+
+
+         }
+
        }
      // println(seriesList.size()+status)
+
         for(int i=0;i<seriesList.size();i++){
         def list = StateRule.findAllByTimeSeries(seriesList.get(i))
 
@@ -216,24 +224,26 @@ class DataSeriesService {
 
     def sendAlert(Asset asset, String oldState,String newState,String reason, String unit) {
 
+
         String to1 = '', from = '', senderName = '', subject1 = '', message = '', renderMessage = '', emailId=''
         Boolean send = false
-        //def userInstance=Sec.findByUsername(params.userName)
-        def list = SecUserSecRole.findAllBySecRole(SecRole.get(1))
-        //println(list.size())
+          def list = SecUserSecRole.findAllBySecRole(SecRole.get(1))
         def operatorList
         list.each{
-             operatorList = SecUser.findAllById(it.secUserId)
-        }
-          // println(operatorList.size())
-        operatorList.each{
-          emailId= it.email
-        if(asset){
-            
-            //emailId=emailId
-            send =true
-            if (send) {
-                subject1 = "State Transition Alert of State"
+          operatorList = SecUser.findAllById(it.secUserId)
+
+           operatorList.each {
+              def operator = it
+//              println("<<<<<<<<<<<<<<<<<"+operator.email)
+          if(operator){
+              emailId=operator.email
+              send =true
+            }
+          else{
+              renderMessage= 'Sorry,we are not able to find the username.'
+          }
+          if (send) {
+              subject1 = "State Transition Alert of State"
                 message = """Dear Operater,\n
                    A state transition for asset  ${asset.assetName.trim()}  has occured:\n
                     Asset Name        :   ${asset.assetName.trim()}\n
@@ -242,23 +252,19 @@ class DataSeriesService {
                     Transition Reason :   ${unit}  ${reason}
                                                                                \n\nThanks and Regards,\n
  Administrative  Team"""
+              mailService.sendMail {
+                  to(emailId)
+                  subject(subject1)
+                  body(message)
+              }
+          }else {
+              println(renderMessage)
+          }
 
-                println(emailId)
-                mailService.sendMail {
-                    to(emailId)
-                    subject(subject1)
-                    body(message)
-                }
-                println("Mail Sent")
-            }
-            else {
-                println(renderMessage)
-            }
-           }
-        else{
-            println("Sorry,we are not able to find the username")
-        }
-        }
+          }
+
+          }
+           println("Mail Sent")
         return message
-    }
+      }
  }
