@@ -12,16 +12,18 @@
                   value="${stateRule?.timeSeries?.id}"
                   style="margin-left: 5%;"/>
     </td>
+
     <td>
         <select id= "states.${stateId}.stateRules.${stateRule?.id}.ruleType"
                 name="states.${stateId}.stateRules.${stateRule?.id}.ruleType"
                 style="margin-left: 5%" >
-            <option value="${Operators.LESS_THAN_EQUALS.getShortName()}">&le;</option>
-            <option value="${Operators.GREATER_THAN_EQUALS.getShortName()}">&ge;</option>
-            <option value="${Operators.LESS_THAN.getShortName()}"><</option>
-            <option value="${Operators.GREATER_THAN.getShortName()}">></option>
-            <option value="${Operators.EQUALS.getShortName()}">=</option>
-            <option value="${Operators.NOT_EQUALS.getShortName()}">&ne;</option>
+            <option value="${Operators.LESS_THAN_EQUALS.getShortName()}" ${(Operators.LESS_THAN_EQUALS.getShortName()==stateRule?.ruleType)?'selected':''}>&le;</option>
+            <option value="${Operators.GREATER_THAN_EQUALS.getShortName()}" ${(Operators.GREATER_THAN_EQUALS.getShortName()==stateRule?.ruleType)?'selected':''}>&ge;</option>
+            <option value="${Operators.LESS_THAN.getShortName()}"   ${(Operators.LESS_THAN.getShortName()==stateRule?.ruleType)?'selected':''}><</option>
+            <option value="${Operators.GREATER_THAN.getShortName()}"  ${(Operators.GREATER_THAN.getShortName()==stateRule?.ruleType)?'selected':''}>></option>
+            <option value="${Operators.EQUALS.getShortName()}"   ${(Operators.EQUALS.getShortName()==stateRule?.ruleType)?'selected':''}>=</option>
+            <option value="${Operators.NOT_EQUALS.getShortName()}"  ${(Operators.NOT_EQUALS.getShortName()==stateRule?.ruleType)?'selected':''}>&ne;</option>
+
         </select>
 
     </td>
@@ -34,7 +36,8 @@
     </td>
     <td>
         <a onclick="deleteStateRule('${stateRule?.id}')" class="actionButton" style="display:inline">
-            <span><g:message code="button.add.stateRule.delete"/>
+            <span>   delete
+                %{--<g:message code="button.add.stateRule.delete"/>--}%
             </span>
         </a>
     </td>

@@ -246,6 +246,17 @@
         });
     }
 
+    function addStateRow() {
+        $.ajax({
+            type:'POST',
+            url:'${createLink(controller: 'stateModel', action: 'addState')}',
+            data:$('div#state-form').parents('form').serialize(),
+            success:function (data) {
+                $('div#states').html(data);
+            }
+        });
+    }
+
 </script>
 </body>
 </html>
