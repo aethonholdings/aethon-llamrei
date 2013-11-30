@@ -102,16 +102,23 @@ class DataSeriesService {
         def obj= Asset.findByAssetUniqueID(id)
         def stateModelIns = StateModel.findByAsset(obj)
         def state
+
+
         if(stateModelIns!=null){
         state = stateModelIns.states
+
     //   println("#########################"+obj1)
 
        state.each{
            status= it.name
 
-       }
+
+
+         }
+
        }
      // println(seriesList.size()+status)
+
         for(int i=0;i<seriesList.size();i++){
         def list = StateRule.findAllByTimeSeries(seriesList.get(i))
 

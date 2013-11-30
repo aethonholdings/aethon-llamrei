@@ -5,7 +5,7 @@
         <thead>
         <tr class="ui-widget-header">
         <th width="250px"><g:message code="title.state.name"/></th>
-        <th width="250px"><g:message code="title.state.description"/></th>
+        <th width="300px"><g:message code="title.state.description"/></th>
         <th width="150px"><g:message code="title.state.stateRules"/></th>
         <th></th>
 
@@ -39,18 +39,19 @@
                         <table id="state-${state.id}.stateRule-table">
                             <thead>
                             <tr>
-                                <th width="150px">Time Series</th>
-                                <th width="150px">Rule Type</th>
-                                <th width="150px">Rule Value</th>
-                                <th width="150px"></th>
+                                <th >Time Series</th>
+                                <th >Rule Type</th>
+                                <th >Rule Value</th>
+                                <th ></th>
 
 
                             </tr>
                             </thead>
                             <tbody>
-                            <g:each in="${state?.stateRules?.sort{it?.id}}" var="stateRule">
+                            <g:each in="${state?.stateRules?.sort{it?.id}}" status="i" var="stateRule">
                                 <g:render template="ruleToggleAtTop"
-                                          model="[stateRule: stateRule, stateId: state?.id, stateModelId: stateModelId]"/>
+
+                                          model="[stateRule: stateRule, stateId: state?.id, stateModelId: stateModelId,i:i]"/>
                             </g:each>
                             </tbody>
                         </table>
@@ -82,7 +83,7 @@
     </table>
 
     <div>
-        <a onclick="showStateForm()" class="actionButton" style="display:inline">
+        <a onclick="addStateRow()" class="actionButton" style="display:inline">
             <span><g:message code="button.add.state"/></span>
         </a>
     </div>

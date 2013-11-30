@@ -7,7 +7,7 @@
 
 <body>
 <div>
-    <h2>Edit state model</h2>
+    <h2>Edit state model </h2>
 
     <div class="body">
         <g:if test="${flash.message}">
@@ -240,6 +240,18 @@
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'addStateRule')}',
             data:$('div#state-form').parents('form').serialize(),
+            success:function (data) {
+                $('div#states').html(data);
+            }
+        });
+    }
+
+    function addStateRow() {
+       $.ajax({
+            type:'POST',
+            url:'${createLink(controller: 'stateModel', action: 'addState')}',
+            data:$('div#state-form').parents('form').serialize(),
+
             success:function (data) {
                 $('div#states').html(data);
             }
