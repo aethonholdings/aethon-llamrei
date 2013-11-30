@@ -8,8 +8,7 @@
     <g:set var="entityName" value="${message(code: 'timeSeries.label', default: 'TimeSeries')}" />
     <title><g:message code="default.edit.label" args="[entityName]" /></title>
     <script>
-
-    </script>
+       </script>
 </head>
 <body>
 <div class='menuItem'>
@@ -92,15 +91,17 @@
             </div>
 
             <div style='display: inline; width: 500px'>
-            <g:actionSubmit  action="update" class='actionButton' value="Update">Update</g:actionSubmit>
+            <g:actionSubmit  action="update" id='updateButton' class='actionButton' value="Update">Update</g:actionSubmit>
         %{-- <span class="button"><g:actionSubmit class="delete" action="delete"
                                               value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                               onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/></span>--}%
 
         </g:form>
-        <g:form controller="timeSeriesManagement" style= 'display: inline' action="delete" params="[id:timeSeriesInstance.id]"><button value='Delete User' onclick=" return confirm('Are you sure you want to delete this time series?');" id='deleteButton' class="actionButton" >Delete</button></g:form>
+        <g:form controller="timeSeriesManagement" style= 'display: inline' action="delete" params="[id:timeSeriesInstance.id]">
+            <button value='DeleteTimeseries' onclick="return confirm('Are you sure to delete this timseries?')" id='deleteButton' class="actionButton" >Delete</button>
+        </g:form>
 
-        <g:link  action="list"   value="Cancel"><button value='Cancel' id=cancelButton class="actionButton">Cancel</button></g:link>
+        <g:link  action="list" id='cancelButton'  value="Cancel"><button value='Cancel' id=cancelButton class="actionButton">Cancel</button></g:link>
 
 
 

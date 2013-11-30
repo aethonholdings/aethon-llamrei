@@ -41,7 +41,7 @@
 
 
 <div>
-    <a onclick="addState()" class="actionButton">
+    <a onclick=addState() class="actionButton">
         <span><g:message code="button.add"/></span>
     </a>
 

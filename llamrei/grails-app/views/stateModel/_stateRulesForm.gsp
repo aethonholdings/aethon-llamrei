@@ -1,6 +1,7 @@
 <%@ page import="com.llamrei.utils.Operators; com.llamrei.domain.StateModel; com.llamrei.domain.Asset; com.llamrei.domain.TimeSeries" %>
 <%@page defaultCodec="html" %>
 <div id="state-form">
+
     <table>
       <tr>
       <td>
@@ -8,6 +9,7 @@
         <label class="lb"><g:message code="title.stateRule.timeSeries"/></label>
 
         <g:set var="stateModelInstance" value="${StateModel.findById(stateModelId)}"/>
+
         <g:set var="timeSeriesList" value="${stateModelInstance.asset.timeSeries}" />
         <g:select id="state.stateRule.timeSeries" name="state.stateRule.timeSeries"
                   from="${timeSeriesList}"
