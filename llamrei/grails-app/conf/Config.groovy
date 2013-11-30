@@ -51,22 +51,18 @@ grails.spring.bean.packages = []
    def localHost= InetAddress.getLocalHost().getHostAddress()
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
- // set per-environment ser>>>>>>> fef20cb27358e58de82b265b38547623c00eefd7verURL stem for creating absolute links
+// set per-environment ser>>>>>>> fef20cb27358e58de82b265b38547623c00eefd7verURL stem for creating absolute links
 environments {
     production {
-        grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://test.llamrei.sg:8080/${appName}"
     }
     development {
-       grails.serverURL = "http://localhost:8080/${appName}"
-//      grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
-//        grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"+"-"+appVersion
+
+      grails.serverURL = "http://"+localHost+":9091/${appName}"
 
     }
     test {
-       grails.serverURL = "http://localhost:8080/${appName}"
-//       grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"
-//        grails.serverURL = "http://"+localHost+":"+9091+"/${appName}"+"-"+appVersion
-
+        grails.serverURL = "http://test.llamrei.sg:8080/${appName}"
     }
 
 }

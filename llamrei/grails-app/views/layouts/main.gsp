@@ -28,7 +28,7 @@
           $(document).ready(function(){
 
             setInterval(function () {
-//                 checkConnectionStatus();
+                checkConnectionStatus();
             }, 20000);
         });
 
@@ -60,7 +60,7 @@
 
     </head>
     
-    <body>
+    <body >
       <g:render template="/layouts/header"/>
       <div id="content">
         <g:layoutBody/>

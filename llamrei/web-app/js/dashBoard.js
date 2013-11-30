@@ -66,18 +66,29 @@ function showContents(){
 
             });
 
-
+            var length=0;
             $("#main1").find("tr:gt(0)").remove();
             for(var i=1;i<=jsonLengthCount;i++)  {
-
+//                alert("???"+data[i].name)
                 if (i % 2) {
 
-                    $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td>'+data[i].stateName+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value2+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
+                    $("#main1").append('<tr class="odd"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td id="aa'+data[i].assetId+'">'+data[i].stateName+'</td>' +
+                        '<td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
+
+                    appendTimeSeries(data,i)
                 }
                 else{
-                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td>'+data[i].stateName+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value2+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
+//                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td>'+data[i].stateName+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value2+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
+
+                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td id="aa'+data[i].assetId+'">'+data[i].stateName+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
+                    appendTimeSeries(data,i)
                 }
+
+
             }
+
+
+
 
 
         }
@@ -89,10 +100,23 @@ function showContents(){
 
 }
 
+function appendTimeSeries(data,i)
+{
+//        alert(length)
+//
+   var length=data[i].value.length;
+//    alert(data[1].timeSeriesID[0])
+    for(var j=length- 1,k=0;j>=0;j--,k++){
+
+        $("#aa"+data[i].assetId).after('<td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSeriesID[j]+'") >'+data[i].value[j]+'</td>')
+    }
+
+}
+
 
 
 function openChart(data,timeSeriesId){
-
+//    alert(">>>>>>>>"+timeSeriesId)
     assetID=data
     $('#main1').hide();
     $('#main2').hide();
@@ -111,11 +135,11 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
     dataLen=jsonLengthCount;
 
     var label;
-    if(timeSeriesId==1){
-        label="Humidity"
+    if(timeSeriesId==2){
+        label=""
     }
     else{
-        label="Temperature"
+        label=""
     }
 
     $('#chartDiv1').highcharts({
@@ -337,6 +361,7 @@ function getDataForChart(data,timeSeriesId){
             $.each(data, function() {
                 jsonLengthCount++
             });
+//            alert(timeSeriesId)
             showChart(data,jsonLengthCount,timeSeriesId)
 
         }

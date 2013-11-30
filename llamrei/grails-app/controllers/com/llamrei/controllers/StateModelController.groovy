@@ -65,6 +65,13 @@ class StateModelController {
             stateModelInstance.name = ""
             stateModelInstance.description = ""
             stateModelInstance.stateModelId = ""
+
+            stateModelInstance?.states?.each {state ->
+                println "Deleting state "+state?.id
+                state.delete()
+            }
+
+            stateModelInstance.states.clear()
         }
         println "State model : " + stateModelInstance
 
@@ -107,30 +114,10 @@ class StateModelController {
             redirect(action: "edit", id: stateModelInstance.id)
         }
         else {
-            render(view: "edit", model: [stateModel: stateModelInstance])
+            render(view: "edit", model: [stateModelInstance: stateModelInstance])
         }
     }
 
-    def delete = {
-        println "params in delete : " + params
-        Integer assetId = Integer.parseInt(params.id)
-        def stateModelInstance = StateModel.findByAsset(Asset.findById(assetId.longValue()))
-        if (stateModelInstance) {
-            try {
-                stateModelInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'stateModel.label', default: 'StateModel'), params.id])}"
-                redirect(action: "edit")
-            }
-            catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'stateModel.label', default: 'StateModel'), params.id])}"
-                redirect(action: "edit", id: params.id)
-            }
-        }
-        else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'stateModel.label', default: 'StateModel'), params.id])}"
-            redirect(action: "edit")
-        }
-    }
     def copy = {
         println ">>paramsin copy : " + params
         [stateModelId: params.stateModelId]
@@ -172,10 +159,33 @@ class StateModelController {
     }
 
     def addState = {
-        println ">>>>>" + params
+        println "params in add state : " + params
 
         StateModel stateModel = StateModel.get(params.int('stateModelId'))
         println "found state model : " + stateModel
+
+        //update existing states
+        stateModel.states.each {state ->
+            //update the existing states
+            state.name = params['states.'+state.id+'.name']
+            state.description = params['states.'+state.id+'.description']
+
+            //update the existing state rules
+            state.stateRules.each { stateRule ->
+                stateRule.ruleType = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleType']
+                stateRule.ruleValue1 = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleValue1']
+                stateRule.timeSeries = TimeSeries.get(params.int(['states.'+state.id+'.stateRules.'+stateRule.id+'.timeSeries']))
+            }
+            println "state to be saved : "+state
+            if (state.validate()) {
+                state.save(flush: true)
+                println "state saved"
+            } else {
+                println "state not saved"
+            }
+        }
+
+        //add new state
         State state = new State()
         state.setName(params.state.name)
         state.setDescription(params.state.description)
@@ -190,13 +200,17 @@ class StateModelController {
 
             //now save state rules
             Integer stateRulesCount = Integer.parseInt(params.stateRulesCount)
+            println "stateRulesCount"  + stateRulesCount
+            println "stateRules : "  + params["stateRule"]
             for (int i = 0; i < stateRulesCount; i++) {
 
                 stateRule = new StateRule()
                 stateRule.setRuleType(params["stateRule.${i}.ruleType"])
+
                 stateRule.setRuleValue1(params["stateRule.${i}.ruleValue"])
 
                 Integer timeSeriesId = Integer.parseInt(params["stateRule.${i}.timeSeries"])
+
                 TimeSeries timeSeries = TimeSeries.get(timeSeriesId)
                 stateRule.setTimeSeries(timeSeries)
                 stateRule.setState(state)
@@ -212,6 +226,7 @@ class StateModelController {
                     println "state rule not saved"
                 }
             }
+
         } else {
             println "Could not save the state :("
         }
@@ -276,28 +291,33 @@ class StateModelController {
         def stateModelInstance = StateModel.get(params.int('stateModelId'))
 
         //bind manually
+        TimeSeries timeSeries = stateModelInstance.asset.timeSeries.asList()[0]?:TimeSeries.list().get(0)
         stateModelInstance.states.each {state ->
+
+            //update the existing states
+            state.name = params['states.'+state.id+'.name']
+            state.description = params['states.'+state.id+'.description']
+
+            //update the existing state rules
+            state.stateRules.each { stateRule ->
+                stateRule.ruleType = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleType']
+                stateRule.ruleValue1 = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleValue1']
+                stateRule.timeSeries = TimeSeries.get(params.int(['states.'+state.id+'.stateRules.'+stateRule.id+'.timeSeries']))
+            }
+            println "state to be saved : "+state
+            if (state.validate()) {
+                state.save(flush: true)
+                println "state saved"
+            } else {
+                println "state not saved"
+            }
+
             if (state.id == stateIdToBeModified){
-
-                //update the existing state rules
-                state.stateRules.each { stateRule ->
-                    stateRule.ruleType = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleType']
-                    stateRule.ruleValue1 = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleValue1']
-                    stateRule.timeSeries = TimeSeries.get(params.int(['states.'+state.id+'.stateRules.'+stateRule.id+'.timeSeries']))
-                }
-                println "state to be saved : "+state
-                if (state.validate()) {
-                    state.save(flush: true)
-                    println "state saved"
-                } else {
-                    println "state not saved"
-                }
-
                 //add a new state rule
                 StateRule stateRule = new StateRule()
                 stateRule.setRuleType("")
                 stateRule.setRuleValue1("")
-                TimeSeries timeSeries = TimeSeries.list().get(0)
+
                 stateRule.setTimeSeries(timeSeries)
                 stateRule.setState(state)
                 println "StateRule to be saved : " + stateRule

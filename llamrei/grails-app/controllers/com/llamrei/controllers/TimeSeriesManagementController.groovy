@@ -1,5 +1,7 @@
 package com.llamrei.controllers
 
+import com.llamrei.domain.DataPoint
+import com.llamrei.domain.StateRule
 import grails.plugins.springsecurity.Secured
 import com.llamrei.domain.TimeSeries
 
@@ -89,7 +91,14 @@ class TimeSeriesManagementController {
          def assetTimeSeriesInstance=timeSeriesInstance.asset.findAll{it.id}
          if(assetTimeSeriesInstance){
             assetTimeSeriesInstance.each{timeSeriesInstance.removeFromAsset(it)}
-
+        }
+        def timeSeriesInStateRule= StateRule.findAllByTimeSeries(timeSeriesInstance)
+        if(timeSeriesInStateRule){
+            timeSeriesInStateRule.each{it.delete()}
+        }
+        def dataPointTimeSeriesInstance=DataPoint.findAllByTimeSeries(timeSeriesInstance)
+        if(dataPointTimeSeriesInstance){
+            dataPointTimeSeriesInstance.each{it.delete()}
         }
         if (timeSeriesInstance) {
             try {
@@ -99,7 +108,7 @@ class TimeSeriesManagementController {
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'timeSeries.label', default: 'TimeSeries'), params.id])}"
-                redirect(action: "show", id: params.id)
+                redirect(action: "list", id: params.id)
             }
         }
         else {

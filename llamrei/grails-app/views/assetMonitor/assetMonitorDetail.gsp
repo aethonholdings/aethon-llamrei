@@ -153,7 +153,7 @@
                             <td>${fieldValue(bean:alerts, field: "eventType")}</td>
                             <td>${fieldValue(bean: alerts, field: "details")}</td>
                          </tr>
-                          <g:if test="${i>=4}">
+                          <g:if test="${i>=9}">
                           <g:link  action="list" controller="alerts" params="[id:assetId]"><button value='Cancel' class="actionButton">Show All</button></g:link>
                           </g:if>
                        </g:each>

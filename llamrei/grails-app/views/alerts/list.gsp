@@ -14,8 +14,6 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
 
-
-
         <div class="body">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
@@ -25,43 +23,24 @@
                 <table>
                     <thead>
                         <tr>
-
-                        
-                            <g:sortableColumn property="id" title="${message(code: 'alerts.id.label', default: 'Id')}" />
-                        
-                            <g:sortableColumn property="details" title="${message(code: 'alerts.details.label', default: 'Details')}" />
-                        
-                            <th><g:message code="alerts.asset.label" default="Asset" /></th>
-                        
+                <g:sortableColumn property="created" title="${message(code: 'alerts.created.label', default: 'Created')}" />
                             <g:sortableColumn property="eventType" title="${message(code: 'alerts.eventType.label', default: 'Event Type')}" />
-                        
-                            <g:sortableColumn property="created" title="${message(code: 'alerts.created.label', default: 'Created')}" />
-                        
-
+                            <g:sortableColumn property="details" title="${message(code: 'alerts.details.label', default: 'Details')}" />
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${alertsInstanceList}" status="i" var="alertsInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-
-                        
-                            <td><g:link action="show" id="${alertsInstance.id}">${fieldValue(bean: alertsInstance, field: "id")}</g:link></td>
-                        
-                            <td>${fieldValue(bean: alertsInstance, field: "details")}</td>
-                        
-                            <td>${fieldValue(bean: alertsInstance, field: "asset")}</td>
-                        
-                            <td>${fieldValue(bean: alertsInstance, field: "eventType")}</td>
-                        
                             <td><g:formatDate date="${alertsInstance.created}" /></td>
-                        
+                            <td>${fieldValue(bean: alertsInstance, field: "eventType")}</td>
+                            <td>${fieldValue(bean: alertsInstance, field: "details")}</td>
                         </tr>
-                    </g:each>
+                     </g:each>
+                    <g:link controller="assetMonitor" action='assetMonitorDetail'  params="[assetId:assetId]">
+                    <button value='Back'  id='backButton' class="actionButton">Back</button>
+                    </g:link>
                     </tbody>
                 </table>
-            </div>
-            <div class="paginateButtons">
-                <g:paginate total="${alertsInstanceTotal}" />
             </div>
         </div>
     </body>

@@ -7,6 +7,9 @@
     <meta name="layout" content="main" />
     <g:set var="entityName" value="${message(code: 'timeSeries.label', default: 'TimeSeries')}" />
     <title><g:message code="default.edit.label" args="[entityName]" /></title>
+    <script>
+
+    </script>
 </head>
 <body>
 <div class='menuItem'>
@@ -69,8 +72,9 @@
                             <label for="dataType"><g:message code="timeSeries.inDashboard.label" default="Show In Dashboard" /></label>
                         </td>
                         <td valign="top" >
-                            <input type="radio" name="myGroup" value="true" checked="${timeSeriesInstance.inDashboard}"/>True
-                            <input type="radio" name="myGroup" value="false" checked="${timeSeriesInstance.inDashboard}" style='margin-left: 20px'/>False
+                            <input type="radio" name="myGroup" value="true"  ${timeSeriesInstance.inDashboard== true ? 'checked="checked"' : ''}/>True
+                            <input type="radio" name="myGroup" value="false" ${timeSeriesInstance.inDashboard==false ? 'checked="checked"' : ''} style='margin-left: 20px' />False
+
                         </td>
                     </tr>
 
@@ -96,7 +100,7 @@
         </g:form>
         <g:form controller="timeSeriesManagement" style= 'display: inline' action="delete" params="[id:timeSeriesInstance.id]"><button value='Delete User' onclick=" return confirm('Are you sure you want to delete this time series?');" id='deleteButton' class="actionButton" >Delete</button></g:form>
 
-        <g:link  action="list"   value="Cancel"><button value='Cancel' class="actionButton">Cancel</button></g:link>
+        <g:link  action="list"   value="Cancel"><button value='Cancel' id=cancelButton class="actionButton">Cancel</button></g:link>
 
 
 

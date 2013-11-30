@@ -41,7 +41,7 @@
                             <label for="name"><g:message code="stateModel.name.label" default="Name"/></label>
                         </td>
                         <td valign="top" class="value ${hasErrors(bean: stateModelInstance, field: 'name', 'errors')}">
-                            <g:textField name="name" value="${stateModelInstance?.name}"/>
+                          <g:textField name="name" value="${stateModelInstance?.name}"/>
                         </td>
                     </tr>
                     <tr>
@@ -55,7 +55,7 @@
                                     <div style="position:relative">
                                         <div id="states">
                                             <g:render template="states"
-                                                      model="[states: stateModelInstance.states, stateModelId: stateModelInstance.id]"/>
+                                                      model="[states: stateModelInstance?.states, stateModelId: stateModelInstance?.id]"/>
                                         </div>
                                         <g:hiddenField name="stateIdToBeModified" value="" />
                                     </div>
@@ -141,6 +141,7 @@
             stateRulesCount++;
         });
         $('#stateRulesCount').val(stateRulesCount);
+//        alert($('#stateRulesCount').val());
 
         $.ajax({
             type:'POST',
@@ -148,6 +149,7 @@
             data:$('div#state-form').parents('form').serialize(),
             success:function (data) {
                 $('div#states').html(data);
+                srIndex = 0;
             }
         });
     }
@@ -237,6 +239,17 @@
         $.ajax({
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'addStateRule')}',
+            data:$('div#state-form').parents('form').serialize(),
+            success:function (data) {
+                $('div#states').html(data);
+            }
+        });
+    }
+
+    function addStateRow() {
+        $.ajax({
+            type:'POST',
+            url:'${createLink(controller: 'stateModel', action: 'addState')}',
             data:$('div#state-form').parents('form').serialize(),
             success:function (data) {
                 $('div#states').html(data);

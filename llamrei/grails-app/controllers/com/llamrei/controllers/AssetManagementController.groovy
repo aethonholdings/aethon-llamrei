@@ -1,5 +1,6 @@
 package com.llamrei.controllers
 
+import com.llamrei.domain.DataPoint
 import grails.plugins.springsecurity.Secured
 import com.llamrei.services.UtilityService
 import com.llamrei.services.FileUploadService
@@ -131,8 +132,14 @@ class AssetManagementController {
         }
         if (assetInstance) {
             try {
-
+                def dataIns=DataPoint.findAllByAsset(assetInstance)
+                if(dataIns){
+                dataIns.each{data ->
+                    data.delete(flush: true)
+                }
+                }
                 assetInstance.delete(flush: true)
+
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'asset.label', default: 'Asset'), params.id])}"
                 redirect(action: "listAssets")
             }
