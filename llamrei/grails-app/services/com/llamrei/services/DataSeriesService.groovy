@@ -39,14 +39,15 @@ class DataSeriesService {
                        dataObject.value=seriesList.get(i)
                        dataObject.nodeTimestamp=date
                        dataObject.timestamp= new Date()
-                       dataObject.asset=Asset.findByAssetUniqueID(id)
-                       dataObject.timeSeries=TimeSeries.findByTimeSeriesUniqueID(tsIns.get(i).timeSeriesUniqueID)
-                       dataObject.save(flush:true)
-                       if(dataObject)
-                       isSaved=true
-                       else
-                       isSaved=false
 
+                       dataObject.asset=Asset.findByAssetUniqueID(id)
+                        if(tsIns.get(i)){
+                        dataObject.timeSeries=TimeSeries.findByTimeSeriesUniqueID(tsIns.get(i).timeSeriesUniqueID)
+                        if(dataObject.save(flush:true))
+                        isSaved=true
+                        else
+                        isSaved=false
+                        }
 
               }catch(Exception e){
            e.printStackTrace()
