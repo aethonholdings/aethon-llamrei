@@ -10,7 +10,7 @@
         <g:javascript library="jquery"/>
         <g:javascript library="application"/>
         <g:javascript library="jquery" plugin="jquery"/>
-
+        <script type="text/javascript" src="${resource(dir: 'js/jquery', file: 'jquery.blockUI.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.ui.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
