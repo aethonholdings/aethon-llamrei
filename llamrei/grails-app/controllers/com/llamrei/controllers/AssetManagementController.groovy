@@ -88,7 +88,11 @@ class AssetManagementController {
     }
 
     def updateAsset = {
+
+         def testMap=[:]
+       String fromAction=params.fromAction
         def assetInstance = Asset.get(params.id)
+
         if (assetInstance) {
             if (params.version) {
                 def version = params.version.toLong()
@@ -109,11 +113,22 @@ class AssetManagementController {
                     assetInstance = fileUploadService.uploadFile(assetInstance, imageurl)
                 }
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'asset.label', default: 'Asset'), assetInstance])}"
-                redirect(action: "listAssets", id: assetInstance)
-
-            }
+                if (fromAction=="connectivity"){
+                   testMap.flag="checked"
+                    render testMap
+                    return
+                }else{
+                 redirect(action: "listAssets", id: assetInstance)
+                }
+               }
             else {
-                render(view: "editAssets", model: [assetInstance: assetInstance])
+                if(fromAction=="connectivity") {
+                    testMap.flag="checked"
+                    render testMap
+                    return
+                }else{
+                     render(view: "editAssets", model: [assetInstance: assetInstance])
+                }
             }
         }
         else {
