@@ -95,10 +95,12 @@ class DataSeriesService {
 
        float oldValue=0.0
        float newValue =0.0
-       String newStatus="Running"
-       String reason="Stopped"
-       String unit = null
-        def status= "Running"
+       String newStatus="Power off"
+       String reason
+       String unit
+       String powerId
+       int powerValue=0
+        def status
         def obj= Asset.findByAssetUniqueID(id)
         def stateModelIns = StateModel.findByAsset(obj)
         def state
@@ -107,85 +109,95 @@ class DataSeriesService {
         if(stateModelIns!=null){
         state = stateModelIns.states
 
-    //   println("#########################"+obj1)
+     //println("#########################"+state)
 
        state.each{
            status= it.name
-
-
 
          }
 
        }
      // println(seriesList.size()+status)
 
+           for(int i=0;i<seriesList.size();i++){
+
+             if(seriesList.get(i).name.equalsIgnoreCase("Power")) {
+             powerId= seriesList.get(i).timeSeriesUniqueID
+             powerValue = Integer.parseInt(keyValue.get(powerId))
+             if(powerValue>0) {
+              newStatus="Power on"
+            }else{
+                 newStatus="Power off"
+             }
+             }
+           }
+            seriesList.remove(powerId)
+        def seriesNameList = new ArrayList<String>()
+        def seriesMapKeyValue=new HashMap<String,String>()
         for(int i=0;i<seriesList.size();i++){
-        def list = StateRule.findAllByTimeSeries(seriesList.get(i))
+
+
+           def list = StateRule.findAllByTimeSeries(seriesList.get(i))
+
 
          for(StateRule stateRule:list){
-          //   println()
              newValue = Float.parseFloat(keyValue.get(seriesList.get(i).timeSeriesUniqueID))
-            // println(stateRule.ruleValue1+"hfddhbvdjbgvjdbvjbvjd"+stateRule.ruleType)
-            if(stateRule.ruleValue1=="" && stateRule.ruleValue1==null){
+             if(stateRule.ruleValue1=="" && stateRule.ruleValue1==null){
                 oldValue  = Float.parseFloat(stateRule.ruleValue1)
             }
           if(stateRule.ruleType=="LT"){
               if(newValue<oldValue){
-                  newStatus="Stopped"
-                  reason=  seriesList.get(i).name
-                  unit = "Low"
+                  seriesNameList.add(seriesList.get(i).name)
+                  seriesMapKeyValue.put(seriesList.get(i).name,newValue)
+               }else{
+                     seriesNameList.add(seriesList.get(i).name)
+                  seriesMapKeyValue.put(seriesList.get(i).name,newValue)
               }
           }else if(stateRule.ruleType=="GT"){
                 if(newValue>oldValue){
-                    newStatus="Stopped"
-                    reason=  seriesList.get(i).name
-                    unit = "High"
-
+                    seriesNameList.add(seriesList.get(i).name)
+                    seriesMapKeyValue.put(seriesList.get(i).name,newValue)
+                }
                 }else if(stateRule.ruleType=="EQ"){
                     if(newValue == oldValue){
-                        newStatus="Running"
-                        reason=  seriesList.get(i).name
-                        unit = "Normal"
-
+                      seriesNameList.add(seriesList.get(i).name)
+                      seriesMapKeyValue.put(seriesList.get(i).name,newValue)
                 }
                 }else if(stateRule.ruleType=="NE"){
                    if(newValue != oldValue){
-                        newStatus="Stopped"
-                        reason=  seriesList.get(i).name
-                        unit = "Normal"
+                      seriesNameList.add(seriesList.get(i).name)
+                      seriesMapKeyValue.put(seriesList.get(i).name,newValue)
                 }
                } else if(stateRule.ruleType=="LE"){
                     if(newValue <= oldValue){
-                        newStatus="Stopped"
-                        reason=  seriesList.get(i).name
-                        unit = "Normal"
+                        seriesNameList.add(seriesList.get(i).name)
+                        seriesMapKeyValue.put(seriesList.get(i).name,newValue)
                 }
                 } else if(stateRule.ruleType=="GE"){
                     if(newValue >= oldValue){
-                        newStatus="Stopped"
-                        reason=  seriesList.get(i).name
-                        unit = "Normal"
+                       seriesNameList.add(seriesList.get(i).name)
+                       seriesMapKeyValue.put(seriesList.get(i).name,newValue)
                 }
           }
           }
           }
-            }
+
             if(status!=newStatus) {
 
                   String message= null
-                  message= sendAlert(obj,status,newStatus,reason,unit)
-                def alert = new Alerts()
+                  message= sendAlert(obj,status,newStatus,seriesNameList,seriesMapKeyValue)
+                  def alert = new Alerts()
                 alert.eventType="STATE TRANSITION"
                 alert.created = new Date()
                 alert.asset=obj
-                alert.details=message.substring(0,240)
+                alert.details=message.substring(0,254)
                 alert.save(flush: true)
                  /* sendAlert(obj,status[0],newStatus)
                  status=newStatus*/
            }
 
 
-          return  status
+          return  newStatus
    }
 
     def timeDifferenceSeconds(Date assetT, Date serverT){
@@ -222,7 +234,7 @@ class DataSeriesService {
         }
 
 
-    def sendAlert(Asset asset, String oldState,String newState,String reason, String unit) {
+    def sendAlert(Asset asset, String oldState,String newState,ArrayList<String> seriesNameList,HashMap<String,String> map) {
 
 
         String to1 = '', from = '', senderName = '', subject1 = '', message = '', renderMessage = '', emailId=''
@@ -234,7 +246,7 @@ class DataSeriesService {
 
            operatorList.each {
               def operator = it
-//              println("<<<<<<<<<<<<<<<<<"+operator.email)
+//
           if(operator){
               emailId=operator.email
               send =true
@@ -242,15 +254,16 @@ class DataSeriesService {
           else{
               renderMessage= 'Sorry,we are not able to find the username.'
           }
+
           if (send) {
+
               subject1 = "State Transition Alert of State"
                 message = """Dear Operater,\n
-                   A state transition for asset  ${asset.assetName.trim()}  has occured:\n
-                    Asset Name        :   ${asset.assetName.trim()}\n
-                    Previous state    :   ${oldState}\n
-                    New State         :   ${newState}\n
-                    Transition Reason :   ${unit}  ${reason}
-                                                                               \n\nThanks and Regards,\n
+                   A state transition for asset  ${asset.assetName.trim()} has occured:\n
+                    Asset Name    : ${asset.assetName.trim()}\n
+                    Previous state: ${oldState}\n
+                    New State     : ${newState}\n
+                                                                  \n\nThanks and Regards,\n
  Administrative  Team"""
               mailService.sendMail {
                   to(emailId)
