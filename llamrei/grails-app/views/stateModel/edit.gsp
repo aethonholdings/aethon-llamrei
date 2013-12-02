@@ -89,6 +89,7 @@
     </div>
 </div>
 <script type="text/javascript">
+
     function toggleSlide(element) {
         var parent = $(element).is('.box-cards') ? element : $(element).parents('.box-cards');
 
@@ -157,6 +158,7 @@
 
     function deleteState(id) {
         alert("You are about to delete a state");
+
         $.ajax({
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'deleteState')}',
@@ -168,6 +170,7 @@
     }
     function deleteStateRule(id) {
         alert("You are about to delete a state rule");
+
         $.ajax({
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'deleteStateRule')}',
@@ -180,6 +183,7 @@
 
     var srIndex = 0;
     function addStateRuleRow(stateId) {
+        showBlock();
         $('#stateIdToBeModified').val(stateId);
         $.ajax({
             type:'POST',
@@ -190,9 +194,13 @@
             }
         });
     }
-
+    $(document).ajaxStop($.unblockUI);
     function addStateRow() {
-       $.ajax({
+
+        showBlock();
+
+        $.ajax({
+
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'addState')}',
             data:$('div#states').parents('form').serialize(),
@@ -202,6 +210,24 @@
             }
         });
     }
+
+    function showBlock(){
+        $.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+        } });
+
+       setTimeout($.unblockUI, 7000);
+    }
+
+
+
+
 
 </script>
 </body>
