@@ -20,6 +20,7 @@ class DataSeriesService {
 
     static transactional = true
     boolean isSaved=false
+
     def mailService
     def boolean saveDataToDB(String id, String time, ArrayList seriesList,List<TimeSeries> tsIns) {
           SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
@@ -43,14 +44,14 @@ class DataSeriesService {
                        dataObject.asset=Asset.findByAssetUniqueID(id)
                         if(tsIns.get(i)){
                         dataObject.timeSeries=TimeSeries.findByTimeSeriesUniqueID(tsIns.get(i).timeSeriesUniqueID)
-                        if(dataObject.save(flush:true))
+                        if(!dataObject.hasErrors() && dataObject.save(flush:true))
                         isSaved=true
                         else
                         isSaved=false
                         }
 
               }catch(Exception e){
-           e.printStackTrace()
+              log.info("Exception on saving data point "+e);
            }
          }
              }catch (ParseException ex) {
@@ -113,7 +114,6 @@ class DataSeriesService {
 
        state.each{
            status= it.name
-
          }
 
        }

@@ -29,7 +29,7 @@
 
             setInterval(function () {
                 checkConnectionStatus();
-            }, 20000);
+            }, 200000);
         });
 
 

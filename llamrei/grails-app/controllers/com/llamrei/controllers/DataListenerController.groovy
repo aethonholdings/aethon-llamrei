@@ -131,17 +131,15 @@ class DataListenerController {
 
                     params.clear()
                     params.sort  ="id"
-                    params.order   ="desc"
+                    params.order ="desc"
                     params.max=1
                     def assetIns=Asset.findById(asset.id)
                      connectivityStatus=assetIns.connectivityStatus
                    def dataList=DataPoint.findByAsset(assetIns,params)
                    // dataList=null
                        if(dataList!=null){
-
                           assetTime = dataList.getNodeTimestamp()
                           serverT   = dataList.getTimestamp()
-
 
                     Date currentTime = new Date()
                     diffSeconds = dataSeriesService.timeDifferenceSeconds(assetTime,serverT)
@@ -152,20 +150,23 @@ class DataListenerController {
                     diffMinuts  = dataSeriesService.timeDifferenceInMinute(currentTime,serverT)
                         if(diffMinuts>2)
                         newStatus= "Disconnected"
-                        assetIns.connectivityStatus=newStatus
-                        updatedAssetList.add(assetIns)
-
-
-                     if(newStatus!=connectivityStatus){
-                     redirect(controller: "assetManagement", action: "updateAsset", assetList:assetList)
-                     }
-                     }else{
-
+                     } else{
                            log.info("there is no data_point")
                        }
+                         if(connectivityStatus!=newStatus){
+                         assetIns.connectivityStatus=newStatus
+                         updatedAssetList.add(assetIns)
+                   }
+                   }
+                     if(updatedAssetList.size()>0){
+                         println("?????????????????")
 
-                    }
+                     redirect(controller: "assetManagement", action: "updateAsset", params:[fromAction:"connectivity" ,assetList:updatedAssetList])
+                     }else{
+                         // println("?????????????????")
+                       log.info("there is no data_point")
+                          render testMap as JSON
+                       }
+                   }
+       }
 
-                    render testMap as JSON
-         }
-}
