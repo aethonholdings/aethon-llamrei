@@ -62,8 +62,7 @@ class DashboardController {
 
             countAsset++
             timeSeriesName<<asset.timeSeries
-//            println("========="+timeSeriesName.size())
-//            println("sereis==="+timeSeriesName)
+
             timeSeriesName.each{
 
                 if(it){
@@ -73,11 +72,7 @@ class DashboardController {
                 else{
                     noTimeSeries=true
                 }
-//                if(it.inDashboard)
-//                {
-//                    timeList.addAll(it)
-////                    timeList.sort{it.id}
-//                }
+
             }
 //            println("flag========="+tList)
             tList.each{
@@ -92,10 +87,7 @@ class DashboardController {
                         noTimeSeries=false
                         inDashBoard=true
                     }
-//                    if(!headingList.contains(it)){
-//                        headingList.addAll(it)
-//                        headingList.sort{it.id}
-//                    }
+
                 }
 
                 else if(inDashBoard==false){
@@ -108,10 +100,7 @@ class DashboardController {
             if(noTimeSeries==false)   {
                 dataInstanceList = DataPoint.findAllByAssetAndTimeSeriesInList(asset,newList,params)
             }
-//            println("ins==="+dataInstanceList)
 
-
-//            stateModelList=  StateModel.findAllByAsset(asset)
             def stateModelId=StateModel.executeQuery("select id from StateModel where asset=:asset ",[asset:asset])
 
             if(stateModelId) {
@@ -173,9 +162,7 @@ class DashboardController {
 
 
                     for(int j=0;j<headingList.size();j++){
-//                         println("finalist"+finalList.get(k).timeSeries.id)
-//                        println("list"+headingList.get(j).id)
-//                        println("======"+match)
+
 
                         if((finalList.get(k).timeSeries.id==headingList.get(j).id) ){
 
@@ -262,7 +249,7 @@ class DashboardController {
 
         def  count=0;
            dataList.each{
-               conMap."${count}"=[value:it.value,time:it.nodeTimestamp.getTimeString()]
+               conMap."${count}"=[value:it.value,time:it.nodeTimestamp.getTimeString(),name:timeIns.name]
                count++;
            }
 
