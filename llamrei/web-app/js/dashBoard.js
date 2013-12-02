@@ -127,6 +127,7 @@ function openChart(data,timeSeriesId){
     $('#main2').hide();
     $('h2').text('');
     $('#chartDiv').show();
+    $('#msgDiv').hide()
 //    $("#headingTab").append('<tr><td><b>'+"Asset Name :"+'</b></td><td>'+"ll"+'</td></tr>');
 
     timeSeriesID=timeSeriesId;
@@ -140,12 +141,7 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
     dataLen=jsonLengthCount;
 
     var label;
-    if(timeSeriesId==2){
-        label=""
-    }
-    else{
-        label=""
-    }
+
 //    var b=Date.parse(data11[0].nodeTimestamp).getTime()
 
     var chart;
@@ -165,13 +161,11 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
                     setInterval(function() {
 
                         var x ; // current time
-//                        alert("hhh")
+
                         getNextPoint(assetID,timeSeriesID);
-//                        alert(statusFlag+"==ch==="+checkFlag)
+
                         if(statusFlag==true){
-//                           alert("pointval=="+pointTime)
-//                            categories =
-                            debugger;
+
                             ab.categories.push(pointTime);
 //                            ab.categories.push(pointTime);//time is 0:00-23:00
 //                            xAxis.setCategories(categories);
@@ -223,7 +217,7 @@ function showChart(data11,jsonLengthCount,timeSeriesId){
         },
         yAxis: {
             title: {
-                text: label
+                text: data11[0].name
             },
             plotLines: [{
                 value: 0,
@@ -502,6 +496,7 @@ $(document).ajaxStop(function() {
 
     }
     else{
+
         $('#msgDiv').hide()
     }
 
