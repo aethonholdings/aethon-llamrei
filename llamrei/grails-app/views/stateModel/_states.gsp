@@ -88,7 +88,3 @@
         </a>
     </div>
 </div>
-
-<div id="stateForm" style="display: none">
-    <g:render template="statesForm" model="[stateModelId: stateModelId]"/>
-</div>
