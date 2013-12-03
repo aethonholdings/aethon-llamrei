@@ -100,7 +100,9 @@ class DataSeriesService {
        String reason
        String unit
        String powerId
-       int powerValue=0
+       Map<String, String> map= new HashMap<String, String>()
+       float powerValue=0
+
         def status
         def obj= Asset.findByAssetUniqueID(id)
         def stateModelIns = StateModel.findByAsset(obj)
@@ -121,13 +123,13 @@ class DataSeriesService {
 
            for(int i=0;i<seriesList.size();i++){
 
-             if(seriesList.get(i).name.equalsIgnoreCase("Power")) {
+             if(seriesList.get(i).name.toLowerCase().contains("power")) {
              powerId= seriesList.get(i).timeSeriesUniqueID
-             powerValue = Integer.parseInt(keyValue.get(powerId))
+             powerValue = Float.parseFloat(keyValue.get(powerId))
              if(powerValue>0) {
-              newStatus="Power on"
+              newStatus="Power On"
             }else{
-                 newStatus="Power off"
+                 newStatus="Power Off"
              }
              }
            }
@@ -181,23 +183,9 @@ class DataSeriesService {
           }
           }
           }
-
-            if(status!=newStatus) {
-
-                  String message= null
-                  message= sendAlert(obj,status,newStatus,seriesNameList,seriesMapKeyValue)
-                  def alert = new Alerts()
-                alert.eventType="STATE TRANSITION"
-                alert.created = new Date()
-                alert.asset=obj
-                alert.details=message.substring(0,254)
-                alert.save(flush: true)
-                 /* sendAlert(obj,status[0],newStatus)
-                 status=newStatus*/
-           }
-
-
-          return  newStatus
+                  map.put("status",status)
+                 map.put("newStatus",newStatus)
+                 return map
    }
 
     def timeDifferenceSeconds(Date assetT, Date serverT){
@@ -234,7 +222,7 @@ class DataSeriesService {
         }
 
 
-    def sendAlert(Asset asset, String oldState,String newState,ArrayList<String> seriesNameList,HashMap<String,String> map) {
+    def sendAlert(Asset asset, String oldState,String newState) {
 
 
         String to1 = '', from = '', senderName = '', subject1 = '', message = '', renderMessage = '', emailId=''

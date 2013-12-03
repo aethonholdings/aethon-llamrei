@@ -11,6 +11,7 @@ import javax.xml.crypto.Data
 import com.llamrei.domain.StateModel
 import java.lang.reflect.Array
 import grails.converters.JSON
+import javassist.runtime.Desc
 
 class DataListenerController {
 
@@ -76,18 +77,24 @@ class DataListenerController {
                  def isSaved= dataSeriesService.saveDataToDB(id,time,seriesList,tsList)
                       println(isSaved)
                      if(isSaved){
-                     def  stateName=dataSeriesService.stateService(id,map,tsSeriesList)
+                     def  stateMap=dataSeriesService.stateService(id,map,tsSeriesList)
+                     def stateName =  stateMap.get("newStatus")
+                     def oldState= stateMap.get("status")
+
                      StateModel stateModel=StateModel.findByAsset(assetInstance)
-                     Set<State> state = new HashSet<State>()
 
                      if(stateModel!=null){
-                      def stateIns =State.findByStateModel(stateModel)
-                     if(stateName!=null){
+                        params.sort="id"
+                        params.order="desc"
+                        params.max=1
+                      def stateIns =State.findByStateModel(stateModel,params)
+
+                     if(stateName!=null && stateIns!=null){
                      stateIns.name=stateName
-                     state .add(stateIns)
-                     stateModel.setStates(state)
-                     redirect(controller: "stateModel", action: "update", stateModelIns:stateModel)
-                     }
+                     stateIns.save(flush:true)
+
+                     dataSeriesService.sendAlert(assetInstance,oldState,stateName)
+                    }
                      }  else{
                          msg="Please Edit Asset State Model"
                      }
