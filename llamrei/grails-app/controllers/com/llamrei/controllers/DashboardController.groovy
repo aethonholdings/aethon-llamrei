@@ -1,20 +1,11 @@
-
 package com.llamrei.controllers
 
-import com.llamrei.domain.DataPoint
-import com.llamrei.domain.State
-import com.llamrei.domain.StateModel
 import grails.converters.JSON
-import com.llamrei.domain.Asset
-import com.llamrei.domain.DataPoint
-import com.llamrei.domain.TimeSeries
-import org.apache.commons.lang.time.DateUtils
-
 import java.math.RoundingMode
 import java.text.DateFormat
-import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-
+import org.apache.commons.lang.time.DateUtils
+import com.llamrei.domain.*
 
 class DashboardController {
 
@@ -25,46 +16,66 @@ class DashboardController {
         def contentMap=[:]
         def dataInstanceList
         def assetInstance = Asset.list()
-        def timeSeriesName=[], timeList=new HashSet()
-
+        def timeList=[]
+        def headingList=[]
         def assetID
         def countAsset=0;
         def newList=[]
+        def tName=[]
+        def mapIntialize=false
 //        def stateModelList
+
+        assetInstance?.each{astObj ->
+            tName<<astObj.timeSeries
+            tName.each{
+                if(it){
+                    timeList.addAll(it)
+                }
+
+
+            }
+
+            timeList.each{
+                if(it.inDashboard)
+                {
+
+                    if(!headingList.contains(it)){
+                        headingList.addAll(it)
+                        headingList.sort{it.id}
+                    }
+                }
+
+            }
+        }
         assetInstance?.each{ asset->
             params.sort  ="id"
             params.order   ="desc"
             def timeSeriesList  =[]
             def tempList=[]
+            def timeSeriesName=[]
             def finalList=[]
             def stateName=[]
-             newList=[]
+            def tList=[]
+            newList=[]
             def noValue=false
             def noTimeSeries=false,inDashBoard=false
-//            params.max=3
-//            println("asettt==="+asset)
 
+            countAsset++
             timeSeriesName<<asset.timeSeries
-//            println("========="+timeSeriesName.size())
-//            println("sereis==="+timeSeriesName)
+
             timeSeriesName.each{
 
                 if(it){
-
                     noTimeSeries=false
+                    tList.addAll(it)
                 }
                 else{
-
                     noTimeSeries=true
                 }
-                if(it.inDashboard)   {
 
-                    timeList.addAll(it)
-//                    timeList.sort{it.id}
-                }
             }
-//            println("flag========="+timeList)
-            timeList.each{
+//            println("flag========="+tList)
+            tList.each{
 //                println(it)
                 if(it.inDashboard)
                 {
@@ -73,10 +84,10 @@ class DashboardController {
 
                         newList.addAll(it)
                         newList.sort{it.id}
-
                         noTimeSeries=false
                         inDashBoard=true
                     }
+
                 }
 
                 else if(inDashBoard==false){
@@ -84,13 +95,12 @@ class DashboardController {
                     noTimeSeries=true
                 }
             }
-//            println("newList====="+newList)
+
 
             if(noTimeSeries==false)   {
-            dataInstanceList = DataPoint.findAllByAsset(asset,params)
+                dataInstanceList = DataPoint.findAllByAssetAndTimeSeriesInList(asset,newList,params)
             }
 
-//            stateModelList=  StateModel.findAllByAsset(asset)
             def stateModelId=StateModel.executeQuery("select id from StateModel where asset=:asset ",[asset:asset])
 
             if(stateModelId) {
@@ -102,9 +112,10 @@ class DashboardController {
 
 //             println("falg===="+noTimeSeries)
             if(dataInstanceList && noTimeSeries==false){
-                countAsset++
+                  mapIntialize=true
+//                countAsset++
                 dataInstanceList?.eachWithIndex { data, i ->
-//                    println(i+"==meeeeeeeeeeeeeeeeeeeeee")
+//                    println("==meeeeeeeeeeeeeeeeeeeeee"+data.timeSeries.id)
                     if(i==0 && data.timeSeries.inDashboard) {
 //                        println("1st if")
                         tempList << data
@@ -142,39 +153,58 @@ class DashboardController {
                     }
                 }
                 finalList=tempList.sort{it.timeSeries.id}
-//                println("finalListsize====="+finalList)
-//                println("finalListsize====="+finalList.size())
-                for(int i=0;i<finalList.size();i++){
 
-                    if(i==0){
-                        contentMap."${countAsset}"."value"=[]
-                        contentMap."${countAsset}"."value"<<finalList.get(i).value
-//                       contentMap."${asset.id}"."timeSeriesID"<<data.timeSeries.id
-                    }
-                    else{
-                        contentMap."${countAsset}"."value"<<finalList.get(i).value
+
+
+                contentMap."${countAsset}"."value"=[]
+                def match=false
+                for(int k=0;k<finalList.size();k++){
+
+
+                    for(int j=0;j<headingList.size();j++){
+
+
+                        if((finalList.get(k).timeSeries.id==headingList.get(j).id) ){
+
+                            contentMap."${countAsset}"."value"<<finalList.get(k).value
+                            match=true
+                            if(k<finalList.size()-1){
+                           k++;
+                            }
+//                            j++;
+                        }
+                        else{
+//                            println("noooo")
+                            contentMap."${countAsset}"."value"<<"NA"
+                        }
+
                     }
 
 
                 }
 
-//                println("**********"+timeList.size())
-//                if(finalList.size()<newList.size()){
-//                    def inc=newList.size()-finalList.size()
-//                    println("=="+noValue)
-//                    if(noValue==true){
-//                        contentMap."${countAsset}"."value"=[]
-//                    }
-////                    contentMap."${countAsset}"."value"=[]
-//                    for(int i=inc;i<timeList.size();i++){
-//                        println("#######################")
-//                        contentMap."${countAsset}"."value"<<"-"
-//                    }
-//                }
-                for(int i=0;i<newList.size();i++){
-//                    println("<<<<<<<"+countAsset)
-//                    println("con map==="+contentMap)
-                    if(contentMap.size()>0){
+            }
+            else{
+
+                if(newList){
+                    contentMap."${countAsset}" =  [uID:asset.id,name:asset.assetName,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID]
+                    contentMap."${countAsset}"."value"=[]
+
+
+                    for(int j=0;j<headingList.size();j++){
+
+                        contentMap."${countAsset}"."value"<<"NA"
+
+
+                    }
+                }
+
+
+            }
+            if(newList){
+            for(int i=0;i<newList.size();i++){
+
+                if(contentMap.size()>0){
                     if(i==0){
                         contentMap."${countAsset}"."timeSeriesID"=[]
                         contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
@@ -182,29 +212,11 @@ class DashboardController {
                     else{
                         contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
                     }
-                    }
-
                 }
-            }
-            else{
-
-//                contentMap."${countAsset}" =  [uID:asset.id,name:asset.assetName,connection:asset.connectivityStatus,stateName:stateName,assetId:asset.assetUniqueID,id:data.id]
-//                timeSeriesList<<"a"
 
             }
-//            for(int i=0;i<newList.size();i++){
-//                   println("LLLLLLLLL"+i)
-//                println("<<<<<"+newList.get(i).id)
-//                if(i==0){
-//                    contentMap."${countAsset}"."timeSeriesID"=[]
-//                    contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
-//                }
-//                else{
-//                    contentMap."${countAsset}"."timeSeriesID"<<newList.get(i).id
-//                }
-//
-//            }
-// temp commented           countAsset++
+            }
+
         }
 
 
@@ -216,7 +228,7 @@ class DashboardController {
         else{
 
 //            println("@@@@@@@@@@@@"+contentMap)
-            render (view: "dashboardIndex", model: [contentmap:contentMap,timeSeriesName:newList] )
+            render (view: "dashboardIndex", model: [contentmap:contentMap,timeSeriesName:headingList] )
         }
 
     }
@@ -226,12 +238,23 @@ class DashboardController {
 
         params.sort  ="id"
         params.order   ="desc"
-        params.max=30
+        params.offset=0
+        params.max=20
+        def conMap=[:]
         def assetIns=Asset.findById(params.assetId)
         def timeIns=TimeSeries.findById(params.timeSeriesId)
-        def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+        List<DataPoint> dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
 
-        render dataList.value
+        dataList.sort{it.id}
+
+        def  count=0;
+           dataList.each{
+               conMap."${count}"=[value:it.value,time:it.nodeTimestamp.getTimeString(),name:timeIns.name]
+               count++;
+           }
+
+
+        render conMap as JSON
 
 
     }
@@ -240,14 +263,25 @@ class DashboardController {
     def nextContent={
 
         params.sort  ="id"
-        params.order   ="desc"
+        params.order ="desc"
         params.max=2
+        def conMap=[:]
         def assetIns=Asset.findById(params.assetId)
         def timeIns=TimeSeries.findById(params.timeSeriesId)
-        def dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
-        render dataList as JSON
+        List<DataPoint> dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+//        dataList.sort{it.id}
+
+        def  count=0;
+
+        dataList.each{
+             conMap."${count}"=[value:it.value,time:it.nodeTimestamp.getTimeString()]
+            count++;
+        }
+//        println("nxtttttttttttt===============<<<<<<<<<<<"+conMap)
+        render conMap as JSON
 
     }
+
 
     def prevChartContents={
         def max=1000

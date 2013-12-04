@@ -24,7 +24,7 @@
             $("#datePickerTo").datepicker({ changeMonth: true,changeYear: true,dateFormat: 'yy-mm-dd',maxDate: "0"   });
             setInterval(function () {
                 showContents();
-            }, 50000);
+            }, 30000);
         });
 
 
@@ -76,12 +76,21 @@
                 <td>${content.value.stateName[0][0]}</td>
 
             <g:each in="${content.value.value}"  status="j" var="ac">
+                     <g:if test="${ac.value.toString().contains('NA')}" >
+                         <td>${ac.value}</td>
 
-                    <td onclick=openChart(${content.value.uID},${content.value.timeSeriesID[j]}) class="linkClass">${ac.value}</td>
+                     </g:if>
+                      <g:else>
+                          <td onclick=openChart(${content.value.uID},${content.value.timeSeriesID[j]}) class="linkClass">${ac.value}</td>
+                      </g:else>
+
+
                     %{--<td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value1}</td>--}%
                     %{--<td onclick=openChart(${content.value.uID},${content.value.timeSereisID}) class="linkClass">${content.value.value2}</td>  --}%
                 </g:each>
-
+                %{--<g:javascript>--}%
+                %{--value=${ac.value}--}%
+                %{--</g:javascript>--}%
 
                 <td><input type="button" class="actionButton" value="Lock"></td>
                 <td><input type="button" class="actionButton" value="Start"></td>

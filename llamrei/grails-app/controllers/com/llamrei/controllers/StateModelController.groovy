@@ -187,51 +187,19 @@ class StateModelController {
 
         //add new state
         State state = new State()
-        state.setName(params.state.name)
-        state.setDescription(params.state.description)
+        state.setName("")
+        state.setDescription("")
         state.setStateModel(stateModel)
 
-        println "going to save state : " + state
-        StateRule stateRule
-        Set<StateRule> stateRules = []
+        println "going to save new state : " + state
         if (state.validate()) {
+
             state.save(flush: true)
-            println "state saved :)"
-
-            //now save state rules
-            Integer stateRulesCount = Integer.parseInt(params.stateRulesCount)
-            println "stateRulesCount"  + stateRulesCount
-            println "stateRules : "  + params["stateRule"]
-            for (int i = 0; i < stateRulesCount; i++) {
-
-                stateRule = new StateRule()
-                stateRule.setRuleType(params["stateRule.${i}.ruleType"])
-
-                stateRule.setRuleValue1(params["stateRule.${i}.ruleValue"])
-
-                Integer timeSeriesId = Integer.parseInt(params["stateRule.${i}.timeSeries"])
-
-                TimeSeries timeSeries = TimeSeries.get(timeSeriesId)
-                stateRule.setTimeSeries(timeSeries)
-                stateRule.setState(state)
-
-                println "StateRule to be saved : " + stateRule
-                println "sr validate : " + stateRule.validate()
-                if (stateRule.validate()) {
-                    stateRule.save(flush: true)
-                    println "state rule saved"
-
-                    stateRules.add(stateRule)
-                } else {
-                    println "state rule not saved"
-                }
-            }
-
+            println "new state saved :)"
         } else {
-            println "Could not save the state :("
+            println "Could not save the new state :("
         }
 
-        state.setStateRules(stateRules)
         Set states = stateModel.states
         states.add(state)
         render template: 'states', model: [states: states, stateModelId: stateModel.id]
@@ -256,33 +224,6 @@ class StateModelController {
         println "stateRule deleted :)"
         render true
     }
-
-    /*def updateStateRule = {
-        println "params in update state rule : "+params
-        StateRule stateRule = StateRule.get(Integer.parseInt(params.stateRuleId))
-        stateRule.setRuleType(params.ruleType)
-        stateRule.setRuleValue1(params.ruleValue)
-
-        TimeSeries timeSeries = TimeSeries.get(Integer.parseInt(params.timeSeriesId))
-        stateRule.setTimeSeries(timeSeries)
-
-        println "Going to stateRule : "+stateRule
-        stateRule.save(flush: true)
-        println "State rule updated :)"
-    }
-
-
-    def updateState = {
-        println "params in update state  : "+params
-        State state = State.get(Integer.parseInt(params.stateId))
-        state.setName(params.name)
-        state.setDescription(params.description)
-
-        println "Going to state : "+state
-        state.save(flush: true)
-        println "State updated :)"
-    }
-*/
 
     def addStateRule = {
         println "params in addStateRule : "+params
@@ -320,14 +261,14 @@ class StateModelController {
 
                 stateRule.setTimeSeries(timeSeries)
                 stateRule.setState(state)
-                println "StateRule to be saved : " + stateRule
+                println "New StateRule to be saved : " + stateRule
                 if (stateRule.validate()) {
                     stateRule.save(flush: true)
-                    println "state rule saved"
+                    println "new state rule saved"
 
                     state.stateRules.add(stateRule)
                 } else {
-                    println "state rule not saved"
+                    println "new state rule not saved"
                 }
             }
         }

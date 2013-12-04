@@ -10,6 +10,8 @@ import com.llamrei.domain.DataPoint
 import javax.xml.crypto.Data
 import com.llamrei.domain.StateModel
 import java.lang.reflect.Array
+import grails.converters.JSON
+import javassist.runtime.Desc
 
 class DataListenerController {
 
@@ -72,25 +74,31 @@ class DataListenerController {
          */
         // dataSeriesService.saveDataToDB(id,time,dataQueue,tsList)
 
-                  dataSeriesService.saveDataToDB(id,time,seriesList,tsList)
+                 def isSaved= dataSeriesService.saveDataToDB(id,time,seriesList,tsList)
+                      println(isSaved)
+                     if(isSaved){
+                     def  stateMap=dataSeriesService.stateService(id,map,tsSeriesList)
+                     def stateName =  stateMap.get("newStatus")
+                     def oldState= stateMap.get("status")
 
-
-                  def  stateName=dataSeriesService.stateService(id,map,tsSeriesList)
                      StateModel stateModel=StateModel.findByAsset(assetInstance)
-                     Set<State> state = new HashSet<State>()
 
                      if(stateModel!=null){
-                      def stateIns =State.findByStateModel(stateModel)
-                     if(stateName!=null){
+                        params.sort="id"
+                        params.order="desc"
+                        params.max=1
+                      def stateIns =State.findByStateModel(stateModel,params)
+
+                     if(stateName!=null && stateIns!=null){
                      stateIns.name=stateName
-                     state .add(stateIns)
-                     stateModel.setStates(state)
-                     redirect(controller: "stateModel", action: "update", stateModelIns:stateModel)
-                     }
+                     stateIns.save(flush:true)
+
+                     dataSeriesService.sendAlert(assetInstance,oldState,stateName)
+                    }
                      }  else{
                          msg="Please Edit Asset State Model"
                      }
-
+                     }
           msg="ACK"
         }else{
                msg="Asset does not exists, So can not be saved the dataseries for this Asset"
@@ -110,46 +118,62 @@ class DataListenerController {
          def checkConnectivityStatus = {
                 long diffSeconds
                 long diffMinuts
+
+                def testMap=[:]
+                testMap.flag="checked"
                 //second for good connection
                 long minLog = 15
                 //minuts
                 long timeout = 2
-                String status = "Connected"
-                Date assetTime
-                Date serverT
+
+                String connectivityStatus
+                String newStatus = "Connected"
+
+                def assetTime
+                def serverT
                 List<Asset> assetList = Asset.list()
                 List<Asset> updatedAssetList = new ArrayList<Asset>()
 
                    for(Asset asset:assetList){
+
                     params.clear()
                     params.sort  ="id"
-                    params.order   ="desc"
+                    params.order ="desc"
                     params.max=1
                     def assetIns=Asset.findById(asset.id)
+                     connectivityStatus=assetIns.connectivityStatus
                    def dataList=DataPoint.findByAsset(assetIns,params)
                    // dataList=null
                        if(dataList!=null){
                           assetTime = dataList.getNodeTimestamp()
                           serverT   = dataList.getTimestamp()
-                       }else{
-                           log.info("there is no data_point")
-                       }
 
                     Date currentTime = new Date()
                     diffSeconds = dataSeriesService.timeDifferenceSeconds(assetTime,serverT)
                     if(diffSeconds<=minLog)
-                    status ="Good"
+                    newStatus ="Good"
                     else
-                    status="Poor"
+                    newStatus="Poor"
                     diffMinuts  = dataSeriesService.timeDifferenceInMinute(currentTime,serverT)
                         if(diffMinuts>2)
-                        status= "Disconnected"
-                        assetIns.connectivityStatus=status
-                        updatedAssetList.add(assetIns)
-                      }
-                     redirect(controller: "assetManagement", action: "updateAsset", assetList:assetList)
+                        newStatus= "Disconnected"
+                     } else{
+                           log.info("there is no data_point")
+                       }
+                         if(connectivityStatus!=newStatus){
+                         assetIns.connectivityStatus=newStatus
+                         updatedAssetList.add(assetIns)
+                   }
+                   }
+                     if(updatedAssetList.size()>0){
+                         println("?????????????????")
 
+                     redirect(controller: "assetManagement", action: "updateAsset", params:[fromAction:"connectivity" ,assetList:updatedAssetList])
+                     }else{
+                         // println("?????????????????")
+                       log.info("there is no data_point")
+                          render testMap as JSON
+                       }
+                   }
+       }
 
-         }
-
-}
