@@ -12,14 +12,9 @@
     <meta name="layout" content="main" />
 
     <title>DashBoard</title>
-
-
-
     <script type="text/javascript">
 
         $(document).ready(function(){
-//            showContents();
-
             $("#datePickerFrom").datepicker({ changeMonth: true,changeYear: true ,dateFormat: 'yy-mm-dd',maxDate: "0" });
             $("#datePickerTo").datepicker({ changeMonth: true,changeYear: true,dateFormat: 'yy-mm-dd',maxDate: "0"   });
             setInterval(function () {
@@ -37,10 +32,6 @@
 </div>
 <div>
     <div><div style="float: left"><h2>Dashboard</h2></div><div class="updateMsgClass" id="msgDiv">Updating...</div></div>
-    %{--<h2>Dashboard</h2>--}%
-    %{--<div><div style="float: left;background-color: red"><h2>Dashboard</h2></div><div style="float: right">aaa</div></div>--}%
-    %{--<table style="border: none"><tr><td><h2>Dashboard</h2></td><td>Updating...</td></tr></table>--}%
-    %{--<div style="float: right">Updating...</div> </div>--}%
     <table id="main1" >
         <thead class='thclass'>
         <tr>

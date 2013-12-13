@@ -52,18 +52,15 @@ function showContents(){
     ({
         type:'POST',
         url:g.createLink({controller: 'dashboard', action: 'dashboardIndex'}),
-
         data: "updateDashBoard=" + true,
         dataType: "json",
         success:function(data)
         {
             var jsonLengthCount=0;
-            var  ins=data[1].value;
-
+            var ins=data[1].value;
 
             $.each(data, function() {
                 jsonLengthCount++
-
             });
 
             var length=0;
@@ -78,19 +75,10 @@ function showContents(){
                     appendTimeSeries(data,i)
                 }
                 else{
-//                    $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td>'+data[i].stateName+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value1+'</td><td class="linkClass" onclick=openChart("'+data[i].uID+'","'+data[i].timeSereisID+'")>'+data[i].value2+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
-
                     $("#main1").append('<tr class="even"><td style="display: none">aa</td><td>'+data[i].name+'</td><td>'+data[i].connection+'</td><td id="aa'+data[i].assetId+'">'+data[i].stateName+'</td><td><input type="button" class="actionButton" value="Lock"></td><td><input type="button" class="actionButton" value="Start"></td><td><input type="button" class="actionButton" value="Stop"></td></tr>')
                     appendTimeSeries(data,i)
                 }
-
-
             }
-
-
-
-
-
         }
         ,error:function(XMLHttpRequest, textStatus, errorThrown) {
 //            alert("Error in fetching Data")
