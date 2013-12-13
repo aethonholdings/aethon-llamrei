@@ -21,10 +21,12 @@
                 showContents();
             }, 30000);
         });
-
-
-
     </script>
+    <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
+    <script type="text/javascript" src="${resource(dir: 'js/DataTables-1.8.2', file: 'media/js/jquery.dataTables.js')}"></script>
+    <script type="text/javascript" src="${resource(dir: 'js/jquery', file: 'jquery.ui.datepicker.js')}"></script>
+    <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script>
+
 </head>
 <body>
 <div class="dboardDiv">

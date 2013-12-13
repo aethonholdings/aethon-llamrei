@@ -18,9 +18,7 @@ class DashboardController {
     }
     
     def view = {
-        def assetList = Asset.getAll()
-        def timeSeriesList = TimeSeries.getAll()
-        render (view: 'dashboard', model: [timeSeriesList: timeSeriesList, assetList: assetList])
+        render (view: 'dashboard', model: [timeSeriesList: TimeSeries.findAllByInDashboard(true), assetList: Asset.getAll()])
     }
     
     def dashboardIndex = {

@@ -9,8 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="main" />
-  <title>AssetDetail</title>
+  <meta name="layout" content="main" />
+  <title>Asset Details</title>
     <script type="text/javascript">
 
         $(document).ready(function(){
@@ -30,10 +30,10 @@
         $(function() {
             $( "#tabs1" ).tabs();
         });
-
-
-
     </script>
+    <script type="text/javascript" src="${resource(dir: 'js', file: 'assetMonitor.js')}"></script>
+    <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'subTab.css')}"/>
+
 </head>
 <body>
 
