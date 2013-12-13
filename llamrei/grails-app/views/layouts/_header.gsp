@@ -29,8 +29,8 @@
             <sec:ifAnyGranted roles="ROLE_ADMIN">
                 <li class="roleMenu"><a href='#' class='roleMenu' onmouseover='activate("adminServiceMenu")'>Admin</a>
                     <ul class="serviceMenu" id="adminServiceMenu">
-                        <li class="serviceMenu"><g:link controller="userManagement" action="list" class="serviceMenu">Manage users</g:link></li>
                         <li class="serviceMenu"><g:link controller="assetManagement" action="listAssets" class="serviceMenu">Manage assets</g:link></li>
+                        <li class="serviceMenu"><g:link controller="userManagement" action="list" class="serviceMenu">Manage users</g:link></li>
                         <li class="serviceMenu"><g:link controller="timeSeriesManagement" class="serviceMenu">Manage time series</g:link></li>
                     </ul>
                 </li>
