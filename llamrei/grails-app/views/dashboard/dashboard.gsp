@@ -9,36 +9,35 @@
         <meta name="layout" content="main" />
         <title>Dashboard</title>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
-        <script type="text/javascript" src="${resource(dir: 'js/DataTables-1.8.2', file: 'media/js/jquery.dataTables.js')}"></script>
-        <script type="text/javascript" src="${resource(dir: 'js/jquery', file: 'jquery.ui.datepicker.js')}"></script>
-        <script type="text/javascript" src="${resource(dir: 'js', file: 'highchart.js')}"></script>
+        </script>
     </head>
     <body>
         <div id="content">
             <h2>Dashboard</h2>
             <div class="updateMsgClass" id="msgDiv">Updating...</div>
-              <table id="main1" >
-                  <thead class='thclass'>
-                    <tr>
-                        <th>Asset Name</th>
-                        <th>Connection status</th>
-                        <th>Timestamp</th>
-                        <g:each in="${timeSeriesList}" var="timeSeries"><th>${timeSeries.name} (${timeSeries.units})</th></g:each>
-                    </tr>
-                  </thead>
-                  <tbody class='tdclass'>
+            <table id="main1" >
+                <thead class='thclass'>
+                  <tr>
+                      <th>Asset Name</th>
+                      <th>Connection status</th>
+                      <th>Timestamp</th>
+                      <g:each in="${timeSeriesList}" var="timeSeries"><th>${timeSeries.name} (${timeSeries.units})</th></g:each>
+                  </tr>
+                </thead>
+                <tbody class='tdclass'>
                     <g:each in="${assetList}" status="i" var="asset">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td>${asset.assetName}</td>
-                            <td>test</td>
-                            <td>test</td>
+                            <td><div id="${asset.assetUniqueID}" class="connectionStatus">n/a</div></td>
+                            <td><div id="${asset.assetUniqueID}" class="assetTimeStamp">n/a</div></td>
                             <g:each in="${timeSeriesList}" status="j" var="timeSeries">
-                                <td><div id="${asset.assetUniqueID}.${timeSeries.timeSeriesUniqueID}">fetching</div></td>
+                                <td><div id="${asset.assetUniqueID}.${timeSeries.timeSeriesUniqueID}" class="dataPoint">n/a</div></td>
                             </g:each>
                         </tr>
                     </g:each>
                 </tbody>
             </table>
+            <p><div id="clock" class="clock"></div></p>
         </div>
     </body>
 </html>
