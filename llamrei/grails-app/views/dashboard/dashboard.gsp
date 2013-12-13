@@ -18,9 +18,7 @@
             <table id="main1" >
                 <thead class='thclass'>
                   <tr>
-                      <th>Asset Name</th>
-                      <th>Connection status</th>
-                      <th>Timestamp</th>
+                      <th>Asset</th>
                       <g:each in="${timeSeriesList}" var="timeSeries"><th>${timeSeries.name} (${timeSeries.units})</th></g:each>
                   </tr>
                 </thead>
@@ -28,8 +26,6 @@
                     <g:each in="${assetList}" status="i" var="asset">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td>${asset.assetName}</td>
-                            <td><div id="${asset.assetUniqueID}" class="connectionStatus">n/a</div></td>
-                            <td><div id="${asset.assetUniqueID}" class="assetTimeStamp">n/a</div></td>
                             <g:each in="${timeSeriesList}" status="j" var="timeSeries">
                                 <td><div id="${asset.assetUniqueID}.${timeSeries.timeSeriesUniqueID}" class="dataPoint">n/a</div></td>
                             </g:each>

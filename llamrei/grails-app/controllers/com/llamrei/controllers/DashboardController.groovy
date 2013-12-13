@@ -20,7 +20,7 @@ class DashboardController {
     def update = {
         
         Date timeStamp = clockService.timeStamp()
-        def updateFrame = [date: timeStamp]
+        def updateFrame = [timeStamp: timeStamp]
         
         for(asset in Asset.getAll()){
             for(timeSeries in TimeSeries.findAllByInDashboard(true)) {

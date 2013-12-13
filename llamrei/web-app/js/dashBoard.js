@@ -10,42 +10,28 @@ var dataLen= 0,counter= 0,value=0;
 var assetID,timeSeriesID,pointValue,prevPointID=0;
 var statusFlag=false,checkFlag=false;
 
-$(document).ready(function(){
-    var now=new Date(2013, 12, 13, 13, 48, 0, 0);
-    document.getElementById('clock').innerHTML="System time: " + now;       // refresh the clock
-    update(now);
+$(document).ready(function(){  
+    
+    update()
+    setInterval(function(){update()}, 5000);
+
 })
 
-function startDashboard(now) {
-    
-    
-    now = new Date(now.getTime() + 1000);
-    t=setTimeout(function(){startDashboard(now)},1000);
-}
-
-function update(now) {
-    
-    getDataPoints();
-
-}
-
-function getDataPoints() {
+function update() {
     
     jQuery.ajax({
         type:'POST',
         url:g.createLink({controller: 'dashboard', action: 'update'}),
-        // dataType: "json",
-        success:function(data)
-        {
-            var jsonLengthCount=0;
-
-            $.each(data, function() {
-                jsonLengthCount++
-            });
-        }
-        ,error:function(XMLHttpRequest, textStatus, errorThrown) {
-            alert("Error in fetching Data")
+        dataType: "json", 
+        success: function(responseData) {
+            for(var key in responseData) {
+                if(document.getElementById(key)!=null) document.getElementById(key).innerHTML=responseData[key];
+            }
+            timeStamp = new Date(responseData["timeStamp"])
+            document.getElementById('clock').innerHTML="Data as of system time: " + timeStamp;
+        }, 
+        error: function() {
+            alert("Error fetching data from server");
         }
     });
-    
 }
