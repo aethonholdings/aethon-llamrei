@@ -20,6 +20,7 @@
         </g:hasErrors>
         <g:form method="post">
             <g:hiddenField name="id" value="${stateModelInstance?.id}"/>
+            <g:hiddenField name="stateModelId" value="${stateModelInstance?.id}"/>
             <g:hiddenField name="version" value="${stateModelInstance?.version}"/>
             <div class="dialog">
                 <table>
@@ -88,6 +89,7 @@
     </div>
 </div>
 <script type="text/javascript">
+
     function toggleSlide(element) {
         var parent = $(element).is('.box-cards') ? element : $(element).parents('.box-cards');
 
@@ -135,28 +137,28 @@
     function showStateForm() {
         $('#stateForm').toggle();
     }
-    function addState() {
-        var stateRulesCount = 0;
-        $('#stateRulesTable tbody tr.stateRule').each(function () {
-            stateRulesCount++;
-        });
-        $('#stateRulesCount').val(stateRulesCount);
-//        alert($('#stateRulesCount').val());
+    %{--function addState() {--}%
+        %{--var stateRulesCount = 0;--}%
+        %{--$('#stateRulesTable tbody tr.stateRule').each(function () {--}%
+            %{--stateRulesCount++;--}%
+        %{--});--}%
+        %{--$('#stateRulesCount').val(stateRulesCount);--}%
 
-        $.ajax({
-            type:'POST',
-            url:'${createLink(action: 'addState')}',
-            data:$('div#state-form').parents('form').serialize(),
-            success:function (data) {
-                $('div#states').html(data);
-                srIndex = 0;
-            }
-        });
-    }
+        %{--$.ajax({--}%
+            %{--type:'POST',--}%
+            %{--url:'${createLink(action: 'addState')}',--}%
+            %{--data:$('div#state-form').parents('form').serialize(),--}%
+            %{--success:function (data) {--}%
+                %{--$('div#states').html(data);--}%
+                %{--srIndex = 0;--}%
+            %{--}--}%
+        %{--});--}%
+    %{--}--}%
 
 
     function deleteState(id) {
         alert("You are about to delete a state");
+
         $.ajax({
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'deleteState')}',
@@ -168,6 +170,7 @@
     }
     function deleteStateRule(id) {
         alert("You are about to delete a state rule");
+
         $.ajax({
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'deleteStateRule')}',
@@ -179,84 +182,52 @@
     }
 
     var srIndex = 0;
-    function showStateRulesForm() {
-        $('#stateRuleForm').toggle();
-    }
-
-    function showRuleToggleAtTop() {
-        $('#ruleToggleAtTop').toggle();
-    }
-
-
-    function addStateRule() {
-        var timeSeries = $('select[name="state.stateRule.timeSeries"]').val();
-        var ruleType = $('select[name="state.stateRule.ruleType"]').val();
-        var ruleValue = $('input[name="state.stateRule.ruleValue"]').val();
-
-        $('#stateRulesTable tbody').prepend('<tr class="stateRule">' +
-                '<td>' + timeSeries + '</td><input type="hidden" name="stateRule.' + srIndex + '.timeSeries" value="' + timeSeries + '"/>' +
-                '<td>  ' + ruleType + '</td><input type="hidden" name="stateRule.' + srIndex + '.ruleType" value="' + ruleType + '"/>' +
-
-                '<td>' + ruleValue + '</td><input type="hidden" name="stateRule.' + srIndex + '.ruleValue" value="' + ruleValue + '"/>' +
-                '</tr>');
-
-        srIndex++;
-    }
-/*
-    function updateStateRule(id) {
-        var timeSeries = $('select[name="state.stateRule-' + id + '.timeSeries"]').val();
-        var ruleType = $('select[name="state.stateRule-' + id + '.ruleType"]').val();
-        var ruleValue = $('input[name="state.stateRule-' + id + '.ruleValue1"]').val();
-
-        alert("You are about to update a state rule");
-        $.ajax({
-            type:'POST',
-            url:'${createLink(controller: 'stateModel', action: 'updateStateRule')}',
-            data:{stateRuleId:id, timeSeriesId:timeSeries, ruleType:ruleType, ruleValue:ruleValue},
-            success:function (data) {
-                alert("State rule updated");
-            }
-        });
-    }
-
-    function updateState(id) {
-        var name = $('input[name="state-' + id + '.name"]').val();
-        var description = $('input[name="state-' + id + '.description"]').val();
-
-        alert("You are about to update a state rule");
-        $.ajax({
-            type:'POST',
-            url:'${createLink(controller: 'stateModel', action: 'updateState')}',
-            data:{stateId:id, name:name, description:description},
-            success:function (data) {
-                alert("State updated");
-            }
-        });
-    }*/
-
     function addStateRuleRow(stateId) {
+        showBlock();
         $('#stateIdToBeModified').val(stateId);
         $.ajax({
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'addStateRule')}',
-            data:$('div#state-form').parents('form').serialize(),
+            data:$('div#states').parents('form').serialize(),
             success:function (data) {
                 $('div#states').html(data);
             }
         });
     }
-
+    $(document).ajaxStop($.unblockUI);
     function addStateRow() {
-       $.ajax({
+
+        showBlock();
+
+        $.ajax({
+
             type:'POST',
             url:'${createLink(controller: 'stateModel', action: 'addState')}',
-            data:$('div#state-form').parents('form').serialize(),
+            data:$('div#states').parents('form').serialize(),
 
             success:function (data) {
                 $('div#states').html(data);
             }
         });
     }
+
+    function showBlock(){
+        $.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+        } });
+
+       setTimeout($.unblockUI, 7000);
+    }
+
+
+
+
 
 </script>
 </body>

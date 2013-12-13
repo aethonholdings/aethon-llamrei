@@ -10,7 +10,7 @@
         <g:javascript library="jquery"/>
         <g:javascript library="application"/>
         <g:javascript library="jquery" plugin="jquery"/>
-
+        <script type="text/javascript" src="${resource(dir: 'js/jquery', file: 'jquery.blockUI.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery.ui.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'menu.js')}"></script>
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />        
@@ -22,7 +22,7 @@
 
             setInterval(function () {
                 checkConnectionStatus();
-            }, 20000);
+            }, 200000);
         });
 
 

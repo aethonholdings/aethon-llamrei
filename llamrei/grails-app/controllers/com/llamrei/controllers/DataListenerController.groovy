@@ -11,6 +11,7 @@ import javax.xml.crypto.Data
 import com.llamrei.domain.StateModel
 import java.lang.reflect.Array
 import grails.converters.JSON
+import javassist.runtime.Desc
 
 class DataListenerController {
 
@@ -23,68 +24,68 @@ class DataListenerController {
          */
         String id = params.getProperty("id")
         if(!(id==null || id=="")){
-        def assetInstance = Asset.findByAssetUniqueID(id)
-        if(assetInstance){
-            String time = params.getProperty("T")
+            def assetInstance = Asset.findByAssetUniqueID(id)
+            if(assetInstance){
+                String time = params.getProperty("T")
 
-            time=time.replace("|"," ")
+                time=time.replace("|"," ")
 
-            println(time)
-            List<TimeSeries> tsList = new ArrayList<TimeSeries>()
-            List<TimeSeries> tsSeriesList = new ArrayList<TimeSeries>()
-            List<TimeSeries> tsListClone
-            def associatedTs= assetInstance.timeSeries
-            associatedTs.each{
-                tsList.add(it)
-            }
-            ArrayList seriesList = new ArrayList()
-            ArrayList tsli = new ArrayList()
-            Map<String,String> map = new HashMap<String, String>()
-            for(TimeSeries series: tsList) {
-                String tsId=series.timeSeriesUniqueID
-                String value= params.getProperty(series.timeSeriesUniqueID)
-                if(value!=null && value!=""){
-                    seriesList.add(value)
-                    map.put(tsId,value)
-                    tsli.add(tsId)
-                }else{
-                    log.info("Data point does not contains value")
+                println(time)
+                List<TimeSeries> tsList = new ArrayList<TimeSeries>()
+                List<TimeSeries> tsSeriesList = new ArrayList<TimeSeries>()
+                List<TimeSeries> tsListClone
+                def associatedTs= assetInstance.timeSeries
+                associatedTs.each{
+                    tsList.add(it)
                 }
-            }
-
-            tsListClone = tsList.clone()
-            for(int i=0;i<tsli.size();i++){
-               tsSeriesList.add(tsListClone.get(i))
-            }
-
-            /**
-            * Invoking the service to save the data into database
-            */
-            def isSaved= dataSeriesService.saveDataToDB(id,time,seriesList,tsList)
-            println(isSaved)
-            if(isSaved){
-                def  stateName=dataSeriesService.stateService(id,map,tsSeriesList)
-                StateModel stateModel=StateModel.findByAsset(assetInstance)
-                Set<State> state = new HashSet<State>()
-
-                if(stateModel!=null){
-                    def stateIns =State.findByStateModel(stateModel)
-                    if(stateName!=null){
-                        stateIns.name=stateName
-                        state .add(stateIns)
-                        stateModel.setStates(state)
-                        redirect(controller: "stateModel", action: "update", stateModelIns:stateModel)
+                ArrayList seriesList = new ArrayList()
+                ArrayList tsli = new ArrayList()
+                Map<String,String> map = new HashMap<String, String>()
+                for(TimeSeries series: tsList) {
+                    String tsId=series.timeSeriesUniqueID
+                    String value= params.getProperty(series.timeSeriesUniqueID)
+                    if(value!=null && value!=""){
+                        seriesList.add(value)
+                        map.put(tsId,value)
+                        tsli.add(tsId)
+                    }else{
+                        log.info("Data point does not contains value")
                     }
-                } else {
-                    msg="Please Edit Asset State Model"
                 }
+
+                tsListClone = tsList.clone()
+                for(int i=0;i<tsli.size();i++){
+                   tsSeriesList.add(tsListClone.get(i))
+                }
+
+                /**
+                * Invoking the service to save the data into database
+                */
+                def isSaved= dataSeriesService.saveDataToDB(id,time,seriesList,tsList)
+                println(isSaved)
+                if(isSaved){
+                    def  stateName=dataSeriesService.stateService(id,map,tsSeriesList)
+                    StateModel stateModel=StateModel.findByAsset(assetInstance)
+                    Set<State> state = new HashSet<State>()
+
+                    if(stateModel!=null){
+                        def stateIns =State.findByStateModel(stateModel)
+                        if(stateName!=null){
+                            stateIns.name=stateName
+                            state .add(stateIns)
+                            stateModel.setStates(state)
+                            redirect(controller: "stateModel", action: "update", stateModelIns:stateModel)
+                        }
+                    } else {
+                        msg="Please Edit Asset State Model"
+                    }
+                }
+                msg="ACK"
+            } else {
+               msg="Asset does not exists, So can not be saved the dataseries for this Asset"
+            log.info("Asset does not exists, So can not be saved the dataseries for this Asset")
             }
-            msg="ACK"
         } else {
-           msg="Asset does not exists, So can not be saved the dataseries for this Asset"
-        log.info("Asset does not exists, So can not be saved the dataseries for this Asset")
-        }
-        }else{
             msg = "No device Found"
             println("id is blank")
         }
@@ -146,3 +147,4 @@ class DataListenerController {
         render testMap as JSON
     }
 }
+

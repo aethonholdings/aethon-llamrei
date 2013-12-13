@@ -15,7 +15,7 @@
             <sec:ifAnyGranted roles="ROLE_OPERATOR">
                 <li class="roleMenu"><a href='#' class='roleMenu' onmouseover='activate("operatorServiceMenu")'>Operations</a>
                     <ul class="serviceMenu" id="operatorServiceMenu">
-                        <li class="serviceMenu"><g:link controller="dashboard" action="dashboardIndex" class="serviceMenu">Dashboard</g:link></li>
+                        <li class="serviceMenu"><g:link controller="dashboard" action="view" class="serviceMenu">Dashboard</g:link></li>
                         <li class="serviceMenu"><g:link controller="assetMonitor" action="assetMonitorList" class="serviceMenu">Asset monitor</g:link></li>
                     </ul>            
                 </li>
