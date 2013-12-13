@@ -348,11 +348,15 @@ td.errors textarea {
     width: 200px;
 }
 
+.statusFooter{
+    padding-top: 20px;
+}
+
+
 .updateMsgClass{
     float: right;
-    padding-top: 20px;
     color: darkcyan;
-    display: none;
+    visibility: hidden;
 }
    .linkClass{
        cursor: pointer;
@@ -361,5 +365,5 @@ td.errors textarea {
 /* CLOCK */
 
 .clock{
-    padding-top: 20px;
+    float: left;
 }

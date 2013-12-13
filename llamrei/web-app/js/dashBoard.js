@@ -6,19 +6,18 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var dataLen= 0,counter= 0,value=0;
-var assetID,timeSeriesID,pointValue,prevPointID=0;
-var statusFlag=false,checkFlag=false;
+var browserReferenceTime;
+var startServerTime;
+var clockTick = 5000;
 
-$(document).ready(function(){  
-    
-    update()
-    setInterval(function(){update()}, 5000);
-
+$(document).ready(function(){
+    update();
+    setInterval(function() {update()}, clockTick);
 })
 
 function update() {
-    
+                
+    document.getElementById('msgDiv').display='visible';
     jQuery.ajax({
         type:'POST',
         url:g.createLink({controller: 'dashboard', action: 'update'}),
@@ -28,10 +27,12 @@ function update() {
                 if(document.getElementById(key)!=null) document.getElementById(key).innerHTML=responseData[key];
             }
             timeStamp = new Date(responseData["timeStamp"])
-            document.getElementById('clock').innerHTML="Data as of system time: " + timeStamp;
+            document.getElementById('serverTimestamp').innerHTML="Data as of system time: " + timeStamp;
+            return(timeStamp);
         }, 
         error: function() {
             alert("Error fetching data from server");
         }
     });
+    document.getElementById('msgDiv').display='hidden';
 }

@@ -14,7 +14,6 @@
     <body>
         <div id="content">
             <h2>Dashboard</h2>
-            <div class="updateMsgClass" id="msgDiv">Updating...</div>
             <table id="main1" >
                 <thead class='thclass'>
                   <tr>
@@ -33,7 +32,10 @@
                     </g:each>
                 </tbody>
             </table>
-            <p><div id="clock" class="clock"></div></p>
+            <div class="statusFooter">
+                <span class="clock" id="serverTimestamp"></span>
+                <span class="updateMsgClass" id="msgDiv">Updating...</span>
+            </div>
         </div>
     </body>
 </html>

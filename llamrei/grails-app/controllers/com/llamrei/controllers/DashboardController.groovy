@@ -25,8 +25,10 @@ class DashboardController {
         for(asset in Asset.getAll()){
             for(timeSeries in TimeSeries.findAllByInDashboard(true)) {
                 def dataPoint = DataPoint.findByTimeSeriesAndAsset(timeSeries, asset, [max:1, sort:"nodeTimestamp", order:"desc"])
-                String key = (dataPoint.asset.assetUniqueID + "." + dataPoint.timeSeries.timeSeriesUniqueID)
-                updateFrame += [ (key) : dataPoint.value]
+                if(dataPoint) {
+                    String key = (dataPoint.asset.assetUniqueID + "." + dataPoint.timeSeries.timeSeriesUniqueID)
+                    updateFrame += [ (key) : dataPoint.value]
+                }
             }
         }
         render updateFrame as JSON
