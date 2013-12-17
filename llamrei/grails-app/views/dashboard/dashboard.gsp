@@ -9,7 +9,7 @@
         <meta name="layout" content="main" />
         <title>Dashboard</title>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
-        </script>
+        <script type="text/javascript" src="${resource(dir: 'js', file: 'realDateTime.js')}"></script>
     </head>
     <body>
         <div id="content">
@@ -19,6 +19,7 @@
                   <tr>
                       <th>Asset</th>
                       <g:each in="${timeSeriesList}" var="timeSeries"><th>${timeSeries.name} (${timeSeries.units})</th></g:each>
+                      <th>Nodetimestamp</th>
                   </tr>
                 </thead>
                 <tbody class='tdclass'>
@@ -27,15 +28,21 @@
                             <td>${asset.assetName}</td>
                             <g:each in="${timeSeriesList}" status="j" var="timeSeries">
                                 <td><div id="${asset.assetUniqueID}.${timeSeries.timeSeriesUniqueID}" class="dataPoint">n/a</div></td>
-                            </g:each>
+                             </g:each>
+                          <td id='${asset.assetUniqueID}'>n/a</td>
                         </tr>
                     </g:each>
                 </tbody>
             </table>
+            <div style="margin-top: 10px">
+                <span id="date_time"></span>
+                <script type="text/javascript">window.onload = date_time('date_time');</script>
+            </div>
             <div class="statusFooter">
                 <span class="clock" id="serverTimestamp"></span>
-                <span class="updateMsgClass" id="msgDiv">Updating...</span>
+               <span class="updateMsgClass" id="msgDiv">Updating...</span>
             </div>
-        </div>
+          </div>
+
     </body>
 </html>

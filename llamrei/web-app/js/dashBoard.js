@@ -23,15 +23,24 @@ function update() {
         url:g.createLink({controller: 'dashboard', action: 'update'}),
         dataType: "json", 
         success: function(responseData) {
+
             for(var key in responseData) {
-                if(document.getElementById(key)!=null) document.getElementById(key).innerHTML=responseData[key];
+
+                if(document.getElementById(key)!=null)
+                 document.getElementById(key).innerHTML=responseData[key];
+               }
+            for(var nodeTimestamp in responseData){
+
+                if(document.getElementById(nodeTimestamp)!=null)
+                    document.getElementById(nodeTimestamp).innerHTML=responseData[nodeTimestamp];
             }
             timeStamp = new Date(responseData["timeStamp"])
+//            console.log(timeStamp)
             document.getElementById('serverTimestamp').innerHTML="Data as of system time: " + timeStamp;
             return(timeStamp);
         }, 
         error: function() {
-            alert("Error fetching data from server");
+//            alert("Error fetching data from server");
         }
     });
     document.getElementById('msgDiv').display='hidden';
