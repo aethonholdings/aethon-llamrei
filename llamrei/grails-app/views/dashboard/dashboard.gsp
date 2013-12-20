@@ -10,8 +10,10 @@
         <title>Dashboard</title>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'dashBoard.js')}"></script>
         <script type="text/javascript" src="${resource(dir: 'js', file: 'realDateTime.js')}"></script>
+
     </head>
     <body>
+    <g:render template='chartPage' />
         <div id="content">
             <h2>Dashboard</h2>
             <table id="main1" >
@@ -27,7 +29,7 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td>${asset.assetName}</td>
                             <g:each in="${timeSeriesList}" status="j" var="timeSeries">
-                                <td><div id="${asset.assetUniqueID}.${timeSeries.timeSeriesUniqueID}" class="dataPoint">n/a</div></td>
+                                <td onclick=openChart(${asset.id},${timeSeries.id})><div id="${asset.assetUniqueID}.${timeSeries.timeSeriesUniqueID}" class="dataPoint">n/a</div></td>
                              </g:each>
                           <td id='${asset.assetUniqueID}'>n/a</td>
                         </tr>
@@ -36,7 +38,9 @@
             </table>
             <div style="margin-top: 10px">
                 <span id="date_time"></span>
-                <script type="text/javascript">window.onload = date_time('date_time');</script>
+                %{--<script type="text/javascript">window.onload = date_time('date_time');</script>--}%
+                <g:hiddenField name="time" id="time"></g:hiddenField>
+                <script type="text/javascript">window.onload = date_time('date_time',serverTime);</script>
             </div>
             <div class="statusFooter">
                 <span class="clock" id="serverTimestamp"></span>

@@ -17,12 +17,12 @@ class DataListenerController {
 
     DataSeriesService dataSeriesService
     String msg=null
-    
+
     def listener = {
         /**
          * Retreiving the data coming from node
          */
-        String id = params.getProperty("id")
+        def id = params.getProperty("id")
         if(!(id==null || id=="")){
             def assetInstance = Asset.findByAssetUniqueID(id)
             if(assetInstance){
@@ -55,35 +55,21 @@ class DataListenerController {
 
                 tsListClone = tsList.clone()
                 for(int i=0;i<tsli.size();i++){
-                   tsSeriesList.add(tsListClone.get(i))
+                    tsSeriesList.add(tsListClone.get(i))
                 }
 
                 /**
-                * Invoking the service to save the data into database
-                */
+                 * Invoking the service to save the data into database
+                 */
                 def isSaved= dataSeriesService.saveDataToDB(id,time,seriesList,tsList)
                 println(isSaved)
                 if(isSaved){
-                    def  stateName=dataSeriesService.stateService(id,map,tsSeriesList)
-                    StateModel stateModel=StateModel.findByAsset(assetInstance)
-                    Set<State> state = new HashSet<State>()
-
-                    if(stateModel!=null){
-                        def stateIns =State.findByStateModel(stateModel)
-                        if(stateName!=null){
-                            stateIns.name=stateName
-                            state .add(stateIns)
-                            stateModel.setStates(state)
-                            redirect(controller: "stateModel", action: "update", stateModelIns:stateModel)
-                        }
-                    } else {
-                        msg="Please Edit Asset State Model"
-                    }
+                    boolean sendMail = dataSeriesService.stateService(assetInstance,map,tsSeriesList)
                 }
                 msg="ACK"
             } else {
-               msg="Asset does not exists, So can not be saved the dataseries for this Asset"
-            log.info("Asset does not exists, So can not be saved the dataseries for this Asset")
+                msg="Asset does not exists, So can not be saved the dataseries for this Asset"
+                log.info("Asset does not exists, So can not be saved the dataseries for this Asset")
             }
         } else {
             msg = "No device Found"

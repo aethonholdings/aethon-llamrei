@@ -11,7 +11,7 @@ import com.llamrei.domain.*
 
 
 // this needs to be secured
- @Secured(['ROLE_FINANCE','ROLE_ADMIN'])
+ @Secured(["ROLE_OPERATOR"])
 class DashboardController {
 
     def clockService
@@ -23,7 +23,7 @@ class DashboardController {
     def update = {
         
         Date timeStamp = clockService.timeStamp()
-        println(">>>>>>>>>>>>>>> "+timeStamp)
+
         def updateFrame = [timeStamp: timeStamp]
         
         for(asset in Asset.getAll()){
@@ -42,4 +42,40 @@ class DashboardController {
         }
         render updateFrame as JSON
     }
+
+     def chartContents={
+
+         params.sort  ="id"
+         params.order   ="desc"
+//         params.offset=0
+         params.max=28
+         def conMap=[:]
+         def assetIns=Asset.findById(params.assetId)
+         def timeIns=TimeSeries.findById(params.timeSeriesId)
+         List<DataPoint> dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+         dataList.sort{it.id}
+         def  count=0;
+         dataList.each{
+             conMap."${count}"=[value:it.value,time:it.nodeTimestamp.getTimeString(),name:timeIns.name]
+             count++;
+         }
+//         println("*************"+conMap)
+         render conMap as JSON
+     }
+     def nextContent={
+         params.sort  ="id"
+         params.order ="desc"
+         params.max=2
+         def conMap=[:]
+         def assetIns=Asset.findById(params.assetId)
+         def timeIns=TimeSeries.findById(params.timeSeriesId)
+         List<DataPoint> dataList=DataPoint.findAllByAssetAndTimeSeries(assetIns,timeIns,params)
+         def  count=0;
+         dataList.each{
+             conMap."${count}"=[value:it.value,time:it.nodeTimestamp.getTimeString()]
+             count++;
+         }
+         render conMap as JSON
+
+     }
 }

@@ -12,7 +12,7 @@ class SessionController {
             redirect(controller: "assetManagement", action: "index")
         }
         else if((SpringSecurityUtils.ifAllGranted("ROLE_OPERATOR"))){
-            redirect(controller: 'dashboard', action: 'dashboardIndex')
+            redirect(controller: 'dashboard', action: 'view')
         } else {
             redirect(controller: "dashboard", action: "dashboardIndex")
         }

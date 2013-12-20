@@ -51,6 +51,7 @@ class StateModelController {
     }
 
     def edit = {
+        println("in edit")
         def stateModelInstance
         if (params.assetId) {
             println "finding state model by asset id " + params.assetId
@@ -99,6 +100,7 @@ class StateModelController {
         stateModelInstance.description = params['description']
         stateModelInstance.states.each {state ->
             state.name = params['states.'+state.id+'.name']
+            println("..............."+state.name)
             state.description = params['states.'+state.id+'.description']
             state.stateRules.each { stateRule ->
               stateRule.ruleType = params['states.'+state.id+'.stateRules.'+stateRule.id+'.ruleType']

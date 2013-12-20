@@ -5,6 +5,7 @@
     %{--<td>Hiiiiiiiiiiiiiiiiii</td>--}%
     %{--</tr>--}%
     %{--</table>--}%
+
     <div id="chartDiv1" style="width: 100%;float: left;"> </div>
 
 
