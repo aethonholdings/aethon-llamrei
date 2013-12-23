@@ -10,6 +10,7 @@ class Asset {
     Date creationDate
     Date modificationDate
     String connectivityStatus
+    String currentState
     /**
      * Relationship mapping
      */
@@ -30,7 +31,7 @@ class Asset {
         creationDate(nullable: true)
         modificationDate(nullable: true)
         timeSeries(nullable: true)
-
+        currentState(nullable:true)
        // alerts(nullable: true)
     }
     

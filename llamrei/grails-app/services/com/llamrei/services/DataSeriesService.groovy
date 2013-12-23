@@ -94,13 +94,10 @@ class DataSeriesService {
 
     def boolean stateService(assetInstance,Map keyValue,List<TimeSeries> seriesList){
         def activeState=null;
-        boolean isTrue= true;
+        boolean isTrue= false;
         boolean sendMail=false;
-//        def assetInstance= Asset.findById(id)
         def previousState = assetInstance.currentState
-//        println("asset previous state is "+ previousState)
         def stateModel= StateModel.findByAsset(assetInstance)
-//        println("this is the stateModel "+stateModel)
         def states= State.findAllByStateModel(stateModel)
         for( state in states){
             for (timeSeries in seriesList){
@@ -108,78 +105,87 @@ class DataSeriesService {
                 def stateRules = StateRule.findAllByState(state)
                 for (stateRule in stateRules){
                     def String ruleType=stateRule.ruleType
-                    if(stateRule.timeSeriesId==timeSeries.id)  {
-
-//                     println("insideeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee 2 checking for this rule type"+ ruleType)
+                    if(stateRule.timeSeriesId==timeSeries.id) {
                         if(ruleType=="GT") {
-                            if(value > stateRule.ruleValue1){
-                                println("1")
+                            println("checking for GT")
+                            if(value > Integer.parseInt(stateRule.ruleValue1)){
+                                println("in if of GT")
                                 isTrue=true
                             }
                             else{
-                                println("in else"+ruleType)
+                                println("in else of GT")
                                 isTrue=false
                                 break;
                             }
                         }
                         if(ruleType=="LT") {
-                            if(value < stateRule.ruleValue1){
-                                println("1")
+                            println("checking for LT")
+                            if(value <  Integer.parseInt(stateRule.ruleValue1)){
+                                println("in if of LT")
                                 isTrue=true
                             }
                             else{
-                                println("in else"+ruleType)
+                                println("in else of LT")
                                 isTrue=false
                                 break;
                             }
                         }
                         if(ruleType=="EQ") {
-                            println("value of rule from database "+stateRule.ruleValue1.getClass())
+                            println("checking for EQ")
                             if(value == Integer.parseInt(stateRule.ruleValue1)){
-                                println("in if block")
+                                println("in if block of EQ")
                                 isTrue=true
                             }
                             else{
-                                println("in else "+ruleType)
+                                println("in else of EQ")
                                 isTrue=false
                                 break;
                             }
                         }
-                        if(ruleType=="NQ") {
-                            if(value != stateRule.ruleValue1){
-                                println("1")
+                        if(ruleType=="NE") {
+                            println("checking for NE")
+                            if(value !=  Integer.parseInt(stateRule.ruleValue1)){
+                                println(" in if block of NE")
                                 isTrue=true
                             }
                             else{
-                                println("in else"+ruleType)
+                                println("in else of NE")
                                 isTrue=false
                                 break;
                             }
                         }
                         if(ruleType=="LE") {
-                            if(value <= stateRule.ruleValue1){
-                                println("1")
+                            println("checking for LE")
+                            if(value <=  Integer.parseInt(stateRule.ruleValue1)){
+                                println("in if of LE")
                                 isTrue=true
                             }
                             else{
-                                println("in else"+ruleType)
+                                println("in else of LE")
                                 isTrue=false
                                 break;
                             }
                         }
                         if(ruleType=="GE") {
-                            if(value >= stateRule.ruleValue1){
-                                println("1")
+                            println("checking for GE")
+                            if(value >=  Integer.parseInt(stateRule.ruleValue1)){
+                                println("in if of GE")
                                 isTrue=true
                             }
                             else{
-                                println("in else"+ruleType)
+                                println("in else of GE")
                                 isTrue=false
                                 break;
                             }
                         }
 
                     }
+                }
+                if(isTrue==true){
+                    continue;
+                }
+                else{
+                    break;
                 }
             }
             if(isTrue==true){
