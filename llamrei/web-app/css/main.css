@@ -366,5 +366,5 @@ td.errors textarea {
 /* CLOCK */
 
 .clock{
-    float: left;
+    margin-top: 10px;
 }

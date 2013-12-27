@@ -20,33 +20,28 @@
                 <thead class='thclass'>
                   <tr>
                       <th>Asset</th>
+                      <th>Node timestamp</th>
                       <g:each in="${timeSeriesList}" var="timeSeries"><th>${timeSeries.name} (${timeSeries.units})</th></g:each>
-                      <th>Nodetimestamp</th>
                   </tr>
                 </thead>
                 <tbody class='tdclass'>
                     <g:each in="${assetList}" status="i" var="asset">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td>${asset.assetName}</td>
+                            <td id='${asset.assetUniqueID}'>n/a</td>
                             <g:each in="${timeSeriesList}" status="j" var="timeSeries">
                                 <td onclick=openChart(${asset.id},${timeSeries.id})><div id="${asset.assetUniqueID}.${timeSeries.timeSeriesUniqueID}" class="dataPoint">n/a</div></td>
                              </g:each>
-                          <td id='${asset.assetUniqueID}'>n/a</td>
                         </tr>
                     </g:each>
                 </tbody>
             </table>
-            <div style="margin-top: 10px">
-                <span id="date_time"></span>
-                %{--<script type="text/javascript">window.onload = date_time('date_time');</script>--}%
-                <g:hiddenField name="time" id="time"></g:hiddenField>
+            <div class="clock">
+                <div style="float: left" id="date_time"></div>
                 <script type="text/javascript">window.onload = date_time('date_time',serverTime);</script>
+                <div style="float: right" id="serverTimestamp"></div>
             </div>
-            <div class="statusFooter">
-                <span class="clock" id="serverTimestamp"></span>
-               <span class="updateMsgClass" id="msgDiv">Updating...</span>
-            </div>
-          </div>
-
+            <span class="updateMsgClass" id="msgDiv">Updating...</span>
+       </div>
     </body>
 </html>
