@@ -29,14 +29,12 @@ class DashboardController {
         for(asset in Asset.getAll()){
             for(timeSeries in TimeSeries.findAllByInDashboard(true)) {
                 def dataPoint = DataPoint.findByTimeSeriesAndAsset(timeSeries, asset , [max:1, sort:"nodeTimestamp", order:"desc"])
-               if(dataPoint) {
+                if(dataPoint) {
                     String key = (dataPoint.asset.assetUniqueID + "." + dataPoint.timeSeries.timeSeriesUniqueID)
                     String nodeTimestamp=(dataPoint.asset.assetUniqueID)
-                   String nodeTimestampValue = dataPoint.nodeTimestamp
-                    updateFrame += [ (key) : dataPoint.value ]
+                    String nodeTimestampValue = dataPoint.nodeTimestamp
+                    updateFrame += [(key): dataPoint.value ]
                     updateFrame += [(nodeTimestamp):nodeTimestampValue]
-//                     println(">>>>>>>>>>>>>>> "+nodeTimestampValue)
-
                 }
             }
         }
